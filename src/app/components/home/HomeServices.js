@@ -4,6 +4,7 @@ import React from "react";
 export default function HomeServices() {
   return (
     <section
+       id="services"
       className="d-flex flex-column align-items-center text-center"
       style={{
         padding: "48px 0 48px 0",
