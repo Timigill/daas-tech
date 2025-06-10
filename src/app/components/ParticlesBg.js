@@ -9,11 +9,11 @@ const particlesOptions = {
   fullScreen: false,
   background: { color: "transparent" },
   particles: {
-    number: { value: 120, density: { enable: true, area: 800 } },
+    number: { value: 160, density: { enable: true, area: 800 } },
     color: { value: "#ffffff" },
     opacity: { value: 0.5 },
     size: { value: 1.5, random: true },
-    move: { enable: true, speed: 0.1, direction: "none", outModes: { default: "out" } },
+    move: { enable: true, speed: 0.4, direction: "none", outModes: { default: "out" } },
     shape: { type: "circle" },
   },
   detectRetina: true,
