@@ -17,9 +17,9 @@ body {
 }
 
 body {
-  background: #0a0612;
+  background: #000;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -53,9 +53,21 @@ a {
   font-weight: 600 !important;
   font-family: 'Poppins', sans-serif;
 }
-.container{
+.container1{
   margin-inline: 30px;
   width: 100vw;
   max-width: 1280px;
   height: 55px;
+}
+.highlight {
+  color: #ffffff;
+  font-size: 0.7rem;
+}
+.small{
+  font-size: 0.8rem;
+  color: #d1cccc;
+}
+.bg-sec{
+  background: #0d0d0d;
+
 }
