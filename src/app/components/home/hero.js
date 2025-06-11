@@ -2,6 +2,7 @@
 import React from "react";
 import ParticlesBg from "../ParticlesBg";
 import "@/app/globals.css";
+import "@/app/custom-bootstrap.scss";
 
 function Hero() {
   return (
@@ -81,25 +82,13 @@ function Hero() {
           <a
             href="/signup"
             className="btn btn-primary  px-3 py-2"
-            style={{
-              background: "#8b5cf6",
-              border: "none",
-              fontWeight: 600,
-              fontSize: 15,
-              fontFamily: "Inter, sans-serif",
-            }}
+    
           >
             Get in Touch
           </a>
           <a
             href="/portfolio"
             className="btn btn-outline-light  px-3 py-2"
-            style={{
-              fontWeight: 600,
-              fontSize: 15,
-              borderColor: "rgba(255, 255, 255, 0.1)",
-              fontFamily: "Inter, sans-serif",
-            }}
           >
             View Services
           </a>
