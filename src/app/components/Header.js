@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <header className="sticky-top" style={{ background: "#000", zIndex: 100, borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}>
         <nav className="navbar navbar-expand-lg " style={{ background: "#000" }}>
-          <div className="container">
+          <div className="container container1">
             <Link className="navbar-brand d-flex align-items-center gap-2" href="/">
               <img src="/logo.jpg" alt="Logo" style={{ height: 50, opacity:"2"}} />
               {/* <span className="fw-bold text-white" style={{ fontFamily: 'Poppins', fontSize: 25 }}>DaaS Tech </span> */}
