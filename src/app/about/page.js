@@ -1,7 +1,13 @@
 import React from 'react'
+import Hero from '../components/about/hero'
+import Who from '../components/about/who-we-are'
+import "@/app/globals.css"
 
-export default function page() {
+export default function about() {
   return (
-    <div>page</div>
+    <div>
+      <Hero/>
+      <Who/>
+    </div>
   )
 }
