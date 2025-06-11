@@ -30,9 +30,10 @@ export default function HomeServices() {
       <h2
         style={{
           fontWeight: 700,
-          fontSize: "2.5rem",
+          fontSize: "4rem",
           lineHeight: 1.15,
           marginBottom: 16,
+          maxWidth:800,
           fontFamily: "Inter, sans-serif",
         }}
       >
@@ -40,7 +41,7 @@ export default function HomeServices() {
       </h2>
       <p
         style={{
-          fontSize: 18,
+          fontSize: 20,
           color: "#bdbdbd",
           maxWidth: 600,
           margin: "0 auto 40px auto",
