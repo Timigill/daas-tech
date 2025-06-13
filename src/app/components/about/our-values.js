@@ -46,90 +46,120 @@ function Values() {
         </p>
       </div>
 
-      {/* Value Cards */}
-      <div className="container my-5">
-        <div className="row g-4 justify-content-center">
-          {/* Card 1 */}
-          <div className="col-12 col-md-6 col-lg-5">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
-              <div className="d-flex gap-2 mb-2">
-                <PiLightbulbFill size={23} />
-                <h5
-                  className="mb-0"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
-                >
-                  Driving Innovation Forward
-                </h5>
-              </div>
-              <p
-                className="text-white-50 text-start"
-                style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-              >
-                We embrace cutting-edge AI to create smarter, more efficient automation solutions.
-              </p>
-            </div>
-          </div>
+      <div className="d-flex justify-content-center py-5 position-relative">
+        {/* Radial Gradient Circle Background */}
+        <div
+          style={{
+            position: "absolute",
+            top: "150%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "600px",
+            height: "300px",
+            background: "radial-gradient(circle, #241142 0%, #0b0b0b 80%)",
+            borderRadius: "50%",
+            zIndex: 0,
+            filter: "blur(60px)",
+          }}
+        ></div>
 
-          {/* Card 2 */}
-          <div className="col-12 col-md-6 col-lg-5">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
-              <div className="d-flex gap-2 mb-2">
-                <PiHandshakeFill size={23} />
-                <h5
-                  className="mb-0"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+        {/* Cards Row */}
+        <div className="container position-relative" style={{ zIndex: 1 }}>
+          <div className="row g-4 justify-content-center">
+            {/* Card 1 */}
+            <div className="col-12 col-md-6 col-lg-5">
+              <div className="p-4 shadow rounded bg-black text-white h-100"
+                style={{
+                  border: " 1px solid #222 ",
+                }}>
+                <div className="d-flex gap-2 mb-2">
+                  <PiLightbulbFill size={23} />
+                  <h5
+                    className="mb-0"
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                  >
+                    Driving Innovation Forward
+                  </h5>
+                </div>
+                <p
+                  className="text-white-50 text-start"
+                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
                 >
-                  Committed to Integrity & Trust
-                </h5>
+                  We embrace cutting-edge AI to create smarter, more efficient automation solutions.
+                </p>
               </div>
-              <p
-                className="text-white-50 text-start"
-                style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-              >
-                 Trust and transparency are at the core of everything we do for our clients.
-              </p>
             </div>
-          </div>
-          
-          {/* Card 3 */}
-          <div className="col-12 col-md-6 col-lg-5">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
-              <div className="d-flex gap-2 mb-2">
-                <PiRocketLaunchFill size={23} />
-                <h5
-                  className="mb-0"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
-                >
-                  Empowering Business Growth
-                </h5>
-              </div>
-              <p
-                className="text-white-50 text-start"
-                style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-              >
-               We help businesses scale faster with AI-driven efficiency, reducing manual tasks and unlocking new opportunities.
-              </p>
-            </div>
-          </div>
 
-          {/* Card 4 */}
-          <div className="col-12 col-md-6 col-lg-5">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
-              <div className="d-flex gap-2 mb-2">
-                <FaUserGroup size={23} />
-                <h5
-                  className="mb-0"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+            {/* Card 2 */}
+            <div className="col-12 col-md-6 col-lg-5">
+              <div className="p-4 shadow rounded bg-black text-white h-100"
+                style={{
+                  border: " 1px solid #222 ",
+                }}>
+                <div className="d-flex gap-2 mb-2">
+                  <PiHandshakeFill size={23} />
+                  <h5
+                    className="mb-0"
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                  >
+                    Committed to Integrity & Trust
+                  </h5>
+                </div>
+                <p
+                  className="text-white-50 text-start"
+                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
                 >
-                  Putting Customers First
-                </h5>
+                  Trust and transparency are at the core of everything we do for our clients.
+                </p>
               </div>
-              <p
-                className="text-white-50 text-start"
-                style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-              >
-                Your success is our priority — we build solutions that truly make an impact.
-              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="col-12 col-md-6 col-lg-5">
+              <div className="p-4 shadow rounded bg-black text-white h-100"
+                style={{
+                  border: " 1px solid #222 ",
+                }}>
+                <div className="d-flex gap-2 mb-2">
+                  <PiRocketLaunchFill size={23} />
+                  <h5
+                    className="mb-0"
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                  >
+                    Empowering Business Growth
+                  </h5>
+                </div>
+                <p
+                  className="text-white-50 text-start"
+                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
+                >
+                  We help businesses scale faster with AI-driven efficiency, reducing manual tasks and unlocking new opportunities.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="col-12 col-md-6 col-lg-5">
+              <div className="p-4 shadow rounded bg-black text-white h-100"
+                style={{
+                  border: " 1px solid #222 ",
+                }}>
+                <div className="d-flex gap-2 mb-2">
+                  <FaUserGroup size={23} />
+                  <h5
+                    className="mb-0"
+                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                  >
+                    Putting Customers First
+                  </h5>
+                </div>
+                <p
+                  className="text-white-50 text-start"
+                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
+                >
+                  Your success is our priority — we build solutions that truly make an impact.
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -52,10 +52,13 @@ function team() {
         <div className="row justify-content-center g-3">
           {/* Column 1 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white" >
-                <img src="/About-Us/Alex.png" alt="" style={{width: "280px" , height: "280px"}}/>
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/Alex.png" alt="" style={{ width: "280px", height: "280px" }} />
               <div className="d-flex mt-2 justify-content-between">
-              <h5
+                <h5
                   className="mb-0 text-white"
                   style={{
                     fontFamily: "Inter, sans-serif",
@@ -64,7 +67,7 @@ function team() {
                 >
                   Alex Carter
                 </h5>
-                <LiaLinkedin size={23} className='text-white-50'/>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
                 className="text-white-50 text-start mt-2"
@@ -83,10 +86,13 @@ function team() {
 
           {/* Column 2 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
-                <img src="/About-Us/Sophia.png" alt="" style={{width: "280px" , height: "280px"}} />
-                <div className="d-flex mt-2 justify-content-between">
-              <h5
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/Sophia.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <div className="d-flex mt-2 justify-content-between">
+                <h5
                   className="mb-0 text-white"
                   style={{
                     fontFamily: "Inter, sans-serif",
@@ -95,7 +101,7 @@ function team() {
                 >
                   Sophia Nguyen
                 </h5>
-                <LiaLinkedin size={23} className='text-white-50'/>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
                 className="text-white-50 text-start mt-2"
@@ -113,10 +119,13 @@ function team() {
 
           {/* Column 3 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
-                <img src="/About-Us/Riyan.png" alt=""  style={{width: "280px" , height: "280px"}}/>
-                <div className="d-flex mt-2 justify-content-between">
-              <h5
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/Riyan.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <div className="d-flex mt-2 justify-content-between">
+                <h5
                   className="mb-0 text-white"
                   style={{
                     fontFamily: "Inter, sans-serif",
@@ -125,7 +134,7 @@ function team() {
                 >
                   Ryan Mitchell
                 </h5>
-                <LiaLinkedin size={23} className='text-white-50'/>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
                 className="text-white-50 text-start mt-2"

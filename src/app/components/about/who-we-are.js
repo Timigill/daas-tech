@@ -52,7 +52,10 @@ function Who() {
         <div className="row justify-content-center g-3">
           {/* Column 1 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white" >
+            <div className="p-3 shadow rounded text-white" style={{
+                background: "radial-gradient(circle at bottom right, #2e0f54 0%, #0b0b0b 50%)",
+                border: " 1px solid #222 " ,
+              }}>
               <div className="d-flex gap-2 mb-2">
                 <AiFillSignal size={23} style={{ color: "white" }} />
                 <h5
@@ -82,7 +85,10 @@ function Who() {
 
           {/* Column 2 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
+            <div className="p-3 shadow rounded text-white"style={{
+                background: "radial-gradient(circle at bottom right, #2e0f54 0%, #0b0b0b 50%)",
+                border: " 1px solid #222 " ,
+              }}>
               <div className="d-flex gap-2 mb-2">
                 <GoClockFill size={23} style={{ color: "white" }} />
                 <h5
@@ -111,7 +117,10 @@ function Who() {
 
           {/* Column 3 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
+            <div className="p-3 shadow rounded text-white"style={{
+                background: "radial-gradient(circle at bottom right, #2e0f54 0%, #0b0b0b 50%)",
+                border: " 1px solid #222 " ,
+              }}>
               <div className="d-flex gap-2 mb-2">
                 <FaBolt size={23} style={{ color: "white", }} />
                 <h5

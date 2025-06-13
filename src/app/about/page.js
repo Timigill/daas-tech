@@ -23,10 +23,11 @@ export default function about() {
       <Why/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Team/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Faqs/>
-      <br/><br/>
+      <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Call/>
+      <br/><br/><br/><br/>
     </div>
   )
 }

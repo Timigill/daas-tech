@@ -52,7 +52,10 @@ function Why() {
         <div className="row justify-content-center g-5">
           {/* Manual Work */}
           <div className="col-md-4">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
+            <div className="p-4 shadow rounded text-white h-100"
+            style={{
+              border: " 1px solid #222 " ,
+            }}>
               <h5
                 className="mb-4 text-white-50 text-start"
                 style={{
@@ -90,7 +93,13 @@ function Why() {
 
           {/* Xtract AI Automation */}
           <div className="col-md-4">
-            <div className="p-4 shadow rounded bg-gradient text-white h-100">
+            <div
+              className="p-4 shadow rounded text-white h-100"
+              style={{
+                background: "radial-gradient(circle at top center, #2e0f54 0%, #0b0b0b 40%)",
+                border: " 1px solid #222 " ,
+              }}
+            >
               <h5
                 className="mb-4 text-white text-start"
                 style={{
@@ -125,6 +134,7 @@ function Why() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>
