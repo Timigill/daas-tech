@@ -1,5 +1,6 @@
 'use client';
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function HomeServices() {
   return (
@@ -17,7 +18,11 @@ export default function HomeServices() {
         style={{ width: "100%", maxWidth: 1100, margin: "0 auto" }}
       >
         {/* Left: Call to Action */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -43,10 +48,14 @@ export default function HomeServices() {
             <a href="#" className="btn btn-outline-light px-3 py-2">Scheduling</a>
             <a href="#" className="btn btn-outline-light px-3 py-2">Many more</a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right: Updated Simple Card */}
-        <div
+        {/* Right: Card with animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
           style={{
             background: "#111114",
             borderRadius: 18,
@@ -93,7 +102,7 @@ export default function HomeServices() {
               Whether you want help in customer handling or make changes in your system, just give me a command.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
