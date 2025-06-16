@@ -59,3 +59,7 @@ a {
   max-width: 1280px;
   height: 55px;
 }
+#newsletterEmail::placeholder {
+  color: #fff !important;
+  opacity: 1;
+}
