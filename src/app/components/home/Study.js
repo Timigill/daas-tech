@@ -112,7 +112,7 @@ const Study = () => {
   transition={{ duration: 1, delay: 0.4 }}
   viewport={{ once: true }}
   style={{
-    fontSize: 18,
+    fontSize: 17,
     color: "#bdbdbd",
     maxWidth: 600,
     margin: "0 auto 40px auto",
@@ -128,7 +128,7 @@ const Study = () => {
           alignItems: "center",
           justifyContent: "center",
           width: "90vw",
-          maxWidth: 1200,
+          maxWidth: 1100,
           margin: "0 auto",
           position: "relative",
         }}
