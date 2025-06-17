@@ -59,6 +59,11 @@ a {
   max-width: 1280px;
   height: 55px;
 }
+
+#newsletterEmail::placeholder {
+  color: #fff !important;
+  opacity: 1;
+
 .highlight {
   color: #ffffff;
   font-size: 0.7rem;
@@ -69,5 +74,6 @@ a {
 }
 .bg-sec{
   background: #0d0d0d;
+
 
 }
