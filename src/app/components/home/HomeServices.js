@@ -1,19 +1,50 @@
 'use client';
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function HomeServices() {
   return (
     <section
       className="d-flex flex-column align-items-center text-center"
       style={{
-        padding: "48px 0 48px 0",
+        padding: "48px 0",
         background: "#000",
         color: "#fff",
-        fontFamily: "Inter, sans-serif", // Use Inter font everywhere
+        fontFamily: "Inter, sans-serif",
       }}
     >
-      <span
+      <style>
+        {`
+          @keyframes scrollTasks {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+          }
+
+          .task-scroll-wrapper {
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .task-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: scrollTasks 10s linear infinite;
+          }
+
+          .task-scroll-wrapper:hover .task-scroll {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
+      <motion.span
         className="badge mb-3"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
         style={{
           background: "rgba(139,92,246,0.15)",
           color: "#8b5cf6",
@@ -22,40 +53,52 @@ export default function HomeServices() {
           letterSpacing: 1,
           padding: "8px 18px",
           borderRadius: 20,
-          fontFamily: "Inter, sans-serif",
         }}
       >
         Our Services
-      </span>
-      <h2
+      </motion.span>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
         style={{
           fontWeight: 700,
-          fontSize: "2.5rem",
+          fontSize: "3rem",
           lineHeight: 1.15,
           marginBottom: 16,
-          fontFamily: "Inter, sans-serif",
+          maxWidth: 700,
         }}
       >
         Web Solutions That Take Your Business Online
-      </h2>
-      <p
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
         style={{
-          fontSize: 18,
+          fontSize: 15,
           color: "#bdbdbd",
           maxWidth: 600,
           margin: "0 auto 40px auto",
-          fontFamily: "Inter, sans-serif",
         }}
       >
         We design, develop, and launch websites that help you reach more customers and grow your business with ease.
-      </p>
+      </motion.p>
 
       <div
         className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-5"
         style={{ width: "100%", maxWidth: 1100, margin: "0 auto" }}
       >
-        {/* Left: Card with lighten/fade effect */}
-        <div
+        {/* Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
           style={{
             position: "relative",
             background: "#111114",
@@ -71,10 +114,8 @@ export default function HomeServices() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontFamily: "Inter, sans-serif",
           }}
         >
-          {/* Card content */}
           <div
             style={{
               width: "92%",
@@ -87,23 +128,17 @@ export default function HomeServices() {
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "stretch",
+              padding: "18px 18px 0 18px",
               color: "#fff",
               fontSize: 15,
               fontWeight: 500,
               position: "relative",
               zIndex: 1,
               overflow: "hidden",
-              padding: "18px 18px 0 18px",
-              fontFamily: "Inter, sans-serif",
             }}
           >
             {/* Tabs */}
-            <div style={{
-              display: "flex",
-              gap: 8,
-              marginBottom: 14,
-              fontFamily: "Inter, sans-serif",
-            }}>
+            <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span style={{
                 background: "#23232a",
                 color: "#fff",
@@ -111,9 +146,6 @@ export default function HomeServices() {
                 fontSize: 13,
                 borderRadius: 7,
                 padding: "4px 14px",
-                boxShadow: "0 1px 4px 0 rgba(0,0,0,0)",
-                border: "1px solid #23232a",
-                fontFamily: "Inter, sans-serif",
               }}>All Tasks</span>
               <span style={{
                 background: "transparent",
@@ -123,78 +155,47 @@ export default function HomeServices() {
                 borderRadius: 7,
                 padding: "4px 14px",
                 border: "1px solid #23232a",
-                fontFamily: "Inter, sans-serif",
               }}>Waiting for approval</span>
             </div>
-            {/* Task list */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, fontFamily: "Inter, sans-serif" }}>
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                background: "#18181b", borderRadius: 8, padding: "10px 12px"
-              }}>
-                <div>
-                  <span style={{ fontWeight: 600, fontSize: 14, fontFamily: "Inter, sans-serif" }}>Payroll management</span>
-                  <div style={{ color: "#bdbdbd", fontSize: 12, fontFamily: "Inter, sans-serif" }}>Due on 2nd July</div>
-                </div>
-                <span style={{
-                  display: "inline-block",
-                  width: 22, height: 22, borderRadius: 6,
-                  background: "rgba(139,92,246,0.13)",
-                  color: "#8b5cf6", textAlign: "center", lineHeight: "22px", fontSize: 15,
-                  fontFamily: "Inter, sans-serif",
-                }}>⏰</span>
-              </div>
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                background: "#18181b", borderRadius: 8, padding: "10px 12px"
-              }}>
-                <div>
-                  <span style={{ fontWeight: 600, fontSize: 14, fontFamily: "Inter, sans-serif" }}>Employee Tracking</span>
-                  <div style={{ color: "#bdbdbd", fontSize: 12, fontFamily: "Inter, sans-serif" }}>2 days ago</div>
-                </div>
-                <span style={{
-                  display: "inline-block",
-                  width: 22, height: 22, borderRadius: 6,
-                  background: "rgba(139,92,246,0.13)",
-                  color: "#8b5cf6", textAlign: "center", lineHeight: "22px", fontSize: 15,
-                  fontFamily: "Inter, sans-serif",
-                }}>✔️</span>
-              </div>
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                background: "#18181b", borderRadius: 8, padding: "10px 12px"
-              }}>
-                <div>
-                  <span style={{ fontWeight: 600, fontSize: 14, fontFamily: "Inter, sans-serif" }}>Social media post</span>
-                  <div style={{ color: "#bdbdbd", fontSize: 12, fontFamily: "Inter, sans-serif" }}>Cancelled by user</div>
-                </div>
-                <span style={{
-                  display: "inline-block",
-                  width: 22, height: 22, borderRadius: 6,
-                  background: "rgba(139,92,246,0.13)",
-                  color: "#8b5cf6", textAlign: "center", lineHeight: "22px", fontSize: 15,
-                  fontFamily: "Inter, sans-serif",
-                }}>❌</span>
-              </div>
-              <div style={{
-                display: "flex", alignItems: "center", justifyContent: "space-between",
-                background: "#18181b", borderRadius: 8, padding: "10px 12px", opacity: 0.6
-              }}>
-                <div>
-                  <span style={{ fontWeight: 600, fontSize: 14, fontFamily: "Inter, sans-serif" }}>Lead list</span>
-                  <div style={{ color: "#bdbdbd", fontSize: 12, fontFamily: "Inter, sans-serif" }}>70% prepared</div>
-                </div>
-                <span style={{
-                  display: "inline-block",
-                  width: 22, height: 22, borderRadius: 6,
-                  background: "rgba(139,92,246,0.13)",
-                  color: "#8b5cf6", textAlign: "center", lineHeight: "22px", fontSize: 15,
-                  fontFamily: "Inter, sans-serif",
-                }}>📋</span>
+
+            {/* Auto-scrolling tasks */}
+            <div className="task-scroll-wrapper">
+              <div className="task-scroll">
+                {[
+                  { title: "Payroll management", time: "Due on 2nd July", icon: "⏰" },
+                  { title: "Employee Tracking", time: "2 days ago", icon: "✔️" },
+                  { title: "Social media post", time: "Cancelled by user", icon: "❌" },
+                  { title: "Lead list", time: "70% prepared", icon: "📋" },
+                  { title: "Campaign Draft", time: "Due tomorrow", icon: "📌" },
+                  { title: "Onboarding Docs", time: "Completed", icon: "📁" },
+                ].map((task, idx) => (
+                  <div key={idx} style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    background: "#18181b",
+                    borderRadius: 8,
+                    padding: "10px 12px",
+                    opacity: idx === 3 ? 0.6 : 1
+                  }}>
+                    <div>
+                      <span style={{ fontWeight: 600, fontSize: 14 }}>{task.title}</span>
+                      <div style={{ color: "#bdbdbd", fontSize: 12 }}>{task.time}</div>
+                    </div>
+                    <span style={{
+                      display: "inline-block",
+                      width: 22, height: 22, borderRadius: 6,
+                      background: "rgba(139,92,246,0.13)",
+                      color: "#8b5cf6", textAlign: "center",
+                      lineHeight: "22px", fontSize: 15,
+                    }}>{task.icon}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-          {/* Gradient overlay for lighten/fade effect */}
+
+          {/* Fade overlay */}
           <div
             style={{
               position: "absolute",
@@ -207,10 +208,14 @@ export default function HomeServices() {
               pointerEvents: "none",
             }}
           />
-        </div>
+        </motion.div>
 
-        {/* Right: Call to Action */}
-        <div
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -219,26 +224,25 @@ export default function HomeServices() {
             minWidth: 320,
             maxWidth: 400,
             padding: "32px 28px",
-            fontFamily: "Inter, sans-serif",
           }}
         >
-          <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10, fontFamily: "Inter, sans-serif" }}>
+          <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
             Build a Beautiful Website
           </h3>
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18, fontFamily: "Inter, sans-serif" }}>
+          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18 }}>
             We help you create an engaging, responsive website that showcases your services, attracts more visitors, and builds your brand.
           </p>
-          <ul style={{ textAlign: "left", color: "#fff", fontSize: 15, paddingLeft: 0, listStyle: "none", marginBottom: 0, fontFamily: "Inter, sans-serif" }}>
+          <ul style={{ textAlign: "left", color: "#fff", fontSize: 15, listStyle: "none", paddingLeft: 0 }}>
             <li style={{ marginBottom: 8 }}>✅ Fast & Secure</li>
             <li style={{ marginBottom: 8 }}>✅ Mobile-Friendly</li>
             <li style={{ marginBottom: 8 }}>✅ SEO-Ready</li>
           </ul>
-          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", margin: "24px 0 12px 0", fontFamily: "Inter, sans-serif" }}>
+          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", margin: "24px 0 12px" }}>
             Let’s build your online presence today.
           </h4>
           <a
             href="/contact"
-            className="btn btn-primary px-4 py-2 mt-2"
+            className="btn btn-primary px-4 py-2"
             style={{
               background: "#8b5cf6",
               border: "none",
@@ -248,12 +252,11 @@ export default function HomeServices() {
               color: "#fff",
               textDecoration: "none",
               marginTop: 8,
-              fontFamily: "Inter, sans-serif",
             }}
           >
             Get Started
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
