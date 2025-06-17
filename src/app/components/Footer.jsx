@@ -3,103 +3,141 @@ import "../globals.css";
 
 function Footer() {
   return (
-    <div className="footer pt-56px pb-48px">
-      <div className="upperP row p-5">
-        <div className="upperPLeft col-12 col-md-6">
-          <div className="footer-logo-section">
-            <img
-              src="/logo.jpg"
-              alt="Logo"
-              className="footer-logo w-25 h-25 px-3"
-            />
-            <div className="footer-brand">
-              {/* <div className="footer-brand-title">TAIMOOR</div> */}
-              <div className="footer-brand-desc w-50 text-wrap">
-                Xtract – Automate Smarter, Optimize Faster, and Grow Stronger.
-              </div>
+    <footer className="bg-black text-white" style={{ padding: "12px 30px" }}>
+      <hr className="mt-4 mb-0 " style={{ width: "98vw", marginLeft: "-38px" }} />
+      <div className="container-fluid footer-gradient  pt-4">
+        <div className="row">
+          {/* Left Column */}
+          <div className="col-12 col-md-6 mb-4">
+            {/* Logo Image Only */}
+            <div className="mb-3">
+              <img
+                src="/logo.jpg"
+                alt="Xtract Logo"
+                style={{ width: "170px", height: "auto", opacity: "2" }}
+              />
             </div>
-            <div className="footer-newsletter text-white mt-4">
-              <div className="footer-newsletter-title mb-2 fw-bold">
-                Join our newsletter
-              </div>
-              <div className="position-relative d-flex justify-content-center align-items-center" style={{ maxWidth: "350px" }}>
+
+            {/* Description */}
+            <p
+              className="mb-4 px-2"
+              style={{
+                maxWidth: "350px",
+                color: "#bebaba",
+                fontFamily: "Inter, sans-serif",
+                fontSize: "0.95rem",
+                lineHeight: "1.6",
+              }}
+            >
+              DaaS Tech– Where Problems Meets Possiblities.
+            </p>
+
+            {/* Newsletter */}
+            <div style={{ maxWidth: "350px" }}>
+              <p className="fw-bold px-2 mb-2">Join our newsletter</p>
+              <div className="position-relative mb-4 ps-2">
                 <input
                   type="email"
-                  className="form-control bg-dark text-white border-0 rounded px-2 small"
+                  className="form-control  bg-black text-white"
+                  // id="newsletterEmail"
                   placeholder="name@email.com"
-                  id="newsletterEmail"
                   style={{
-                    backgroundColor: "#2c3e50",
-                    // borderRadius: "8px",
-                    padding: "6px 90px 6px 12px", // right padding zyada for button
-                    height: "42px",
+                    padding: "6px 90px 6px 12px",
+                    height: "50px",
+                    border: "1px solid rgb(90, 88, 90)",
+                    outline: "none",
+                    boxShadow: "none",
+                    color: "white",
                   }}
+
                 />
+
                 <button
-                  className="btn text-white position-absolute top-0 end-0"
-                  type="button"
+                  className="btn position-absolute top-0 end-0 mt-1 me-1 text-white"
                   style={{
-                    backgroundColor: "#9b59b6",
-                    padding: "6px 22px",
-                    height: "32px",
-                    margin: "5px 4px 2px 2px",
-                    fontSize: "0.95rem",
+                    backgroundColor: "rgb(139, 92, 246)",
+                    height: "40px",
+                    fontSize: "0.9rem",
+                    padding: "4px 16px",
                   }}
+                  type="button"
                 >
                   Subscribe
                 </button>
               </div>
             </div>
           </div>
-        </div>
-        <div className="upperPRight col-12 col-md-6">
-          <div className="footer-links-section row">
-            <div className="footer-links col-12 col-md-4">
-              <div className="footer-links-title">Links</div>
-              <ul className="list-unstyled">
-                <li>Services</li>
-                <li>Process</li>
-                <li>Case studies</li>
-                <li>Benefits</li>
-                <li>Pricing</li>
-              </ul>
-            </div>
-            <div className="footer-pages col-12 col-md-4">
-              <div className="footer-links-title">Pages</div>
-              <ul className="list-unstyled">
-                <li>Home</li>
-                <li>About</li>
-                <li>Blog</li>
-                <li>Contact</li>
-                <li>404</li>
-              </ul>
-            </div>
-            <div className="footer-socials col-12 col-md-4">
-              <div className="footer-links-title">Socials</div>
-              <ul className="list-unstyled">
-                <li>Instagram</li>
-                <li>Facebook</li>
-                <li>Linkedin</li>
-                <li>Twitter</li>
-              </ul>
+
+          {/* Right Column */}
+          <div className="col-12 col-md-6">
+            <div className="row">
+              <div className="col-12 col-md-4 mb-3">
+                <h6 className="fw-bold mt-3">Links</h6>
+                <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
+                  <li>Services</li>
+                  <li>Process</li>
+                  <li>Case studies</li>
+                  <li>Benefits</li>
+                  <li>Pricing</li>
+                  <li>Admin-Pannel</li>
+                </ul>
+              </div>
+              <div className="col-12 col-md-4 mb-3">
+                <h6 className="fw-bold mt-3">Pages</h6>
+                <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
+                  <li>Home</li>
+                  <li>About</li>
+                  <li>Blog</li>
+                  <li>Contact</li>
+                  <li>404</li>
+                </ul>
+              </div>
+              <div className="col-12 col-md-4 mb-3">
+                <h6 className="fw-bold mt-3">Socials</h6>
+                <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
+                  <li>Instagram</li>
+                  <li>Facebook</li>
+                  <li>Linkedin</li>
+                  <li>Twitter</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="lowerP" style={{ fontSize: "small" }}>
-        <div className="footer-lower row">
-          <div className="footer-lower-left col">Logo by flaticon</div>
-          <div className="footer-lower-center col">
-            Visioned and Crafted by <b>Kanishk Dubey</b>
+
+        {/* Horizontal Divider - Full Width */}
+        <hr className="mt-4 mb-3" style={{ width: "98vw", marginLeft: "-38px" }} />
+
+        {/* Bottom Row */}
+        <div className="row text-center d-flex justify-content-between text-md-start small">
+          <div className="col-12 col-md-3 px-3 mb-2">Logo by DaaS-Tech
           </div>
-          <div className="footer-lower-right col">
-<div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="68417abf22a45a72e30f5ef6" >
-  <a href="https://www.trustpilot.com/review/daastech.info" target="_blank" rel="noopener">Trustpilot</a>
-</div></div>
-          <div className="footer-lower-right col">© All right reserved</div>
+          <div className="col-12 col-md-3 mb-2">
+            Visioned and Crafted by <b>Taimoor Gill</b>
+          </div>
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
+              <div
+                className="trustpilot-widget"
+                data-locale="en-US"
+                data-template-id="56278e9abfbbba0bdcd568bc"
+                data-businessunit-id="68417abf22a45a72e30f5ef6"
+              >
+                <p>Review us on <a
+                  href="https://www.trustpilot.com/review/daastech.info"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-decoration-none"
+                >
+                  Trustpilot
+                </a></p>
+              </div>
+            </div>
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
+            <div>© All right reserved</div>
+          </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
