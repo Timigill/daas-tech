@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const caseStudies = [
   {
     id: 1,
-    image: "/images/case1.png",
+    image: "/case1.png",
     title: "AI integration helped ScaleByte close 3x more deals in less time",
     description:
       "ScaleByte’s sales team struggled with follow-up delays. Our AI assistant automated outreach, lead scoring, and CRM updates—resulting in faster responses and more closed deals.",
@@ -14,7 +14,7 @@ const caseStudies = [
   },
   {
     id: 2,
-    image: "/images/case2.png",
+    image: "/case2.png",
     title: "RetailRev optimized inventory with AI demand prediction",
     description:
       "RetailRev reduced overstock and missed sales opportunities using AI-based inventory predictions and dynamic reordering strategies.",
@@ -22,7 +22,7 @@ const caseStudies = [
   },
   {
     id: 3,
-    image: "/images/case3.png",
+    image: "/case3.png",
     title: "ChatGenie cut support load by 60% with AI automation",
     description:
       "AI-driven chatbots helped ChatGenie provide 24/7 support, solving most queries instantly and reducing human workload dramatically.",

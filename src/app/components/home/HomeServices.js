@@ -65,10 +65,10 @@ export default function HomeServices() {
         viewport={{ once: true }}
         style={{
           fontWeight: 700,
-          fontSize: "4rem",
+          fontSize: "3rem",
           lineHeight: 1.15,
           marginBottom: 16,
-          maxWidth: 800,
+          maxWidth: 700,
         }}
       >
         Web Solutions That Take Your Business Online
@@ -80,7 +80,7 @@ export default function HomeServices() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         style={{
-          fontSize: 20,
+          fontSize: 15,
           color: "#bdbdbd",
           maxWidth: 600,
           margin: "0 auto 40px auto",
