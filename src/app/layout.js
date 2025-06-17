@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata = {
   title: 'DaaS Tech',
   description: 'Empowering Your Digital Dreams',
@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="text-white">
+        <SpeedInsights/>
         <Header />
         {children}
         <Footer />
