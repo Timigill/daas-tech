@@ -117,7 +117,7 @@ function Footer() {
           </div>
           <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
               <div
-                className="trustpilot-widget"
+                className="trustpilot-widget d-flex justify-content-end"
                 data-locale="en-US"
                 data-template-id="56278e9abfbbba0bdcd568bc"
                 data-businessunit-id="68417abf22a45a72e30f5ef6"
