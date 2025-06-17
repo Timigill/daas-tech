@@ -92,6 +92,10 @@ function Footer() {
           <div className="footer-lower-center col">
             Visioned and Crafted by <b>Kanishk Dubey</b>
           </div>
+          <div className="footer-lower-right col">
+<div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="68417abf22a45a72e30f5ef6" >
+  <a href="https://www.trustpilot.com/review/daastech.info" target="_blank" rel="noopener">Trustpilot</a>
+</div></div>
           <div className="footer-lower-right col">© All right reserved</div>
         </div>
       </div>

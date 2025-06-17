@@ -62,7 +62,7 @@ a {
 
 #newsletterEmail::placeholder {
   color: #fff !important;
-  opacity: 1;
+  opacity: 1;}
 
 .highlight {
   color: #ffffff;
@@ -74,6 +74,4 @@ a {
 }
 .bg-sec{
   background: #0d0d0d;
-
-
 }
