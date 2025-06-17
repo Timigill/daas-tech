@@ -116,7 +116,7 @@ function Footer() {
             Visioned and Crafted by <b>Taimoor Gill</b>
           </div>
           <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-              <div
+              {/* <div
                 className="trustpilot-widget d-flex justify-content-end"
                 data-locale="en-US"
                 data-template-id="56278e9abfbbba0bdcd568bc"
@@ -130,7 +130,7 @@ function Footer() {
                 >
                   Trustpilot
                 </a></p>
-              </div>
+              </div> */}
             </div>
           <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
             <div>© All right reserved</div>
