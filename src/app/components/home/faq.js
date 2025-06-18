@@ -43,7 +43,7 @@ export default function Faq() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        Testimonials
+        FAQs
       </motion.span>
 
       <motion.h2

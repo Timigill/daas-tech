@@ -128,7 +128,7 @@ const Benefits = () => {
 
 // Styles
 const cardStyle = {
-  background: "#111",
+  background: "linear-gradient(135deg, rgba(164, 122, 255, 0.2) 0%, #000 50%, rgba(164, 122, 255, 0.2) 100%)", // angle: from bottom-left to top-right
   borderRadius: 12,
   padding: 24,
   flex: "1 1 260px",
