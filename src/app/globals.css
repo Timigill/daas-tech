@@ -60,6 +60,22 @@ a {
   max-width: 1280px;
   height: 55px;
 }
+.container12{
+  margin-inline: 30px;
+  width: 100vw;
+  max-width: 1280px;
+  /* height: 55px; */
+}
+input:focus {
+    box-shadow: none !important;
+    border-color: rgb(90, 88, 90) !important;
+    outline: none !important;
+  }
+::placeholder {
+  color: #bebaba !important;
+  opacity: 1 !important;
+}
+
 .highlight {
   color: #ffffff;
   font-size: 0.7rem;
@@ -70,5 +86,25 @@ a {
 }
 .bg-sec{
   background: #0d0d0d;
+}
+.fw-bold{
+  font-weight: 500!important;
+}
+.footer-li li{
+  font-size: 0.9rem!important;
+  padding: 0.2rem 0;
+}
+/* footer.css */
 
+.footer-gradient {
+  background-image: radial-gradient(
+    circle at 50% -80%,     /* Position: center horizontally, 80% down vertically */
+    rgb(139 ,92 ,246, 0.4),  /* Inner color - purple tint rgb(139, 92, 246) */
+    rgba(0, 0, 0, 0.9) 70%   /* Outer color - fade into black */
+  );
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  z-index: -1;
+  
 }
