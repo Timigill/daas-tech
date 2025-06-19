@@ -7,15 +7,14 @@ const caseStudies = [
   {
     id: 1,
     image: "/case1.png",
-    title: "AI integration helped ScaleByte close 3x more deals in less time",
+    title: "Digital Systems Accelerate Sales- Smart Workflow Helped Close 3× More Deals, Faster",
     description:
-      "ScaleByte’s sales team struggled with follow-up delays. Our AI assistant automated outreach, lead scoring, and CRM updates—resulting in faster responses and more closed deals.",
-    points: ["3x More Deals", "40% Faster Responses", "95% Lead Accuracy", "CRM Fully Synced"],
+"RetailRev faced issues with overstock and missed sales. We helped them implement a dynamic inventory management system with real-time tracking and automated reordering — minimizing waste and maximizing sales.",    points: ["3x More Deals", "40% Faster Responses", "95% Lead Accuracy", "CRM Fully Synced"],
   },
   {
     id: 2,
     image: "/case2.png",
-    title: "RetailRev optimized inventory with AI demand prediction",
+    title: "RetailRev Optimized Inventory with Smart Digital Solutions",
     description:
       "RetailRev reduced overstock and missed sales opportunities using AI-based inventory predictions and dynamic reordering strategies.",
     points: ["25% Inventory Reduction", "30% Increase in Sales", "Real-time Forecasting"],
@@ -23,9 +22,9 @@ const caseStudies = [
   {
     id: 3,
     image: "/case3.png",
-    title: "ChatGenie cut support load by 60% with AI automation",
+    title: "ChatGenie Reduced Support Load by 60% With Smart Chat Solutions",
     description:
-      "AI-driven chatbots helped ChatGenie provide 24/7 support, solving most queries instantly and reducing human workload dramatically.",
+      "ChatGenie partnered with DaaS Tech Innovations to build an efficient support system. We developed a custom chatbot solution that delivered instant responses and resolved routine queries — easing the burden on human support teams.",
     points: ["60% Lower Support Costs", "24/7 Instant Help", "Higher Customer Satisfaction"],
   },
 ];
@@ -101,7 +100,7 @@ const Study = () => {
   whileInView={{ opacity: 1 }}
   transition={{ duration: 1, delay: 0.2 }}
   viewport={{ once: true }}
-  style={{ fontWeight: 700, fontSize: "2.5rem", maxWidth: 800 }}
+  style={{ fontWeight: 700, maxWidth: 800 }}
 >
   See How Smart AI Automation Transforms Businesses
 </motion.h2>

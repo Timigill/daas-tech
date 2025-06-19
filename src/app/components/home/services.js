@@ -31,25 +31,65 @@ export default function HomeServices() {
             flexDirection: "column",
             alignItems: "flex-start",
             justifyContent: "center",
-            minWidth: 320,
-            maxWidth: 400,
+            minWidth: 470,
+            maxWidth: 550,
             padding: "32px 28px",
             fontFamily: "Inter, sans-serif",
           }}
-        >
+        ><a href="#" className="btn btn-outline-light mb-3 px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Custom Site</a>
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
-            Delegate Daily Tasks
+            Build your own  Custom Website 
           </h3>
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18 }}>
+          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 0,  textAlign: "left" }}>
             From managing calendars to drafting emails and summarizing meetings, our AI assistants work around the clock to keep your business running smarter and faster.
           </p>
           <div
-            className="d-flex flex-wrap justify-content-center gap-1 mt-3"
-            style={{ display: "flex", flexDirection: "row" }}
+            className="d-flex flex-wrap justify-content-center gap-3 mt-3"
+            style={{ display: "flex", justifyContent: "space-between", flexDirection: "row" }}
           >
-            <a href="#" className="btn btn-outline-light px-3 py-2">Summaries</a>
-            <a href="#" className="btn btn-outline-light px-3 py-2">Scheduling</a>
-            <a href="#" className="btn btn-outline-light px-3 py-2">Many more</a>
+            <a href="#" className="btn btn-outline-light px-2   py-1" style={{
+              // background: "#8b5cf6",
+              // border: "none",
+              // fontWeight: 600,
+              // fontSize: 16,
+              // borderRadius: 24,
+              // color: "#fff",
+              // textDecoration: "none",
+              // marginTop: 8,
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Get a Qoute</a>
+            <a href="#" className="btn btn-outline-light px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Scheduling</a>
+            <a href="#" className="btn btn-outline-light px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Many more</a>
           </div>
         </motion.div>
 
@@ -62,8 +102,8 @@ export default function HomeServices() {
       style={{
         background: "#111114",
         borderRadius: 18,
-        width: 370,
-        height: 350,
+        width: 420,
+        height: 370,
         marginBottom: 24,
         border: "1.5px solid #23232a",
         boxShadow: "0 8px 40px 0 rgba(0,0,0,0.45)",
@@ -89,7 +129,7 @@ export default function HomeServices() {
           color: "#fff",
           position: "relative",
           zIndex: 1,
-          padding: "20px",
+          padding: "20px 20px 0 20px",
         }}
       >
         {/* Rotating Image without border */}
@@ -115,10 +155,10 @@ export default function HomeServices() {
 
         {/* Heading */}
         <h4 style={{ fontSize: 18, fontWeight: 600, marginBottom: 10 }}>
-          What can I help with?
+          What can we help you with?
         </h4>
         <p style={{ fontSize: 14, color: "#bdbdbd", marginBottom: 18 }}>
-          Whether you want help in customer handling or make changes in your system, just give me a command.
+          Whether you want help in customer handling or make changes in your existing Website, just give us a command.
         </p>
 
         {/* Typing Box */}
@@ -145,9 +185,9 @@ export default function HomeServices() {
             }}>
               <Typewriter
                 words={[
-                  'Schedule a 30 day meeting',
-                  'Generate an invoice for client',
-                  'Update system configuration',
+                  'Get a quote for a new project',
+                  'Schedule a meeting with the team',
+                  'Summarize the latest project updates',
                 ]}
                 loop={true}
                 cursor
@@ -170,7 +210,7 @@ export default function HomeServices() {
           </div>
 
           {/* Add Document Button */}
-          <button style={{
+          {/* <button style={{
             display: 'flex',
             alignItems: 'center',
             gap: 6,
@@ -184,9 +224,50 @@ export default function HomeServices() {
             width: 'fit-content',
           }}>
             + Add document
-          </button>
+          </button> */}
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <a href="#" className="btn btn-outline-light me-2  px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Custom Site </a>
+            <a href="#" className="btn btn-outline-light me-2 px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Fast & Secure </a>
+            <a href="#" className="btn btn-outline-light  px-2 py-1" style={{
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}>Many More</a><br />
         </div>
       </div>
+      <div
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: "70%",
+              background: "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
+              zIndex: 2,
+              pointerEvents: "none",
+            }}
+          />
     </motion.div>
    </div>
     </section>

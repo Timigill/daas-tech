@@ -36,9 +36,9 @@ export default function Header() {
   return (
     <>
       <header className="sticky-top" style={{ background: "#000", zIndex: 100, borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}>
-        <nav className="navbar navbar-expand-lg " style={{ background: "#000" }}>
-          <div className="container container1">
-            <Link className="navbar-brand d-flex align-items-center gap-2" href="/">
+        <nav className="navbar navbar-expand-lg vw-100  " style={{ background: "#000" }}>
+          <div className=" nav container-lg container1">
+            <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
               <img src="/logo.jpg" alt="Logo" style={{ height: 50, opacity:"2"}} />
               {/* <span className="fw-bold text-white" style={{ fontFamily: 'Poppins', fontSize: 25 }}>DaaS Tech </span> */}
             </Link>
@@ -50,8 +50,8 @@ export default function Header() {
             >
               <Menu size={24} />
             </button>
-            <div className="collapse navbar-collapse justify-content-end d-none d-lg-flex">
-              <ul className="navbar-nav align-items-center me-3">
+            <div className="collapse navbar-collapse  ms-5 justify-content-end d-none d-lg-flex">
+              <ul className="navbar-nav align-items-center ms-5 me-3">
                 {navLinks.map((link) => (
                   <li className="nav-item" key={link.name}>
                     <Link

@@ -72,7 +72,7 @@ const Testimonials = () => {
                 viewport={{ once: true }}
                 style={{
                   fontWeight: 700,
-                  fontSize: "2.5rem",
+                  // fontSize: "2.5rem",
                   lineHeight: 1.15,
                   marginBottom: 16,
                   maxWidth: 500,
