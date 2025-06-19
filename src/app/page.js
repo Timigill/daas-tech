@@ -9,9 +9,11 @@ import Pricing from './components/home/Pricing'
 import Testimonials from './components/home/Testimonials'
 import FAQs from './components/home/faq'
 import CTA from './components/home/CallToAction'
+import AdminLogin from './components/Authentication/adminLogin';
 export default function Home() {
   return (
     <>
+      <AdminLogin />
       <Hero />
       <HomeServices/>
       <Services/>

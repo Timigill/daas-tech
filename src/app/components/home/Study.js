@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const caseStudies = [
@@ -32,7 +32,17 @@ const caseStudies = [
 
 const Study = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // positive for right, negative for left
+  const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const prev = () => {
     setDirection(-1);
@@ -78,49 +88,48 @@ const Study = () => {
       }}
     >
       <motion.span
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.8 }}
-  viewport={{ once: true }}
-  className="badge mb-3"
-  style={{
-    background: "rgba(139,92,246,0.15)",
-    color: "#8b5cf6",
-    fontWeight: 600,
-    fontSize: 15,
-    letterSpacing: 1,
-    padding: "8px 18px",
-    borderRadius: 20,
-  }}
->
-  Case Studies
-</motion.span>
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="badge mb-3"
+        style={{
+          background: "rgba(139,92,246,0.15)",
+          color: "#8b5cf6",
+          fontWeight: 600,
+          fontSize: 15,
+          letterSpacing: 1,
+          padding: "8px 18px",
+          borderRadius: 20,
+        }}
+      >
+        Case Studies
+      </motion.span>
 
-<motion.h2
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 0.2 }}
-  viewport={{ once: true }}
-  style={{ fontWeight: 700, fontSize: "2.5rem", maxWidth: 800 }}
->
-  See How Smart AI Automation Transforms Businesses
-</motion.h2>
+      <motion.h2
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        viewport={{ once: true }}
+        style={{ fontWeight: 700, fontSize: "2.5rem", maxWidth: 800 }}
+      >
+        See How Smart AI Automation Transforms Businesses
+      </motion.h2>
 
-<motion.p
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 0.4 }}
-  viewport={{ once: true }}
-  style={{
-    fontSize: 17,
-    color: "#bdbdbd",
-    maxWidth: 600,
-    margin: "0 auto 40px auto",
-  }}
->
-  See how AI automation streamlines operations, boosts and drives growth.
-</motion.p>
-
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.4 }}
+        viewport={{ once: true }}
+        style={{
+          fontSize: 17,
+          color: "#bdbdbd",
+          maxWidth: 600,
+          margin: "0 auto 40px auto",
+        }}
+      >
+        See how AI automation streamlines operations, boosts and drives growth.
+      </motion.p>
 
       <div
         style={{
@@ -155,7 +164,7 @@ const Study = () => {
           ‹
         </motion.button>
 
-        {/* Card with AnimatePresence and hover animation */}
+        {/* Card */}
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={caseStudies[currentIndex].id}
@@ -165,10 +174,13 @@ const Study = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.5 }}
-            whileHover={{ scale: 1.03, boxShadow: "0 12px 35px rgba(0,0,0,0.5)" }}
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0 12px 35px rgba(0,0,0,0.5)",
+            }}
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: isMobile ? "column" : "row",
               borderRadius: 20,
               overflow: "hidden",
               boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
@@ -190,14 +202,20 @@ const Study = () => {
             ></div>
 
             {/* Text Section */}
-            <div style={{ flex: 1.2, padding: 30, textAlign: "left" }}>
+            <div
+              style={{
+                flex: 1.2,
+                padding: 30,
+                textAlign: isMobile ? "center" : "left",
+              }}
+            >
               <h3 style={{ fontSize: "1.75rem", marginBottom: 10 }}>
                 {caseStudies[currentIndex].title}
               </h3>
               <p style={{ color: "#ccc", marginBottom: 20 }}>
                 {caseStudies[currentIndex].description}
               </p>
-              <ul>
+              <ul style={{ paddingLeft: isMobile ? 0 : 20 }}>
                 {caseStudies[currentIndex].points.map((point, idx) => (
                   <li key={idx} style={{ marginBottom: 6 }}>
                     • {point}
