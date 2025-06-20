@@ -12,20 +12,25 @@ function Who() {
         <span
           className="badge px-3 py-2"
           style={{
-            fontSize: "0.95rem",
-            fontWeight: 600,
-            border: "1px solid #222",
-            fontFamily: "Inter, sans-serif",
+            padding: "4px 10px",
+          fontSize: 12,
+          color: "#fff",
+          // background: "#1e1e23",
+          border: "1px solid rgb(17 17 17)",
+          borderRadius: 8,
+          width: "fit-content",
+          fontWeight: 500,
+          marginBottom: 12,
           }}
         >
           Who We Are
         </span>
         <h1
-          className="mt-3"
+          className="mt-"
           style={{
             fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "2.5rem",
+            fontWeight: 600,
+            // fontSize: "3.5rem",
             lineHeight: 1.1,
             color: "#ffffff",
             maxWidth: 700,
@@ -38,13 +43,13 @@ function Who() {
           className="mt-3 text-white-50"
           style={{
             fontFamily: "Inter, sans-serif",
-            fontSize: "1rem",
-            maxWidth: 580,
+            fontSize: "0.9rem",
+            maxWidth: 620,
             margin: "0 auto",
           }}
         >
-          Xtract is a team of innovators dedicated to making AI automation simple and effective.
-          We help businesses streamline workflows, boost efficiency, and scale with smart, AI-driven solutions.
+          DaaS Tech is a team of innovators dedicated to making your Digital Presence simple and effective.
+          We help businesses streamline workflows, boost efficiency, and scale with smart.
         </p>
       </div>
 
@@ -52,7 +57,7 @@ function Who() {
         <div className="row justify-content-center g-3">
           {/* Column 1 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white" >
+            <div className="p-3 shadow rounded text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
               <div className="d-flex gap-2 mb-2">
                 <AiFillSignal size={23} style={{ color: "white" }} />
                 <h5
@@ -71,8 +76,8 @@ function Who() {
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
+                  fontSize: "0.9rem",
+                  maxWidth: 230,
                 }}
               >
                 Companies have streamlined their workflows with Xtract’s AI solutions.
@@ -82,7 +87,7 @@ function Who() {
 
           {/* Column 2 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
+            <div className="p-3 shadow rounded  text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
               <div className="d-flex gap-2 mb-2">
                 <GoClockFill size={23} style={{ color: "white" }} />
                 <h5
@@ -101,8 +106,8 @@ function Who() {
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
+                  fontSize: "0.9rem",
+                  maxWidth: 230,
                 }}>
                 Reducing manual work and boosting productivity through automation.
               </p>
@@ -111,7 +116,7 @@ function Who() {
 
           {/* Column 3 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded bg-gradient text-white">
+            <div className="p-3 shadow rounded text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
               <div className="d-flex gap-2 mb-2">
                 <FaBolt size={23} style={{ color: "white", }} />
                 <h5
@@ -130,8 +135,8 @@ function Who() {
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
+                  fontSize: "0.9rem",
+                  maxWidth: 230,
                 }}>
                 Clients see improved efficiency within the first three months of usage.
               </p>
