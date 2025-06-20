@@ -40,10 +40,13 @@ const Testimonials = () => {
     <section
               className="d-flex flex-column align-items-center text-center"
               style={{
-                padding: "55px 0",
+                padding: "55px 1rem",
                 background: "#000",
                 color: "#fff",
                 fontFamily: "Inter, sans-serif",
+                overflowX: "hidden",
+                maxWidth: "100vw",
+                width: "100%",
               }}
             >
               <motion.span

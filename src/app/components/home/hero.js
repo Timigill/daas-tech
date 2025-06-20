@@ -5,16 +5,7 @@ import ParticlesBg from "../ParticlesBg";
 import "@/app/globals.css";
 import "@/app/custom-bootstrap.scss";
 
-// Animation variants
-// const fadeUp = {
-//   hidden: { opacity: 0, y: 50 },
-//   visible: (delay = 0) => ({
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.8, delay }
-//   })
-// };
-
+// Animation variant
 const scaleIn = {
   hidden: { scale: 0 },
   visible: (delay = 0) => ({
@@ -30,35 +21,32 @@ function Hero() {
       style={{
         minHeight: "90vh",
         width: "100%",
-        overflow: "hidden",
+        overflowX: "hidden", 
         background: "#000",
         fontFamily: "Inter, sans-serif",
+        padding: "0 1rem" 
       }}
     >
-      {/* Background Overlay */}
+      {/* Particles Background */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          zIndex: 0,
+          position: "relative",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 1,
           width: "100%",
           height: "100%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "contain",
-          opacity: 0.3,
-          pointerEvents: "none",
+          overflow: "hidden",     
+          maxWidth: "100w",      
         }}
-      />
-
-      {/* Particles */}
-<div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
+      >
         <ParticlesBg />
       </div>
 
       {/* Content */}
       <header style={{ position: "relative", zIndex: 2 }}>
-        {/* ✅ Animated "New" badge */}
         <motion.span
           variants={scaleIn}
           initial="hidden"
@@ -71,26 +59,24 @@ function Hero() {
             fontWeight: 600,
             fontSize: 16,
             letterSpacing: 1,
-            fontFamily: "Inter, sans-serif",
           }}
         >
           New
         </motion.span>
 
         <motion.h1
-          // variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.2}
           className="fw-bold hero-title mb-2"
           style={{
-            fontFamily: "Inter, sans-serif",
             fontWeight: 500,
             fontSize: "2.7rem",
             lineHeight: 1.1,
             color: "#fff",
-            maxWidth: 700,
-            
+            maxWidth: "100%",
+            width: "100%",
+            padding: "0 1rem", 
           }}
         >
           Intelligent Solutions for <br className="d-none d-md-block" />
@@ -98,19 +84,18 @@ function Hero() {
         </motion.h1>
 
         <motion.p
-          // variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.4}
           className="mb-4 text-white-50"
           style={{
-            fontFamily: "Inter, sans-serif",
             fontSize: 15,
             maxWidth: 550,
             margin: "0 auto",
+            padding: "0 1rem"
           }}
         >
-         At DaaS Tech, we blend tech, design, and strategy. <br className="d-none d-md-block" /> Where Problems Meet Possibilities.
+          At DaaS Tech, we blend tech, design, and strategy. <br className="d-none d-md-block" /> Where Problems Meet Possibilities.
         </motion.p>
 
         <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">
@@ -122,6 +107,7 @@ function Hero() {
             whileHover={{ scale: 1.1 }}
             href="/signup"
             className="btn btn-primary px-3 py-2"
+            style={{ maxWidth: "100%", whiteSpace: "nowrap" }}
           >
             Get in Touch
           </motion.a>
@@ -133,6 +119,7 @@ function Hero() {
             whileHover={{ scale: 1.1 }}
             href="/portfolio"
             className="btn btn-outline-light px-3 py-2"
+            style={{ maxWidth: "100%", whiteSpace: "nowrap" }}
           >
             View Services
           </motion.a>

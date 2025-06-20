@@ -52,13 +52,14 @@ export default function PricingSection() {
   return (
 
     <section
-          className="d-flex flex-column align-items-center text-center"
-          style={{
-            padding: "55px 0",
-            background: "#000",
-            color: "#fff",
-            fontFamily: "Inter, sans-serif",
-          }}
+         className="d-flex flex-column align-items-center text-center"
+  style={{
+    padding: "55px 1rem", 
+    background: "#000",
+    color: "#fff",
+    fontFamily: "Inter, sans-serif",
+    overflowX: "hidden"   
+  }}
         >
           <style>
             {`
