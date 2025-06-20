@@ -52,7 +52,7 @@ function Hero() {
       />
 
       {/* Particles */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, width: "100%", height: "100%" }}>
+<div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
         <ParticlesBg />
       </div>
 
@@ -90,9 +90,10 @@ function Hero() {
             lineHeight: 1.1,
             color: "#fff",
             maxWidth: 700,
+            
           }}
         >
-          Intelligent Automation for <br className="d-none d-md-block" />
+          Intelligent Solutions for <br className="d-none d-md-block" />
           Modern Businesses.
         </motion.h1>
 
@@ -109,7 +110,7 @@ function Hero() {
             margin: "0 auto",
           }}
         >
-          Xtract brings AI automation to your fingertips & streamline tasks.
+         At DaaS Tech, we blend tech, design, and strategy. <br className="d-none d-md-block" /> Where Problems Meet Possibilities.
         </motion.p>
 
         <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">

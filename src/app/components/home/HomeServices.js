@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 import { motion } from "framer-motion";
-
+import "@/app/globals.css";
 export default function HomeServices() {
   return (
     <section
@@ -58,21 +58,21 @@ export default function HomeServices() {
         Our Services
       </motion.span>
 
-      <motion.h2
+      <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         style={{
           fontWeight: 700,
-          fontSize: "3rem",
+          // fontSize: "3rem",
           lineHeight: 1.15,
           marginBottom: 16,
           maxWidth: 700,
         }}
       >
         Web Solutions That Take Your Business Online
-      </motion.h2>
+      </motion.h1>
 
       <motion.p
         initial={{ opacity: 0, y: 30 }}
@@ -100,6 +100,8 @@ export default function HomeServices() {
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
           style={{
+                          marginTop:"20px",
+
             position: "relative",
             background: "#111114",
             borderRadius: 18,
@@ -221,37 +223,62 @@ export default function HomeServices() {
             flexDirection: "column",
             alignItems: "flex-start",
             justifyContent: "center",
-            minWidth: 320,
-            maxWidth: 400,
-            padding: "32px 28px",
+            minWidth: 470,
+            maxWidth: 550,
+            padding: "3px 28px",
           }}
-        >
+        ><a
+            href=""
+            className=" btn mb-3 px-2 py-1"
+            style={{
+              // background: "#8b5cf6",
+              // border: "none",
+              // fontWeight: 600,
+              // fontSize: 16,
+              // borderRadius: 24,
+              // color: "#fff",
+              // textDecoration: "none",
+              // marginTop: 8,
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+            }}
+          >
+            Custom Websites
+          </a>
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
-            Build a Beautiful Website
-          </h3>
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18 }}>
-            We help you create an engaging, responsive website that showcases your services, attracts more visitors, and builds your brand.
+           Website Tasks & Workflow Automation
+           </h3>
+          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
+            We help you create an engaging, responsive, Fast and Secure, SEO Ready website that showcases your services, attracts more visitors, and builds your brand.
           </p>
-          <ul style={{ textAlign: "left", color: "#fff", fontSize: 15, listStyle: "none", paddingLeft: 0 }}>
-            <li style={{ marginBottom: 8 }}>✅ Fast & Secure</li>
-            <li style={{ marginBottom: 8 }}>✅ Mobile-Friendly</li>
-            <li style={{ marginBottom: 8 }}>✅ SEO-Ready</li>
-          </ul>
-          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", margin: "24px 0 12px" }}>
+        
+          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", margin: "px 0 12px" }}>
             Let’s build your online presence today.
           </h4>
           <a
             href="/contact"
-            className="btn btn-primary px-4 py-2"
+            className="  btn px-2 py-1"
             style={{
-              background: "#8b5cf6",
-              border: "none",
-              fontWeight: 600,
-              fontSize: 16,
-              borderRadius: 24,
-              color: "#fff",
-              textDecoration: "none",
-              marginTop: 8,
+              // background: "#8b5cf6",
+              // border: "none",
+              // fontWeight: 600,
+              // fontSize: 16,
+              // borderRadius: 24,
+              // color: "#fff",
+              // textDecoration: "none",
+              // marginTop: 8,
+               background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
             }}
           >
             Get Started

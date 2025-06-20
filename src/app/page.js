@@ -8,17 +8,18 @@ import Benefits from './components/home/Benefits'
 import Pricing from './components/home/Pricing'
 import Testimonials from './components/home/Testimonials'
 import FAQs from './components/home/faq'
+import "@/app/globals.css";
 import CTA from './components/home/CallToAction'
 export default function Home() {
   return (
     <>
-      <Hero />
+     <div className='hide'><Hero /></div> 
       <HomeServices/>
       <Services/>
       <Process/>
       <CaseStudy/>
       <Benefits/>
-      <Pricing/>
+      {/* <Pricing/> */}
       <Testimonials/>
       <FAQs/>
       <CTA/>

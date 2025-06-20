@@ -24,14 +24,44 @@ const Process = () => {
     { label: "Repetitive task", icon: <FaRedo size={14} /> },
   ];
    const code = `
-return "No action taken."
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const PORT = 3000;
 
-def get_status(self):
-    return f"Status: {self.status}"
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-class AutomationTrigger:
-    def __init__(self, threshold):
-        self.threshold = threshold
+// Home route
+app.get('/', (req, res) => {
+  res.send('Welcome to DaaS Tech Innovations API!');
+
+
+// About route
+app.get('/about', (req, res) => {
+  res.json({ company: 'DaaS Tech', focus: 'Web & Automation' });
+
+
+// Contact form POST
+app.post('/contact', (req, res) => {
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+  res.status(200).json({ status: 'Message received', name });
+
+
+// Catch-all
+app.use((req, res) => {
+  res.status(404).send('Route not found');
+
+
+// Start server
+app.listen(PORT, () => {
+  console.log(Server running at http://localhost:$534356);
+
+
   `.trim();
 
   const y = useMotionValue(0);
@@ -136,7 +166,7 @@ class AutomationTrigger:
           fontSize: 12,
           color: "#fff",
           background: "#1e1e23",
-          border: "1px solid #3b3b44",
+          border: "1px solid rgb(17 17 17)",
           borderRadius: 8,
           width: "fit-content",
           marginBottom: 12,
@@ -152,7 +182,7 @@ class AutomationTrigger:
 
       {/* Description */}
       <p style={{ fontSize: 14, color: "#c4c4c4", marginBottom: 20 }}>
-        We assess your needs and identify AI solutions to streamline workflows and improve efficiency.
+        We assess your needs and identify solutions to streamline workflows and improve efficiency.
       </p>
 
       {/* Inner Card with Circle + Checklist */}
@@ -160,16 +190,17 @@ class AutomationTrigger:
         style={{
           display: "flex",
           flexDirection: "row",
+          justifyContent: "space-between",
           gap: 25,
           padding: 8,
           border: "1px solid #2b2b30",
           borderRadius: 12,
-          backgroundColor: "#131316",
+          backgroundColor: "rgb(17 17 17)",
         }}
       >
         {/* Left: Rotating Circle */}
         <div style={{ display: "flex", flexDirection: "column", 
-          alignItems: "center" , gap: 16,
+          alignItems: "center" , gap: 6,
           padding: 16,
           border: "1px solid #2b2b30",
           borderRadius: 12, }}>
@@ -224,6 +255,7 @@ class AutomationTrigger:
           padding: 16,
           border: "1px solid #2b2b30",
           borderRadius: 12,
+          width: "100%",
         }}
       >
         <div
@@ -245,7 +277,9 @@ class AutomationTrigger:
                 background: "#16161a",
                 padding: "8px 12px",
                 borderRadius: 8,
+                marginBottom: 6,
                 fontSize: 13,
+                width: "220px",
                 color: "#e0e0e0",
                 cursor: "default",
               }}
@@ -261,12 +295,12 @@ class AutomationTrigger:
     </motion.div>
      <div style={styles.card}>
       <span style={styles.stepLabel}>Step 2</span>
-      <h2 style={styles.title}>AI Development</h2>
+      <h2 style={styles.title}>Web  Design | Development</h2>
       <p style={styles.text}>
-        Our team builds intelligent automation systems tailored to your business processes.
+        Our team builds intelligent web systems tailored to your business processes.
       </p>
 
-      <div style={styles.editorWindow}>
+      <div  style={styles.editorWindow}>
         <div style={styles.titleBar}>
           <div style={styles.navControls}>
             <span style={{ ...styles.dot, background: '#ff5f56' }} />
@@ -310,15 +344,24 @@ class AutomationTrigger:
       custom={3}
       viewport={{ once: true }}
     >
-      <div style={stepLabel}>Step 3</div>
+      <div style={{padding: "4px 10px",
+          fontSize: 12,
+          color: "#fff",
+          background: "#1e1e23",
+          border: "1px solid rgb(17 17 17)",
+          borderRadius: 8,
+          width: "fit-content",
+          marginBottom: 12,}}>Step 3</div>
       <h3 style={cardTitle}>Seamless Integration</h3>
       <p style={cardText}>
-        We smoothly integrate AI solutions into your existing infrastructure with minimal disruption.
+        We smoothly integrate solutions into your existing infrastructure with minimal disruption.
       </p>
 
-      <div style={container}>
+      <div style={{ ...container, height: "300px!important" }}>
         <div style={item}>
-          <Image src="/rotation.png" alt="Our solution" height={40} width={40} style={imageStyle} />
+          <div style={imageContainer}>
+            <Image src="/rotation.png" alt="Our solution" height={40} width={40} style={imageStyle} />
+          </div>
           <p style={caption}>Our solution</p>
         </div>
 
@@ -344,7 +387,9 @@ class AutomationTrigger:
         </div>
 
         <div style={item}>
-          <Image src="/yourstack.png" alt="Your stack" height={40} width={40} style={imageStyle} />
+          <div style={imageContainer}>
+            <Image src="/yourstack.png" alt="Your stack" height={40} width={40} style={imageStyle} />
+          </div>
           <p style={caption}>Your stack</p>
         </div>
       </div>
@@ -360,14 +405,21 @@ class AutomationTrigger:
               custom={4}
               viewport={{ once: true }}
             >
-              <div style={stepLabel}>Step 4</div>
+              <div style={{padding: "4px 10px",
+          fontSize: 12,
+          color: "#fff",
+          background: "#1e1e23",
+          border: "1px solid rgb(17 17 17)",
+          borderRadius: 8,
+          width: "fit-content",
+          marginBottom: 12,}}>Step 4</div>
               <h3 style={cardTitle}>Continuous Optimization</h3>
               <p style={cardText}>
                 We refine performance, analyze insights, and enhance automation for long-term growth.
               </p>
               <div style={optimizationBox}>
                 {[
-                  { title: "Chatbot system", note: "Efficiency will increase by 20%", icon: "⟳" },
+                  { title: "Customer Satisfaction", note: "Efficiency will increase by 20%", icon: "⟳" },
                   { title: "Workflow system", note: "Update available..", icon: "⬆" },
                   { title: "Sales system", note: "Up to date", icon: "✔" }
                 ].map((item, index) => (
@@ -487,6 +539,7 @@ const styles = {
     border: '1px solid #333',
     borderRadius: '8px',
     marginTop: '16px',
+    height: '300px!important',
     overflow: 'hidden',
   },
   titleBar: {
@@ -522,13 +575,15 @@ const styles = {
     gap: '12px',
     padding: '12px 0',
     borderRight: '1px solid #333',
+    height:" 300px!important",
   },
   codeArea: {
     position: 'relative',
     flexGrow: 1,
-    height: '150px',
+    // height: '300px',
     background: '#1e1e1e',
     overflow: 'hidden',
+      height:" 300px!important",
   },
   code: {
     margin: 0,
@@ -572,8 +627,20 @@ const item = {
 
 const imageStyle = {
   height: 40,
+  // padding: 20,
   width: 40,
   objectFit: 'cover',
+  // zIndex: 103,
+};
+const imageContainer = {
+ height: 60,
+  width: 60,
+  borderRadius: '5px',
+  overflow: 'hidden',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#000',
 };
 
 const caption = {
@@ -586,11 +653,17 @@ const linesWrapper = {
   position: 'absolute',
   left: 'calc(50% - 70px)',
   width: 140,
-  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  // height: '100%',
+  top:'40%!important'
 };
 
 const lineStyle = {
   position: 'absolute',
+  
+
   height: 2,
   borderRadius: 2,
   background: 'linear-gradient(to right,rgb(42, 35, 59),rgb(148, 72, 236))',

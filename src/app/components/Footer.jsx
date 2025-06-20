@@ -109,15 +109,15 @@ function Footer() {
         <hr className="mt-4 mb-3" style={{ width: "98vw", marginLeft: "-38px" }} />
 
         {/* Bottom Row */}
-        <div className="row text-center d-flex justify-content-between text-md-start small">
-          <div className="col-12 col-md-3 px-3 mb-2">Logo by DaaS-Tech
+        <div className="row text-center d-flex justify-content-center text-md-start small">
+          <div className="col-12 col-md- px-3 mb-2">Logo by DaaS-Tech
           </div>
           <div className="col-12 col-md-3 mb-2">
             Visioned and Crafted by <b>Taimoor Gill</b>
           </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-              <div
-                className="trustpilot-widget"
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
+              {/* <div
+                className="trustpilot-widget d-flex justify-content-end"
                 data-locale="en-US"
                 data-template-id="56278e9abfbbba0bdcd568bc"
                 data-businessunit-id="68417abf22a45a72e30f5ef6"
@@ -130,9 +130,9 @@ function Footer() {
                 >
                   Trustpilot
                 </a></p>
-              </div>
+              </div> */}
             </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
             <div>© All right reserved</div>
           </div>
         </div>
