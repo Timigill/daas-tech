@@ -1,0 +1,183 @@
+$starter-color: #ffffff;
+$professional-color: #8b5cf6;
+$enterprise-color: #ffffff;
+$background-dark: #000000;
+$highlight: #ffffff;
+$muted: #cccccc;
+
+.pricingSection {
+  background-color: $background-dark;
+  padding: 4rem 5rem;
+  color: $starter-color;
+  text-align: left;
+}
+
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+
+  span {
+    font-size: 0.9rem;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: 0.4s;
+    border-radius: 34px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .slider {
+    background-color: $professional-color;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(24px);
+  }
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.card {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 300;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+  color: $highlight;
+  position: relative;
+  overflow: hidden;
+
+
+  .planName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .planPrice {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 1rem;
+      color: $muted;
+    }
+  }
+
+  .featureList {
+    list-style:none;
+    padding: 0;
+    margin-top: 2rem;
+    text-align: left;
+
+    li {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .planBtn {
+    background-color: #1a1919;
+    border: 1px solid #666;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+
+    span {
+      display: inline-block;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    &:hover::after {
+      content: attr(data-hover);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      opacity: 0;
+      animation: fadeInText 0.4s forwards 0.1s;
+    }
+
+    &.popularBtn {
+      background-color: $professional-color;
+      color: white;
+
+      &:hover {
+        background-color: $professional-color;
+        color: white;
+      }
+    }
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+.bottom-to-top {
+  background: linear-gradient(to top, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 1));
+}
+
+.top-to-bottom {
+  background: linear-gradient(to bottom, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 1));
+}

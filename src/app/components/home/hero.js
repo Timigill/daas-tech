@@ -1,7 +1,27 @@
 'use client';
 import React from "react";
+import { motion } from "framer-motion";
 import ParticlesBg from "../ParticlesBg";
 import "@/app/globals.css";
+import "@/app/custom-bootstrap.scss";
+
+// Animation variants
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: (delay = 0) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.8, delay }
+//   })
+// };
+
+const scaleIn = {
+  hidden: { scale: 0 },
+  visible: (delay = 0) => ({
+    scale: 1,
+    transition: { type: "spring", stiffness: 400, damping: 25, delay }
+  })
+};
 
 function Hero() {
   return (
@@ -9,21 +29,20 @@ function Hero() {
       className="d-flex flex-column justify-content-center align-items-center text-center position-relative"
       style={{
         minHeight: "90vh",
-        width: "100%", // Changed from 100vw to 100%
+        width: "100%",
         overflow: "hidden",
         background: "#000",
         fontFamily: "Inter, sans-serif",
       }}
     >
-      {/* Background Image Overlay with Opacity */}
+      {/* Background Overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           zIndex: 0,
-          width: "100%", // Ensure overlay matches section
+          width: "100%",
           height: "100%",
-          // backgroundImage: "url('/purpleblur.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "contain",
@@ -31,28 +50,38 @@ function Hero() {
           pointerEvents: "none",
         }}
       />
-      {/* Animated Particles */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, width: "100%", height: "100%" }}>
+
+      {/* Particles */}
+<div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 1 }}>
         <ParticlesBg />
       </div>
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 2 }}>
-        <span
+      <header style={{ position: "relative", zIndex: 2 }}>
+        {/* ✅ Animated "New" badge */}
+        <motion.span
+          variants={scaleIn}
+          initial="hidden"
+          animate="visible"
+          custom={0.1}
           className="badge mb-3"
           style={{
             background: "rgba(139,92,246)",
-            color: "#8b5cf6",
+            color: "#fff",
             fontWeight: 600,
             fontSize: 16,
-            color: "#fff",
             letterSpacing: 1,
             fontFamily: "Inter, sans-serif",
           }}
         >
           New
-        </span>
-        <h1
+        </motion.span>
+
+        <motion.h1
+          // variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.2}
           className="fw-bold hero-title mb-2"
           style={{
             fontFamily: "Inter, sans-serif",
@@ -61,12 +90,18 @@ function Hero() {
             lineHeight: 1.1,
             color: "#fff",
             maxWidth: 700,
+            
           }}
         >
-          Intelligent Automation for <br className="d-none d-md-block" />
+          Intelligent Solutions for <br className="d-none d-md-block" />
           Modern Businesses.
-        </h1>
-        <p
+        </motion.h1>
+
+        <motion.p
+          // variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.4}
           className="mb-4 text-white-50"
           style={{
             fontFamily: "Inter, sans-serif",
@@ -75,36 +110,34 @@ function Hero() {
             margin: "0 auto",
           }}
         >
-          Xtract brings AI automation to your fingertips & streamline tasks. 
-        </p>
+         At DaaS Tech, we blend tech, design, and strategy. <br className="d-none d-md-block" /> Where Problems Meet Possibilities.
+        </motion.p>
+
         <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">
-          <a
+          <motion.a
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            custom={0.6}
+            whileHover={{ scale: 1.1 }}
             href="/signup"
-            className="btn btn-primary  px-3 py-2"
-            style={{
-              background: "#8b5cf6",
-              border: "none",
-              fontWeight: 600,
-              fontSize: 15,
-              fontFamily: "Inter, sans-serif",
-            }}
+            className="btn btn-primary px-3 py-2"
           >
             Get in Touch
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            custom={0.6}
+            whileHover={{ scale: 1.1 }}
             href="/portfolio"
-            className="btn btn-outline-light  px-3 py-2"
-            style={{
-              fontWeight: 600,
-              fontSize: 15,
-              borderColor: "rgba(255, 255, 255, 0.1)",
-              fontFamily: "Inter, sans-serif",
-            }}
+            className="btn btn-outline-light px-3 py-2"
           >
             View Services
-          </a>
+          </motion.a>
         </div>
-      </div>
+      </header>
     </section>
   );
 }
