@@ -25,9 +25,9 @@ export default function about() {
       <Team/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Faq/>
-      {/* <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
+      <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
       <CallToAction/>
-      {/* <br/><br/><br/><br/> */}
+      <br/><br/><br/><br/> 
     </div>
   )
 }
