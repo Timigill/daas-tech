@@ -3,7 +3,7 @@ import { LiaLinkedin } from "react-icons/lia";
 
 function team() {
   return (
-    <div className="d-flex flex-column align-items-center text-center mt-5 px-3">
+    <div className="d-flex flex-column align-items-center text-center my-5 py-5 px-3">
       <div>
         {/* Tagline */}
         <span

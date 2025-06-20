@@ -80,7 +80,7 @@ function Who() {
                   maxWidth: 230,
                 }}
               >
-                Companies have streamlined their workflows with Xtract’s AI solutions.
+                Companies have streamlined their workflows with DaaS Digital solutions.
               </p>
             </div>
           </div>
@@ -109,7 +109,7 @@ function Who() {
                   fontSize: "0.9rem",
                   maxWidth: 230,
                 }}>
-                Reducing manual work and boosting productivity through automation.
+                Reducing time and boosting productivity through automation.
               </p>
             </div>
           </div>
@@ -138,7 +138,7 @@ function Who() {
                   fontSize: "0.9rem",
                   maxWidth: 230,
                 }}>
-                Clients see improved efficiency within the first three months of usage.
+                Clients see improved efficiency within the first three months.
               </p>
             </div>
           </div>
