@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function CallToAction() {
   return (
-    <section className={styles.ctaSection}>
+    <section className={styles.ctaSection} style={{ overflowX: 'hidden' }}>
     <div className={styles.ctaWrapper}>
       <h2>
         Let Digital Solutions do the Work so<br />

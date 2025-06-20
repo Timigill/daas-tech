@@ -36,7 +36,7 @@ export default function Faq() {
   };
 
   return (
-    <section className={styles.faqWrapper}>
+    <section className={styles.faqWrapper} style={{ overflowX: 'hidden' }}>
       <motion.span
         className={styles.badge}
         initial={{ opacity: 0, y: 20 }}

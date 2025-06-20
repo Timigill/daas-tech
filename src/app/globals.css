@@ -21,7 +21,6 @@ html, body {
   padding: 0;
   overflow-x: hidden;
 }
-
 body {
   background: #000;
   color: #fff;
@@ -72,7 +71,7 @@ a {
 }
 .container12{
   margin-inline: 30px;
-  width: 100vw;
+  width: 100%!important;
   max-width: 1280px;
   /* height: 55px; */
 }
