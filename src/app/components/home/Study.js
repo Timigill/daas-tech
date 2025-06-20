@@ -112,7 +112,7 @@ const Study = () => {
   viewport={{ once: true }}
   style={{ fontWeight: 700, maxWidth: 800 }}
 >
-  See How Smart AI Automation Transforms Businesses
+  See How Smart Digital Solutions Transforms Businesses
 </motion.h2>
 
 <motion.p
@@ -127,23 +127,8 @@ const Study = () => {
     margin: "0 auto 40px auto",
   }}
 >
-  See how AI automation streamlines operations, boosts and drives growth.
+  See how Digital Solutions streamlines operations, boosts productivity, and drives growth.
 </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.4 }}
-        viewport={{ once: true }}
-        style={{
-          fontSize: 17,
-          color: "#bdbdbd",
-          maxWidth: 600,
-          margin: "0 auto 40px auto",
-        }}
-      >
-        See how AI automation streamlines operations, boosts and drives growth.
-      </motion.p>
 
       <div
         style={{

@@ -8,12 +8,12 @@ export default function CallToAction() {
     <section className={styles.ctaSection}>
     <div className={styles.ctaWrapper}>
       <h2>
-        Let AI do the Work so<br />
+        Let Digital Solutions do the Work so<br />
         you can <span>Scale Faster</span>
       </h2>
-      <p>Book a Call Today and Start Automating</p>
+      <p>Get A Quote Today and Start Your Journey</p>
       <button>
-        Book a free call <ArrowRight size={16} />
+        Get A Quote <ArrowRight size={16} />
       </button>
     </div>
     </section>

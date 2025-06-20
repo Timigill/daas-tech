@@ -6,14 +6,14 @@ import "@/app/globals.css";
 import "@/app/custom-bootstrap.scss";
 
 // Animation variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, delay }
-  })
-};
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: (delay = 0) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.8, delay }
+//   })
+// };
 
 const scaleIn = {
   hidden: { scale: 0 },
@@ -78,7 +78,7 @@ function Hero() {
         </motion.span>
 
         <motion.h1
-          variants={fadeUp}
+          // variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.2}
@@ -98,7 +98,7 @@ function Hero() {
         </motion.h1>
 
         <motion.p
-          variants={fadeUp}
+          // variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={0.4}

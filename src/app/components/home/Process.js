@@ -583,7 +583,7 @@ const styles = {
     // height: '300px',
     background: '#1e1e1e',
     overflow: 'hidden',
-      height:" 300px!important",
+      height:'300px!important',
   },
   code: {
     margin: 0,
