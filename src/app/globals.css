@@ -125,3 +125,38 @@ input:focus {
   z-index: 1;
 }
 .hide{overflow-x: hidden !important;}
+
+.review-slider {
+  overflow: hidden;
+  width: 40%;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  width: fit-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.slider-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.slider-image {
+  width: 120px;
+  height: 80px;
+  margin-right: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Professional smooth scroll */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
