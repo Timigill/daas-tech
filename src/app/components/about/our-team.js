@@ -9,10 +9,15 @@ function team() {
         <span
           className="badge px-3 py-2"
           style={{
-            fontSize: "0.95rem",
-            fontWeight: 600,
-            border: "1px solid #222",
-            fontFamily: "Inter, sans-serif",
+            padding: "4px 10px",
+          fontSize: 12,
+          color: "#fff",
+          // background: "#1e1e23",
+          border: "1px solid rgb(17 17 17)",
+          borderRadius: 8,
+          width: "fit-content",
+          fontWeight: 500,
+          marginBottom: 12,
           }}
         >
           Our Team
@@ -20,18 +25,18 @@ function team() {
 
         {/* Main Heading */}
         <h1
-          className="mt-3"
+          className="mt-"
           style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "2.5rem",
+             fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            // fontSize: "3.5rem",
             lineHeight: 1.1,
             color: "#ffffff",
             maxWidth: 700,
             margin: "0 auto",
           }}
         >
-          Meet the Minds Behind Xtract
+          Meet the Minds Behind DaaS
         </h1>
 
         {/* Subheading */}
@@ -44,7 +49,7 @@ function team() {
             margin: "0 auto",
           }}
         >
-          We bring together technology and strategy to create smarter automation solutions.
+          We bring together technology and strategy to create smarter Digital solutions.
         </p>
       </div>
 
@@ -56,7 +61,7 @@ function team() {
               style={{
                 border: " 1px solid #222 ",
               }}>
-              <img src="/About-Us/Alex.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <img src="/About-Us/alex.png" alt="" style={{ width: "280px", height: "280px" }} />
               <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"
@@ -65,7 +70,7 @@ function team() {
                     fontSize: "15",
                   }}
                 >
-                  Alex Carter
+                  Saad Tariq
                 </h5>
                 <LiaLinkedin size={23} className='text-white-50' />
               </div>
@@ -79,7 +84,7 @@ function team() {
                   maxWidth: 580,
                 }}
               >
-                Co-Founder & AI Strategist.
+                Co-Founder & FE Developer.
               </p>
             </div>
           </div>

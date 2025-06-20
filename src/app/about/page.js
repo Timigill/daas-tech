@@ -4,8 +4,8 @@ import Who from '../components/about/who-we-are'
 import Values from '../components/about/our-values'
 import Why from '../components/about/why-us'
 import Team from '../components/about/our-team'
-import Faqs from '../components/about/faqs'
-import Call from '../components/book-call'
+import Faq from '../components/home/faq'
+import CallToAction from '../components/home/CallToAction'
 import "@/app/globals.css"
 
 export default function about() {
@@ -24,10 +24,10 @@ export default function about() {
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Team/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <Faqs/>
-      <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-      <Call/>
-      <br/><br/><br/><br/>
+      <Faq/>
+      {/* <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> */}
+      <CallToAction/>
+      {/* <br/><br/><br/><br/> */}
     </div>
   )
 }

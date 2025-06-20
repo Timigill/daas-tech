@@ -7,7 +7,7 @@ function Who() {
   return (
     <div>
       <div
-        className='d-flex flex-column align-items-center text-center mt-5 px-3'
+        className='d-flex flex-column align-items-center text-center my-5 py-5 px-3'
       >
         <span
           className="badge px-3 py-2"

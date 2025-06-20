@@ -10,24 +10,29 @@ function Why() {
         <span
           className="badge px-3 py-2"
           style={{
-            fontSize: "0.95rem",
-            fontWeight: 600,
-            border: "1px solid #222",
-            fontFamily: "Inter, sans-serif",
+             padding: "4px 10px",
+          fontSize: 12,
+          color: "#fff",
+          // background: "#1e1e23",
+          border: "1px solid rgb(17 17 17)",
+          borderRadius: 8,
+          width: "fit-content",
+          fontWeight: 500,
+          marginBottom: 12,
           }}
         >
           Why Us
         </span>
 
         <h1
-          className="mt-3"
+          className=""
           style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 500,
-            fontSize: "2.5rem",
+           fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            // fontSize: "3.5rem",
             lineHeight: 1.1,
             color: "#ffffff",
-            maxWidth: 460,
+            maxWidth: 700,
             margin: "0 auto",
           }}
         >
@@ -38,8 +43,8 @@ function Why() {
           className="mt-3 text-white-50"
           style={{
             fontFamily: "Inter, sans-serif",
-            fontSize: "1rem",
-            maxWidth: 510,
+            fontSize: "0.9rem",
+            maxWidth: 580,
             margin: "0 auto",
           }}
         >
@@ -64,16 +69,17 @@ function Why() {
                   fontWeight: 600,
                 }}
               >
-                Manual Work
+                Other Digital Solutions
               </h5>
 
               {[
-                "Prone to human errors",
-                "Limited by work hours",
-                "High labor costs & overhead",
-                "Slow & time-consuming tasks",
-                "Disconnected & repetitive work",
-                "Inconsistent & dependent on workforce",
+                "Generic templates & designs",
+                "Limited customizability",
+                "Poor brand identity",
+                "Inconsistent quality",
+                "No post-delivery support",
+                "One-size-fits-all solutions",
+              
               ].map((text, idx) => (
                 <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white-50">
                   <RxCross2 size={20} style={{ flexShrink: 0 }} />
@@ -91,7 +97,6 @@ function Why() {
             </div>
           </div>
 
-          {/* Xtract AI Automation */}
           <div className="col-md-4">
             <div
               className="p-4 shadow rounded text-white h-100"
@@ -108,16 +113,17 @@ function Why() {
                   fontWeight: 600,
                 }}
               >
-                Xtract AI Automation
+                DaaS Digital Solutions
               </h5>
 
               {[
-                "Smart AI-driven decisions",
-                "24/7 automated workflows",
-                "Scalable & cost-effective",
-                "Instant data processing",
-                "Seamless system integration",
-                "Consistent & reliable output",
+                "Tailored design & branding",
+                "Professional, human-driven creativity",
+                "Strategic social media presence",
+                "Custom-built websites & flyers",
+                "Dedicated client support",
+                "Consistent quality & attention to detail",
+                
               ].map((text, idx) => (
                 <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white">
                   <FaCheck size={20} style={{ flexShrink: 0 }} />
