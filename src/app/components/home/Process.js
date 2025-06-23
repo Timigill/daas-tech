@@ -350,17 +350,17 @@ app.listen(PORT, () => {
               <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 10 }}>
                 Web Design | Development
               </h3>
-              <p style={{ fontSize: 14, color: "#c4c4c4", marginBottom: 20 }}>
+              <p style={{ fontSize: 14, color: "#c4c4c4", marginBottom: 25 }}>
                 Our team builds intelligent web systems tailored to your business processes.
               </p>
 
               <div
                 style={{
                   background: "#222",
-                  border: "1px solid #333",
+                  border: "1px solid #2b2b30",
                   borderRadius: "8px",
-                  marginTop: "16px",
-                  height: "200px",
+                  marginTop: "40px",
+                  height: "207px",
                   overflow: "hidden",
                 }}
               >

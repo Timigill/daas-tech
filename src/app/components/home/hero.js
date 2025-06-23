@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import ParticlesBg from "../ParticlesBg";
@@ -17,40 +17,46 @@ const scaleIn = {
 function Hero() {
   return (
     <section
-      className="d-flex flex-column justify-content-center align-items-center text-center position-relative"
+      className="hero-section d-flex flex-column justify-content-center align-items-center text-center position-relative"
       style={{
         minHeight: "90vh",
         width: "100%",
-        overflowX: "hidden", 
+        overflow: "hidden",
         background: "#000",
         fontFamily: "Inter, sans-serif",
-        padding: "0 1rem" 
+        padding: "0 1rem",
       }}
     >
       {/* Particles Background */}
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          zIndex: 1,
+          zIndex: 0,
           width: "100%",
           height: "100%",
-          overflow: "hidden",     
-          maxWidth: "100w",      
+          overflow: "hidden"
         }}
       >
         <ParticlesBg />
       </div>
 
-      {/* Content */}
-      <header style={{ position: "relative", zIndex: 2 }}>
+      {/* Main Content */}
+      <header
+        style={{
+          position: "relative",
+          zIndex: 2,
+          background: "#000"
+        }}
+      >
         <motion.span
           variants={scaleIn}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           custom={0.1}
           className="badge mb-3"
           style={{
@@ -58,15 +64,17 @@ function Hero() {
             color: "#fff",
             fontWeight: 600,
             fontSize: 16,
-            letterSpacing: 1,
+            letterSpacing: 1
           }}
         >
           New
         </motion.span>
 
         <motion.h1
+          variants={scaleIn}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           custom={0.2}
           className="fw-bold hero-title mb-2"
           style={{
@@ -76,7 +84,7 @@ function Hero() {
             color: "#fff",
             maxWidth: "100%",
             width: "100%",
-            padding: "0 1rem", 
+            padding: "0 1rem"
           }}
         >
           Intelligent Solutions for <br className="d-none d-md-block" />
@@ -84,8 +92,10 @@ function Hero() {
         </motion.h1>
 
         <motion.p
+          variants={scaleIn}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           custom={0.4}
           className="mb-4 text-white-50"
           style={{
@@ -102,7 +112,8 @@ function Hero() {
           <motion.a
             variants={scaleIn}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
             custom={0.6}
             whileHover={{ scale: 1.1 }}
             href="/signup"
@@ -114,7 +125,8 @@ function Hero() {
           <motion.a
             variants={scaleIn}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
             custom={0.6}
             whileHover={{ scale: 1.1 }}
             href="/portfolio"

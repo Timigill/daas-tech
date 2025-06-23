@@ -38,8 +38,7 @@ const Study = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
+      setIsMobile(window.innerWidth <= 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -62,12 +61,10 @@ const Study = () => {
 
   const handleScroll = () => {
     if (!scrollContainerRef.current || !isMobile) return;
-    
     const container = scrollContainerRef.current;
     const scrollPosition = container.scrollLeft;
     const containerWidth = container.offsetWidth;
     const newIndex = Math.round(scrollPosition / containerWidth);
-    
     if (newIndex !== currentIndex) {
       setCurrentIndex(newIndex);
     }
@@ -147,76 +144,82 @@ const Study = () => {
       </motion.p>
 
       {isMobile ? (
-        // Mobile horizontal scroll version
-        <div
-          ref={scrollContainerRef}
-          onScroll={handleScroll}
-          style={{
-            display: "flex",
-            overflowX: "auto",
-            scrollSnapType: "x mandatory",
-            width: "100%",
-            maxWidth: "100%",
-            scrollBehavior: "smooth",
-            gap: "20px",
-            padding: "0 20px",
-            marginBottom: "20px",
-            WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          {caseStudies.map((study) => (
-            <div
-              key={study.id}
-              style={{
-                flex: "0 0 auto",
-                width: "85vw",
-                scrollSnapAlign: "start",
-                borderRadius: 20,
-                overflow: "hidden",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-                minHeight: 420,
-                backgroundColor: "#111",
-              }}
-            >
-              {/* Image Section */}
+        <>
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            style={{
+              display: "flex",
+              overflowX: "auto",
+              scrollSnapType: "x mandatory",
+              width: "100%",
+              maxWidth: "100%",
+              scrollBehavior: "smooth",
+              gap: "20px",
+              padding: "0 20px",
+              marginBottom: "20px",
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
+            {caseStudies.map((study) => (
               <div
+                key={study.id}
                 style={{
-                  width: "100%",
-                  height: "200px",
-                  backgroundImage: `url(${study.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              ></div>
-
-              {/* Text Section */}
-              <div
-                style={{
-                  padding: "20px",
-                  textAlign: "left",
+                  flex: "0 0 auto",
+                  width: "85vw",
+                  scrollSnapAlign: "start",
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                  minHeight: 420,
+                  backgroundColor: "#111",
                 }}
               >
-                <h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>
-                  {study.title}
-                </h3>
-                <p style={{ color: "#ccc", marginBottom: "15px", fontSize: "0.9rem" }}>
-                  {study.description}
-                </p>
-                <ul style={{ paddingLeft: 0, textAlign: "left", fontSize: "0.9rem" }}>
-                  {study.points.map((point, idx) => (
-                    <li key={idx} style={{ marginBottom: "6px", listStyleType: "none" }}>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    backgroundImage: `url(${study.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <div style={{ padding: "20px", textAlign: "left" }}>
+                  <h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>{study.title}</h3>
+                  <p style={{ color: "#ccc", marginBottom: "15px", fontSize: "0.9rem" }}>
+                    {study.description}
+                  </p>
+                  <ul style={{ paddingLeft: 0, fontSize: "0.9rem" }}>
+                    {study.points.map((point, idx) => (
+                      <li key={idx} style={{ marginBottom: "6px", listStyleType: "none" }}>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+
+          {/* Carousel Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: 20 }}>
+            {caseStudies.map((_, idx) => (
+              <div
+                key={idx}
+                style={{
+                  width: 10,
+                  height: 10, 
+                  borderRadius: "50%",
+                  backgroundColor: idx === currentIndex ? "#8b5cf6" : "#444",
+                  transition: "background-color 0.3s ease",
+                }}
+              />
+            ))}
+          </div>
+        </>
       ) : (
-        // Desktop version with arrows
         <div
           style={{
             display: "flex",
@@ -228,7 +231,6 @@ const Study = () => {
             position: "relative",
           }}
         >
-          {/* Left Arrow */}
           <motion.button
             onClick={prev}
             whileHover={{ scale: 1.2, rotate: -10 }}
@@ -250,7 +252,6 @@ const Study = () => {
             ‹
           </motion.button>
 
-          {/* Card */}
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={caseStudies[currentIndex].id}
@@ -276,7 +277,6 @@ const Study = () => {
                 transition: "transform 0.3s ease",
               }}
             >
-              {/* Image Section */}
               <div
                 style={{
                   flex: 1,
@@ -287,14 +287,7 @@ const Study = () => {
                 }}
               ></div>
 
-              {/* Text Section */}
-              <div
-                style={{
-                  flex: 1.2,
-                  padding: 30,
-                  textAlign: "left",
-                }}
-              >
+              <div style={{ flex: 1.2, padding: 30, textAlign: "left" }}>
                 <h3 style={{ fontSize: "1.75rem", marginBottom: 10 }}>
                   {caseStudies[currentIndex].title}
                 </h3>
@@ -312,7 +305,6 @@ const Study = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Right Arrow */}
           <motion.button
             onClick={next}
             whileHover={{ scale: 1.2, rotate: 10 }}
