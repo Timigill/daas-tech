@@ -125,3 +125,82 @@ input:focus {
   z-index: 1;
 }
 .hide{overflow-x: hidden !important;}
+/* globals.css */
+
+/* Container Styling */
+.privacy-page {
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Banner */
+.banner-container {
+  height: 70vh;
+  overflow: hidden;
+}
+
+.banner-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Title */
+.privacy-title {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+/* Subtext */
+.privacy-hours {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* List Area */
+.privacy-content {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+}
+
+.privacy-heading {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.privacy-description {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .banner-container {
+    height: 40vh;
+  }
+
+  .privacy-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .banner-container {
+    height: 30vh;
+  }
+
+  .privacy-title {
+    font-size: 1.3rem;
+  }
+
+  .privacy-description {
+    font-size: 0.85rem;
+  }
+}
