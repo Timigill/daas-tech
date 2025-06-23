@@ -12,9 +12,13 @@
     "@vercel/speed-insights": "^1.2.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.6",
+<<<<<<< Updated upstream
     "icons": "^1.0.0",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.515.0",
+=======
+    "bootstrap-icons": "^1.13.1",
+>>>>>>> Stashed changes
     "next": "15.3.3",
     "postcss-loader": "^8.1.1",
     "react": "^19.1.0",
