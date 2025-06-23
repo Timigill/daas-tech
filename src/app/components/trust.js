@@ -16,19 +16,21 @@ function trust() {
       </p>
 
       <div className="review-slider mt-4">
-        <div className="slider-track">
-          <div className="slider-content">
-            {[...Array(2)].map((_, i) => (
-              <React.Fragment key={i}>
-                <img src="/google-reviews.png" alt="Review" className="slider-image" />
-                <img src="/google-reviews.png" alt="Review" className="slider-image" />
-                <img src="/google-reviews.png" alt="Review" className="slider-image" />
-                <img src="/google-reviews.png" alt="Review" className="slider-image" />
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      </div>
+  <div className="slider-fade-left"></div>
+  <div className="slider-fade-right"></div>
+  <div className="slider-track">
+    <div className="slider-content">
+      {[...Array(2)].map((_, i) => (
+        <React.Fragment key={i}>
+          <img src="/google-reviews.png" alt="Review" className="slider-image" />
+          <img src="/google-reviews.png" alt="Review" className="slider-image" />
+          <img src="/google-reviews.png" alt="Review" className="slider-image" />
+          <img src="/google-reviews.png" alt="Review" className="slider-image" />
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+</div>
 
 
 

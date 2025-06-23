@@ -127,36 +127,41 @@ input:focus {
 .hide{overflow-x: hidden !important;}
 
 .review-slider {
-  overflow: hidden;
-  width: 40%;
   position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 140px;
+
+  /* Fade edges using mask-image */
+  mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
 
 .slider-track {
-  display: flex;
-  width: fit-content;
-  animation: scroll-left 40s linear infinite;
+  width: 100%;
+  overflow: hidden;
 }
 
 .slider-content {
   display: flex;
-  flex-wrap: nowrap;
+  width: max-content; /* Ensure full width for animation */
+  animation: slideLeft 30s linear infinite;
 }
 
 .slider-image {
-  width: 120px;
-  height: 80px;
-  margin-right: 40px;
-  object-fit: contain;
+  width: 130px;
+  margin-right: 1rem;
   flex-shrink: 0;
 }
 
-/* Professional smooth scroll */
-@keyframes scroll-left {
+/* Move left continuously */
+@keyframes slideLeft {
   0% {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
   100% {
     transform: translateX(-50%);
   }
 }
+
+
