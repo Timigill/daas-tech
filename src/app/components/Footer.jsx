@@ -79,7 +79,19 @@ function Footer() {
                   <li>Case studies</li>
                   <li>Benefits</li>
                   <li>Pricing</li>
-                  <li>Admin-Pannel</li>
+                  <li>
+                      <a
+                        href="/admin/login"
+                        style={{
+                          textDecoration: "none",
+                          color: "#bebaba",
+                          fontSize: "0.9rem",
+                          opacity: 0.6,
+                        }}
+                      >
+                        Admin Panel
+                      </a>
+                  </li>
                 </ul>
               </div>
               <div className="col-12 col-md-4 mb-3">
