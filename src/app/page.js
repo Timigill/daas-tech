@@ -13,16 +13,16 @@ import CTA from './components/home/CallToAction'
 export default function Home() {
   return (
     <>
-     <div className='hide'><Hero /></div> 
-      <HomeServices/>
-      <Services/>
-      <Process/>
-      <CaseStudy/>
-      <Benefits/>
-      <Pricing/> 
-      <Testimonials/>
-      <FAQs/>
-      <CTA/>
+      <Hero />
+      <HomeServices />
+      <Services />
+      <Process />
+      <CaseStudy />
+      <Benefits />
+      <Pricing />
+      <Testimonials />
+      <FAQs />
+      <CTA />
     </>
   );
 }
