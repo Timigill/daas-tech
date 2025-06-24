@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const caseStudies = [
@@ -9,7 +9,8 @@ const caseStudies = [
     image: "/case1.png",
     title: "Digital Systems Accelerate Sales- Smart Workflow Helped Close 3× More Deals, Faster",
     description:
-"RetailRev faced issues with overstock and missed sales. We helped them implement a dynamic inventory management system with real-time tracking and automated reordering — minimizing waste and maximizing sales.",    points: ["3x More Deals", "40% Faster Responses", "95% Lead Accuracy", "CRM Fully Synced"],
+      "RetailRev faced issues with overstock and missed sales. We helped them implement a dynamic inventory management system with real-time tracking and automated reordering — minimizing waste and maximizing sales.",
+    points: ["3x More Deals", "40% Faster Responses", "95% Lead Accuracy", "CRM Fully Synced"],
   },
   {
     id: 2,
@@ -33,6 +34,7 @@ const Study = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const scrollContainerRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,6 +57,17 @@ const Study = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === caseStudies.length - 1 ? 0 : prevIndex + 1
     );
+  };
+
+  const handleScroll = () => {
+    if (!scrollContainerRef.current || !isMobile) return;
+    const container = scrollContainerRef.current;
+    const scrollPosition = container.scrollLeft;
+    const containerWidth = container.offsetWidth;
+    const newIndex = Math.round(scrollPosition / containerWidth);
+    if (newIndex !== currentIndex) {
+      setCurrentIndex(newIndex);
+    }
   };
 
   const variants = {
@@ -105,148 +118,215 @@ const Study = () => {
         Case Studies
       </motion.span>
 
-<motion.h2
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 0.2 }}
-  viewport={{ once: true }}
-  style={{ fontWeight: 700, maxWidth: 800 }}
->
-  See How Smart Digital Solutions Transforms Businesses
-</motion.h2>
+      <motion.h2
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        viewport={{ once: true }}
+        style={{ fontWeight: 700, maxWidth: 800 }}
+      >
+        See How Smart Digital Solutions Transforms Businesses
+      </motion.h2>
 
-<motion.p
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 1, delay: 0.4 }}
-  viewport={{ once: true }}
-  style={{
-    fontSize: 17,
-    color: "#bdbdbd",
-    maxWidth: 600,
-    margin: "0 auto 40px auto",
-  }}
->
-  See how Digital Solutions streamlines operations, boosts productivity, and drives growth.
-</motion.p>
-
-      <div
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.4 }}
+        viewport={{ once: true }}
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "90vw",
-          maxWidth: 1100,
-          margin: "0 auto",
-          position: "relative",
+          fontSize: 17,
+          color: "#bdbdbd",
+          maxWidth: 600,
+          margin: "0 auto 40px auto",
         }}
       >
-        {/* Left Arrow */}
-        <motion.button
-          onClick={prev}
-          whileHover={{ scale: 1.2, rotate: -10 }}
-          whileTap={{ scale: 0.9 }}
-          style={{
-            background: "#111",
-            border: "2px solid #8b5cf6",
-            fontSize: "1.5rem",
-            color: "#8b5cf6",
-            cursor: "pointer",
-            borderRadius: "50%",
-            width: 50,
-            height: 50,
-            position: "absolute",
-            left: -60,
-            zIndex: 10,
-          }}
-        >
-          ‹
-        </motion.button>
+        See how Digital Solutions streamlines operations, boosts productivity, and drives growth.
+      </motion.p>
 
-        {/* Card */}
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={caseStudies[currentIndex].id}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.5 }}
-            whileHover={{
-              scale: 1.03,
-              boxShadow: "0 12px 35px rgba(0,0,0,0.5)",
-            }}
+      {isMobile ? (
+        <>
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
             style={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              borderRadius: 20,
-              overflow: "hidden",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+              overflowX: "auto",
+              scrollSnapType: "x mandatory",
               width: "100%",
-              minHeight: 420,
-              backgroundColor: "#111",
-              transition: "transform 0.3s ease",
+              maxWidth: "100%",
+              scrollBehavior: "smooth",
+              gap: "20px",
+              padding: "0 20px",
+              marginBottom: "20px",
+              WebkitOverflowScrolling: "touch",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
-            {/* Image Section */}
-            <div
-              style={{
-                flex: 1,
-                backgroundImage: `url(${caseStudies[currentIndex].image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                minHeight: 300,
-              }}
-            ></div>
+            {caseStudies.map((study) => (
+              <div
+                key={study.id}
+                style={{
+                  flex: "0 0 auto",
+                  width: "85vw",
+                  scrollSnapAlign: "start",
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                  minHeight: 420,
+                  backgroundColor: "#111",
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    backgroundImage: `url(${study.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+                <div style={{ padding: "20px", textAlign: "left" }}>
+                  <h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>{study.title}</h3>
+                  <p style={{ color: "#ccc", marginBottom: "15px", fontSize: "0.9rem" }}>
+                    {study.description}
+                  </p>
+                  <ul style={{ paddingLeft: 0, fontSize: "0.9rem" }}>
+                    {study.points.map((point, idx) => (
+                      <li key={idx} style={{ marginBottom: "6px", listStyleType: "none" }}>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
 
-            {/* Text Section */}
-            <div
-              style={{
-                flex: 1.2,
-                padding: 30,
-                textAlign: isMobile ? "center" : "left",
-              }}
-            >
-              <h3 style={{ fontSize: "1.75rem", marginBottom: 10 }}>
-                {caseStudies[currentIndex].title}
-              </h3>
-              <p style={{ color: "#ccc", marginBottom: 20 }}>
-                {caseStudies[currentIndex].description}
-              </p>
-              <ul style={{ paddingLeft: isMobile ? 0 : 20 }}>
-                {caseStudies[currentIndex].points.map((point, idx) => (
-                  <li key={idx} style={{ marginBottom: 6 }}>
-                    • {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Right Arrow */}
-        <motion.button
-          onClick={next}
-          whileHover={{ scale: 1.2, rotate: 10 }}
-          whileTap={{ scale: 0.9 }}
+          {/* Carousel Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: 20 }}>
+            {caseStudies.map((_, idx) => (
+              <div
+                key={idx}
+                style={{
+                  width: 10,
+                  height: 10, 
+                  borderRadius: "50%",
+                  backgroundColor: idx === currentIndex ? "#8b5cf6" : "#444",
+                  transition: "background-color 0.3s ease",
+                }}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div
           style={{
-            background: "#111",
-            border: "2px solid #8b5cf6",
-            fontSize: "1.5rem",
-            color: "#8b5cf6",
-            cursor: "pointer",
-            borderRadius: "50%",
-            width: 50,
-            height: 50,
-            position: "absolute",
-            right: -60,
-            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "90vw",
+            maxWidth: 1100,
+            margin: "0 auto",
+            position: "relative",
           }}
         >
-          ›
-        </motion.button>
-      </div>
+          <motion.button
+            onClick={prev}
+            whileHover={{ scale: 1.2, rotate: -10 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              background: "#111",
+              border: "2px solid #8b5cf6",
+              fontSize: "1.5rem",
+              color: "#8b5cf6",
+              cursor: "pointer",
+              borderRadius: "50%",
+              width: 50,
+              height: 50,
+              position: "absolute",
+              left: -60,
+              zIndex: 10,
+            }}
+          >
+            ‹
+          </motion.button>
+
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={caseStudies[currentIndex].id}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0 12px 35px rgba(0,0,0,0.5)",
+              }}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                borderRadius: 20,
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                width: "100%",
+                minHeight: 420,
+                backgroundColor: "#111",
+                transition: "transform 0.3s ease",
+              }}
+            >
+              <div
+                style={{
+                  flex: 1,
+                  backgroundImage: `url(${caseStudies[currentIndex].image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  minHeight: 300,
+                }}
+              ></div>
+
+              <div style={{ flex: 1.2, padding: 30, textAlign: "left" }}>
+                <h3 style={{ fontSize: "1.75rem", marginBottom: 10 }}>
+                  {caseStudies[currentIndex].title}
+                </h3>
+                <p style={{ color: "#ccc", marginBottom: 20 }}>
+                  {caseStudies[currentIndex].description}
+                </p>
+                <ul style={{ paddingLeft: 20 }}>
+                  {caseStudies[currentIndex].points.map((point, idx) => (
+                    <li key={idx} style={{ marginBottom: 6 }}>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.button
+            onClick={next}
+            whileHover={{ scale: 1.2, rotate: 10 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              background: "#111",
+              border: "2px solid #8b5cf6",
+              fontSize: "1.5rem",
+              color: "#8b5cf6",
+              cursor: "pointer",
+              borderRadius: "50%",
+              width: 50,
+              height: 50,
+              position: "absolute",
+              right: -60,
+              zIndex: 10,
+            }}
+          >
+            ›
+          </motion.button>
+        </div>
+      )}
     </section>
   );
 };

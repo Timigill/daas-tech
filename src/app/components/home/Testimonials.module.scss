@@ -3,10 +3,11 @@ $white: #ffffff;
 $muted: #cccccc;
 
 .testimonialSection {
-  padding: 4rem 7rem;
+  padding: 4rem 1.25rem; // use rem instead of fixed px, reduced for small screens
   background-color: #000;
   color: $white;
   text-align: left;
+  overflow-x: hidden; // prevent horizontal scroll
 }
 
 .grid {
@@ -36,12 +37,14 @@ $muted: #cccccc;
     color: #fff;
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    word-break: break-word;
   }
 
   .text {
     font-size: 1rem;
     margin-bottom: 1.5rem;
     line-height: 1.5;
+    word-break: break-word;
   }
 
   .profile {
@@ -58,10 +61,11 @@ $muted: #cccccc;
     }
 
     .avatar {
-    border-radius: 50%;
-    object-fit: cover;
-  border: 2px solid #a47aff;
-}
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #a47aff;
+    }
+
     div {
       display: flex;
       flex-direction: column;

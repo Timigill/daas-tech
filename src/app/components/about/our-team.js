@@ -1,14 +1,11 @@
 import React from 'react'
-import { AiFillSignal } from "react-icons/ai";
-import { GoClockFill } from "react-icons/go";
-import { FaBolt } from "react-icons/fa6";
-import "@/app/globals.css"
-function Who() {
+import { LiaLinkedin } from "react-icons/lia";
+
+function team() {
   return (
-    <div>
-      <div
-        className='d-flex flex-column align-items-center text-center my-5 py-5 px-3'
-      >
+    <div className="d-flex flex-column align-items-center text-center my-5 py-5 px-3">
+      <div>
+        {/* Tagline */}
         <span
           className="badge px-3 py-2"
           style={{
@@ -23,12 +20,14 @@ function Who() {
           marginBottom: 12,
           }}
         >
-          Who We Are
+          Our Team
         </span>
+
+        {/* Main Heading */}
         <h1
           className="mt-"
           style={{
-            fontFamily: "Inter, sans-serif",
+             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
             // fontSize: "3.5rem",
             lineHeight: 1.1,
@@ -37,19 +36,20 @@ function Who() {
             margin: "0 auto",
           }}
         >
-          Who We Are
+          Meet the Minds Behind DaaS
         </h1>
+
+        {/* Subheading */}
         <p
           className="mt-3 text-white-50"
           style={{
             fontFamily: "Inter, sans-serif",
-            fontSize: "0.9rem",
-            maxWidth: 620,
+            fontSize: "1rem",
+            maxWidth: 550,
             margin: "0 auto",
           }}
         >
-          DaaS Tech is a team of innovators dedicated to making your Digital Presence simple and effective.
-          We help businesses streamline workflows, boost efficiency, and scale with smart.
+          We bring together technology and strategy to create smarter Digital solutions.
         </p>
       </div>
 
@@ -57,39 +57,46 @@ function Who() {
         <div className="row justify-content-center g-3">
           {/* Column 1 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
-              <div className="d-flex gap-2 mb-2">
-                <AiFillSignal size={23} style={{ color: "white" }} />
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/alex.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <div className="d-flex mt-2 justify-content-between">
                 <h5
-                 className="mb-0 text-white"
-                 style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "15",
+                  className="mb-0 text-white"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "15",
                   }}
-                  >
-                  150+ Businesses
-                  </h5>
+                >
+                  Saad Tariq
+                </h5>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
-                className="text-white-50"
+                className="text-white-50 text-start mt-2"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 230,
+                  fontSize: "1rem",
+                  maxWidth: 580,
                 }}
               >
-                Companies have streamlined their workflows with DaaS Digital solutions.
+                Co-Founder & FE Developer.
               </p>
             </div>
           </div>
 
           {/* Column 2 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded  text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
-              <div className="d-flex gap-2 mb-2">
-                <GoClockFill size={23} style={{ color: "white" }} />
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/Sophia.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"
                   style={{
@@ -97,28 +104,32 @@ function Who() {
                     fontSize: "15",
                   }}
                 >
-                  1M+ Hours
+                  Sophia Nguyen
                 </h5>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
-                className="text-white-50"
+                className="text-white-50 text-start mt-2"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 230,
+                  fontSize: "1rem",
+                  maxWidth: 580,
                 }}>
-                Reducing time and boosting productivity through automation.
+                Head of Automation Engineering
               </p>
             </div>
           </div>
 
           {/* Column 3 */}
           <div className="col-md-3">
-            <div className="p-3 shadow rounded text-white" style={{  background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))"}}>
-              <div className="d-flex gap-2 mb-2">
-                <FaBolt size={23} style={{ color: "white", }} />
+            <div className="p-3 shadow rounded bg-gradient text-white"
+              style={{
+                border: " 1px solid #222 ",
+              }}>
+              <img src="/About-Us/Riyan.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"
                   style={{
@@ -126,29 +137,28 @@ function Who() {
                     fontSize: "15",
                   }}
                 >
-                  95% Faster
+                  Ryan Mitchell
                 </h5>
+                <LiaLinkedin size={23} className='text-white-50' />
               </div>
               <p
-                className="text-white-50"
+                className="text-white-50 text-start mt-2"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 230,
+                  fontSize: "1rem",
+                  maxWidth: 580,
                 }}>
-                Clients see improved efficiency within the first three months.
+                Lead Data Scientist
               </p>
             </div>
           </div>
         </div>
       </div>
 
-
     </div>
-
   )
 }
 
-export default Who
+export default team
