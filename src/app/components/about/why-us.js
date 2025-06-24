@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa6";
 
 function Why() {
   return (
-    <div className="d-flex flex-column align-items-center text-center mt-5 px-3">
+    <div className="d-flex flex-column vh-100 align-items-center text-center mt-5 py-5 my-5 px-3">
       {/* Header Section */}
       <div>
         <span

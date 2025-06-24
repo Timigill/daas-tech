@@ -136,13 +136,12 @@ input:focus {
   position: relative;
   overflow: hidden;
   width: 50%;
-  height: 140px;
+  height: auto;
 
   /* Fade edges using mask-image */
   mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
-
 .slider-track {
   width: 100%;
   overflow: hidden;
@@ -152,10 +151,13 @@ input:focus {
   display: flex;
   width: max-content; /* Ensure full width for animation */
   animation: slideLeft 30s linear infinite;
+  justify-content: center;
+  align-items: center;
 }
 
 .slider-image {
-  width: 130px;
+  width: 130px; /* Adjust width as needed */
+  height: auto;
   margin-right: 1rem;
   flex-shrink: 0;
 }

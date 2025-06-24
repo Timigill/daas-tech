@@ -81,7 +81,7 @@ const Testimonials = () => {
                   maxWidth: 500,
                 }}
               >
-                Why Businesses Love Our AI Solutions
+                Why Businesses Love Our Digital Solutions
               </motion.h2>
         
               <motion.p
@@ -96,7 +96,7 @@ const Testimonials = () => {
                   margin: "0 auto 40px auto",
                 }}
               >
-               Real businesses, real results with AI automation.
+               Real businesses, real results with digital solutions.
               </motion.p>
     <section className={styles.testimonialSection}>
       <div className={styles.grid}>

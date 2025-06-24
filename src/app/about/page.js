@@ -14,22 +14,12 @@ export default function about() {
     <div>
 
       <Hero />
-      <Trust/>
       <Who />
-      <br/>
-      <br/>
-      <br/>
-      <br/>
       <Values />
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Why/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Team/>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <Faq/>
-      <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> 
       <CallToAction/>
-      <br/><br/><br/><br/> 
     </div>
   )
 }

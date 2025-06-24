@@ -4,7 +4,7 @@ import { FaUserGroup } from "react-icons/fa6";
 
 function Values() {
   return (
-    <div className="d-flex flex-column align-items-center text-center my-5 py-5 px-3">
+    <div className="d-flex flex-column vh-100 align-items-center text-center my-5 py-5 px-3">
       {/* Header */}
       <div>
         <span
