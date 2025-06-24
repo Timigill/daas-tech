@@ -86,292 +86,447 @@ export default function Page() {
     };
 
     return (
-        <div className="mt-5">
-            <h1
-                className="text-start text-white-50 py-2"
-                style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontWeight: 500,
-                    fontSize: "1rem",
-                    lineHeight: 1.1,
-                    borderBottom: "1px solid rgba(255,255,255,0.1)",
-                    width: "59%",
-                    marginLeft: "2rem",
-                }}
-            >
-                Get a Quote
-            </h1>
-
+        <div className="mt-5 px-3 px-md-5">
             <form onSubmit={handleSubmit} noValidate>
-                <div className="row justify-content-center gap-2 mt-3">
-                    <div className='col-7'>
-                        <div style={{
+                {/* Main Form Section */}
+                <div className="row justify-content-center mt-3 g-5">
+                    {/* Left Column - Form Fields */}
+                    <div className='col-12 col-lg-7'>
+                        <div className="d-flex flex-column" style={{
                             boxShadow: "inset 0 0 60px #212121",
-                            borderTopLeftRadius: "1rem",
-                            borderBottomLeftRadius: "1rem",
+                            borderRadius: "1rem 0 0 1rem",
                             padding: "2rem",
-                            color: "#fff"
+                            color: "#fff",
+                            minHeight: "100%"
                         }}>
+                            <h1 className="text-white-50 py-2" style={{
+                                fontFamily: "Inter, sans-serif",
+                                fontWeight: 500,
+                                fontSize: "1rem",
+                                lineHeight: 1.1,
+                                borderBottom: "1px solid #d9d9cb",
+                            }}>
+                                Get a Quote
+                            </h1>
+
                             {/* Project Name */}
-                            <label className="text-white-50 mt-4">Project Name *</label>
-                            <input
-                                name="project"
-                                type="text"
-                                value={formData.project}
-                                onChange={handleChange}
-                                placeholder="Enter name of the Project"
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: "#000",
-                                    border: `1px solid ${errors.project ? "red" : "#444"}`,
-                                    borderRadius: "4px",
-                                }}
-                            />
-                            {errors.project && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.project}</span>}
+                            <div className="mt-4">
+                                <label className="text-white-50">Project Name *</label>
+                                <input
+                                    name="project"
+                                    type="text"
+                                    value={formData.project}
+                                    onChange={handleChange}
+                                    placeholder="Enter name of the Project"
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: "#000",
+                                        border: `1px solid ${errors.project ? "red" : "#444"}`,
+                                        borderRadius: "4px",
+                                    }}
+                                />
+                                {errors.project && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.project}</span>}
+                            </div>
 
                             {/* Customer Type */}
-                            <label className="text-white-50 mt-3">Customer Type *</label>
-                            <select
-                                name="customerType"
-                                value={formData.customerType}
-                                onChange={handleChange}
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: "#000",
-                                    border: `1px solid ${errors.customerType ? "red" : "#444"}`,
-                                    borderRadius: "4px",
-                                }}
-                            >
-                                <option value="">-- Are you a new or existing customer? --</option>
-                                <option value="new">I am a new customer</option>
-                                <option value="existing">I am an existing customer</option>
-                            </select>
-                            {errors.customerType && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.customerType}</span>}
+                            <div className="mt-3">
+                                <label className="text-white-50">Customer Type *</label>
+                                <select
+                                    name="customerType"
+                                    value={formData.customerType}
+                                    onChange={handleChange}
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: "#000",
+                                        border: `1px solid ${errors.customerType ? "red" : "#444"}`,
+                                        borderRadius: "4px",
+                                    }}
+                                >
+                                    <option value="">-- Are you a new or existing customer? --</option>
+                                    <option value="new">I am a new customer</option>
+                                    <option value="existing">I am an existing customer</option>
+                                </select>
+                                {errors.customerType && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.customerType}</span>}
+                            </div>
 
                             {/* Services */}
-                            <label className="text-white-50 mt-4">Project Category</label>
-                            {services.map((group, idx) => (
-                                <ol key={idx} className={`d-flex gap-3 mt-3`} style={{ listStyle: "none", paddingLeft: 0, margin: 0 }}>
-                                    {group.map((item, i) => (
-                                        <li key={i} className="d-flex align-items-center gap-1">
-                                            <input
-                                                type="checkbox"
-                                                id={`item-${idx}-${i}`}
-                                                value={item}
-                                                checked={formData.selectedServices.includes(item)}
-                                                onChange={handleServiceChange}
-                                            />
-                                            <label htmlFor={`item-${idx}-${i}`} className="text-white-50" style={{ cursor: "pointer" }}>{item}</label>
-                                        </li>
+                            <div className="mt-4">
+                                <label className="text-white-50">Project Category</label>
+                                <div className="row mt-3 g-2">
+                                    {services.map((group, idx) => (
+                                        <div key={idx} className="col-12 col-md-6">
+                                            {group.map((item, i) => (
+                                                <div key={i} className="form-check">
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id={`item-${idx}-${i}`}
+                                                        value={item}
+                                                        checked={formData.selectedServices.includes(item)}
+                                                        onChange={handleServiceChange}
+                                                        style={{ backgroundColor: "#000", borderColor: "#6a1b9a" }}
+                                                    />
+                                                    <label className="form-check-label text-white-50" htmlFor={`item-${idx}-${i}`} style={{ fontSize: "0.9rem" }}>
+                                                        {item}
+                                                    </label>
+                                                </div>
+                                            ))}
+                                        </div>
                                     ))}
-                                </ol>
-                            ))}
+                                </div>
+                            </div>
 
                             {/* Timeline */}
-                            <label className="text-white-50 mt-4">Project Timeline *</label>
-                            <select
-                                name="timeline"
-                                value={formData.timeline}
-                                onChange={handleChange}
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: "#000",
-                                    border: `1px solid ${errors.timeline ? "red" : "#444"}`,
-                                    borderRadius: "4px",
-                                }}
-                            >
-                                <option value="">Select Timeline</option>
-                                <option value="week">Less than 1 Week</option>
-                                <option value="1-month">1 Month</option>
-                                <option value="1-3-months">1-3 Months</option>
-                                <option value="3-6-months">3-6 Months</option>
-                                <option value="more-than-6">More than 6 Months</option>
-                                <option value="not-sure">Not Sure</option>
-                            </select>
-                            {errors.timeline && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.timeline}</span>}
+                            <div className="mt-4">
+                                <label className="text-white-50">Project Timeline *</label>
+                                <select
+                                    name="timeline"
+                                    value={formData.timeline}
+                                    onChange={handleChange}
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: "#000",
+                                        border: `1px solid ${errors.timeline ? "red" : "#444"}`,
+                                        borderRadius: "4px",
+                                    }}
+                                >
+                                    <option value="">Select Timeline</option>
+                                    <option value="week">Less than 1 Week</option>
+                                    <option value="1-month">1 Month</option>
+                                    <option value="1-3-months">1-3 Months</option>
+                                    <option value="3-6-months">3-6 Months</option>
+                                    <option value="more-than-6">More than 6 Months</option>
+                                    <option value="not-sure">Not Sure</option>
+                                </select>
+                                {errors.timeline && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.timeline}</span>}
+                            </div>
 
                             {/* Budget */}
-                            <label className="text-white-50 mt-4">Select your Budget *</label>
-                            <select
-                                name="budget"
-                                value={formData.budget}
-                                onChange={handleChange}
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: "#000",
-                                    border: `1px solid ${errors.budget ? "red" : "#444"}`,
-                                    borderRadius: "4px",
-                                }}
-                            >
-                                <option value="">Select budget in USD</option>
-                                <option value="500-1000">$500–$1,000</option>
-                                <option value="1000-2000">$1,000–$2,000</option>
-                                <option value="2000-5000">$2,000–$5,000</option>
-                                <option value="5000-10000">$5,000–$10,000</option>
-                                <option value="10000-20000">$10,000–$20,000</option>
-                                <option value="20000-50000">$20,000–$50,000</option>
-                                <option value="50000+">$50,000+</option>
-                            </select>
-                            {errors.budget && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.budget}</span>}
+                            <div className="mt-4">
+                                <label className="text-white-50">Select your Budget *</label>
+                                <select
+                                    name="budget"
+                                    value={formData.budget}
+                                    onChange={handleChange}
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: "#000",
+                                        border: `1px solid ${errors.budget ? "red" : "#444"}`,
+                                        borderRadius: "4px",
+                                    }}
+                                >
+                                    <option value="">Select budget in USD</option>
+                                    <option value="500-1000">$500–$1,000</option>
+                                    <option value="1000-2000">$1,000–$2,000</option>
+                                    <option value="2000-5000">$2,000–$5,000</option>
+                                    <option value="5000-10000">$5,000–$10,000</option>
+                                    <option value="10000-20000">$10,000–$20,000</option>
+                                    <option value="20000-50000">$20,000–$50,000</option>
+                                    <option value="50000+">$50,000+</option>
+                                </select>
+                                {errors.budget && <span className="text-danger" style={{ fontSize: "0.85rem", marginTop: "2px", display: "block" }}>{errors.budget}</span>}
+                            </div>
                         </div>
                     </div>
-                
-                    {/* Sidebar */}
-                    <div className="col-4 p-4" style={{ background: "linear-gradient(135deg, #1b1525, #6a1b9a)", boxShadow: "8px 0 30px rgba(106, 27, 154, 0.3)", height: "80vh", color: "#fff", borderTopRightRadius: "1rem", borderBottomRightRadius: "1rem" }}>
-                        <h1 className="text-start text-white-50 py-2" style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "1rem", lineHeight: 1.1, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Get in Touch</h1>
-                        <p className="mt-4 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>Renowned mobile app and web development company delivering user-engaging mobile applications and responsive websites for multiple industry verticals.</p>
+
+                    {/* Right Column - Sidebar */}
+                    <div className="col-12 col-lg-4 p-4" style={{ 
+                        background: "linear-gradient(135deg, #1b1525, #6a1b9a)", 
+                        boxShadow: "8px 0 30px rgba(106, 27, 154, 0.3)", 
+                        color: "#fff", 
+                        borderRadius: "0 1rem 1rem 0",
+                        height:"80vh"
+                    }}>
+                        <h1 className="text-start text-white-50 py-2" style={{ 
+                            fontFamily: "Inter, sans-serif", 
+                            fontWeight: 500, 
+                            fontSize: "1rem", 
+                            lineHeight: 1.1, 
+                            borderBottom: "1px solid rgba(255,255,255,0.1)" 
+                        }}>
+                            Get in Touch
+                        </h1>
+                        <p className="mt-4 text-white-50" style={{ 
+                            fontFamily: "Inter, sans-serif", 
+                            fontSize: "0.8rem", 
+                            lineHeight: "1.5" 
+                        }}>
+                            Renowned mobile app and web development company delivering user-engaging mobile applications and responsive websites for multiple industry verticals.
+                        </p>
                         <ol className="mt-4 text-white-50" style={{ listStyle: "none", paddingLeft: 0, margin: 0 }}>
-                            <li className="d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}><HiOutlineMail size={18} /><span><strong>Email:</strong> founder@daastech.info</span></li>
-                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}><FaPhone size={18} /><span><strong>Phone:</strong> +923188672096</span></li>
-                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}><MdPhoneIphone size={18} /><span><strong>Mobile:</strong> +923016860925</span></li>
-                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}><TbWorld size={18} /><span><strong>Int. Contact#:</strong> +1-(267)489-6694</span></li>
+                            <li className="d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}>
+                                <HiOutlineMail size={18} />
+                                <span><strong>Email:</strong> founder@daastech.info</span>
+                            </li>
+                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}>
+                                <FaPhone size={18} />
+                                <span><strong>Phone:</strong> +923188672096</span>
+                            </li>
+                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}>
+                                <MdPhoneIphone size={18} />
+                                <span><strong>Mobile:</strong> +923016860925</span>
+                            </li>
+                            <li className="mt-3 d-flex align-items-center gap-2" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem" }}>
+                                <TbWorld size={18} />
+                                <span><strong>Int. Contact#:</strong> +1-(267)489-6694</span>
+                            </li>
                         </ol>
-                        <h1 className="text-start text-white-50 py-2 mt-4" style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "1rem", lineHeight: 1.1, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>Working Hours</h1>
-                        <p className="mt-4 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>Monday - Friday: 09:00 AM – 06:00 PM</p>
-                        <p className="mt-2 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>Saturday - Sunday: Closed</p>
+                        <h1 className="text-start text-white-50 py-2 mt-4" style={{ 
+                            fontFamily: "Inter, sans-serif", 
+                            fontWeight: 500, 
+                            fontSize: "1rem", 
+                            lineHeight: 1.1, 
+                            borderBottom: "1px solid rgba(255,255,255,0.1)" 
+                        }}>
+                            Working Hours
+                        </h1>
+                        <p className="mt-4 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>
+                            Monday - Friday: 09:00 AM – 06:00 PM
+                        </p>
+                        <p className="mt-2 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>
+                            Saturday - Sunday: Closed
+                        </p>
                     </div>
                 </div>
 
-                {/* Contact Section */}
-                <div className="row gap-2 mt-3 px-5">
-                    <div className="col-7">
+                {/* Contact Information Section */}
+                <div className="row justify-content-center mt-3 g-0">
+                    <div className="col-12 col-lg-7">
                         <div style={{
                             boxShadow: 'inset 0 0 60px #212121',
-                            borderTopLeftRadius: '1rem',
-                            borderBottomLeftRadius: '1rem',
+                            borderRadius: "1rem 0 0 1rem",
                             padding: '2rem',
                             color: '#fff',
                         }}>
-                            <h1 className="text-start text-white-50 py-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '1.4rem' }}>Contact Information</h1>
+                            <h1 className="text-start text-white-50 py-2" style={{ 
+                                fontFamily: 'Inter, sans-serif', 
+                                fontWeight: 500, 
+                                fontSize: '1.4rem' 
+                            }}>
+                                Contact Information
+                            </h1>
 
                             {/* Full Name */}
-                            <label className="text-white-50 mt-3">Full Name *</label>
-                            <input
-                                name="contactName"
-                                type="text"
-                                value={formData.contactName}
-                                onChange={handleChange}
-                                placeholder="Enter full name"
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: '#000',
-                                    border: `1px solid ${errors.contactName ? 'red' : '#444'}`,
-                                    borderRadius: '4px',
-                                }}
-                            />
-                            {errors.contactName && (
-                                <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
-                                    {errors.contactName}
-                                </span>
-                            )}
+                            <div className="mt-3">
+                                <label className="text-white-50">Full Name *</label>
+                                <input
+                                    name="contactName"
+                                    type="text"
+                                    value={formData.contactName}
+                                    onChange={handleChange}
+                                    placeholder="Enter full name"
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: '#000',
+                                        border: `1px solid ${errors.contactName ? 'red' : '#444'}`,
+                                        borderRadius: '4px',
+                                    }}
+                                />
+                                {errors.contactName && (
+                                    <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
+                                        {errors.contactName}
+                                    </span>
+                                )}
+                            </div>
 
                             {/* Email */}
-                            <label className="text-white-50 mt-3">Email Address *</label>
-                            <input
-                                name="contactEmail"
-                                type="email"
-                                value={formData.contactEmail}
-                                onChange={handleChange}
-                                placeholder="Email Address"
-                                className="form-control text-white mt-1"
-                                style={{
-                                    backgroundColor: '#000',
-                                    border: `1px solid ${errors.contactEmail ? 'red' : '#444'}`,
-                                    borderRadius: '4px',
-                                }}
-                            />
-                            {errors.contactEmail && (
-                                <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
-                                    {errors.contactEmail}
-                                </span>
-                            )}
+                            <div className="mt-3">
+                                <label className="text-white-50">Email Address *</label>
+                                <input
+                                    name="contactEmail"
+                                    type="email"
+                                    value={formData.contactEmail}
+                                    onChange={handleChange}
+                                    placeholder="Email Address"
+                                    className="form-control text-white mt-1"
+                                    style={{
+                                        backgroundColor: '#000',
+                                        border: `1px solid ${errors.contactEmail ? 'red' : '#444'}`,
+                                        borderRadius: '4px',
+                                    }}
+                                />
+                                {errors.contactEmail && (
+                                    <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
+                                        {errors.contactEmail}
+                                    </span>
+                                )}
+                            </div>
 
                             {/* Mobile Number */}
-                            <label className="text-white-50 mt-3">Mobile Number *</label>
-                            <PhoneInput
-                                country={'pk'}
-                                value={formData.contactPhone}
-                                onChange={(value) => setFormData(prev => ({ ...prev, contactPhone: value }))}
-                                inputStyle={{
-                                    backgroundColor: '#000',
-                                    color: '#fff',
-                                    border: `1px solid ${errors.contactPhone ? 'red' : '#444'}`,
-                                    borderRadius: '4px',
-                                    width: '100%',
-                                }}
-                                buttonStyle={{
-                                    backgroundColor: '#000',
-                                    borderRight: '1px solid #444',
-                                }}
-                                placeholder="e.g. +92 3xx xxxxxxx"
-                            />
-                            {errors.contactPhone && (
-                                <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
-                                    {errors.contactPhone}
-                                </span>
-                            )}
+                            <div className="mt-3">
+                                <label className="text-white-50">Mobile Number *</label>
+                                <PhoneInput
+                                    country={'pk'}
+                                    value={formData.contactPhone}
+                                    onChange={(value) => setFormData(prev => ({ ...prev, contactPhone: value }))}
+                                    inputStyle={{
+                                        backgroundColor: '#000',
+                                        color: '#fff',
+                                        border: `1px solid ${errors.contactPhone ? 'red' : '#444'}`,
+                                        borderRadius: '4px',
+                                        width: '100%',
+                                        height: 'calc(1.5em + 0.75rem + 2px)'
+                                    }}
+                                    buttonStyle={{
+                                        backgroundColor: '#000',
+                                        borderRight: '1px solid #444',
+                                    }}
+                                    placeholder="e.g. +92 3xx xxxxxxx"
+                                />
+                                {errors.contactPhone && (
+                                    <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
+                                        {errors.contactPhone}
+                                    </span>
+                                )}
+                            </div>
 
-                            <h1 className="text-start text-white-50 py-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '1.4rem' }}>
+                            <h1 className="text-start text-white-50 py-2 mt-4" style={{ 
+                                fontFamily: 'Inter, sans-serif', 
+                                fontWeight: 500, 
+                                fontSize: '1.4rem' 
+                            }}>
                                 Preferred contact method
                             </h1>
 
-                            <ol style={{ listStyle: "none", paddingLeft: "0", margin: "0", display: "flex", gap: "1rem", alignItems: "center" }}>
-                                <li className="d-flex align-items-center gap-1">
-                                    <input type="checkbox" id="phone" value="phone" checked={formData.contactMethod.includes("phone")} onChange={handleContactMethodChange} />
-                                    <label htmlFor="phone" className="text-white-50" style={{ cursor: "pointer" }}>Phone</label>
-                                </li>
-                                <li className="d-flex align-items-center gap-1">
-                                    <input type="checkbox" id="email" value="email" checked={formData.contactMethod.includes("email")} onChange={handleContactMethodChange} />
-                                    <label htmlFor="email" className="text-white-50" style={{ cursor: "pointer" }}>Email</label>
-                                </li>
-                            </ol>
+                            <div className="d-flex gap-3">
+                                <div className="form-check">
+                                    <input 
+                                        className="form-check-input" 
+                                        type="checkbox" 
+                                        id="phone" 
+                                        value="phone" 
+                                        checked={formData.contactMethod.includes("phone")} 
+                                        onChange={handleContactMethodChange} 
+                                        style={{ backgroundColor: "#000", borderColor: "#6a1b9a" }}
+                                    />
+                                    <label className="form-check-label text-white-50" htmlFor="phone">
+                                        Phone
+                                    </label>
+                                </div>
+                                <div className="form-check">
+                                    <input 
+                                        className="form-check-input" 
+                                        type="checkbox" 
+                                        id="email" 
+                                        value="email" 
+                                        checked={formData.contactMethod.includes("email")} 
+                                        onChange={handleContactMethodChange} 
+                                        style={{ backgroundColor: "#000", borderColor: "#6a1b9a" }}
+                                    />
+                                    <label className="form-check-label text-white-50" htmlFor="email">
+                                        Email
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    {/* Empty column to match layout */}
+                    <div className="col-12 col-lg-4 d-none d-lg-block"></div>
                 </div>
 
                 {/* Project Description Section */}
-                <div className="row gap-2 mt-3 px-5">
-                    <div className="col-7">
+                <div className="row justify-content-center mt-3 g-0">
+                    <div className="col-12 col-lg-7">
                         <div style={{
                             boxShadow: 'inset 0 0 60px #212121',
-                            borderTopLeftRadius: '1rem',
-                            borderBottomLeftRadius: '1rem',
+                            borderRadius: "1rem 0 0 1rem",
                             padding: '2rem',
                             color: '#fff',
                         }}>
-                            <h1 className="text-start text-white-50 py-2" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '1.4rem' }}>Project Description</h1>
+                            <h1 className="text-start text-white-50 py-2" style={{ 
+                                fontFamily: 'Inter, sans-serif', 
+                                fontWeight: 500, 
+                                fontSize: '1.4rem' 
+                            }}>
+                                Project Description
+                            </h1>
 
-                            <label className="text-white-50 mt-3">Enter your Project Description *</label>
-                            <textarea
-                                name="fullName"
-                                value={formData.fullName}
-                                onChange={handleChange}
-                                placeholder="Project Description"
-                                className="form-control text-white mt-1"
-                                style={{ height: "40vh", backgroundColor: 'rgb(41 36 36)', border: `1px solid ${errors.fullName ? 'red' : '#444'}`, borderRadius: '4px', paddingTop: '0.5rem', resize: 'none' }}
-                            />
-                            {errors.fullName && <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>{errors.fullName}</span>}
-
-                            <label className="text-white-50 mt-4">Additional project files (optional)</label>
-                            <div className="form-control d-flex justify-content-between align-items-center text-white mt-1" style={{ backgroundColor: "#000", border: "1px solid #444", borderRadius: "4px", padding: "0.375rem 0.75rem", height: "2.7rem" }}>
-                                <label htmlFor="fileUpload" style={{ marginBottom: 0, cursor: "pointer", backgroundColor: "#444", color: "#fff", padding: "2px 10px", borderRadius: "4px", fontSize: "0.85rem" }}>Choose File</label>
-                                <span className="text-white-50" style={{ fontSize: "0.85rem" }}>{formData.fileName || "No file chosen"}</span>
-                                <input
-                                    id="fileUpload"
-                                    name="file"
-                                    type="file"
-                                    onChange={(e) => {
-                                        const file = e.target.files[0];
-                                        setFormData((prev) => ({ ...prev, file, fileName: file ? file.name : "" }));
+                            <div className="mt-3">
+                                <label className="text-white-50">Enter your Project Description *</label>
+                                <textarea
+                                    name="fullName"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
+                                    placeholder="Project Description"
+                                    className="form-control text-white mt-1"
+                                    style={{ 
+                                        height: "40vh", 
+                                        backgroundColor: 'rgb(41 36 36)', 
+                                        border: `1px solid ${errors.fullName ? 'red' : '#444'}`, 
+                                        borderRadius: '4px', 
+                                        paddingTop: '0.5rem', 
+                                        resize: 'none' 
                                     }}
-                                    style={{ display: "none" }}
                                 />
+                                {errors.fullName && (
+                                    <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
+                                        {errors.fullName}
+                                    </span>
+                                )}
                             </div>
-                            <p className="mt-2 text-white-50" style={{ fontFamily: "Inter, sans-serif", fontSize: "0.8rem", lineHeight: "1.5" }}>You may attach up to 5 files under 100MB each</p>
 
-                            <button type="submit" className="btn btn-primary mt-2" style={{ backgroundColor: '#6a1b9a', border: 'none' }}>Submit</button>
+                            <div className="mt-4">
+                                <label className="text-white-50">Additional project files (optional)</label>
+                                <div className="form-control d-flex justify-content-between align-items-center text-white mt-1" style={{ 
+                                    backgroundColor: "#000", 
+                                    border: "1px solid #444", 
+                                    borderRadius: "4px", 
+                                    padding: "0.375rem 0.75rem", 
+                                    height: "2.7rem" 
+                                }}>
+                                    <label htmlFor="fileUpload" style={{ 
+                                        marginBottom: 0, 
+                                        cursor: "pointer", 
+                                        backgroundColor: "#444", 
+                                        color: "#fff", 
+                                        padding: "2px 10px", 
+                                        borderRadius: "4px", 
+                                        fontSize: "0.85rem" 
+                                    }}>
+                                        Choose File
+                                    </label>
+                                    <span className="text-white-50" style={{ fontSize: "0.85rem" }}>
+                                        {formData.fileName || "No file chosen"}
+                                    </span>
+                                    <input
+                                        id="fileUpload"
+                                        name="file"
+                                        type="file"
+                                        onChange={(e) => {
+                                            const file = e.target.files[0];
+                                            setFormData((prev) => ({ ...prev, file, fileName: file ? file.name : "" }));
+                                        }}
+                                        style={{ display: "none" }}
+                                    />
+                                </div>
+                                <p className="mt-2 text-white-50" style={{ 
+                                    fontFamily: "Inter, sans-serif", 
+                                    fontSize: "0.8rem", 
+                                    lineHeight: "1.5" 
+                                }}>
+                                    You may attach up to 5 files under 100MB each
+                                </p>
+                            </div>
+
+                            <button 
+                                type="submit" 
+                                className="btn btn-primary mt-4 w-100" 
+                                style={{ 
+                                    backgroundColor: '#6a1b9a', 
+                                    border: 'none', 
+                                    padding: '0.75rem',
+                                    borderRadius: '4px',
+                                    fontWeight: '500'
+                                }}
+                            >
+                                Submit
+                            </button>
                         </div>
                     </div>
+
+                    {/* Empty column to match layout */}
+                    <div className="col-12 col-lg-4 d-none d-lg-block"></div>
                 </div>
             </form>
         </div>
