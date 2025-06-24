@@ -125,3 +125,72 @@ input:focus {
   z-index: 1;
 }
 .hide{overflow-x: hidden !important;}
+
+.go-back-btn {
+  background-color: rgb(139, 92, 246);
+  color: white;
+  height: 35px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.go-back-btn:hover {
+  background-color: rgb(139, 92, 246); /* Keep color same */
+}
+
+/* Content wrapper */
+.go-back-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+}
+
+/* Slide content up on hover */
+.go-back-btn:hover .go-back-content {
+  transform: translateY(-3px);
+}
+
+/* Icons styling */
+.go-back-icon {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Default arrow shown normally */
+.default-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Forward arrow hidden initially */
+.hover-icon {
+  opacity: 0;
+  transform: translateX(-10px);
+  position: absolute;
+}
+
+/* Swap icons smoothly */
+.go-back-btn:hover .default-icon {
+  opacity: 0;
+  transform: translateX(10px);
+  position: absolute;
+}
+
+.go-back-btn:hover .hover-icon {
+  opacity: 1;
+  transform: translateX(0);
+  position: static;
+  margin-left: 4px;
+}
+
