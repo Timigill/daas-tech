@@ -7,9 +7,14 @@ $muted: #cccccc;
 
 .pricingSection {
   background-color: $background-dark;
-  padding: 4rem 5rem;
+  padding: 4rem 1.5rem; // reduced horizontal padding for mobile
   color: $starter-color;
   text-align: left;
+  overflow-x: hidden; // prevent horizontal scroll
+
+  @media (min-width: 768px) {
+    padding: 4rem 5rem;
+  }
 }
 
 .toggleContainer {
@@ -77,6 +82,7 @@ $muted: #cccccc;
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -84,24 +90,26 @@ $muted: #cccccc;
   padding: 2rem;
   border-radius: 0.5rem;
   width: 100%;
-  max-width: 300;
+  max-width: 320px; // fixed here (was just 300)
   border: 1px solid #333;
   transition: all 0.3s ease;
   color: $highlight;
   position: relative;
   overflow: hidden;
-
+  margin: 0 auto; // center on mobile
 
   .planName {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .planPrice {
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
 
     span {
       font-size: 1rem;
@@ -109,14 +117,21 @@ $muted: #cccccc;
     }
   }
 
+  p {
+    font-size: 0.9rem;
+    color: $muted;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
   .featureList {
-    list-style:none;
+    list-style: none;
     padding: 0;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     text-align: left;
 
     li {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-bottom: 0.5rem;
     }
   }
@@ -125,7 +140,7 @@ $muted: #cccccc;
     background-color: #1a1919;
     border: 1px solid #666;
     color: white;
-    padding: 0.5rem 0.5rem;
+    padding: 0.6rem 0.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     width: 100%;
@@ -133,7 +148,7 @@ $muted: #cccccc;
     transition: all 0.4s ease;
     overflow: hidden;
     position: relative;
-    height: auto;
+    margin-top: 1rem;
 
     span {
       display: inline-block;
