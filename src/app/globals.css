@@ -91,7 +91,9 @@ input:focus {
   color: #ffffff;
   font-size: 0.7rem;
 }
-
+.flag-dropdown{
+  border: 1px solid #444 !important;
+}
 .small {
   font-size: 0.8rem;
   color: #d1cccc;
@@ -191,3 +193,8 @@ input:focus {
   overflow-x: hidden !important;
 }
 
+@media (max-width: 991.98px) {
+  .getintouch {
+    display: none!important;
+  }
+}
