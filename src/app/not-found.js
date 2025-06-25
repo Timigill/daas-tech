@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import React from 'react'
 import { MdOutlineArrowOutward, MdOutlineArrowForward } from "react-icons/md";
 
 function page() {
     return (
-        <div className="d-flex flex-column align-items-center text-center mt-5 ">
+        <div className="d-flex flex-column  align-items-center text-center my-5  px-3 py-5 mt-5 ">
             <div>
                 {/* Tagline */}
                 <span
@@ -54,13 +55,15 @@ function page() {
                     Even AI isn’t perfect—this page seems to be missing! Let’s get you back on track. Head back home.
                 </p>
 
-                <button className="btn go-back-btn mt-3" type="button">
-                    <span className="go-back-content">
-                        Go Back Home
-                        <MdOutlineArrowOutward className="go-back-icon default-icon" size={20} />
-                        <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
-                    </span>
-                </button>
+              <Link href="/" passHref>
+                  <button className="btn go-back-btn mt-3" type="button">
+                      <span className="go-back-content">
+                          Go Back Home
+                          <MdOutlineArrowOutward className="go-back-icon default-icon" size={20} />
+                          <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
+                      </span>
+                  </button>
+              </Link>
             </div>
         </div>
     )
