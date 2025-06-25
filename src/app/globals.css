@@ -117,7 +117,7 @@ input:focus {
 .footer-gradient {
   background-image: radial-gradient(
     circle at 50% -80%,
-    rgba(139, 92, 246, 0.4),
+    rgba(164, 122, 255, 0.4),
     rgba(0, 0, 0, 0.9) 70%
   );
   background-size: 100% 100%;
@@ -354,4 +354,11 @@ input:focus {
 a{
   text-decoration: none !important;
   color: inherit !important;
+}
+.study-scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.study-scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
 }

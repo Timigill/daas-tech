@@ -393,7 +393,7 @@ export default function Page() {
                           boxShadow: "8px 0 10px rgba(164, 122, 255, 0.2)",
                           color: "#fff",
                           borderRadius: "0 1rem 1rem 0",
-                          height: "80vh"
+                          height: "100%"
                       }}
                     >
                         <h1 className="text-start text-white-50 py-2" style={{
@@ -459,6 +459,7 @@ export default function Page() {
                 >
                   <div className="col-12 col-lg-7">
                     <div style={{
+                        width: '98%',
                       boxShadow: 'inset 0 0 60px #212121',
                       borderRadius: "1rem 0 0 1rem",
                       padding: '2rem',
@@ -611,6 +612,7 @@ export default function Page() {
                 >
                   <div className="col-12 col-lg-7">
                     <div style={{
+                          width: '98%',
                       boxShadow: 'inset 0 0 60px #212121',
                       borderRadius: "1rem 0 0 1rem",
                       padding: '2rem',
