@@ -14,7 +14,7 @@ const fadeInUp = {
 
 function Team() {
   return (
-    <div className="d-flex flex-column vh-100 align-items-center text-center my-5 py-5 px-3">
+    <div className="d-flex flex-column  align-items-center text-center my-5 py-5 px-3">
       <div>
         {/* Tagline */}
         <motion.span
@@ -87,7 +87,7 @@ function Team() {
             custom={2}
             viewport={{ once: true }}
           >
-            <div className="p-3 shadow rounded bg-gradient text-white"
+            <div className="p-3 shadow rounded  text-white"
               style={{
                 border: "1px solid #222",
               }}>
@@ -100,7 +100,7 @@ function Team() {
                     fontSize: "15",
                   }}
                 >
-                  Saad Tariq
+                  Taimoor Gill
                 </h5>
                 <LiaLinkedin size={23} className='text-white-50' />
               </div>
@@ -114,7 +114,7 @@ function Team() {
                   maxWidth: 580,
                 }}
               >
-                Co-Founder & FE Developer.
+                Founder & CEO
               </p>
             </div>
           </motion.div>
@@ -128,7 +128,7 @@ function Team() {
             custom={2.5}
             viewport={{ once: true }}
           >
-            <div className="p-3 shadow rounded bg-gradient text-white"
+            <div className="p-3 shadow rounded  text-white"
               style={{
                 border: "1px solid #222",
               }}>
@@ -141,7 +141,7 @@ function Team() {
                     fontSize: "15",
                   }}
                 >
-                  Sophia Nguyen
+                  Sarah Khan
                 </h5>
                 <LiaLinkedin size={23} className='text-white-50' />
               </div>
@@ -154,7 +154,7 @@ function Team() {
                   fontSize: "1rem",
                   maxWidth: 580,
                 }}>
-                Head of Automation Engineering
+                Head of Web Development
               </p>
             </div>
           </motion.div>
@@ -168,7 +168,7 @@ function Team() {
             custom={3}
             viewport={{ once: true }}
           >
-            <div className="p-3 shadow rounded bg-gradient text-white"
+            <div className="p-3 shadow rounded  text-white"
               style={{
                 border: "1px solid #222",
               }}>
@@ -181,7 +181,7 @@ function Team() {
                     fontSize: "15",
                   }}
                 >
-                  Ryan Mitchell
+                 Abdullah Sajjad
                 </h5>
                 <LiaLinkedin size={23} className='text-white-50' />
               </div>
@@ -194,7 +194,7 @@ function Team() {
                   fontSize: "1rem",
                   maxWidth: 580,
                 }}>
-                Lead Data Scientist
+                Marketing Specialist
               </p>
             </div>
           </motion.div>

@@ -81,7 +81,7 @@ function Hero() {
           custom={0.2}
           className="fw-bold hero-title mb-2"
           style={{
-            fontWeight: 500,
+            fontWeight: 600,
             fontSize: "2.7rem",
             lineHeight: 1.1,
             color: "#fff",

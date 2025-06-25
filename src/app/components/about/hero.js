@@ -49,7 +49,7 @@ function Hero() {
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-            fontSize: "2.8rem",
+            fontSize: "2.5rem",
             lineHeight: 1.1,
             color: "#ffffff",
             maxWidth: 700,

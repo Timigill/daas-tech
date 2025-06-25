@@ -104,7 +104,7 @@ function Who() {
                 </h5>
               </div>
               <p
-                className="text-white-50 ps-4"
+                className="text-white-50 text-start ps-4"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
@@ -142,13 +142,13 @@ function Who() {
                 </h5>
               </div>
               <p
-                className="text-white-50 ps-3"
+                className="text-white-50  text-start ps-3"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.9rem",
-                  maxWidth: 230,
+                  maxWidth: 300,
                 }}>
                 Reducing time and boosting productivity through Digital Solutions.
               </p>
@@ -179,13 +179,13 @@ function Who() {
                 </h5>
               </div>
               <p
-                className="text-white-50 ps-3"
+                className="text-white-50 text-start ps-3"
                 style={{
                   margin: "0 auto",
                   color: "#ccc",
                   fontFamily: "Inter, sans-serif",
                   fontSize: "0.9rem",
-                  maxWidth: 230,
+                  maxWidth: 300,
                 }}>
                 Clients see improved efficiency within the first two to three months.
               </p>
