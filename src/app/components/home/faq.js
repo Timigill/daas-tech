@@ -6,25 +6,26 @@ import { ChevronDown } from 'lucide-react';
 
 const faqData = [
   {
-    question: "How can AI automation help my business?",
-    answer: "AI automation streamlines repetitive tasks, enhances productivity, and allows your team to focus on high-value activities. It can improve efficiency in areas like customer support, sales, and data management.",
-  },
-  {
-    question: "Do I need technical knowledge to use AI Automation?",
-    answer: "Not at all! Our platform is designed for ease of use, allowing anyone to set up and manage AI automation without needing technical expertise. We also provide comprehensive support and resources.",
-  },
-  {
-    question: "Is AI automation difficult to integrate?",
-    answer: "No, our tools are built with integration in mind. We offer APIs, no-code tools, and onboarding support.",
-  },
-  {
-    question: "What industries can benefit from AI automation?",
-    answer: "AI automation is versatile and can benefit various industries including e-commerce, healthcare, finance, manufacturing, and more. Any business that relies on repetitive tasks can find value in AI solutions.",
-  },
-  {
-    question: "What kind of support do you offer?",
-    answer: "We offer comprehensive support including live chat, email assistance, and a detailed knowledge base. Our team is here to help you with any questions or issues you may encounter.",
-  },
+  question: "How can digital solutions help grow my business?",
+  answer: "Our digital services—like custom websites, engaging flyers, and impactful social media marketing—help you reach your audience more effectively, build your brand, and drive measurable results.",
+},
+{
+  question: "Do I need technical knowledge to use your services?",
+  answer: "Not at all! We handle all the technical aspects for you. Whether it's launching your website or designing your next campaign, we make the process simple and stress-free for everyone.",
+},
+{
+  question: "Is it difficult to get started with you?",
+  answer: "Absolutely not. Our onboarding process is smooth and collaborative. From the first consultation to the final delivery, we keep things easy, clear, and tailored to your vision.",
+},
+{
+  question: "What types of businesses can benefit from your services?",
+  answer: "We serve a wide range of clients—from startups and small businesses to established brands. Whether you need a digital presence, branding, or regular promotional content, we have solutions to suit your industry and goals.",
+},
+{
+  question: "What kind of support do you offer?",
+  answer: "We’re here every step of the way. You’ll have direct access to our support team through chat, calls, or email. We also offer revisions and consultations to ensure you’re always satisfied with the final result.",
+},
+
 ];
 
 export default function Faq() {
@@ -35,7 +36,7 @@ export default function Faq() {
   };
 
   return (
-    <section className={styles.faqWrapper}>
+    <section className={styles.faqWrapper} style={{ overflowX: 'hidden' }}>
       <motion.span
         className={styles.badge}
         initial={{ opacity: 0, y: 20 }}
@@ -43,7 +44,7 @@ export default function Faq() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        Testimonials
+        FAQs
       </motion.span>
 
       <motion.h2
@@ -53,7 +54,7 @@ export default function Faq() {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        Why Businesses Love Our AI Solutions
+        Why Businesses Love Our Digital Solutions
       </motion.h2>
 
       <motion.p
@@ -63,7 +64,7 @@ export default function Faq() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        Real businesses, real results with AI automation.
+        Real businesses, real results with Smart Solutions.
       </motion.p>
 
       <div className={styles.faqList}>

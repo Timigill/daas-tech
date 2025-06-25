@@ -4,12 +4,11 @@ import "../globals.css";
 function Footer() {
   return (
     <footer className="bg-black text-white" style={{ padding: "12px 30px" }}>
-      <hr className="mt-4 mb-0 " style={{ width: "98vw", marginLeft: "-38px" }} />
-      <div className="container-fluid footer-gradient  pt-4">
+      <hr className="mt-4 mb-0 w-100" />
+      <div className="container-fluid footer-gradient pt-4" style={{ overflowX: "hidden" }}>
         <div className="row">
           {/* Left Column */}
           <div className="col-12 col-md-6 mb-4">
-            {/* Logo Image Only */}
             <div className="mb-3">
               <img
                 src="/logo.jpg"
@@ -18,7 +17,6 @@ function Footer() {
               />
             </div>
 
-            {/* Description */}
             <p
               className="mb-4 px-2"
               style={{
@@ -29,17 +27,15 @@ function Footer() {
                 lineHeight: "1.6",
               }}
             >
-              DaaS Tech– Where Problems Meets Possiblities.
+              DaaS Tech– Where Problems Meets Possibilities.
             </p>
 
-            {/* Newsletter */}
             <div style={{ maxWidth: "350px" }}>
               <p className="fw-bold px-2 mb-2">Join our newsletter</p>
               <div className="position-relative mb-4 ps-2">
                 <input
                   type="email"
-                  className="form-control  bg-black text-white"
-                  // id="newsletterEmail"
+                  className="form-control bg-black text-white"
                   placeholder="name@email.com"
                   style={{
                     padding: "6px 90px 6px 12px",
@@ -49,9 +45,7 @@ function Footer() {
                     boxShadow: "none",
                     color: "white",
                   }}
-
                 />
-
                 <button
                   className="btn position-absolute top-0 end-0 mt-1 me-1 text-white"
                   style={{
@@ -105,35 +99,18 @@ function Footer() {
           </div>
         </div>
 
-        {/* Horizontal Divider - Full Width */}
-        <hr className="mt-4 mb-3" style={{ width: "98vw", marginLeft: "-38px" }} />
+        <hr className="mt-4 mb-3 w-100" />
 
-        {/* Bottom Row */}
-        <div className="row text-center d-flex justify-content-between text-md-start small">
-          <div className="col-12 col-md-3 px-3 mb-2">Logo by DaaS-Tech
-          </div>
+        <div className="row text-center d-flex justify-content-center text-md-start small">
+          <div className="col-12 col-md px-3 mb-2">Logo by DaaS-Tech</div>
           <div className="col-12 col-md-3 mb-2">
             Visioned and Crafted by <b>Taimoor Gill</b>
           </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-              {/* <div
-                className="trustpilot-widget d-flex justify-content-end"
-                data-locale="en-US"
-                data-template-id="56278e9abfbbba0bdcd568bc"
-                data-businessunit-id="68417abf22a45a72e30f5ef6"
-              >
-                <p>Review us on <a
-                  href="https://www.trustpilot.com/review/daastech.info"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-decoration-none"
-                >
-                  Trustpilot
-                </a></p>
-              </div> */}
-            </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-            <div>© All right reserved</div>
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
+            {/* Optional Trustpilot */}
+          </div>
+          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
+            <div>© All rights reserved</div>
           </div>
         </div>
       </div>
