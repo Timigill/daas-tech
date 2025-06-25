@@ -345,5 +345,13 @@ input:focus {
 @media (max-width: 991.98px) {
   .getintouch {
     display: none!important;
+
   }
+  .resp{
+    width: 33%!important;
+  }
+}
+a{
+  text-decoration: none !important;
+  color: inherit !important;
 }
