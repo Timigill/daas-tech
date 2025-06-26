@@ -7,8 +7,16 @@ export async function POST(req) {
   await dbConnect();
   const { email, password } = await req.json();
 
-  const user = await User.findOne({ email });
-  if (!user || user.role !== "admin") {
+  console.log("Login attempt:", email);
+
+  // Case-insensitive email search
+  const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
+  console.log("User found:", user);
+
+  if (!user) {
+    return new Response(JSON.stringify({ message: "User does not exist" }), { status: 404 });
+  }
+  if (user.role !== "admin") {
     return new Response(JSON.stringify({ message: "Access denied" }), { status: 403 });
   }
 
