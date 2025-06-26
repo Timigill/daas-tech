@@ -362,3 +362,7 @@ a{
 .study-scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome/Safari/Webkit */
 }
+/* Hide country names in react-phone-input-2 dropdown */
+.react-phone-input-2 .country-list .country .country-name {
+  display: none !important;
+}
