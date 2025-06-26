@@ -1,9 +1,11 @@
 'use client';
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+// import '@/app/globals.css'
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -13,7 +15,23 @@ const fadeInUp = {
   }),
 };
 
+if (typeof window !== "undefined") {
+  const styleId = "hide-country-names";
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement("style");
+    style.id = styleId;
+    style.innerHTML = `
+      .react-phone-input-2 .country-list .country .country-name {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
 export default function Contact() {
+  const [phone, setPhone] = useState("");
+
   return (
     <motion.div
       className="d-flex flex-column align-items-center text-center py-5 px-3"
@@ -72,7 +90,7 @@ export default function Contact() {
           margin: "0 auto",
         }}
       >
-        Have questions or need AI solutions? Let us know by filling out the form,
+        Have questions or need solutions? Let us know by filling out the form,
         and we’ll be in touch!
       </motion.p>
 
@@ -194,12 +212,41 @@ export default function Contact() {
              <div className="text-start"><label htmlFor="phone" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
                 Phone
               </label></div> 
-              <input
-                type="tel"
-                id="phone"
-                className="form-control bg-dark text-white border-0"
+              <PhoneInput
+                country={'pk'}
+                value={phone}
+                onChange={setPhone}
+                inputStyle={{
+                  textAlign: "left",
+                  width: "100%",
+                  height: "38px",
+                  background: "#212529",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 8,
+                  fontSize: "0.9rem"
+                }}
+                buttonStyle={{
+                  background: "#181028",
+                  border: "none"
+                }}
+                dropdownStyle={{
+                  background: "#181028",
+                  color: "#fff"
+                }}
+                containerStyle={{
+                  width: "100%"
+                }}
+                inputClass="bg-dark text-white"
                 placeholder="+1(969) 819-8061"
-                style={{ height: "38px", fontSize: "0.9rem" }}
+                enableSearch={false}
+                // Hide country names in dropdown
+                renderCountry={(country) => (
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div className={`flag ${country.iso2}`}></div>
+                    <span style={{ color: "#fff" }}>+{country.dialCode}</span>
+                  </div>
+                )}
               />
             </div>
           </div>
@@ -235,6 +282,13 @@ export default function Contact() {
           </div>
         </motion.form>
       </div>
+    <style>
+{`
+.react-phone-input-2 .country-list .country .country-name {
+  display: none !important;
+}
+`}
+</style>
     </motion.div>
   );
 }
