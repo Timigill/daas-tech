@@ -69,6 +69,7 @@ function Footer() {
               <div className=" col-md-4  resp mb-3">
                 <h6 className="fw-bold mt-3">Links</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
+<<<<<<< Updated upstream
                   <li>Services</li>
                   <li>Process</li>
                   <li>Case studies</li>
@@ -87,6 +88,14 @@ function Footer() {
                         Admin Panel
                       </a>
                   </li>
+=======
+                  <li><Link href="/services">Services</Link></li>
+                  <li><Link href="/process">Process</Link></li>
+                  <li><Link href="/case-studies">Case studies</Link></li>
+                  <li><Link href="/benefits">Benefits</Link></li>
+                  <li><Link href="/pricing">Pricing</Link></li>
+                  {/* <li><Link href="/admin-pannel">Admin-Pannel</Link></li> */}
+>>>>>>> Stashed changes
                 </ul>
               </div>
               <div className=" col-sm-3  resp col-md-4 mb-3">
