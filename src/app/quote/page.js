@@ -86,61 +86,61 @@ export default function Page() {
     };
 
     return (
-        
+
         <div className="mt-5 px-3 px-md-5">
             <div className="d-flex flex-column align-items-center text-center">
-      <div>
-        {/* Tagline */}
-        <span
-          className="badge px-3 py-2"
-          
-             style={{
-          padding: "4px 10px",
-          fontSize: 12,
-          color: "#fff",
-          // background: "#1e1e23",
-          border: "1px solid rgb(17 17 17)",
-          borderRadius: 8,
-          width: "fit-content",
-          fontWeight: 500,
-          marginBottom: 12,
-        }}
-         
-        >
-          Quote Page
-        </span>
+                <div>
+                    {/* Tagline */}
+                    <span
+                        className="badge px-3 py-2"
 
-        {/* Main Heading */}
-        <h1
-          className="mt-1"
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            // fontSize: "3.5rem",
-            lineHeight: 1.1,
-            color: "#ffffff",
-            maxWidth: 700,
-            margin: "0 auto",
-          }}
-        >
-          Precision Quotes for Premium Projects
-        </h1>
+                        style={{
+                            padding: "4px 10px",
+                            fontSize: 12,
+                            color: "#fff",
+                            // background: "#1e1e23",
+                            border: "1px solid rgb(17 17 17)",
+                            borderRadius: 8,
+                            width: "fit-content",
+                            fontWeight: 500,
+                            marginBottom: 12,
+                        }}
 
-        {/* Subheading */}
-        <p
-          className="mt-3 text-white-50"
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "1rem",
-            maxWidth: 500,
-            margin: "0 auto",
-          }}
-        >
-          No Guesswork, No Hidden Cost.Just Clear,Customized Pricing-in Minutes
-        </p>
-      </div>
-    </div>
-            
+                    >
+                        Quote Page
+                    </span>
+
+                    {/* Main Heading */}
+                    <h1
+                        className="mt-1"
+                        style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 600,
+                            // fontSize: "3.5rem",
+                            lineHeight: 1.1,
+                            color: "#ffffff",
+                            maxWidth: 700,
+                            margin: "0 auto",
+                        }}
+                    >
+                        Precision Quotes for Premium Projects
+                    </h1>
+
+                    {/* Subheading */}
+                    <p
+                        className="mt-3 text-white-50"
+                        style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontSize: "1rem",
+                            maxWidth: 500,
+                            margin: "0 auto",
+                        }}
+                    >
+                        No Guesswork, No Hidden Cost.Just Clear,Customized Pricing-in Minutes
+                    </p>
+                </div>
+            </div>
+
             <form onSubmit={handleSubmit} noValidate>
                 {/* Main Form Section */}
                 <div className="row justify-content-center mt-3 g-5">
@@ -284,26 +284,26 @@ export default function Page() {
                     </div>
 
                     {/* Right Column - Sidebar */}
-                    <div className="col-12 col-lg-4 p-4" style={{ 
-                        background: "linear-gradient(135deg, #1b1525, #6a1b9a)", 
-                        boxShadow: "8px 0 30px rgba(106, 27, 154, 0.3)", 
-                        color: "#fff", 
+                    <div className="col-12 col-lg-4 p-4" style={{
+                        background: "linear-gradient(135deg, #1b1525, #6a1b9a)",
+                        boxShadow: "8px 0 30px rgba(106, 27, 154, 0.3)",
+                        color: "#fff",
                         borderRadius: "0 1rem 1rem 0",
-                        height:"80vh"
+                        height: "80vh"
                     }}>
-                        <h1 className="text-start text-white-50 py-2" style={{ 
-                            fontFamily: "Inter, sans-serif", 
-                            fontWeight: 500, 
-                            fontSize: "1rem", 
-                            lineHeight: 1.1, 
-                            borderBottom: "1px solid rgba(255,255,255,0.1)" 
+                        <h1 className="text-start text-white-50 py-2" style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 500,
+                            fontSize: "1rem",
+                            lineHeight: 1.1,
+                            borderBottom: "1px solid rgba(255,255,255,0.1)"
                         }}>
                             Get in Touch
                         </h1>
-                        <p className="mt-4 text-white-50" style={{ 
-                            fontFamily: "Inter, sans-serif", 
-                            fontSize: "0.8rem", 
-                            lineHeight: "1.5" 
+                        <p className="mt-4 text-white-50" style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontSize: "0.8rem",
+                            lineHeight: "1.5"
                         }}>
                             Renowned mobile app and web development company delivering user-engaging mobile applications and responsive websites for multiple industry verticals.
                         </p>
@@ -325,12 +325,12 @@ export default function Page() {
                                 <span><strong>Int. Contact#:</strong> +1-(267)489-6694</span>
                             </li>
                         </ol>
-                        <h1 className="text-start text-white-50 py-2 mt-4" style={{ 
-                            fontFamily: "Inter, sans-serif", 
-                            fontWeight: 500, 
-                            fontSize: "1rem", 
-                            lineHeight: 1.1, 
-                            borderBottom: "1px solid rgba(255,255,255,0.1)" 
+                        <h1 className="text-start text-white-50 py-2 mt-4" style={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 500,
+                            fontSize: "1rem",
+                            lineHeight: 1.1,
+                            borderBottom: "1px solid rgba(255,255,255,0.1)"
                         }}>
                             Working Hours
                         </h1>
@@ -352,10 +352,10 @@ export default function Page() {
                             padding: '2rem',
                             color: '#fff',
                         }}>
-                            <h1 className="text-start text-white-50 py-2" style={{ 
-                                fontFamily: 'Inter, sans-serif', 
-                                fontWeight: 500, 
-                                fontSize: '1.4rem' 
+                            <h1 className="text-start text-white-50 py-2" style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 500,
+                                fontSize: '1.4rem'
                             }}>
                                 Contact Information
                             </h1>
@@ -407,50 +407,52 @@ export default function Page() {
                             </div>
 
                             {/* Mobile Number */}
-                            <div className="mt-3">
-                                <label className="text-white-50">Mobile Number *</label>
-                                <PhoneInput
-                                    country={'pk'}
-                                    value={formData.contactPhone}
-                                    onChange={(value) => setFormData(prev => ({ ...prev, contactPhone: value }))}
-                                    inputStyle={{
-                                        backgroundColor: '#000',
-                                        color: '#fff',
-                                        border: `1px solid ${errors.contactPhone ? 'red' : '#444'}`,
-                                        borderRadius: '4px',
-                                        width: '100%',
-                                        height: 'calc(1.5em + 0.75rem + 2px)'
-                                    }}
-                                    buttonStyle={{
-                                        backgroundColor: '#000',
-                                        borderRight: '1px solid #444',
-                                    }}
-                                    placeholder="e.g. +92 3xx xxxxxxx"
-                                />
-                                {errors.contactPhone && (
-                                    <span className="text-danger" style={{ fontSize: '0.85rem', marginTop: '2px', display: 'block' }}>
-                                        {errors.contactPhone}
+                            <PhoneInput
+                                country={'pk'}
+                                value={formData.contactPhone}
+                                onChange={(value) => setFormData(prev => ({ ...prev, contactPhone: value }))}
+                                countryLabelFormatter={(country) => (
+                                    <span>
+                                        <span className="react-tel-country-flag"></span> {/* Flag will auto-appear */}
+                                        <span>+{country.dialCode}</span> {/* Only show dial code */}
                                     </span>
                                 )}
-                            </div>
+                                inputStyle={{
+                                    backgroundColor: '#000',
+                                    color: '#fff',
+                                    border: `1px solid ${errors.contactPhone ? 'red' : '#444'}`,
+                                    borderRadius: '4px',
+                                    width: '100%',
+                                    height: 'calc(1.5em + 0.75rem + 2px)'
+                                }}
+                                buttonStyle={{
+                                    backgroundColor: '#000',
+                                    borderRight: '1px solid #444',
+                                }}
+                                dropdownStyle={{
+                                    backgroundColor: '#000',
+                                    color: '#fff',
+                                }}
+                                placeholder="e.g. +92 3xx xxxxxxx"
+                            />
 
-                            <h1 className="text-start text-white-50 py-2 mt-4" style={{ 
-                                fontFamily: 'Inter, sans-serif', 
-                                fontWeight: 500, 
-                                fontSize: '1.4rem' 
+                            <h1 className="text-start text-white-50 py-2 mt-4" style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 500,
+                                fontSize: '1.4rem'
                             }}>
                                 Preferred contact method
                             </h1>
 
                             <div className="d-flex gap-3">
                                 <div className="form-check">
-                                    <input 
-                                        className="form-check-input" 
-                                        type="checkbox" 
-                                        id="phone" 
-                                        value="phone" 
-                                        checked={formData.contactMethod.includes("phone")} 
-                                        onChange={handleContactMethodChange} 
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        id="phone"
+                                        value="phone"
+                                        checked={formData.contactMethod.includes("phone")}
+                                        onChange={handleContactMethodChange}
                                         style={{ backgroundColor: "#000", borderColor: "#6a1b9a" }}
                                     />
                                     <label className="form-check-label text-white-50" htmlFor="phone">
@@ -458,13 +460,13 @@ export default function Page() {
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input 
-                                        className="form-check-input" 
-                                        type="checkbox" 
-                                        id="email" 
-                                        value="email" 
-                                        checked={formData.contactMethod.includes("email")} 
-                                        onChange={handleContactMethodChange} 
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        id="email"
+                                        value="email"
+                                        checked={formData.contactMethod.includes("email")}
+                                        onChange={handleContactMethodChange}
                                         style={{ backgroundColor: "#000", borderColor: "#6a1b9a" }}
                                     />
                                     <label className="form-check-label text-white-50" htmlFor="email">
@@ -488,10 +490,10 @@ export default function Page() {
                             padding: '2rem',
                             color: '#fff',
                         }}>
-                            <h1 className="text-start text-white-50 py-2" style={{ 
-                                fontFamily: 'Inter, sans-serif', 
-                                fontWeight: 500, 
-                                fontSize: '1.4rem' 
+                            <h1 className="text-start text-white-50 py-2" style={{
+                                fontFamily: 'Inter, sans-serif',
+                                fontWeight: 500,
+                                fontSize: '1.4rem'
                             }}>
                                 Project Description
                             </h1>
@@ -504,13 +506,13 @@ export default function Page() {
                                     onChange={handleChange}
                                     placeholder="Project Description"
                                     className="form-control text-white mt-1"
-                                    style={{ 
-                                        height: "40vh", 
-                                        backgroundColor: 'rgb(41 36 36)', 
-                                        border: `1px solid ${errors.fullName ? 'red' : '#444'}`, 
-                                        borderRadius: '4px', 
-                                        paddingTop: '0.5rem', 
-                                        resize: 'none' 
+                                    style={{
+                                        height: "40vh",
+                                        backgroundColor: 'rgb(41 36 36)',
+                                        border: `1px solid ${errors.fullName ? 'red' : '#444'}`,
+                                        borderRadius: '4px',
+                                        paddingTop: '0.5rem',
+                                        resize: 'none'
                                     }}
                                 />
                                 {errors.fullName && (
@@ -522,21 +524,21 @@ export default function Page() {
 
                             <div className="mt-4">
                                 <label className="text-white-50">Additional project files (optional)</label>
-                                <div className="form-control d-flex justify-content-between align-items-center text-white mt-1" style={{ 
-                                    backgroundColor: "#000", 
-                                    border: "1px solid #444", 
-                                    borderRadius: "4px", 
-                                    padding: "0.375rem 0.75rem", 
-                                    height: "2.7rem" 
+                                <div className="form-control d-flex justify-content-between align-items-center text-white mt-1" style={{
+                                    backgroundColor: "#000",
+                                    border: "1px solid #444",
+                                    borderRadius: "4px",
+                                    padding: "0.375rem 0.75rem",
+                                    height: "2.7rem"
                                 }}>
-                                    <label htmlFor="fileUpload" style={{ 
-                                        marginBottom: 0, 
-                                        cursor: "pointer", 
-                                        backgroundColor: "#444", 
-                                        color: "#fff", 
-                                        padding: "2px 10px", 
-                                        borderRadius: "4px", 
-                                        fontSize: "0.85rem" 
+                                    <label htmlFor="fileUpload" style={{
+                                        marginBottom: 0,
+                                        cursor: "pointer",
+                                        backgroundColor: "#444",
+                                        color: "#fff",
+                                        padding: "2px 10px",
+                                        borderRadius: "4px",
+                                        fontSize: "0.85rem"
                                     }}>
                                         Choose File
                                     </label>
@@ -554,21 +556,21 @@ export default function Page() {
                                         style={{ display: "none" }}
                                     />
                                 </div>
-                                <p className="mt-2 text-white-50" style={{ 
-                                    fontFamily: "Inter, sans-serif", 
-                                    fontSize: "0.8rem", 
-                                    lineHeight: "1.5" 
+                                <p className="mt-2 text-white-50" style={{
+                                    fontFamily: "Inter, sans-serif",
+                                    fontSize: "0.8rem",
+                                    lineHeight: "1.5"
                                 }}>
                                     You may attach up to 5 files under 100MB each
                                 </p>
                             </div>
 
-                            <button 
-                                type="submit" 
-                                className="btn btn-primary mt-4 w-100" 
-                                style={{ 
-                                    backgroundColor: '#6a1b9a', 
-                                    border: 'none', 
+                            <button
+                                type="submit"
+                                className="btn btn-primary mt-4 w-100"
+                                style={{
+                                    backgroundColor: '#6a1b9a',
+                                    border: 'none',
                                     padding: '0.75rem',
                                     borderRadius: '4px',
                                     fontWeight: '500'
