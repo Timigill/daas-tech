@@ -95,9 +95,6 @@ function Footer() {
                   <li><Link href="/benefits">Benefits</Link></li>
                   <li><Link href="/pricing">Pricing</Link></li>
                   {/* <li><Link href="/admin-pannel">Admin-Pannel</Link></li> */}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
                 </ul>
               </div>
