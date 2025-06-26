@@ -7,6 +7,7 @@ import { Menu, X } from "react-feather";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
+   { name: "Careers", path: "/careers" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];

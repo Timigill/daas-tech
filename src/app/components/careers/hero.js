@@ -1,13 +1,33 @@
+'use client'
 import React from 'react'
 import { MdOutlineArrowOutward, MdOutlineArrowForward } from "react-icons/md";
 import Trust from '../trust';
-function hero() {
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" }
+  }),
+};
+
+function Hero() {
   return (
-    <div className="d-flex flex-column align-items-center vh-50 text-center mt-5 p-5 px-3">
+    <motion.div
+      className="d-flex flex-column align-items-center vh-50 text-center mt-5 p-5 px-3"
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeInUp}
+      viewport={{ once: true }}
+    >
       <div className='py-4'>
         {/* Tagline */}
-        <span
+        <motion.span
           className="badge px-3 py-2"
+          variants={fadeInUp}
+          custom={0.2}
           style={{
             padding: "4px 10px",
             fontSize: 12,
@@ -20,11 +40,13 @@ function hero() {
           }}
         >
           Careers
-        </span>
+        </motion.span>
 
         {/* Main Heading */}
-        <h1
+        <motion.h1
           className="mt-1"
+          variants={fadeInUp}
+          custom={0.4}
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
@@ -37,21 +59,25 @@ function hero() {
         >
           Help us transform the hiring Process Join
           our team of innovators!
-        </h1>
+        </motion.h1>
 
-        {/* Subheading */}
-        <button className="btn go-back-btn mt-3" type="button">
+        {/* Button */}
+        <motion.button
+          className="btn go-back-btn mt-3"
+          type="button"
+          variants={fadeInUp}
+          custom={0.6}
+        >
           <span className="ps-1 go-back-content">
             Veiw Jobs Opening
             <MdOutlineArrowOutward className="go-back-icon default-icon" size={20} />
             <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
           </span>
-        </button>
+        </motion.button>
       </div>
-      <Trust/>
-    </div>
-    
+      <Trust />
+    </motion.div>
   )
 }
 
-export default hero
+export default Hero
