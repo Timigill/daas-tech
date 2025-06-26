@@ -128,21 +128,18 @@ function Footer() {
         </div>
         <div className="col-12 col-md-12 ">
           <ul className="list-unstyled footer-li d-flex  justify-content-around m-0" style={{ color: "#bebaba" }}>
-            <li><Link href="/terms-of-service">Terms of Service</Link></li>
+            <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
             <li><Link href="/privacy-policy">Privacy Policy</Link></li>
           </ul>
         </div>
         <hr className="mt-0 mb-3 w-100" />
 
         <div className="row text-center d-flex justify-content-center text-md-start small">
-          <div className="col-12 col-md px-3 mb-2">Logo by DaaS-Tech</div>
-          <div className="col-12 col-md-3 mb-2">
-            Visioned and Crafted by <b>Taimoor Gill</b>
+          <div className="col-12 col-md-4 px-3 mb-2">Logo by DaaS-Tech</div>
+          <div className="col-12 col-md-4  mb-2 d-flex justify-content-center">
+            Visioned and Crafted by <b className="ms-2"> Taimoor Gill</b>
           </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
-            {/* Optional Trustpilot */}
-          </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-center">
+          <div className="col-12 col-md-4 mb-2 d-flex justify-content-end">
             <div>© All rights reserved</div>
           </div>
         </div>
