@@ -17,6 +17,9 @@ export default function RootLayout({ children }) {
       <head>
         <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+        <meta name="theme-color" content="#0d6efd" />
+      
       </head>
       <body className="text-white">
         <HeaderFooterWrapper>
