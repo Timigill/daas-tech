@@ -15,32 +15,32 @@ const benefits = [
   {
     icon: "⚡",
     title: "Increased Productivity",
-    description: "Gain actionable insights with AI-driven analytics to improve decision-making and strategy.",
+    description: "Gain actionable insights with digital analytics to improve decision-making and strategy.",
   },
   {
     icon: "🎯",
     title: "Better Customer Experience",
-    description: "Personalized AI interactions improve response times, customer engagement, and overall satisfaction.",
+    description: "Personalized digital interactions improve response times, customer engagement, and overall satisfaction.",
   },
   {
     icon: "🕒",
     title: "24/7 Availability",
-    description: "AI-powered systems operate around the clock, ensuring seamless support and execution without downtime.",
+    description: "Digital systems operate around the clock, ensuring seamless support and execution without downtime.",
   },
   {
     icon: "📉",
     title: "Cost Reduction",
-    description: "AI automation minimizes manual work, cuts operational costs, and optimizes resource allocation for better profitability.",
+    description: "Digital automation minimizes manual work, cuts operational costs, and optimizes resource allocation for better profitability.",
   },
   {
     icon: "📊",
     title: "Data-Driven Insights",
-    description: "Leverage AI to analyze vast data sets, identify trends, and make smarter, faster, and more accurate business decisions.",
+    description: "Leverage digital tools to analyze vast data sets, identify trends, and make smarter, faster, and more accurate business decisions.",
   },
   {
     icon: "📈",
     title: "Scalability & Growth",
-    description: "AI adapts to your business needs, allowing you to scale efficiently without increasing workload or costs.",
+    description: "Digital solutions adapt to your business needs, allowing you to scale efficiently without increasing workload or costs.",
   },
 ];
 
