@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Inter } from 'next/font/google';
 import HeaderFooterWrapper from './components/HeaderFooterWrapper'; // new client component
 import './globals.css';
-
 import '@/app/custom-bootstrap.scss';
 const inter = Inter({ subsets: ['latin'] });
 import { SpeedInsights } from "@vercel/speed-insights/next"

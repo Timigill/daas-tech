@@ -1,10 +1,11 @@
 const BlogData = [
-  {
+    {
     id: 1,
-    title: 'The Art of Web Development',
-    date: 'June 10, 2025',
-    image: '/1.jpeg',
-    content: 'Web development is the symphony of logic and design. From HTML’s quiet structure to React’s vibrant symphony, each line of code is a note that shapes the melody of the web. Let the magic of Next.js and Bootstrap breathe life into your pages.'
+    category: "article",
+    title: "The Art of Web Development",
+    image: "/images/blog1.png",
+    description:
+      "Web development is evolving rapidly with new frameworks, design systems, and accessibility improvements. Learn how modern tools can transform your development process.",
   },
   {
     id: 2,

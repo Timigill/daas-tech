@@ -94,7 +94,11 @@ function Footer() {
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/about">About</Link></li>
-                  <li><Link href="/blog">Blog</Link></li>
+                  <li>
+                    <a href="/blog" style={{ color: "#bebaba", textDecoration: "none" }}>
+                      Blog
+                    </a>
+                  </li>
                   <li><Link href="/contact">Contact</Link></li>
                   <li><Link href="/careers">Careers</Link></li>
                   <li><Link href="/quote">Get a Quote</Link></li>

@@ -1,12 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../../components/BlogCard"; // Adjust the path as needed
 import { motion } from "framer-motion";
+import AdminAddBlogForm from "../../components/BlogForm"; // Adjust the path as needed
+import { useRouter } from "next/navigation";
 
-export default function BlogPage() {
+export default function AdminBlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [openCardId, setOpenCardId] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  const router = useRouter();
 
   const fetchBlogs = async () => {
     try {
@@ -18,6 +24,26 @@ export default function BlogPage() {
     }
   };
 
+  // Check admin status from token
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        if (payload?.role === "admin") {
+          setIsAdmin(true);
+        } else {
+          router.replace("/unauthorized");
+        }
+      } catch (err) {
+        console.error("Invalid token");
+        router.replace("/unauthorized");
+      }
+    } else {
+      router.replace("/unauthorized");
+    }
+  }, []);
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -25,6 +51,31 @@ export default function BlogPage() {
   const handleToggle = (id) => {
     setOpenCardId((prev) => (prev === id ? null : id));
   };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this blog?");
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/blog/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+        },
+      });
+
+      if (res.ok) {
+        fetchBlogs();
+      } else {
+        const error = await res.json();
+        alert("Delete failed: " + error.message);
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
+  if (!isAdmin) return null; // Prevent flicker before redirect
 
   return (
     <section
@@ -53,7 +104,7 @@ export default function BlogPage() {
           borderRadius: 20,
         }}
       >
-        Blog
+        Admin Blog Dashboard
       </motion.span>
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
@@ -67,7 +118,7 @@ export default function BlogPage() {
           maxWidth: 700,
         }}
       >
-        Unlock AI insights with us
+        Manage Blogs with Full Control
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 30 }}
@@ -81,9 +132,17 @@ export default function BlogPage() {
           margin: "0 auto 40px auto",
         }}
       >
-        Stay informed with the latest AI trends, insights, and strategies to
-        drive innovation and business growth.
+        Add, edit, and delete blog entries for your audience in one place.
       </motion.p>
+
+      <button
+        className="btn btn-outline-light mb-4"
+        onClick={() => setShowAddForm(!showAddForm)}
+      >
+        {showAddForm ? "Close Add Form" : "Add New Blog"}
+      </button>
+
+      {showAddForm && <AdminAddBlogForm onBlogAdded={fetchBlogs} />}
 
       <div className="container">
         <div className="row gy-4">
@@ -93,6 +152,9 @@ export default function BlogPage() {
               {...blog}
               isOpen={openCardId === blog._id}
               onToggle={() => handleToggle(blog._id)}
+              isAdmin={true}
+              onDelete={() => handleDelete(blog._id)}
+              onEdit={() => alert("Edit feature coming soon!")}
             />
           ))}
         </div>
