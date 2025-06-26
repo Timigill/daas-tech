@@ -1,22 +1,22 @@
 "use client";
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
 import "@/app/globals.css";
-import Trust from '../trust';
+import Trust from "../trust";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay:0, duration: 0.4, ease: "easeOut" }
+    transition: { delay: 0, duration: 0.4, ease: "easeOut" },
   },
 };
 
 function Hero() {
   return (
     <div className="d-flex flex-column align-items-center h-50 text-center mt-5 p-5 px-3">
-      <div className='pt-4'>
+      <div className="pt-4">
         {/* Tagline */}
         <motion.span
           className="badge px-3 py-2"
@@ -74,9 +74,11 @@ function Hero() {
             margin: "0 auto",
           }}
         >
-          DaaS Tech Innovations helps businesses streamline operations and grow faster with Digital Solutions.
+          DaaS Tech Innovations helps businesses streamline operations and grow
+          faster with Digital Solutions.
         </motion.p>
       </div>
+      <Trust />
     </div>
   );
 }
