@@ -410,11 +410,13 @@ export default function Page() {
                             <PhoneInput
                                 country={'pk'}
                                 value={formData.contactPhone}
-                                onChange={(value) => setFormData(prev => ({ ...prev, contactPhone: value }))}
+                                onChange={(value) =>
+                                    setFormData((prev) => ({ ...prev, contactPhone: value }))
+                                }
                                 countryLabelFormatter={(country) => (
                                     <span>
-                                        <span className="react-tel-country-flag"></span> {/* Flag will auto-appear */}
-                                        <span>+{country.dialCode}</span> {/* Only show dial code */}
+                                        <span className="react-tel-country-flag"></span>
+                                        <span>+{country.dialCode}</span>
                                     </span>
                                 )}
                                 inputStyle={{
@@ -423,18 +425,28 @@ export default function Page() {
                                     border: `1px solid ${errors.contactPhone ? 'red' : '#444'}`,
                                     borderRadius: '4px',
                                     width: '100%',
-                                    height: 'calc(1.5em + 0.75rem + 2px)'
+                                    height: 'calc(1.5em + 0.75rem + 2px)',
+                                    paddingLeft: '58px',
                                 }}
                                 buttonStyle={{
                                     backgroundColor: '#000',
                                     borderRight: '1px solid #444',
+                                    width: '55px',
+                                    padding: '5px',
+                                }}
+                                containerStyle={{
+                                    width: '100%',
                                 }}
                                 dropdownStyle={{
                                     backgroundColor: '#000',
                                     color: '#fff',
+                                    width: '100px', // 👈 Shrink the width here
+                                    minWidth: 'unset', // 👈 Cancel default min-width
+                                    maxWidth: '250px',
                                 }}
-                                placeholder="e.g. +92 3xx xxxxxxx"
+                                placeholder="+92 326 8717385"
                             />
+
 
                             <h1 className="text-start text-white-50 py-2 mt-4" style={{
                                 fontFamily: 'Inter, sans-serif',
