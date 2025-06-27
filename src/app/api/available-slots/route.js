@@ -3,10 +3,14 @@ import mongoose from "mongoose";
 
 // Booking model
 const BookingSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  purpose: String,
   date: String,
   time: String,
   callType: String,
 });
+BookingSchema.index({ date: 1, time: 1, callType: 1 }, { unique: true });
 const Booking = mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 
 // Helper to generate slots
@@ -36,8 +40,12 @@ export async function GET(req) {
   const date = searchParams.get("date");
   const duration = parseInt(searchParams.get("duration"), 10) || 30;
 
+  console.log("API called for date:", date);
+
   // Only get bookings for the selected date and duration
   const bookings = await Booking.find({ date, callType: String(duration) });
+
+  console.log("Bookings found:", bookings);
 
   const allSlots = generateTimeSlots(9, 18, duration);
 
@@ -51,4 +59,25 @@ export async function GET(req) {
     : [];
 
   return Response.json({ slots: availableSlots });
+}
+
+export async function POST(req) {
+  await dbConnect();
+  const data = await req.json();
+
+  // Check if the slot already exists
+  const exists = await Booking.findOne({
+    date: data.date,
+    time: data.time,
+    callType: data.callType,
+  });
+  if (exists) {
+    return Response.json({ error: "Slot already booked" }, { status: 409 });
+  }
+
+  // Create a new booking
+  const booking = new Booking(data);
+  await booking.save();
+
+  return Response.json({ message: "Booking successful" });
 }

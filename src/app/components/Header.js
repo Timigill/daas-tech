@@ -78,7 +78,7 @@ export default function Header() {
                 ))}
               </ul>
               <Link
-                href="/signup"
+                href="/book-call"
                 className="btn btn-primary px-3 py-2 ms-2"
                 style={{
                   background: "#8b5cf6",
@@ -153,7 +153,7 @@ export default function Header() {
             ))}
             <li className="nav-item mt-3">
               <Link
-                href="/signup"
+                href="/book-call"
                 className="btn btn-primary rounded-pill w-100"
                 style={{
                   background: "#8b5cf6",

@@ -366,3 +366,80 @@ a{
 .react-phone-input-2 .country-list .country .country-name {
   display: none !important;
 }
+
+.react-calendar {
+  background: linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
+  border: 1.5px solid #23232a!important;
+  border-radius: 16px;
+  color: #fff;
+  font-family: Inter, sans-serif;
+  box-shadow: 0 2px 16px 0 #181028;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s;
+}
+.react-calendar__tile {
+  background: transparent;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+}
+.react-calendar__tile--active,
+.selected-calendar-tile {
+  background: #8b5cf6 !important;
+  color: #fff !important;
+}
+.react-calendar__tile:disabled {
+  color: #978f8f !important;
+  background: linear-gradient(to bottom left, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
+ border-radius: 10%!important;
+  cursor: not-allowed;
+}
+.react-calendar__navigation button {
+  color: #fff;
+  background: none!important;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  margin: 0 2px;
+  transition: background 0.15s;
+}
+.react-calendar__navigation button:enabled:hover {
+  font-size: 1.3rem;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #bdbdbd;
+}
+.react-calendar__tile--now {
+  background: radial-gradient(circle, rgba(164, 122, 255, 0.3), rgba(0, 0, 0, 0.2)) !important;
+
+  color: #ffffff !important;        /* your brand purple, or any accent */
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  .book-call-main {
+    flex-direction: column !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .book-call-main > div,
+  .book-call-main > .framer-motion-div {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 20px 8px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .react-calendar {
+    border-radius: 12px !important;
+    font-size: 0.95rem !important;
+  }
+}
