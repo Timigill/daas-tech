@@ -1,16 +1,18 @@
 'use client';
 import React from "react";
 import { motion } from "framer-motion";
+import "@/app/globals.css";
 
 export default function HomeServices() {
   return (
     <section
-      className="d-flex flex-column align-items-center text-center"
+      className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "48px 0",
         background: "#000",
         color: "#fff",
         fontFamily: "Inter, sans-serif",
+        overflowX: "hidden",
       }}
     >
       <style>
@@ -39,6 +41,7 @@ export default function HomeServices() {
         `}
       </style>
 
+      {/* Badge */}
       <motion.span
         className="badge mb-3"
         initial={{ opacity: 0, y: 20 }}
@@ -58,22 +61,23 @@ export default function HomeServices() {
         Our Services
       </motion.span>
 
-      <motion.h2
+      {/* Heading */}
+      <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         style={{
           fontWeight: 700,
-          fontSize: "3rem",
           lineHeight: 1.15,
           marginBottom: 16,
           maxWidth: 700,
         }}
       >
         Web Solutions That Take Your Business Online
-      </motion.h2>
+      </motion.h1>
 
+      {/* Subtext */}
       <motion.p
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -89,23 +93,24 @@ export default function HomeServices() {
         We design, develop, and launch websites that help you reach more customers and grow your business with ease.
       </motion.p>
 
+      {/* Main Content */}
       <div
-        className="d-flex flex-column flex-md-row align-items-center justify-content-center gap-5"
-        style={{ width: "100%", maxWidth: 1100, margin: "0 auto" }}
+        className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-5 w-100"
+        style={{ maxWidth: 1100, margin: "0 auto" }}
       >
-        {/* Card */}
+        {/* Animated Task Card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
           style={{
+            marginTop: "20px",
             position: "relative",
             background: "#111114",
             borderRadius: 18,
-            minWidth: 340,
-            maxWidth: 420,
-            width: 370,
+            width: "100%",
+            maxWidth: 400,
             height: 320,
             marginBottom: 24,
             border: "1.5px solid #23232a",
@@ -137,7 +142,6 @@ export default function HomeServices() {
               overflow: "hidden",
             }}
           >
-            {/* Tabs */}
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span style={{
                 background: "#23232a",
@@ -158,7 +162,6 @@ export default function HomeServices() {
               }}>Waiting for approval</span>
             </div>
 
-            {/* Auto-scrolling tasks */}
             <div className="task-scroll-wrapper">
               <div className="task-scroll">
                 {[
@@ -195,7 +198,6 @@ export default function HomeServices() {
             </div>
           </div>
 
-          {/* Fade overlay */}
           <div
             style={{
               position: "absolute",
@@ -210,7 +212,7 @@ export default function HomeServices() {
           />
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA Content */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -221,37 +223,46 @@ export default function HomeServices() {
             flexDirection: "column",
             alignItems: "flex-start",
             justifyContent: "center",
-            minWidth: 320,
-            maxWidth: 400,
-            padding: "32px 28px",
+            width: "100%",
+            maxWidth: 500,
+            padding: "1rem",
           }}
         >
+          <a
+            href=""
+            className="btn mb-3 px-2 py-1"
+            style={{
+              background: "transparent",
+              color: "#bdbdbd",
+              fontWeight: 500,
+              fontSize: 13,
+              borderRadius: 7,
+              padding: "4px 14px",
+              border: "1px solid #23232a",
+            }}
+          >
+            Custom Websites
+          </a>
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
-            Build a Beautiful Website
+            Website Tasks & Workflow Automation
           </h3>
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18 }}>
-            We help you create an engaging, responsive website that showcases your services, attracts more visitors, and builds your brand.
+          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
+            We help you create an engaging, responsive, Fast and Secure, SEO Ready website that showcases your services, attracts more visitors, and builds your brand.
           </p>
-          <ul style={{ textAlign: "left", color: "#fff", fontSize: 15, listStyle: "none", paddingLeft: 0 }}>
-            <li style={{ marginBottom: 8 }}>✅ Fast & Secure</li>
-            <li style={{ marginBottom: 8 }}>✅ Mobile-Friendly</li>
-            <li style={{ marginBottom: 8 }}>✅ SEO-Ready</li>
-          </ul>
-          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", margin: "24px 0 12px" }}>
+          <h4 style={{ fontWeight: 600, fontSize: "1.1rem", marginBottom: 12 }}>
             Let’s build your online presence today.
           </h4>
           <a
             href="/contact"
-            className="btn btn-primary px-4 py-2"
+            className="btn px-2 py-1"
             style={{
-              background: "#8b5cf6",
-              border: "none",
-              fontWeight: 600,
-              fontSize: 16,
-              borderRadius: 24,
-              color: "#fff",
-              textDecoration: "none",
-              marginTop: 8,
+              background: "transparent",
+              color: "#bdbdbd",
+              fontWeight: 500,
+              fontSize: 13,
+              borderRadius: 7,
+              padding: "4px 14px",
+              border: "1px solid #23232a",
             }}
           >
             Get Started
