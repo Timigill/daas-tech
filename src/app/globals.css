@@ -123,3 +123,26 @@ input:focus {
 .react-tel-input .country-list .country .dial-code {
   margin-left: 5px;
 }
+/* Scrollbar base (transparent) */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 8px;
+  background: transparent;
+}
+
+/* Scrollbar track (fully transparent) */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Scrollbar thumb (default: light gradient) */
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(135deg, #2a1f3d, #8044c4); /* lighter version */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+/* Scrollbar thumb on hover (darker gradient) */
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(135deg, #1b1525, #6a1b9a); /* darker on hover */
+}
