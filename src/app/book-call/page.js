@@ -54,6 +54,7 @@ export default function BookACall() {
   const [callType, setCallType] = useState(callTypes[0].value);
   const [form, setForm] = useState({ name: "", email: "", purpose: "" });
   const [availableSlots, setAvailableSlots] = useState([]);
+  const [bookedSlotValues, setBookedSlotValues] = useState([]);
   const [phase, setPhase] = useState("info"); // Add this line
   const isMobile = useIsMobile();
   const [submitted, setSubmitted] = useState(false);
@@ -63,11 +64,15 @@ export default function BookACall() {
   useEffect(() => {
     if (!selectedDate) {
       setAvailableSlots([]);
+      setBookedSlotValues([]);
       return;
     }
     fetch(`/api/available-slots?date=${selectedDate.toISOString().slice(0, 10)}&duration=${callType}`)
       .then(res => res.json())
-      .then(data => setAvailableSlots(data.slots || []));
+      .then(data => {
+        setAvailableSlots(data.slots || []);
+        setBookedSlotValues(data.booked || []);
+      });
   }, [selectedDate, callType]);
 
   const handleChange = e => {
@@ -100,9 +105,6 @@ export default function BookACall() {
   };
 
   const allSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
-  const bookedSlotValues = selectedDate && availableSlots.length > 0
-    ? allSlots.filter(slot => !availableSlots.some(av => av.value === slot.value)).map(slot => slot.value)
-    : [];
 
   return (
     <div
@@ -166,7 +168,8 @@ export default function BookACall() {
                 <Image
                   src="/meet.jpeg"
                   alt="DaaS Tech"
-                  fill
+                  width={400}
+                  height={300}
                   style={{
                     position: "absolute",
                     bottom: "0 !important",
@@ -302,7 +305,7 @@ export default function BookACall() {
                     disabled={bookedSlotValues.includes(slot.value)}
                     style={bookedSlotValues.includes(slot.value) ? { color: "#888" } : {}}
                   >
-                    {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked)" : ""}
+                    {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked or Unavailable)" : ""}
                   </option>
                 ))}
               </select>

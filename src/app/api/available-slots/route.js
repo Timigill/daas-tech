@@ -26,7 +26,9 @@ function generateTimeSlots(start = 9, end = 18, duration = 30) {
         endHour = hour + 1;
         endMin = endMinutes - 60;
       }
-      const label = `${startHour}:${min < 10 ? "0" + min : min} - ${(endHour % 12 === 0 ? 12 : endHour % 12)}:${endMin < 10 ? "0" + endMin : endMin}`;
+      const label = `${startHour}:${min < 10 ? "0" + min : min} - ${
+        endHour % 12 === 0 ? 12 : endHour % 12
+      }:${endMin < 10 ? "0" + endMin : endMin}`;
       const value = `${hour < 10 ? "0" + hour : hour}:${min < 10 ? "0" + min : min}`;
       slots.push({ label, value });
     }
@@ -42,40 +44,50 @@ export async function GET(req) {
 
   console.log("API called for date:", date);
 
-  // Only get bookings for the selected date and duration
   const bookings = await Booking.find({ date, callType: String(duration) });
-
-  console.log("Bookings found:", bookings);
-
   const allSlots = generateTimeSlots(9, 18, duration);
 
-  // Only mark as booked if the slot is booked for this date
-  const availableSlots = allSlots.filter(
-    slot => !bookings.some(b => b.time === slot.value)
-  );
+  const now = new Date();
+  const isToday = date === now.toISOString().split("T")[0];
 
-  const bookedSlotValues = date && availableSlots.length > 0
-    ? allSlots.filter(slot => !availableSlots.some(av => av.value === slot.value)).map(slot => slot.value)
-    : [];
+  const availableSlots = allSlots.filter(slot => {
+    // Check if slot is booked
+    const isBooked = bookings.some(b => b.time === slot.value);
+    if (isBooked) return false;
 
-  return Response.json({ slots: availableSlots });
+    // Filter past slots if today
+    if (isToday) {
+      const [slotHour, slotMinute] = slot.value.split(":").map(Number);
+      const slotTime = new Date();
+      slotTime.setHours(slotHour, slotMinute, 0, 0);
+      if (slotTime <= now) return false;
+    }
+
+    return true;
+  });
+
+  // Fix: reflect which slots are booked (or filtered due to time)
+  const bookedSlotValues = allSlots
+    .filter(slot => !availableSlots.some(av => av.value === slot.value))
+    .map(slot => slot.value);
+
+  return Response.json({ slots: availableSlots, booked: bookedSlotValues });
 }
 
 export async function POST(req) {
   await dbConnect();
   const data = await req.json();
 
-  // Check if the slot already exists
   const exists = await Booking.findOne({
     date: data.date,
     time: data.time,
     callType: data.callType,
   });
+
   if (exists) {
     return Response.json({ error: "Slot already booked" }, { status: 409 });
   }
 
-  // Create a new booking
   const booking = new Booking(data);
   await booking.save();
 
