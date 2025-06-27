@@ -7,6 +7,7 @@ import { Menu, X } from "react-feather";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
+   { name: "Careers", path: "/careers" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
@@ -20,7 +21,6 @@ export default function Header() {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
   }, [mobileMenuOpen]);
 
-  // Close menu on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -35,13 +35,20 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky-top" style={{ background: "#000", zIndex: 100, borderBottom: "1px solid rgba(255, 255, 255, 0.1)" }}>
-        <nav className="navbar navbar-expand-lg " style={{ background: "#000" }}>
-          <div className="container container1">
-            <Link className="navbar-brand d-flex align-items-center gap-2" href="/">
-              <img src="/logo.jpg" alt="Logo" style={{ height: 50, opacity:"2"}} />
-              {/* <span className="fw-bold text-white" style={{ fontFamily: 'Poppins', fontSize: 25 }}>DaaS Tech </span> */}
+      <header
+        className="sticky-top"
+        style={{
+          background: "#000",
+          zIndex: 100,
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+      >
+        <nav className="navbar navbar-expand-lg w-100" style={{ background: "#000" }}>
+          <div className="nav container-lg container1">
+            <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
+              <img src="/logo2.png" alt="Logo" style={{ height: 50, opacity: "2" }} />
             </Link>
+
             <button
               className="navbar-toggler border-0 text-white"
               type="button"
@@ -50,8 +57,9 @@ export default function Header() {
             >
               <Menu size={24} />
             </button>
-            <div className="collapse navbar-collapse justify-content-end d-none d-lg-flex">
-              <ul className="navbar-nav align-items-center me-3">
+
+            <div className="collapse navbar-collapse ms-5 justify-content-end d-none d-lg-flex">
+              <ul className="navbar-nav align-items-center ms-5 me-3">
                 {navLinks.map((link) => (
                   <li className="nav-item" key={link.name}>
                     <Link
@@ -69,7 +77,16 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
-              <Link href="/signup" className="btn btn-primary  px-3 py-2 ms-2" style={{ background: "#8b5cf6", border: "none", fontWeight: 600 , fontSize: 13 }}>
+              <Link
+                href="/book-call"
+                className="btn btn-primary px-3 py-2 ms-2"
+                style={{
+                  background: "#8b5cf6",
+                  border: "none",
+                  fontWeight: 600,
+                  fontSize: 13,
+                }}
+              >
                 Book a Call
               </Link>
             </div>
@@ -93,7 +110,7 @@ export default function Header() {
       >
         <div
           ref={menuRef}
-          className={`mobile-menu`}
+          className="mobile-menu"
           style={{
             width: 260,
             height: "100vh",
@@ -135,13 +152,22 @@ export default function Header() {
               </li>
             ))}
             <li className="nav-item mt-3">
-              <Link href="/signup" className="btn btn-primary rounded-pill w-100" style={{ background: "#8b5cf6", border: "none", fontWeight: 600 }}>
+              <Link
+                href="/book-call"
+                className="btn btn-primary rounded-pill w-100"
+                style={{
+                  background: "#8b5cf6",
+                  border: "none",
+                  fontWeight: 600,
+                }}
+              >
                 Book a call
               </Link>
             </li>
           </ul>
         </div>
       </div>
+
       <style jsx global>{`
         .nav-link.active {
           color: #8b5cf6 !important;
@@ -150,6 +176,13 @@ export default function Header() {
         }
         .navbar {
           box-shadow: none !important;
+        }
+        .container1 {
+          width: 100%;
+          max-width: 1280px;
+          margin-inline: auto;
+          padding-inline: 30px;
+          box-sizing: border-box;
         }
       `}</style>
     </>

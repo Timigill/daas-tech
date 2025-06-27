@@ -1,24 +1,22 @@
 import React from "react";
 import "../globals.css";
-
+import Link from "next/link";
 function Footer() {
   return (
     <footer className="bg-black text-white" style={{ padding: "12px 30px" }}>
-      <hr className="mt-4 mb-0 " style={{ width: "98vw", marginLeft: "-38px" }} />
-      <div className="container-fluid footer-gradient  pt-4">
+      <hr className="mt-4 mb-0 w-100" />
+      <div className="container-fluid footer-gradient pt-4" style={{ overflowX: "hidden" }}>
         <div className="row">
           {/* Left Column */}
           <div className="col-12 col-md-6 mb-4">
-            {/* Logo Image Only */}
             <div className="mb-3">
               <img
-                src="/logo.jpg"
-                alt="Xtract Logo"
+                src="/logo2.png"
+                alt="DaaS Logo"
                 style={{ width: "170px", height: "auto", opacity: "2" }}
               />
             </div>
 
-            {/* Description */}
             <p
               className="mb-4 px-2"
               style={{
@@ -29,17 +27,15 @@ function Footer() {
                 lineHeight: "1.6",
               }}
             >
-              DaaS Tech– Where Problems Meets Possiblities.
+              DaaS Tech– Where Problems Meets Possibilities.
             </p>
 
-            {/* Newsletter */}
             <div style={{ maxWidth: "350px" }}>
               <p className="fw-bold px-2 mb-2">Join our newsletter</p>
               <div className="position-relative mb-4 ps-2">
                 <input
                   type="email"
-                  className="form-control  bg-black text-white"
-                  // id="newsletterEmail"
+                  className="form-control bg-black text-white"
                   placeholder="name@email.com"
                   style={{
                     padding: "6px 90px 6px 12px",
@@ -49,9 +45,7 @@ function Footer() {
                     boxShadow: "none",
                     color: "white",
                   }}
-
                 />
-
                 <button
                   className="btn position-absolute top-0 end-0 mt-1 me-1 text-white"
                   style={{
@@ -69,9 +63,10 @@ function Footer() {
           </div>
 
           {/* Right Column */}
-          <div className="col-12 col-md-6">
+           <div className=" col-md-6">
+
             <div className="row">
-              <div className="col-12 col-md-4 mb-3">
+              <div className=" col-md-4  resp mb-3">
                 <h6 className="fw-bold mt-3">Links</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
                   <li>Services</li>
@@ -79,61 +74,85 @@ function Footer() {
                   <li>Case studies</li>
                   <li>Benefits</li>
                   <li>Pricing</li>
-                  <li>Admin-Pannel</li>
+                  <li>
+                      <a
+                        href="/admin/login"
+                        style={{
+                          textDecoration: "none",
+                          color: "#bebaba",
+                          fontSize: "0.9rem",
+                          opacity: 0.6,
+                        }}
+                      >
+                        Admin Panel
+                      </a>
+                  </li>
                 </ul>
               </div>
-              <div className="col-12 col-md-4 mb-3">
+              <div className=" col-sm-3  resp col-md-4 mb-3">
                 <h6 className="fw-bold mt-3">Pages</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Blog</li>
-                  <li>Contact</li>
-                  <li>404</li>
+                  <li><Link href="/">Home</Link></li>
+                  <li><Link href="/about">About</Link></li>
+                  <li><Link href="/blog">Blog</Link></li>
+                  <li><Link href="/contact">Contact</Link></li>
+                  <li><Link href="/careers">Careers</Link></li>
+                  <li><Link href="/quote">Get a Quote</Link></li>
                 </ul>
               </div>
-              <div className="col-12 col-md-4 mb-3">
+              <div className=" col-md-4  resp mb-3">
                 <h6 className="fw-bold mt-3">Socials</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
-                  <li>Instagram</li>
-                  <li>Facebook</li>
-                  <li>Linkedin</li>
-                  <li>Twitter</li>
-                </ul>
-              </div>
-            </div>
+                  <li>
+                    <a href="https://g.co/kgs/gLLDsjr" target="_blank" rel="noopener noreferrer">
+                      Google Reviews
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/company/daas-tech-innovations/" target="_blank" rel="noopener noreferrer">
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/61574573447669" target="_blank" rel="noopener noreferrer">
+                      Facebook
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.trustpilot.com/review/daastech.info" target="_blank" rel="noopener noreferrer">
+                      Trustpilot
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                      Twitter
+                    </a>
+                  </li>
+                </ul></div>
+           
+          </div>
           </div>
         </div>
+        <div className="col-12 col-md-12 ">
+          <ul className="list-unstyled footer-li d-flex  justify-content-around m-0" style={{ color: "#bebaba" }}>
+            <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
+            <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+          </ul>
+        </div>
+        <hr className="mt-0 mb-3 w-100" />
 
-        {/* Horizontal Divider - Full Width */}
-        <hr className="mt-4 mb-3" style={{ width: "98vw", marginLeft: "-38px" }} />
-
-        {/* Bottom Row */}
-        <div className="row text-center d-flex justify-content-between text-md-start small">
-          <div className="col-12 col-md-3 px-3 mb-2">Logo by DaaS-Tech
+        <div className="row text-center d-flex justify-content-center text-md-start small">
+          <div className="col-12 col-md-4 px-3 mb-2">Logo by DaaS-Tech</div>
+          <div className="col-12 col-md-4  mb-2 d-flex justify-content-center">
+            Visioned and Crafted by <b className="ms-2"> Taimoor Gill</b>
           </div>
-          <div className="col-12 col-md-3 mb-2">
-            Visioned and Crafted by <b>Taimoor Gill</b>
-          </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-              {/* <div
-                className="trustpilot-widget d-flex justify-content-end"
-                data-locale="en-US"
-                data-template-id="56278e9abfbbba0bdcd568bc"
-                data-businessunit-id="68417abf22a45a72e30f5ef6"
-              >
-                <p>Review us on <a
-                  href="https://www.trustpilot.com/review/daastech.info"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-decoration-none"
-                >
-                  Trustpilot
-                </a></p>
-              </div> */}
-            </div>
-          <div className="col-12 col-md-3 mb-2 d-flex justify-content-end">
-            <div>© All right reserved</div>
+          <div className="col-12 col-md-4 mb-2 d-flex justify-content-end">
+            <div>© All rights reserved</div>
           </div>
         </div>
       </div>
