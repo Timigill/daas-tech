@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import Image from "next/image";
 
 const callTypes = [
   { label: "30 Minute Meeting", value: "30" },
@@ -151,7 +152,7 @@ export default function BookACall() {
         >
           {phase === "info" && (
             <>
-              <div style={{ fontWeight: 600, fontSize: 18 }}> <img src="/logo2.png" alt="Logo" style={{ height: 30, opacity: "2" }} /></div>
+              <div style={{ fontWeight: 600, fontSize: 18 }}> <Image src="/logo2.png" alt="Logo" width={120} height={30} style={{ height: 30, opacity: "2" }} /></div>
               <div  className="mt-5" style={{ fontWeight: 700, fontSize: 30, margin: "12px 0 16px 0" }}>
                  Schedule a Meeting
               </div>
@@ -162,22 +163,24 @@ export default function BookACall() {
               <div style={{ display: "flex", alignItems: "center", color: "#bdbdbd" }}>
                 <span style={{ fontSize: 15, marginRight: 8 }}>💻</span>
                 <span>Web conferencing details provided upon confirmation.</span>
-                <img
-              src="/meet.jpeg"
-              alt="DaaS Tech"
-              style={{
-                position: "absolute",
-                bottom:"0 !important" ,
-                inset: 0,
-                top: "auto",
-                width: "40%",
-                height: "50%",
-                objectFit: "cover",
-                opacity: 0.1,
-                zIndex: 1,
-                borderRadius: "0",
-                pointerEvents: "none",
-              }}/>
+                <Image
+                  src="/meet.jpeg"
+                  alt="DaaS Tech"
+                  fill
+                  style={{
+                    position: "absolute",
+                    bottom: "0 !important",
+                    inset: 0,
+                    top: "auto",
+                    width: "40%",
+                    height: "50%",
+                    objectFit: "cover",
+                    opacity: 0.1,
+                    zIndex: 1,
+                    borderRadius: "0",
+                    pointerEvents: "none",
+                  }}
+                />
               </div>
             </>
           )}
@@ -387,7 +390,7 @@ export default function BookACall() {
               <div>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>🎉</div>
                 Booking Confirmed!<br />
-                You'll receive a confirmation email soon.
+                You&apos;ll receive a confirmation email soon.
               </div>
             </motion.div>
           )}

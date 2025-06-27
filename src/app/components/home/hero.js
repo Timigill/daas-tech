@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ParticlesBg from "../ParticlesBg";
 import "@/app/globals.css";
-import "@/app/custom-bootstrap.scss";
+// import "@/app/custom-bootstrap.scss";
 
 // Animation variant
 const scaleIn = {

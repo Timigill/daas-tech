@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./AdminLogin.module.scss";
+import Image from "next/image";
 
 // Animation variants
 const cardVariants = {
@@ -92,7 +93,7 @@ export default function AdminLogin() {
             }}
           >
             <div style={{ marginBottom: 32 }}>
-              <img src="/logo.jpg" alt="DaaS Tech" style={{ width: 120, marginBottom: 24 }} />
+              <Image src="/logo.jpg" alt="DaaS Tech" width={120} height={40} style={{ width: 120, marginBottom: 24 }} />
             </div>
             <h2 style={{ fontWeight: 600, fontSize: 26, marginBottom: 8 }}>Welcome!</h2>
             <p style={{ color: "#bebaba", fontSize: 14, marginBottom: 24 }}>
@@ -194,9 +195,10 @@ export default function AdminLogin() {
             animate="visible"
           >
             {/* Background Image */}
-            <img
+            <Image
               src="/Loginbg.jpg"
               alt="DaaS Tech"
+              fill
               style={{
                 position: "absolute",
                 inset: 0,

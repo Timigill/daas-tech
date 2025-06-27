@@ -2,6 +2,7 @@
 import React from 'react'
 import { LiaLinkedin } from "react-icons/lia";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -91,7 +92,7 @@ function Team() {
               style={{
                 border: "1px solid #222",
               }}>
-              <img src="/About-Us/alex.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <Image src="/About-Us/alex.png" alt="" width={280} height={280} style={{ width: "280px", height: "280px" }} />
               <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"
@@ -132,7 +133,7 @@ function Team() {
               style={{
                 border: "1px solid #222",
               }}>
-              <img src="/About-Us/Sophia.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <Image src="/About-Us/Sophia.png" alt="" width={280} height={280} style={{ width: "280px", height: "280px" }} />
               <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"
@@ -172,7 +173,7 @@ function Team() {
               style={{
                 border: "1px solid #222",
               }}>
-              <img src="/About-Us/Riyan.png" alt="" style={{ width: "280px", height: "280px" }} />
+              <Image src="/About-Us/Riyan.png" alt="" width={280} height={280} style={{ width: "280px", height: "280px" }} />
               <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"

@@ -16,7 +16,7 @@ export default function MeetingsList() {
 
   return (
     <div>
-      <h2>Manager's Meetings</h2>
+      <h2>Manager&apos;s Meetings</h2>
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr>

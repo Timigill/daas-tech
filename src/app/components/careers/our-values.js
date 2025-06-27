@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from "next/image";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -56,7 +57,7 @@ function Values() {
                                 background: "linear-gradient(to top left, rgba(164, 122, 255, 0.1), rgba(0,0,0,1))",
                             }}
                         >
-                            <img src="/Careers/integrity.png" alt="Integrity" />
+                            <Image src="/Careers/integrity.png" alt="Integrity" width={80} height={80} />
                             <h5 className="mt-3" style={{ fontFamily: "Inter, sans-serif", fontSize: "20px" }}>
                                 Integrity is everything
                             </h5>
@@ -89,7 +90,7 @@ function Values() {
                                 background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0,0,0,1))",
                             }}
                         >
-                            <img src="/Careers/bulb.png" alt="Innovation" />
+                            <Image src="/Careers/bulb.png" alt="Innovation" width={80} height={80} />
                             <h5 className="mt-3" style={{ fontFamily: "Inter, sans-serif", fontSize: "20px" }}>
                                 Be bold and innovate
                             </h5>
@@ -99,7 +100,7 @@ function Values() {
                                 maxWidth: 500,
                             }}>
                                 Living in such exciting times fuels our courage and creativity.
-                                We're not content with just celebrating change; we're actively
+                                We&apos;re not content with just celebrating change; we&apos;re actively
                                 driving the transformation of our industry.
                             </p>
                         </div>
@@ -121,7 +122,7 @@ function Values() {
                                 background: "linear-gradient(to bottom left, rgba(164, 122, 255, 0.1), rgba(0,0,0,1))",
                             }}
                         >
-                            <img src="/Careers/hand.png" alt="Teamwork" />
+                            <Image src="/Careers/hand.png" alt="Teamwork" width={80} height={80} />
                             <h5 className="mt-3" style={{ fontFamily: "Inter, sans-serif", fontSize: "20px" }}>
                                 Achieve as a team
                             </h5>
@@ -131,7 +132,7 @@ function Values() {
                                 maxWidth: 500,
                             }}>
                                 We prioritize people and their immense potential, valuing
-                                everyone's opinions as we work towards shared goals. By engaging
+                                everyone&apos;s opinions as we work towards shared goals. By engaging
                                 deeply with each other, we aim to create even better products.
                             </p>
                         </div>
@@ -153,7 +154,7 @@ function Values() {
                                 background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.1), rgba(0,0,0,1))",
                             }}
                         >
-                            <img src="/Careers/default.png" alt="Balance" />
+                            <Image src="/Careers/default.png" alt="Balance" width={80} height={80} />
                             <h5 className="mt-3" style={{ fontFamily: "Inter, sans-serif", fontSize: "20px" }}>
                                 Belief in balance
                             </h5>
