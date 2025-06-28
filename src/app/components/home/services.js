@@ -1,9 +1,9 @@
-'use client';
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import purpleIcon from '/public/rotation.png';
-import { Typewriter } from 'react-simple-typewriter';
+import purpleIcon from "/public/rotation.png";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function HomeServices() {
   return (
@@ -37,35 +37,57 @@ export default function HomeServices() {
             padding: "32px 20px",
           }}
         >
-          <a href="#" className="btn btn-outline-light mb-3 px-2 py-1" style={{
-            background: "transparent",
-            color: "#bdbdbd",
-            fontWeight: 500,
-            fontSize: 13,
-            borderRadius: 7,
-            padding: "4px 14px",
-            border: "1px solid #23232a",
-          }}>Custom Site</a>
+          <a
+            href="#"
+            className="btn btn-outline-light mb-3 px-2 py-1"
+            style={{
+              background: "transparent",
+              color: "#bdbdbd",
+              fontWeight: 500,
+              fontSize: 13,
+              borderRadius: 7,
+              padding: "4px 14px",
+              border: "1px solid #23232a",
+            }}
+          >
+            Custom Site
+          </a>
 
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
             Build your own Custom Website
           </h3>
 
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 0, textAlign: "left" }}>
-            From managing calendars to drafting emails and summarizing meetings, our AI assistants work around the clock to keep your business running smarter and faster.
+          <p
+            style={{
+              color: "#bdbdbd",
+              fontSize: 16,
+              marginBottom: 0,
+              textAlign: "left",
+            }}
+          >
+            From managing calendars to drafting emails and summarizing meetings,
+            our AI assistants work around the clock to keep your business
+            running smarter and faster.
           </p>
 
           <div className="d-flex flex-wrap gap-3 mt-3">
             {["Get a Quote", "Scheduling", "Many More"].map((text, idx) => (
-              <a key={idx} href="#" className="btn btn-outline-light px-2 py-1" style={{
-                background: "transparent",
-                color: "#bdbdbd",
-                fontWeight: 500,
-                fontSize: 13,
-                borderRadius: 7,
-                padding: "4px 14px",
-                border: "1px solid #23232a",
-              }}>{text}</a>
+              <a
+                key={idx}
+                href="#"
+                className="btn btn-outline-light px-2 py-1"
+                style={{
+                  background: "transparent",
+                  color: "#bdbdbd",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  borderRadius: 7,
+                  padding: "4px 14px",
+                  border: "1px solid #23232a",
+                }}
+              >
+                {text}
+              </a>
             ))}
           </div>
         </motion.div>
@@ -134,34 +156,39 @@ export default function HomeServices() {
               What can we help you with?
             </h4>
             <p style={{ fontSize: 14, color: "#bdbdbd", marginBottom: 18 }}>
-              Whether you want help in customer handling or make changes in your existing Website, just give us a command.
+              Whether you want help in customer handling or make changes in your
+              existing Website, just give us a command.
             </p>
 
             {/* Typing Effect Box */}
-            <div style={{
-              width: '100%',
-              background: '#101014',
-              border: '1px solid #2f2f35',
-              borderRadius: 10,
-              padding: '10px 12px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 8,
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <span style={{
-                  flex: 1,
-                  color: '#bdbdbd',
-                  fontSize: 14,
-                  fontFamily: 'monospace',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden'
-                }}>
+            <div
+              style={{
+                width: "100%",
+                background: "#101014",
+                border: "1px solid #2f2f35",
+                borderRadius: 10,
+                padding: "10px 12px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 8,
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span
+                  style={{
+                    flex: 1,
+                    color: "#bdbdbd",
+                    fontSize: 14,
+                    fontFamily: "monospace",
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                  }}
+                >
                   <Typewriter
                     words={[
-                      'Get a quote for a new project',
-                      'Schedule a meeting with the team',
-                      'Summarize the latest project updates',
+                      "Get a quote for a new project",
+                      "Schedule a meeting with the team",
+                      "Summarize the latest project updates",
                     ]}
                     loop
                     cursor
@@ -171,14 +198,16 @@ export default function HomeServices() {
                     delaySpeed={2000}
                   />
                 </span>
-                <button style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: '#a855f7',
-                  fontSize: 20,
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}>
+                <button
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "#a855f7",
+                    fontSize: 20,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                >
                   ▶
                 </button>
               </div>
@@ -186,17 +215,26 @@ export default function HomeServices() {
 
             {/* CTA Buttons */}
             <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
-              {["Custom Site", "Fast & Secure", "Many More"].map((text, idx) => (
-                <a key={idx} href="#" className="btn btn-outline-light px-2 py-1" style={{
-                  background: "transparent",
-                  color: "#bdbdbd",
-                  fontWeight: 500,
-                  fontSize: 13,
-                  borderRadius: 7,
-                  padding: "4px 14px",
-                  border: "1px solid #23232a",
-                }}>{text}</a>
-              ))}
+              {["Custom Site", "Fast & Secure", "Many More"].map(
+                (text, idx) => (
+                  <a
+                    key={idx}
+                    href="#"
+                    className="btn btn-outline-light px-2 py-1"
+                    style={{
+                      background: "transparent",
+                      color: "#bdbdbd",
+                      fontWeight: 500,
+                      fontSize: 13,
+                      borderRadius: 7,
+                      padding: "4px 14px",
+                      border: "1px solid #23232a",
+                    }}
+                  >
+                    {text}
+                  </a>
+                )
+              )}
             </div>
           </div>
 
@@ -208,7 +246,8 @@ export default function HomeServices() {
               right: 0,
               bottom: 0,
               height: "70%",
-              background: "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
+              background:
+                "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
