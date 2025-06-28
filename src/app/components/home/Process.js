@@ -75,7 +75,7 @@ app.listen(PORT, () => {
       repeatType: 'reverse',
     });
     return animation.stop;
-  }, [y]);
+  }, [checklist.length]);
 
   const thumbHeight = 40;
   const scrollRange = 150;

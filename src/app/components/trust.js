@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -44,10 +45,10 @@ function Trust() {
           <div className="slider-content">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                <a href="https://g.co/kgs/gLLDsjr" target='_blank'><img src="/google-reviews.png" alt="Review" className="slider-image" /></a>
-                <a href="https://www.linkedin.com/company/daas-tech-innovations/" target='_blank'><img src="/Linkedin.png" alt="Review" className="slider-image" /></a>
-                <a href="https://www.facebook.com/61574573447669" target='_blank'><img src="/Facebook1.png" alt="Review" className="slider-image" /></a>
-                <a href="https://www.trustpilot.com/review/daastech.info" target='_blank'><img src="/Trustpilot.png" alt="Review" className="slider-image" /></a>
+                <a href="https://g.co/kgs/gLLDsjr" target='_blank'><Image src="/google-reviews.png" alt="Review" className="slider-image" width={80} height={80} /></a>
+                <a href="https://www.linkedin.com/company/daas-tech-innovations/" target='_blank'><Image src="/Linkedin.png" alt="Review" className="slider-image" width={80} height={80} /></a>
+                <a href="https://www.facebook.com/61574573447669" target='_blank'><Image src="/Facebook1.png" alt="Review" className="slider-image" width={80} height={80} /></a>
+                <a href="https://www.trustpilot.com/review/daastech.info" target='_blank'><Image src="/Trustpilot.png" alt="Review" className="slider-image" width={80} height={80} /></a>
               </React.Fragment>
             ))}
           </div>

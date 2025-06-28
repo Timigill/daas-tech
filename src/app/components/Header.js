@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "react-feather";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -46,7 +47,7 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg w-100" style={{ background: "#000" }}>
           <div className="nav container-lg container1">
             <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
-              <img src="/logo2.png" alt="Logo" style={{ height: 50, opacity: "2" }} />
+              <Image src="/logo2.png" alt="Logo" width={120} height={50} style={{ height: 50, opacity: "2" }} />
             </Link>
 
             <button
@@ -78,7 +79,7 @@ export default function Header() {
                 ))}
               </ul>
               <Link
-                href="/signup"
+                href="/book-call"
                 className="btn btn-primary px-3 py-2 ms-2"
                 style={{
                   background: "#8b5cf6",
@@ -153,7 +154,7 @@ export default function Header() {
             ))}
             <li className="nav-item mt-3">
               <Link
-                href="/signup"
+                href="/book-call"
                 className="btn btn-primary rounded-pill w-100"
                 style={{
                   background: "#8b5cf6",

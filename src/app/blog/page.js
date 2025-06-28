@@ -1,5 +1,7 @@
 import blogPosts from '@/data/blogs'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Image from "next/image";
+
 export default function HomePage() {
   return (
     <div className="container  py-5">
@@ -15,11 +17,13 @@ export default function HomePage() {
         {blogPosts.map((post) => (
           <div key={post.id} className="col-md-6 col-lg-6">
             <div className="card bg-sec text-white h-100 shadow p-4">
-              <img
+              <Image
                 src={post.image}
                 alt={post.title}
                 className="card-img-top rounded"
-                style={{ aspectRatio: '1 / 1', objectFit: 'cover', width: '500px' , height: '250px' }}
+                width={500}
+                height={250}
+                style={{ aspectRatio: '1 / 1', objectFit: 'cover', width: '500px', height: '250px' }}
               />
               <div className="card-body">
                 <span className="badge bg-secondary mb-2">AI/IT</span>
