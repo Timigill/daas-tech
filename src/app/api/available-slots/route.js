@@ -42,36 +42,36 @@ export async function GET(req) {
   const date = searchParams.get("date");
   const duration = parseInt(searchParams.get("duration"), 10) || 30;
 
-  const selectedDate = new Date(date);
-  selectedDate.setHours(0, 0, 0, 0); // Normalize to midnight
+  console.log("API called for date:", date);
 
-  const bookings = await Booking.find({
-    date: selectedDate,
-    callType: String(duration),
-  });
-
+  const bookings = await Booking.find({ date, callType: String(duration) });
   const allSlots = generateTimeSlots(9, 18, duration);
 
-  // If it's today, filter out past time slots using Pakistan/Maldives timezone (UTC+5)
   const now = new Date();
-  const pakistanTime = new Date(now.getTime() + (5 * 60 * 60 * 1000)); // UTC+5
-  const isToday = selectedDate.toDateString() === pakistanTime.toDateString();
+  const isToday = date === now.toISOString().split("T")[0];
 
-  const filteredSlots = allSlots.filter(slot => {
+  const availableSlots = allSlots.filter(slot => {
+    // Check if slot is booked
+    const isBooked = bookings.some(b => b.time === slot.value);
+    if (isBooked) return false;
+
+    // Filter past slots if today
     if (isToday) {
-      const [hour, minute] = slot.value.split(":").map(Number);
-      const slotTime = new Date(pakistanTime);
-      slotTime.setHours(hour, minute, 0, 0);
-      return slotTime > pakistanTime;
+      const [slotHour, slotMinute] = slot.value.split(":").map(Number);
+      const slotTime = new Date();
+      slotTime.setHours(slotHour, slotMinute, 0, 0);
+      if (slotTime <= now) return false;
     }
+
     return true;
   });
 
-  const availableSlots = filteredSlots.filter(
-    slot => !bookings.some(b => b.time === slot.value)
-  );
+  // Fix: reflect which slots are booked (or filtered due to time)
+  const bookedSlotValues = allSlots
+    .filter(slot => !availableSlots.some(av => av.value === slot.value))
+    .map(slot => slot.value);
 
-  return Response.json({ slots: availableSlots });
+  return Response.json({ slots: availableSlots, booked: bookedSlotValues });
 }
 
 export async function POST(req) {
