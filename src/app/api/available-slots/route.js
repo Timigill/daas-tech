@@ -42,36 +42,36 @@ export async function GET(req) {
   const date = searchParams.get("date");
   const duration = parseInt(searchParams.get("duration"), 10) || 30;
 
-  console.log("API called for date:", date);
+  const selectedDate = new Date(date);
+  selectedDate.setHours(0, 0, 0, 0); // Normalize to midnight
 
-  const bookings = await Booking.find({ date, callType: String(duration) });
+  const bookings = await Booking.find({
+    date: selectedDate,
+    callType: String(duration),
+  });
+
   const allSlots = generateTimeSlots(9, 18, duration);
 
+  // If it's today, filter out past time slots using Pakistan/Maldives timezone (UTC+5)
   const now = new Date();
-  const isToday = date === now.toISOString().split("T")[0];
+  const pakistanTime = new Date(now.getTime() + (5 * 60 * 60 * 1000)); // UTC+5
+  const isToday = selectedDate.toDateString() === pakistanTime.toDateString();
 
-  const availableSlots = allSlots.filter(slot => {
-    // Check if slot is booked
-    const isBooked = bookings.some(b => b.time === slot.value);
-    if (isBooked) return false;
-
-    // Filter past slots if today
+  const filteredSlots = allSlots.filter(slot => {
     if (isToday) {
-      const [slotHour, slotMinute] = slot.value.split(":").map(Number);
-      const slotTime = new Date();
-      slotTime.setHours(slotHour, slotMinute, 0, 0);
-      if (slotTime <= now) return false;
+      const [hour, minute] = slot.value.split(":").map(Number);
+      const slotTime = new Date(pakistanTime);
+      slotTime.setHours(hour, minute, 0, 0);
+      return slotTime > pakistanTime;
     }
-
     return true;
   });
 
-  // Fix: reflect which slots are booked (or filtered due to time)
-  const bookedSlotValues = allSlots
-    .filter(slot => !availableSlots.some(av => av.value === slot.value))
-    .map(slot => slot.value);
+  const availableSlots = filteredSlots.filter(
+    slot => !bookings.some(b => b.time === slot.value)
+  );
 
-  return Response.json({ slots: availableSlots, booked: bookedSlotValues });
+  return Response.json({ slots: availableSlots });
 }
 
 export async function POST(req) {
