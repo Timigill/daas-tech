@@ -1,10 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./adminLogin.module.scss";
 import Image from "next/image";
 
 // Animation variants
