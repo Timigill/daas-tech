@@ -1,22 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import BlogCard from "../../components/BlogCard";
+import React, { useEffect, useState, useCallback } from "react";
+import BlogCard from "@/app/components/BlogCard";
 import { motion } from "framer-motion";
-import AdminAddBlogForm from "../../components/BlogForm";
-import { useRouter } from "next/navigation";
-import AdminEditBlogForm from "../../components/EditBlogForm";
+import AdminAddBlogForm from "@/app/components/BlogForm";
+import AdminEditBlogForm from "@/app/components/EditBlogForm";
 
-export default function AdminBlogPage() {
+export default function AdminBlogsPage() {
   const [blogs, setBlogs] = useState([]);
   const [openCardId, setOpenCardId] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [editingId, setEditingId] = useState(null); // ⬅️ For edit form
+  const [editingId, setEditingId] = useState(null);
 
-  const router = useRouter();
-
-  const fetchBlogs = async () => {
+  const fetchBlogs = useCallback(async () => {
     try {
       const res = await fetch("/api/blog");
       const data = await res.json();
@@ -24,30 +20,11 @@ export default function AdminBlogPage() {
     } catch (err) {
       console.error("Failed to fetch blogs:", err);
     }
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-    if (token) {
-      try {
-        const payload = JSON.parse(atob(token.split(".")[1]));
-        if (payload?.role === "admin") {
-          setIsAdmin(true);
-        } else {
-          router.replace("/unauthorized");
-        }
-      } catch (err) {
-        console.error("Invalid token");
-        router.replace("/unauthorized");
-      }
-    } else {
-      router.replace("/unauthorized");
-    }
   }, []);
 
   useEffect(() => {
     fetchBlogs();
-  }, []);
+  }, [fetchBlogs]);
 
   const handleToggle = (id) => {
     setOpenCardId((prev) => (prev === id ? null : id));
@@ -60,9 +37,7 @@ export default function AdminBlogPage() {
     try {
       const res = await fetch(`/api/blog/${id}`, {
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-        },
+        // You may want to add authentication headers here if needed
       });
 
       if (res.ok) {
@@ -75,8 +50,6 @@ export default function AdminBlogPage() {
       console.error("Delete error:", err);
     }
   };
-
-  if (!isAdmin) return null;
 
   return (
     <section
@@ -105,8 +78,9 @@ export default function AdminBlogPage() {
           borderRadius: 20,
         }}
       >
-        Admin Blog Dashboard
+        Admin Blogs
       </motion.span>
+
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -119,8 +93,9 @@ export default function AdminBlogPage() {
           maxWidth: 700,
         }}
       >
-        Manage Blogs with Full Control
+        Manage Your Blog Content
       </motion.h1>
+
       <motion.p
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -133,47 +108,56 @@ export default function AdminBlogPage() {
           margin: "0 auto 40px auto",
         }}
       >
-        Add, edit, and delete blog entries for your audience in one place.
+        Create, edit, and manage all your blog posts with full control over your content.
       </motion.p>
 
-      <button
-        className="btn btn-outline-light mb-4"
-        onClick={() => {
-          setShowAddForm(!showAddForm);
-          setEditingId(null); // Hide edit form if open
-        }}
-      >
-        {showAddForm ? "Close Add Form" : "Add New Blog"}
-      </button>
+      {/* Blog Controls */}
+      <div className="w-100 px-4">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3 className="text-start">📝 Blog Manager</h3>
+          <button
+            className="btn btn-outline-light"
+            onClick={() => {
+              setShowAddForm(!showAddForm);
+              setEditingId(null); // Hide edit form if open
+            }}
+          >
+            {showAddForm ? "Close Add Form" : "Add New Blog"}
+          </button>
+        </div>
 
-      {showAddForm && <AdminAddBlogForm onBlogAdded={fetchBlogs} />}
+        {showAddForm && <AdminAddBlogForm onBlogAdded={fetchBlogs} />}
+        {editingId && (
+          <AdminEditBlogForm
+            blogId={editingId}
+            onClose={() => setEditingId(null)}
+            onBlogUpdated={fetchBlogs}
+          />
+        )}
 
-      {editingId && (
-        <AdminEditBlogForm
-          blogId={editingId}
-          onClose={() => setEditingId(null)}
-          onBlogUpdated={fetchBlogs}
-        />
-      )}
-
-      <div className="container">
-        <div className="row gy-4">
-          {blogs.map((blog) => (
-            <BlogCard
-              key={blog._id}
-              {...blog}
-              isOpen={openCardId === blog._id}
-              onToggle={() => handleToggle(blog._id)}
-              isAdmin={true}
-              onDelete={() => handleDelete(blog._id)}
-              onEdit={() => {
-                setShowAddForm(false); 
-                setEditingId(blog._id); 
-              }}
-            />
-          ))}
+        <div className="container">
+          <div className="row gy-4">
+            {blogs.length > 0 ? (
+              blogs.map((blog) => (
+                <BlogCard
+                  key={blog._id}
+                  {...blog}
+                  isOpen={openCardId === blog._id}
+                  onToggle={() => handleToggle(blog._id)}
+                  isAdmin={true}
+                  onDelete={() => handleDelete(blog._id)}
+                  onEdit={() => {
+                    setShowAddForm(false);
+                    setEditingId(blog._id);
+                  }}
+                />
+              ))
+            ) : (
+              <p className="text-muted">No blogs available.</p>
+            )}
+          </div>
         </div>
       </div>
     </section>
   );
-}
+} 

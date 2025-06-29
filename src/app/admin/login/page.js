@@ -39,7 +39,7 @@ export default function AdminLogin() {
       if (res.ok) {
         toast.success("Welcome back, admin!");
         localStorage.setItem("adminToken", data.token);
-        window.location.href = "/admin/dashboard";
+        window.location.href = "/admin";
       } else {
         toast.error(data.message || "Login failed");
       }

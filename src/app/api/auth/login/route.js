@@ -2,7 +2,7 @@ import { dbConnect } from "@/app/db";
 import User from "@/app/db/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { cookies as getCookies } from "next/headers";
+import { cookies } from "next/headers";
 
 export async function POST(req) {
   try {
@@ -52,9 +52,8 @@ export async function POST(req) {
       { expiresIn: "1d" }
     );
 
-    // Set cookie
-    const cookieStore = getCookies();
-    cookieStore().set("adminToken", token, {
+    // Set cookie using Next.js cookies API
+    cookies().set("adminToken", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
