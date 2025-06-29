@@ -86,7 +86,7 @@ export default function Page() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const newErrors = {};
 
@@ -138,20 +138,78 @@ export default function Page() {
             return;
         }
 
-        // Show success toast
-        toast.success("Form submitted successfully!", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-        });
+        try {
+            // Prepare data for API submission
+            const quoteData = {
+                name: formData.contactName,
+                email: formData.contactEmail,
+                phone: formData.contactPhone,
+                company: formData.customerType,
+                projectType: formData.selectedServices.join(", "),
+                budget: formData.budget,
+                timeline: formData.timeline,
+                description: formData.fullName,
+                // Additional fields
+                projectName: formData.project,
+                contactMethod: formData.contactMethod,
+                fileName: formData.fileName
+            };
 
-        console.log("Form submitted", formData);
-        // Handle form submission
+            // Submit to API
+            const response = await fetch('/api/quote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(quoteData),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                
+                // Show success toast
+                toast.success("Quote submitted successfully! We'll get back to you soon.", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+
+                // Reset form
+                setFormData({
+                    project: "",
+                    customerType: "",
+                    timeline: "",
+                    budget: "",
+                    fullName: "",
+                    selectedServices: [],
+                    file: null,
+                    fileName: '',
+                    contactName: "",
+                    contactEmail: "",
+                    contactPhone: "",
+                    contactMethod: []
+                });
+            } else {
+                throw new Error('Failed to submit quote');
+            }
+        } catch (error) {
+            console.error('Quote submission error:', error);
+            toast.error("Failed to submit quote. Please try again.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
     };
 
     return (
@@ -234,8 +292,8 @@ export default function Page() {
                       viewport={{ once: true }}
                     >
                         <div className="d-flex flex-column" style={{
-                            boxShadow: "inset 0 0 60px #212121",
-                            borderRadius: "1rem 0 0 1rem",
+                            boxShadow: "inset 0 0 10px rgb(164, 122, 255 ,0.5)",
+                            borderRadius: "1rem  1rem",
                             padding: "2rem",
                             color: "#fff",
                             minHeight: "100%"
@@ -460,8 +518,8 @@ export default function Page() {
                   <div className="col-12 col-lg-7">
                     <div style={{
                         width: '98%',
-                      boxShadow: 'inset 0 0 60px #212121',
-                      borderRadius: "1rem 0 0 1rem",
+                        boxShadow: "inset 0 0 10px rgb(164, 122, 255 ,0.5)",
+                        borderRadius: "1rem  1rem",
                       padding: '2rem',
                       color: '#fff',
                     }}>
@@ -613,8 +671,8 @@ export default function Page() {
                   <div className="col-12 col-lg-7">
                     <div style={{
                           width: '98%',
-                      boxShadow: 'inset 0 0 60px #212121',
-                      borderRadius: "1rem 0 0 1rem",
+                          boxShadow: "inset 0 0 10px rgb(164, 122, 255 ,0.5)",
+                          borderRadius: "1rem  1rem",
                       padding: '2rem',
                       color: '#fff',
                     }}>
