@@ -121,7 +121,7 @@ function Hero() {
             whileHover={{ scale: 1.1 }}
             href="/signup"
             className="btn btn-primary px-3 py-2"
-            style={{ maxWidth: "100%", whiteSpace: "nowrap" }}
+            style={{ maxWidth: "100%", whiteSpace: "nowrap" , background:"rgb(126, 72, 243)"}}
           >
             Get in Touch
           </motion.a>
