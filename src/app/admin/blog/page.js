@@ -1,0 +1,179 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import BlogCard from "../../components/BlogCard";
+import { motion } from "framer-motion";
+import AdminAddBlogForm from "../../components/BlogForm";
+import { useRouter } from "next/navigation";
+import AdminEditBlogForm from "../../components/EditBlogForm";
+
+export default function AdminBlogPage() {
+  const [blogs, setBlogs] = useState([]);
+  const [openCardId, setOpenCardId] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [editingId, setEditingId] = useState(null); // ⬅️ For edit form
+
+  const router = useRouter();
+
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("/api/blog");
+      const data = await res.json();
+      setBlogs(data);
+    } catch (err) {
+      console.error("Failed to fetch blogs:", err);
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        if (payload?.role === "admin") {
+          setIsAdmin(true);
+        } else {
+          router.replace("/unauthorized");
+        }
+      } catch (err) {
+        console.error("Invalid token");
+        router.replace("/unauthorized");
+      }
+    } else {
+      router.replace("/unauthorized");
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const handleToggle = (id) => {
+    setOpenCardId((prev) => (prev === id ? null : id));
+  };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this blog?");
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/blog/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+        },
+      });
+
+      if (res.ok) {
+        fetchBlogs();
+      } else {
+        const error = await res.json();
+        alert("Delete failed: " + error.message);
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
+  if (!isAdmin) return null;
+
+  return (
+    <section
+      className="d-flex flex-column align-items-center text-center px-3"
+      style={{
+        padding: "48px 0",
+        background: "#000",
+        color: "#fff",
+        fontFamily: "Inter, sans-serif",
+        overflowX: "hidden",
+      }}
+    >
+      <motion.span
+        className="badge mb-3"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        style={{
+          background: "rgba(139,92,246,0.15)",
+          color: "#8b5cf6",
+          fontWeight: 600,
+          fontSize: 15,
+          letterSpacing: 1,
+          padding: "8px 18px",
+          borderRadius: 20,
+        }}
+      >
+        Admin Blog Dashboard
+      </motion.span>
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        style={{
+          fontWeight: 700,
+          lineHeight: 1.15,
+          marginBottom: 16,
+          maxWidth: 700,
+        }}
+      >
+        Manage Blogs with Full Control
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        style={{
+          fontSize: 15,
+          color: "#bdbdbd",
+          maxWidth: 600,
+          margin: "0 auto 40px auto",
+        }}
+      >
+        Add, edit, and delete blog entries for your audience in one place.
+      </motion.p>
+
+      <button
+        className="btn btn-outline-light mb-4"
+        onClick={() => {
+          setShowAddForm(!showAddForm);
+          setEditingId(null); // Hide edit form if open
+        }}
+      >
+        {showAddForm ? "Close Add Form" : "Add New Blog"}
+      </button>
+
+      {showAddForm && <AdminAddBlogForm onBlogAdded={fetchBlogs} />}
+
+      {editingId && (
+        <AdminEditBlogForm
+          blogId={editingId}
+          onClose={() => setEditingId(null)}
+          onBlogUpdated={fetchBlogs}
+        />
+      )}
+
+      <div className="container">
+        <div className="row gy-4">
+          {blogs.map((blog) => (
+            <BlogCard
+              key={blog._id}
+              {...blog}
+              isOpen={openCardId === blog._id}
+              onToggle={() => handleToggle(blog._id)}
+              isAdmin={true}
+              onDelete={() => handleDelete(blog._id)}
+              onEdit={() => {
+                setShowAddForm(false); 
+                setEditingId(blog._id); 
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

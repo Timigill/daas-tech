@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -202,14 +203,13 @@ export default function AdminLogin() {
               style={{
                 position: "absolute",
                 inset: 0,
-                width: "100%",
-                height: "100%",
                 objectFit: "cover",
                 opacity: 0.2,
                 zIndex: 1,
                 borderRadius: "0",
                 pointerEvents: "none",
               }}
+              priority
             />
             {/* Content */}
             <div style={{ zIndex: 2, textAlign: "center", position: "relative" }}>
