@@ -517,7 +517,7 @@ export default function HomeServices() {
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
-            height: 340,
+            height: "auto",
             marginBottom: 24,
             border: "1.5px solid #292932",
             boxShadow: "0 12px 40px rgba(0,0,0,0.55)",

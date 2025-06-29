@@ -131,10 +131,15 @@ function Hero() {
             whileInView="visible"
             viewport={{ once: true }}
             custom={0.6}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{
+              scale: 1.08,
+              backgroundColor: "rgba(255,255,255,0.1)",
+              boxShadow: "0 0 10px rgba(255,255,255,0.2)",
+              transition: { duration: 0.3, ease: "easeInOut" },
+            }}
             href="/services"
             className="btn btn-outline-light px-3 py-2"
-            style={{ maxWidth: "100%", whiteSpace: "nowrap" }}
+            style={{ maxWidth: "100%", whiteSpace: "nowrap",  backgroundColor: "rgba(255,255,255,0.1)" }}
           >
             View Services
           </motion.a>
