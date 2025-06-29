@@ -11,6 +11,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { motion } from "framer-motion";
 
+
 const services = [
     ["Website Development", "Artificial Intelligence", "IOS App Development"],
     ["Android App Development", "Hybrid Mobile App", "Flutter App Development"],
@@ -598,6 +599,13 @@ export default function Page() {
                                   backgroundColor: '#000',
                                   borderRight: '1px solid #444',
                               }}
+                              dropdownStyle={{
+                                backgroundColor: '#000',
+                                color: '#fff',
+                                width: 'max-content', // 👈 Shrink the width here
+                                minWidth: 'unset', // 👈 Cancel default min-width
+                                maxWidth: '250px',
+                            }}
                               placeholder="e.g. +92 3xx xxxxxxx"
                           />
                           {errors.contactPhone && (
