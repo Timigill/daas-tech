@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -26,7 +27,7 @@ const AdminAddBlogForm = ({ onBlogAdded }) => {
     }
 
     try {
-      const res = await fetch("/api/blogs", {
+      const res = await fetch("/api/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +48,7 @@ const AdminAddBlogForm = ({ onBlogAdded }) => {
           content: "",
           category: "",
         });
-        onBlogAdded(); // Refetch blogs
+        onBlogAdded();
       } else {
         toast.error(data.message || "Failed to add blog");
       }
@@ -56,80 +57,101 @@ const AdminAddBlogForm = ({ onBlogAdded }) => {
     }
   };
 
+  const inputStyle = {
+    backgroundColor: "#111",
+    color: "#fff",
+    border: "1px solid #8b5cf6",
+  };
+
+  const labelStyle = {
+    color: "#8b5cf6",
+    fontWeight: "500",
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="bg-dark p-4 rounded mb-5 text-white">
-      <h4 className="mb-3">Add New Blog</h4>
+    <form
+      onSubmit={handleSubmit}
+      className="p-4 rounded mb-5"
+      style={{ backgroundColor: "#000", color: "#fff", border: "1px solid #8b5cf6" }}
+    >
+      <h4 className="mb-4" style={{ color: "#8b5cf6" }}>Add New Blog</h4>
 
       <div className="mb-3">
-        <label className="form-label">Title</label>
+        <label className="form-label" style={labelStyle}>Title</label>
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
           className="form-control"
+          style={inputStyle}
           required
         />
       </div>
 
       <div className="mb-3">
-        <label className="form-label">Meta Description</label>
+        <label className="form-label" style={labelStyle}>Meta Description</label>
         <input
           type="text"
           name="metaDescription"
           value={formData.metaDescription}
           onChange={handleChange}
           className="form-control"
+          style={inputStyle}
         />
       </div>
 
       <div className="mb-3">
-        <label className="form-label">Image URL</label>
+        <label className="form-label" style={labelStyle}>Image URL</label>
         <input
           type="text"
           name="image"
           value={formData.image}
           onChange={handleChange}
           className="form-control"
+          style={inputStyle}
         />
       </div>
 
       <div className="mb-3">
-        <label className="form-label">Date</label>
+        <label className="form-label" style={labelStyle}>Date</label>
         <input
           type="date"
           name="date"
           value={formData.date}
           onChange={handleChange}
           className="form-control"
+          style={inputStyle}
           required
         />
       </div>
 
       <div className="mb-3">
-        <label className="form-label">Category</label>
+        <label className="form-label" style={labelStyle}>Category</label>
         <input
           type="text"
           name="category"
           value={formData.category}
           onChange={handleChange}
           className="form-control"
+          style={inputStyle}
         />
       </div>
 
-      <div className="mb-3">
-        <label className="form-label">Content</label>
+      <div className="mb-4">
+        <label className="form-label" style={labelStyle}>Content</label>
         <textarea
           name="content"
           value={formData.content}
           onChange={handleChange}
           rows={4}
           className="form-control"
+          style={inputStyle}
           required
         ></textarea>
       </div>
 
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#8b5cf6", border: "none" }}>
         Add Blog
       </button>
     </form>

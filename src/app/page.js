@@ -10,7 +10,6 @@ import Testimonials from './components/home/Testimonials'
 import FAQs from './components/home/faq'
 import "@/app/globals.css";
 import CTA from './components/home/CallToAction'
-import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Home() {
   return (
     <>

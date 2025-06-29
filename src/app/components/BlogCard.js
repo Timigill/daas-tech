@@ -1,20 +1,10 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-const BlogCard = ({
-  _id,
-  category,
-  title,
-  image,
-  description,
-  isOpen,
-  onToggle,
-  isAdmin = false,
-  onDelete = () => {},
-  onEdit = () => {},
-}) => {
+const BlogCard = ({ _id, category, title, image, description, isAdmin, onEdit, onDelete }) => {
   const cardStyle = {
     backgroundColor: "#111",
     padding: "18px",
@@ -22,13 +12,8 @@ const BlogCard = ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     boxShadow: "0 0 12px rgba(139, 92, 246, 0.05)",
-    cursor: "pointer",
-  };
-
-  const imageWrapperStyle = {
-    overflow: "hidden",
-    borderRadius: "12px",
   };
 
   const imageStyle = {
@@ -37,11 +22,6 @@ const BlogCard = ({
     borderRadius: "12px",
     display: "block",
     transition: "transform 0.4s ease-in-out",
-  };
-
-  const textContentStyle = {
-    marginTop: "1rem",
-    textAlign: "left",
   };
 
   const categoryStyle = {
@@ -67,18 +47,16 @@ const BlogCard = ({
   };
 
   const buttonGroupStyle = {
+    marginTop: "12px",
     display: "flex",
-    justifyContent: "flex-end",
-    gap: "10px",
-    marginTop: "10px",
+    justifyContent: "space-between",
   };
 
   const buttonStyle = {
     fontSize: "13px",
     padding: "6px 12px",
-    borderRadius: "6px",
+    borderRadius: "8px",
     border: "none",
-    fontWeight: 500,
     cursor: "pointer",
   };
 
@@ -90,57 +68,30 @@ const BlogCard = ({
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <div style={cardStyle} onClick={onToggle}>
-        <div style={imageWrapperStyle}>
-          <motion.img
-            src={image}
-            alt={title}
-            style={imageStyle}
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.4 }}
-          />
-        </div>
-        <div style={textContentStyle}>
+      <div style={cardStyle}>
+        <Link href={`/blog/${_id}`} style={{ textDecoration: "none", color: "inherit" }}>
+          <img src={image} alt={title} style={imageStyle} />
           <span style={categoryStyle}>{category || "AI/Tech"}</span>
           <h5 style={titleStyle}>{title}</h5>
-          <AnimatePresence>
-            {isOpen && (
-              <motion.p
-                style={descriptionStyle}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {description}
-              </motion.p>
-            )}
-          </AnimatePresence>
+          <p style={descriptionStyle}>{description?.slice(0, 100)}...</p>
+        </Link>
 
-          {/* Admin Buttons */}
-          {isAdmin && (
-            <div style={buttonGroupStyle}>
-              <button
-                style={{ ...buttonStyle, backgroundColor: "#6b7280", color: "#fff" }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onEdit(_id);
-                }}
-              >
-                Edit
-              </button>
-              <button
-                style={{ ...buttonStyle, backgroundColor: "#ef4444", color: "#fff" }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onDelete(_id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
+        {isAdmin && (
+          <div style={buttonGroupStyle}>
+            <button
+              style={{ ...buttonStyle, background: "#8b5cf6", color: "#fff" }}
+              onClick={onEdit}
+            >
+              Edit
+            </button>
+            <button
+              style={{ ...buttonStyle, background: "#ff4d4f", color: "#fff" }}
+              onClick={onDelete}
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </motion.div>
   );

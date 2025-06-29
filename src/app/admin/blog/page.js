@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import BlogCard from "../../components/BlogCard"; // Adjust the path as needed
+import BlogCard from "../../components/BlogCard";
 import { motion } from "framer-motion";
-import AdminAddBlogForm from "../../components/BlogForm"; // Adjust the path as needed
+import AdminAddBlogForm from "../../components/BlogForm";
 import { useRouter } from "next/navigation";
+import AdminEditBlogForm from "../../components/EditBlogForm";
 
 export default function AdminBlogPage() {
   const [blogs, setBlogs] = useState([]);
   const [openCardId, setOpenCardId] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [editingId, setEditingId] = useState(null); // ⬅️ For edit form
 
   const router = useRouter();
 
@@ -24,7 +26,6 @@ export default function AdminBlogPage() {
     }
   };
 
-  // Check admin status from token
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
     if (token) {
@@ -75,7 +76,7 @@ export default function AdminBlogPage() {
     }
   };
 
-  if (!isAdmin) return null; // Prevent flicker before redirect
+  if (!isAdmin) return null;
 
   return (
     <section
@@ -137,12 +138,23 @@ export default function AdminBlogPage() {
 
       <button
         className="btn btn-outline-light mb-4"
-        onClick={() => setShowAddForm(!showAddForm)}
+        onClick={() => {
+          setShowAddForm(!showAddForm);
+          setEditingId(null); // Hide edit form if open
+        }}
       >
         {showAddForm ? "Close Add Form" : "Add New Blog"}
       </button>
 
       {showAddForm && <AdminAddBlogForm onBlogAdded={fetchBlogs} />}
+
+      {editingId && (
+        <AdminEditBlogForm
+          blogId={editingId}
+          onClose={() => setEditingId(null)}
+          onBlogUpdated={fetchBlogs}
+        />
+      )}
 
       <div className="container">
         <div className="row gy-4">
@@ -154,7 +166,10 @@ export default function AdminBlogPage() {
               onToggle={() => handleToggle(blog._id)}
               isAdmin={true}
               onDelete={() => handleDelete(blog._id)}
-              onEdit={() => alert("Edit feature coming soon!")}
+              onEdit={() => {
+                setShowAddForm(false); 
+                setEditingId(blog._id); 
+              }}
             />
           ))}
         </div>

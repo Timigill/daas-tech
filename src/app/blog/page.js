@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 
 export default function BlogPage() {
   const [blogs, setBlogs] = useState([]);
-  const [openCardId, setOpenCardId] = useState(null);
 
   const fetchBlogs = async () => {
     try {
@@ -22,20 +21,10 @@ export default function BlogPage() {
     fetchBlogs();
   }, []);
 
-  const handleToggle = (id) => {
-    setOpenCardId((prev) => (prev === id ? null : id));
-  };
-
   return (
     <section
       className="d-flex flex-column align-items-center text-center px-3"
-      style={{
-        padding: "48px 0",
-        background: "#000",
-        color: "#fff",
-        fontFamily: "Inter, sans-serif",
-        overflowX: "hidden",
-      }}
+      style={{ padding: "48px 0", background: "#000", color: "#fff", fontFamily: "Inter, sans-serif" }}
     >
       <motion.span
         className="badge mb-3"
@@ -60,12 +49,7 @@ export default function BlogPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        style={{
-          fontWeight: 700,
-          lineHeight: 1.15,
-          marginBottom: 16,
-          maxWidth: 700,
-        }}
+        style={{ fontWeight: 700, lineHeight: 1.15, marginBottom: 16, maxWidth: 700 }}
       >
         Unlock AI insights with us
       </motion.h1>
@@ -74,26 +58,15 @@ export default function BlogPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        style={{
-          fontSize: 15,
-          color: "#bdbdbd",
-          maxWidth: 600,
-          margin: "0 auto 40px auto",
-        }}
+        style={{ fontSize: 15, color: "#bdbdbd", maxWidth: 600, margin: "0 auto 40px auto" }}
       >
-        Stay informed with the latest AI trends, insights, and strategies to
-        drive innovation and business growth.
+        Stay informed with the latest AI trends, insights, and strategies to drive innovation and business growth.
       </motion.p>
 
       <div className="container">
         <div className="row gy-4">
           {blogs.map((blog) => (
-            <BlogCard
-              key={blog._id}
-              {...blog}
-              isOpen={openCardId === blog._id}
-              onToggle={() => handleToggle(blog._id)}
-            />
+            <BlogCard key={blog._id} {...blog} />
           ))}
         </div>
       </div>

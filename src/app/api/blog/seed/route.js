@@ -7,7 +7,7 @@ export async function POST(req) {
 
   const blog = {
     title: "\uD83D\uDCCE The Real Cost of a Website in Pakistan (and Why Cheap Can Be Risky)",
-    image: "/blog-real-cost.jpg", // Make sure you have this image in your public folder or update the path
+    image: "/yourstack.png", // Make sure you have this image in your public folder or update the path
     content: `Explore the true Cost of establishing a digital presence in Pakistan by 2025. Understand the pitfalls of opting for the lowest price and the importance of investing wisely in web development.
 
 In the current digital landscape, a website transcends mere luxury; it serves as the cornerstone of your brand. Whether you represent a nascent startup, a burgeoning enterprise, or a small business in Pakistan, the initial inquiry frequently revolves around:
