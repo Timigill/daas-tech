@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import purpleIcon from "/public/rotation.png";
+// import purpleIcon from "/public/rotation.png";
 import { Typewriter } from "react-simple-typewriter";
 
 export default function HomeServices() {
@@ -137,7 +137,7 @@ export default function HomeServices() {
               }}
             >
               <Image
-                src={purpleIcon}
+                src="/rotation.png"
                 alt="Rotating Logo"
                 width={60}
                 height={60}
