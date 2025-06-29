@@ -7,8 +7,9 @@ const page = () => {
   return (
     <div>
       <Hero />
-      <Services />
       <ServicesCounter />
+      <Services />
+      
       <ServicesGraph />
     </div>
   );
