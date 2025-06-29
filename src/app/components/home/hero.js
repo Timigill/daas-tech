@@ -119,11 +119,11 @@ function Hero() {
             viewport={{ once: true }}
             custom={0.6}
             whileHover={{ scale: 1.1 }}
-            href="/signup"
+            href="/quote"
             className="btn btn-primary px-3 py-2"
             style={{ maxWidth: "100%", whiteSpace: "nowrap" , background:"rgb(126, 72, 243)"}}
           >
-            Get in Touch
+            Get a Quote
           </motion.a>
           <motion.a
             variants={scaleIn}
@@ -132,7 +132,7 @@ function Hero() {
             viewport={{ once: true }}
             custom={0.6}
             whileHover={{ scale: 1.1 }}
-            href="/portfolio"
+            href="/services"
             className="btn btn-outline-light px-3 py-2"
             style={{ maxWidth: "100%", whiteSpace: "nowrap" }}
           >
