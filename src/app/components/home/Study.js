@@ -242,18 +242,28 @@ const Study = () => {
 							boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
 							minHeight: 420,
 							backgroundColor: "#111",
+							display: "flex",
+							flexDirection: "row",
 						}}
 					>
 						<div
 							style={{
-								width: "100%",
-								height: "200px",
+								width: "40%",
+								height: "auto",
 								backgroundImage: `url(${study.image})`,
 								backgroundSize: "cover",
 								backgroundPosition: "center",
+								flexShrink: 0,
 							}}
 						></div>
-						<div style={{ padding: "20px", textAlign: "left" }}>
+						<div style={{ 
+							padding: "20px", 
+							textAlign: "left",
+							flex: 1,
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+						}}>
 							<h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>{study.title}</h3>
 							<p style={{ color: "#ccc", marginBottom: "15px", fontSize: "0.9rem" }}>
 								{study.description}

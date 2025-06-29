@@ -72,22 +72,15 @@ export default function HomeServices() {
 
           <div className="d-flex flex-wrap gap-3 mt-3">
             {["Get a Quote", "Scheduling", "Many More"].map((text, idx) => (
-              <a
-                key={idx}
-                href="#"
-                className="btn btn-outline-light px-2 py-1"
-                style={{
-                  background: "transparent",
-                  color: "#bdbdbd",
-                  fontWeight: 500,
-                  fontSize: 13,
-                  borderRadius: 7,
-                  padding: "4px 14px",
-                  border: "1px solid #23232a",
-                }}
-              >
-                {text}
-              </a>
+              <a key={idx} href="quote" className="btn btn-outline-light px-2 py-1" style={{
+                background: "transparent",
+                color: "#bdbdbd",
+                fontWeight: 500,
+                fontSize: 13,
+                borderRadius: 7,
+                padding: "4px 14px",
+                border: "1px solid #23232a",
+              }}>{text}</a>
             ))}
           </div>
         </motion.div>
@@ -215,26 +208,19 @@ export default function HomeServices() {
 
             {/* CTA Buttons */}
             <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
-              {["Custom Site", "Fast & Secure", "Many More"].map(
-                (text, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="btn btn-outline-light px-2 py-1"
-                    style={{
-                      background: "transparent",
-                      color: "#bdbdbd",
-                      fontWeight: 500,
-                      fontSize: 13,
-                      borderRadius: 7,
-                      padding: "4px 14px",
-                      border: "1px solid #23232a",
-                    }}
-                  >
-                    {text}
-                  </a>
-                )
-              )}
+              {["Custom Site", "Fast & Secure", "Many More"].map((text, idx) => (
+                <a key={idx} href="" className="btn btn-outline-light px-2 py-1" style={{
+                  background: "transparent",
+                  color: "#bdbdbd",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  borderRadius: 7,
+                  padding: "4px 14px",
+                  border: "1px solid #23232a",
+                  pointerEvents: "none",
+                  cursor: "not-allowed",
+                }}>{text}</a>
+              ))}
             </div>
           </div>
 
