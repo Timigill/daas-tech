@@ -38,7 +38,8 @@ export default function AdminLogin() {
 
       if (res.ok) {
         toast.success("Welcome back, admin!");
-        localStorage.setItem("adminToken", data.token);
+        // The server sets the HTTP-only cookie automatically
+        // No need to manually set localStorage
         window.location.href = "/admin";
       } else {
         toast.error(data.message || "Login failed");
@@ -199,30 +200,68 @@ export default function AdminLogin() {
               alt="DaaS Tech"
               fill
               style={{
-                position: "absolute",
-                inset: 0,
                 objectFit: "cover",
-                opacity: 0.2,
-                zIndex: 1,
-                borderRadius: "0",
-                pointerEvents: "none",
+                objectPosition: "center",
+                zIndex: -1,
               }}
-              priority
+            />
+            {/* Overlay */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "rgba(0, 0, 0, 0.4)",
+                zIndex: -1,
+              }}
             />
             {/* Content */}
-            <div style={{ zIndex: 2, textAlign: "center", position: "relative" }}>
-              <h2 style={{ fontWeight: 600, fontSize: 28, marginBottom: 12 }}>
-                400K+ users. 50M+ Custom
-                <br />Websites Build.
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <h2 style={{ fontWeight: 600, fontSize: 28, marginBottom: 16 }}>
+                Welcome to DaaS Tech
               </h2>
-              <p style={{ fontSize: 16, lineHeight: 1.5 }}>
-                Join our community of developers and start building your
-                website today!
+              <p style={{ fontSize: 16, lineHeight: 1.6, opacity: 0.9, marginBottom: 24 }}>
+                Access your admin panel to manage content, quotes, and meetings with full control over your platform.
               </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: "#8b5cf6",
+                  }}
+                />
+                <span style={{ fontSize: 14, opacity: 0.8 }}>Secure authentication</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 8 }}>
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: "#8b5cf6",
+                  }}
+                />
+                <span style={{ fontSize: 14, opacity: 0.8 }}>Full admin control</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 8 }}>
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: "#8b5cf6",
+                  }}
+                />
+                <span style={{ fontSize: 14, opacity: 0.8 }}>Real-time updates</span>
+              </div>
             </div>
           </motion.div>
         </motion.div>
       </div>
     </>
   );
-}
+} 

@@ -1,15 +1,13 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default function AdminLayout({ children }) {
-  const cookieStore = cookies();
+export default async function AdminLayout({ children }) {
+  const cookieStore = await cookies();
   const token = cookieStore.get("adminToken");
 
   if (!token) {
-    redirect("/admin/login");
+    redirect("/login");
   }
 
-  return <>
-
-  {children}</>;
+  return <>{children}</>;
 } 
