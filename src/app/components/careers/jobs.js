@@ -32,7 +32,7 @@ function Jobs() {
                         <option>Newest</option>
                         <option>Oldest</option>
                     </select>
-                    <button
+                    {/* <button
                         className={`btn ${view === 'list' ? 'btn-primary' : 'btn-outline-primary'} rounded`}
                         onClick={() => setView('list')}
                     >
@@ -43,7 +43,7 @@ function Jobs() {
                         onClick={() => setView('grid')}
                     >
                         <FaTh />
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
@@ -84,7 +84,7 @@ function Jobs() {
                                         e.currentTarget.style.color = '#fff';
                                     }}
                                 >
-                                    More Details
+                                Apply Now
                                 </button>
 
                             </Link>
