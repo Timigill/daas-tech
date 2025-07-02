@@ -60,8 +60,13 @@ const locationOptions = [
 
 function Opening() {
   return (
-
-    <div className="container justify-content-center py-4">
+    <div
+      className="container-fluid px-3 px-md-5 py-5"
+      style={{
+        overflowX: "hidden", // ✅ Prevent horizontal scroll
+        width: "100%",       // ✅ Prevent overflow
+      }}
+    >
       {/* ✅ Title */}
       <h1 className="text-center fw-bold mb-3 text-white">Job Openings</h1>
 
@@ -74,15 +79,16 @@ function Opening() {
           border: "1px solid #222",
         }}
       >
-        <div className="row align-items-center g-3">
+        <div className="row g-3">
           {/* 🔍 Search Input */}
           <div
-            className="col-12 col-md-4 mb-3 mb-md-0 d-flex align-items-center pb-1"
+            className="col-12 col-md-4 d-flex align-items-center pb-1"
             style={{
               borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.borderBottom = "1px solid hsl(0deg 0% 80%)")
+              (e.currentTarget.style.borderBottom =
+                "1px solid hsl(0deg 0% 80%)")
             }
             onMouseLeave={(e) =>
               (e.currentTarget.style.borderBottom =
@@ -103,7 +109,7 @@ function Opening() {
           </div>
 
           {/* 📁 Department Filter */}
-          <div className="col-12 col-md-4 mb-3 mb-md-0">
+          <div className="col-12 col-md-4">
             <Select
               options={departmentOptions}
               styles={customSelectStyles}
