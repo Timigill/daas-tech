@@ -10,11 +10,20 @@ const callTypes = [
   { label: "60 Minute Meeting", value: "60" },
 ];
 
+function pad(n) {
+  return n < 10 ? `0${n}` : n;
+}
+
+function formatTime(hour, minute) {
+  const suffix = hour >= 12 ? "PM" : "AM";
+  const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+  return `${hour12}:${pad(minute)} ${suffix}`;
+}
+
 function generateTimeSlots(start = 9, end = 18, duration = 30) {
   const slots = [];
   for (let hour = start; hour < end; hour++) {
     for (let min = 0; min < 60; min += duration) {
-      const startHour = formatHour(hour);
       const endMinutes = min + duration;
       let endHour = hour;
       let endMin = endMinutes;
@@ -22,19 +31,12 @@ function generateTimeSlots(start = 9, end = 18, duration = 30) {
         endHour = hour + 1;
         endMin = endMinutes - 60;
       }
-      const label = `${startHour}:${pad(min)} - ${formatHour(endHour)}:${pad(endMin)}`;
+      const label = `${formatTime(hour, min)} - ${formatTime(endHour, endMin)}`;
       const value = `${pad(hour)}:${pad(min)}`;
       slots.push({ label, value });
     }
   }
   return slots;
-}
-function formatHour(h) {
-  const hour = h % 12 === 0 ? 12 : h % 12;
-  return hour;
-}
-function pad(n) {
-  return n < 10 ? `0${n}` : n;
 }
 
 function useIsMobile(breakpoint = 700) {
@@ -55,7 +57,7 @@ export default function BookACall() {
   const [form, setForm] = useState({ name: "", email: "", purpose: "" });
   const [availableSlots, setAvailableSlots] = useState([]);
   const [bookedSlotValues, setBookedSlotValues] = useState([]);
-  const [phase, setPhase] = useState("info"); // Add this line
+  const [phase, setPhase] = useState("info");
   const isMobile = useIsMobile();
   const [submitted, setSubmitted] = useState(false);
 
@@ -67,7 +69,14 @@ export default function BookACall() {
       setBookedSlotValues([]);
       return;
     }
-    fetch(`/api/available-slots?date=${selectedDate.toISOString().slice(0, 10)}&duration=${callType}`)
+
+    // Convert date to YYYY-MM-DD in UTC+5 manually
+    const localDate = new Date(selectedDate);
+    const pkOffset = 5 * 60; // minutes
+    const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
+    const formattedDate = pkDate.toISOString().slice(0, 10);
+
+    fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
       .then(res => res.json())
       .then(data => {
         setAvailableSlots(data.slots || []);
@@ -85,18 +94,26 @@ export default function BookACall() {
       alert("Please fill all required fields.");
       return;
     }
+
+    // Ensure UTC+5 consistency
+    const localDate = new Date(selectedDate);
+    const pkOffset = 5 * 60;
+    const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
+    const formattedDate = pkDate.toISOString().slice(0, 10);
+
     const bookingData = {
       ...form,
-      date: selectedDate.toISOString().slice(0, 10),
+      date: formattedDate,
       time: selectedTime,
       callType,
     };
-    // Store in DB via API
+
     const res = await fetch("/api/book-call", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bookingData),
     });
+
     if (res.ok) {
       setSubmitted(true);
     } else {
@@ -107,38 +124,31 @@ export default function BookACall() {
   const allSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
 
   return (
-    <div
-      className="book-call-main"
-      style={{
-        background: "linear-gradient(to top right, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 0.5))",
-        color: "#fff",
-        borderRadius: 18,
-        maxWidth: 900,
-        margin: "40px auto",
-        boxShadow: "0 8px 40px 0 rgba(0,0,0,0.25)",
+    <div className="book-call-main" style={{
+      background: "linear-gradient(to top right, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 0.5))",
+      color: "#fff",
+      borderRadius: 18,
+      maxWidth: 900,
+      margin: "40px auto",
+      boxShadow: "0 8px 40px 0 rgba(0,0,0,0.25)",
+      display: "flex",
+      flexDirection: isMobile ? "column" : "row",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden",
+    }}>
+      <motion.div style={{
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
-      }}
-    >
-      <motion.div
-        style={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row",
-          width: "100%",
-          minHeight: 440,
-          position: "relative",
-        }}
-      >
+        width: "100%",
+        minHeight: 440,
+        position: "relative",
+      }}>
         <motion.div
           initial={false}
-          animate={
-            isMobile
-              ? { y: phase === "form" ? "-100%" : "0%", opacity: phase === "form" ? 0 : 1, height: phase === "form" ? 0 : "auto" }
-              : { x: phase === "form" ? "-100%" : "0%", opacity: phase === "form" ? 0 : 1, width: phase === "form" ? 0 : "40%" }
-          }
+          animate={isMobile
+            ? { y: phase === "form" ? "-100%" : "0%", opacity: phase === "form" ? 0 : 1, height: phase === "form" ? 0 : "auto" }
+            : { x: phase === "form" ? "-100%" : "0%", opacity: phase === "form" ? 0 : 1, width: phase === "form" ? 0 : "40%" }}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           style={{
             padding: "30px 32px 0 32px",
@@ -154,60 +164,44 @@ export default function BookACall() {
         >
           {phase === "info" && (
             <>
-              <div style={{ fontWeight: 600, fontSize: 18 }}> <Image src="/logo2.png" alt="Logo" width={120} height={30} style={{ height: 30, opacity: "2" }} /></div>
-              <div  className="mt-5" style={{ fontWeight: 700, fontSize: 30, margin: "12px 0 16px 0" }}>
-                 Schedule a Meeting
+              <div style={{ fontWeight: 600, fontSize: 18 }}>
+                <Image src="/logo2.png" alt="Logo" width={120} height={30} />
+              </div>
+              <div className="mt-5" style={{ fontWeight: 700, fontSize: 30, margin: "12px 0 16px 0" }}>
+                Schedule a Meeting
               </div>
               <div style={{ display: "flex", alignItems: "center", marginBottom: 12, color: "#bdbdbd" }}>
-                <span style={{ fontSize: 15, marginRight: 8 }}>⏰</span>
-                <span>30/60 mins </span>
+                <span style={{ fontSize: 15, marginRight: 8 }}>⏰</span> 30/60 mins
               </div>
               <div style={{ display: "flex", alignItems: "center", color: "#bdbdbd" }}>
-                <span style={{ fontSize: 15, marginRight: 8 }}>💻</span>
-                <span>Web conferencing details provided upon confirmation.</span>
-                <Image
-                  src="/meet.jpeg"
-                  alt="DaaS Tech"
-                  width={400}
-                  height={300}
-                  style={{
-                    position: "absolute",
-                    bottom: "0 !important",
-                    inset: 0,
-                    top: "auto",
-                    width: "40%",
-                    height: "50%",
-                    objectFit: "cover",
-                    opacity: 0.1,
-                    zIndex: 1,
-                    borderRadius: "0",
-                    pointerEvents: "none",
-                  }}
-                />
+                <span style={{ fontSize: 15, marginRight: 8 }}>💻</span> Web conferencing details provided upon confirmation.
               </div>
+              <Image
+                src="/meet.jpeg"
+                alt="DaaS Tech"
+                width={400}
+                height={300}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  width: "40%",
+                  height: "50%",
+                  objectFit: "cover",
+                  opacity: 0.1,
+                  zIndex: 1,
+                  pointerEvents: "none",
+                }}
+              />
             </>
           )}
         </motion.div>
 
         <motion.div
-          initial={false}
-          animate={
-            isMobile
-              ? { y: 0, width: "100%" }
-              : { x: phase === "form" ? "-15%" : "0%", width: "50%" }
-          }
+          animate={isMobile ? { y: 0, width: "100%" } : { x: phase === "form" ? "-15%" : "0%", width: "50%" }}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
-          style={{
-            padding: "48px 32px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            minWidth: 0,
-          }}
+          style={{ padding: "48px 32px", display: "flex", flexDirection: "column", justifyContent: "flex-start" }}
         >
-          <div style={{ fontWeight: 600, fontSize: 20, marginBottom: 24 }}>
-            Select a Date & Time
-          </div>
+          <div style={{ fontWeight: 600, fontSize: 20, marginBottom: 24 }}>Select a Date & Time</div>
           <Calendar
             onChange={date => {
               setSelectedDate(date);
@@ -221,32 +215,23 @@ export default function BookACall() {
             prev2Label={null}
             className="w-100"
             tileClassName={({ date }) =>
-              selectedDate &&
-              date.toDateString() === selectedDate.toDateString()
-                ? "selected-calendar-tile"
-                : ""
-            }
+              selectedDate && date.toDateString() === selectedDate.toDateString() ? "selected-calendar-tile" : ""}
           />
           <div style={{ marginTop: 12, color: "#bdbdbd", fontSize: 14 }}>
-            <span role="img" aria-label="timezone">🌐</span> Pakistan, Maldives Time ({new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})
+            <span role="img" aria-label="timezone">🌐</span> All time slots are shown in Pakistan Standard Time (UTC+5).
           </div>
         </motion.div>
 
         <motion.div
-          initial={false}
-          animate={
-            isMobile
-              ? { y: phase === "form" ? 0 : "100%", opacity: phase === "form" ? 1 : 0, height: phase === "form" ? "auto" : 0 }
-              : { x: phase === "form" ? 0 : "0%", opacity: phase === "form" ? 1 : 0, width: phase === "form" ? 0 : 0 }
-          }
+          animate={isMobile
+            ? { y: phase === "form" ? 0 : "100%", opacity: phase === "form" ? 1 : 0, height: phase === "form" ? "auto" : 0 }
+            : { x: phase === "form" ? 0 : "0%", opacity: phase === "form" ? 1 : 0, width: phase === "form" ? 0 : 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           style={{
             padding: "48px 32px",
             display: "flex",
             flexDirection: "column",
             justifyContent: isMobile ? "center" : "flex-start",
-            alignItems: isMobile ? "center" : undefined,
-            // textAlign: isMobile ? "center" : undefined,
             minWidth: isMobile ? "100%" : "50%",
             position: isMobile ? "static" : "absolute",
             right: 0,
@@ -278,39 +263,36 @@ export default function BookACall() {
                   }}
                 />
               </div>
-              
-            <div style={{ marginBottom: 16  }}>
-              <label style={{ fontWeight: 500, marginBottom: 6, display: "block" }}>Time</label>
-              <select
-                value={selectedTime}
-                onChange={e => setSelectedTime(e.target.value)}
-                required
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  borderRadius: 8,
-                  border: "1px solid #23232a",
-                  background: "#18181b",
-                  color: "#fff",
-                  fontFamily: "Inter, sans-serif",
-
-                }}
-                disabled={!selectedDate}
-              >
-                <option value="">Select a time slot</option>
-                {allSlots.map(slot => (
-                  <option
-                    key={slot.value}
-                    value={slot.value}
-                    disabled={bookedSlotValues.includes(slot.value)}
-                    style={bookedSlotValues.includes(slot.value) ? { color: "#888" } : {}}
-                  >
-                    {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked or Unavailable)" : ""}
-                  </option>
-                ))}
-              </select>
-            </div>
-          
+              <div style={{ marginBottom: 16 }}>
+                <label style={{ fontWeight: 500 }}>Time</label>
+                <select
+                  value={selectedTime}
+                  onChange={e => setSelectedTime(e.target.value)}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: 8,
+                    border: "1px solid #23232a",
+                    background: "#18181b",
+                    color: "#fff",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                  disabled={!selectedDate}
+                >
+                  <option value="">Select a time slot</option>
+                  {allSlots.map(slot => (
+                    <option
+                      key={slot.value}
+                      value={slot.value}
+                      disabled={bookedSlotValues.includes(slot.value)}
+                      style={bookedSlotValues.includes(slot.value) ? { color: "#888" } : {}}
+                    >
+                      {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked or Unavailable)" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <div style={{ marginBottom: 16 }}>
                 <label style={{ fontWeight: 500 }}>Email</label>
                 <input
