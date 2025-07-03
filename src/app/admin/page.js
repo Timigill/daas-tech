@@ -188,6 +188,38 @@ export default function AdminDashboard() {
                 </div>
               </Link>
             </motion.div>
+
+            <motion.div
+              className="col-12 col-md-6 col-lg-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/admin/jobs" style={{ textDecoration: "none", color: "inherit" }}>
+                <div
+                  className="p-4 h-100"
+                  style={{
+                    background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
+                    border: "1px solid #333",
+                    borderRadius: "12px",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-5px)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(164, 122, 255, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  <h3 className="mb-3">💼 Job Openings</h3>
+                  <p className="text-white-50 mb-0">Add, edit, or remove job openings for your company.</p>
+                </div>
+              </Link>
+            </motion.div>
           </div>
         </div>
 

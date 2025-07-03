@@ -1,135 +1,49 @@
 'use client';
-import React, { useState } from 'react';
-
-const jobs = [
-  {
-    id: 1,
-    title: 'Software Engineer',
-    category: 'Engineering',
-    type: 'Full-Time',
-    timing: '9 AM - 6 PM',
-    location: 'Lahore, PK',
-    degree: 'BS Computer Science',
-    experience: '2+ years',
-    requirements: [
-      'Proficiency in React.js and Node.js',
-      'Strong problem-solving skills',
-      'Version control (Git)',
-    ],
-    description:
-      'Develop, test, and maintain software solutions according to client requirements. Collaborate with team members to design efficient and scalable code.',
-  },
-  {
-    id: 2,
-    title: 'Marketing Specialist',
-    category: 'Marketing',
-    type: 'Part-Time',
-    timing: 'Flexible',
-    location: 'Remote',
-    degree: 'BBA / MBA',
-    experience: '1+ year',
-    requirements: [
-      'Knowledge of digital marketing tools',
-      'Strong communication skills',
-      'Experience with ad campaigns',
-    ],
-    description:
-      'Plan and execute marketing campaigns to increase brand awareness and drive lead generation.',
-  },
-  {
-    id: 3,
-    title: 'UI/UX Designer',
-    category: 'Design',
-    type: 'Remote',
-    timing: 'Flexible',
-    location: 'Remote',
-    degree: 'BS in Graphic Design',
-    experience: '2+ years',
-    requirements: [
-      'Expert in Figma and Adobe XD',
-      'Strong portfolio with web/app projects',
-      'Understanding of user-centered design',
-    ],
-    description:
-      'Design clean, intuitive user interfaces and ensure seamless user experiences across digital platforms.',
-  },
-  {
-    id: 4,
-    title: 'Backend Developer',
-    category: 'Engineering',
-    type: 'Full-Time',
-    timing: '10 AM - 7 PM',
-    location: 'Karachi, PK',
-    degree: 'BS in Computer Science',
-    experience: '3+ years',
-    requirements: [
-      'Expertise in Node.js, Express',
-      'Experience with MongoDB/PostgreSQL',
-      'API development and integration',
-    ],
-    description:
-      'Develop server-side logic, RESTful APIs, and integrate front-end elements built by your teammates.',
-  },
-  {
-    id: 5,
-    title: 'Content Writer',
-    category: 'Marketing',
-    type: 'Part-Time',
-    timing: 'Flexible',
-    location: 'Islamabad, PK',
-    degree: 'BA in English or Mass Comm',
-    experience: '1+ year',
-    requirements: [
-      'Excellent writing and editing skills',
-      'SEO knowledge is a plus',
-      'Ability to write for diverse industries',
-    ],
-    description:
-      'Write clear, engaging, and SEO-friendly content for blogs, websites, and social media platforms.',
-  },
-  {
-    id: 6,
-    title: 'Project Manager',
-    category: 'Management',
-    type: 'Hybrid',
-    timing: '9 AM - 6 PM',
-    location: 'Lahore, PK',
-    degree: 'MBA or related field',
-    experience: '4+ years',
-    requirements: [
-      'Strong leadership and communication',
-      'Familiarity with Agile/Scrum',
-      'Experience managing remote teams',
-    ],
-    description:
-      'Lead cross-functional teams to deliver projects on time and within scope. Monitor progress and mitigate risks.',
-  },
-  {
-    id: 7,
-    title: 'QA Engineer',
-    category: 'Engineering',
-    type: 'Full-Time',
-    timing: '9 AM - 5 PM',
-    location: 'Remote',
-    degree: 'BS in Software Engineering',
-    experience: '2+ years',
-    requirements: [
-      'Manual and automated testing experience',
-      'Knowledge of tools like Selenium or Cypress',
-      'Bug tracking and documentation skills',
-    ],
-    description:
-      'Ensure the quality and stability of software products by conducting rigorous testing and reporting bugs.',
-  }
-  
-];
+import React, { useState, useEffect } from 'react';
 
 export default function Jobs() {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    experience: '',
+    resume: null,
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch('/api/jobs');
+        const data = await res.json();
+        if (res.ok) {
+          setJobs(data.jobs || []);
+        } else {
+          setError(data.error || 'Failed to fetch jobs');
+        }
+      } catch (err) {
+        setError('Failed to fetch jobs');
+      }
+      setLoading(false);
+    };
+    fetchJobs();
+  }, []);
 
   return (
     <div className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
+      {/* Loading/Error States */}
+      {loading && <div className="text-white-50 my-5">Loading jobs...</div>}
+      {error && <div className="text-danger my-5">{error}</div>}
+
       {/* ✅ Job Details Modal */}
       {selectedJob && !showApplicationForm && (
         <div style={overlayStyle}>
@@ -148,7 +62,7 @@ export default function Jobs() {
             <div className="mb-3">
               <strong>Requirements:</strong>
               <ul className="mt-2">
-                {selectedJob.requirements.map((req, i) => (
+                {selectedJob.requirements && selectedJob.requirements.map((req, i) => (
                   <li key={i}>{req}</li>
                 ))}
               </ul>
@@ -171,61 +85,116 @@ export default function Jobs() {
 
       {/* ✅ Application Modal */}
       {showApplicationForm && (
-  <div style={overlayStyle}>
-    <div style={modalStyle}>
-      <span onClick={() => setShowApplicationForm(false)} style={closeBtnStyle}>
-        &times;
-      </span>
+        <div style={overlayStyle}>
+          <div style={modalStyle}>
+            <span onClick={() => setShowApplicationForm(false)} style={closeBtnStyle}>
+              &times;
+            </span>
 
-      <h4 className="fw-bold mb-3">Apply for: {selectedJob?.title}</h4>
+            <h4 className="fw-bold mb-3">Apply for: {selectedJob?.title}</h4>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          alert('Application Submitted!');
-          setShowApplicationForm(false);
-          setSelectedJob(null);
-        }}
-      >
-        <div className="mb-3">
-          <label className="form-label">Full Name</label>
-          <input type="text" className="form-control" required />
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setSubmitting(true);
+                setSubmitError('');
+                setSubmitSuccess(false);
+                const data = new FormData();
+                data.append('job', selectedJob._id);
+                data.append('name', formData.name);
+                data.append('email', formData.email);
+                data.append('phone', formData.phone);
+                data.append('experience', formData.experience);
+                if (formData.resume) data.append('resume', formData.resume);
+                try {
+                  const res = await fetch('/api/job-applications', {
+                    method: 'POST',
+                    body: data,
+                  });
+                  if (res.ok) {
+                    setSubmitSuccess(true);
+                    setShowApplicationForm(false);
+                    setSelectedJob(null);
+                    setFormData({ name: '', email: '', phone: '', experience: '', resume: null });
+                  } else {
+                    const err = await res.json();
+                    setSubmitError(err.error || 'Failed to submit application');
+                  }
+                } catch (err) {
+                  setSubmitError('Failed to submit application');
+                }
+                setSubmitting(false);
+              }}
+            >
+              <div className="mb-3">
+                <label className="form-label">Full Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  required
+                  value={formData.name}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  required
+                  value={formData.email}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  required
+                  value={formData.phone}
+                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="form-label">Any Experience</label>
+                <select
+                  className="form-select"
+                  required
+                  value={formData.experience}
+                  onChange={e => setFormData({ ...formData, experience: e.target.value })}
+                >
+                  <option value="">Select Experience</option>
+                  <option value="lt6months">Less than 6 months</option>
+                  <option value="lt1year">Less than 1 year</option>
+                  <option value="lt2years">Less than 2 years</option>
+                </select>
+              </div>
+
+              <div className="mb-3">
+                <label className="form-label">Upload Resume</label>
+                <input
+                  type="file"
+                  className="form-control"
+                  accept=".pdf,.doc,.docx"
+                  required
+                  onChange={e => setFormData({ ...formData, resume: e.target.files[0] })}
+                />
+              </div>
+
+              {submitError && <div className="text-danger mb-2">{submitError}</div>}
+              {submitSuccess && <div className="text-success mb-2">Application submitted successfully!</div>}
+
+              <button type="submit" className="btn btn-light rounded-pill px-4" disabled={submitting}>
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+          </div>
         </div>
-
-        <div className="mb-3">
-          <label className="form-label">Email Address</label>
-          <input type="email" className="form-control" required />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Phone Number</label>
-          <input type="tel" className="form-control" required />
-        </div>
-
-        {/* ✅ Any Experience Dropdown */}
-        <div className="mb-4">
-          <label className="form-label">Any Experience</label>
-          <select className="form-select" required>
-            <option value="">Select Experience</option>
-            <option value="lt6months">Less than 6 months</option>
-            <option value="lt1year">Less than 1 year</option>
-            <option value="lt2years">Less than 2 years</option>
-          </select>
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Upload Resume</label>
-          <input type="file" className="form-control" accept=".pdf,.doc,.docx" required />
-        </div>
-
-        <button type="submit" className="btn btn-light rounded-pill px-4">
-          Submit
-        </button>
-      </form>
-    </div>
-  </div>
-)}
-
+      )}
 
       {/* ✅ Header */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
@@ -246,7 +215,7 @@ export default function Jobs() {
       {/* ✅ Job Cards */}
       <div className="row g-4">
         {jobs.map((job) => (
-          <div className="col-12 col-md-6" key={job.id}>
+          <div className="col-12 col-md-6" key={job._id}>
             <div
               className="p-4 rounded h-100 d-flex flex-column justify-content-between"
               style={{
