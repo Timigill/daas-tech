@@ -180,8 +180,7 @@ export default function Jobs() {
 
 
     return (
-        <div id="jobs-listening"
-            className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
+        <div id="jobs-listening" className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
             {/* ✅ Job Details Modal */}
             {selectedJob && !showApplicationForm && (
                 <div style={overlayStyle}>

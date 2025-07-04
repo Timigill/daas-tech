@@ -14,11 +14,13 @@ const fadeInUp = {
 };
 
 const handleScrollToJobs = () => {
-  const section = document.getElementById("jobs-listening");
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+  const target = document.getElementById("jobs-listening");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
+
+
 
 function Hero() {
   return (
@@ -82,6 +84,7 @@ function Hero() {
             <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
           </span>
         </motion.button>
+
       </div>
       <Trust />
     </motion.div>

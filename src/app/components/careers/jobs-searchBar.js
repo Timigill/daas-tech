@@ -49,17 +49,15 @@ const customSelectStyles = {
 
 // 🔻 Dropdown options
 const departmentOptions = [
-  { value: "all", label: "All Departments" },
-  { value: "engineering", label: "Engineering" },
-  { value: "marketing", label: "Marketing" },
-  { value: "design", label: "Design" },
+  { value: "Remote", label: "Remote" },
+  { value: "Full", label: "Full-Time" },
+  { value: "Half", label: "Part-Time" },
 ];
 
 const locationOptions = [
-  { value: "all", label: "All Job Locations" },
-  { value: "remote", label: "Remote" },
-  { value: "on-site", label: "On-site" },
-  { value: "hybrid", label: "Hybrid" },
+  { value: "Practice", label: "InternShip" },
+  { value: "Inter", label: "Intermediate-Level" },
+  { value: "Senior", label: "Senior-Level" },
 ];
 
 function Opening() {
@@ -119,7 +117,7 @@ function Opening() {
             <Select
               options={departmentOptions}
               styles={customSelectStyles}
-              placeholder="All Departments"
+              placeholder="Job Type"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
               menuPosition="fixed"
             />
@@ -130,7 +128,7 @@ function Opening() {
             <Select
               options={locationOptions}
               styles={customSelectStyles}
-              placeholder="All Job Locations"
+              placeholder="Job Level"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
               menuPosition="fixed"
             />
