@@ -30,7 +30,7 @@ const customSelectStyles = {
     ...base,
     backgroundColor: "#000",
     border: "1px solid #222",
-    zIndex: 999,
+    zIndex: 9999,
   }),
   option: (base, state) => ({
     ...base,
@@ -41,9 +41,13 @@ const customSelectStyles = {
     fontFamily: "Inter, sans-serif",
     cursor: "pointer",
   }),
+  menuPortal: (base) => ({
+    ...base,
+    zIndex: 9999,
+  }),
 };
 
-// Dropdown options
+// 🔻 Dropdown options
 const departmentOptions = [
   { value: "all", label: "All Departments" },
   { value: "engineering", label: "Engineering" },
@@ -63,14 +67,15 @@ function Opening() {
     <div
       className="container-fluid px-3 px-md-5 py-5"
       style={{
-        overflowX: "hidden", // ✅ Prevent horizontal scroll
-        width: "100%",       // ✅ Prevent overflow
+        overflowX: "hidden",
+        overflowY: "hidden",
+        width: "100%",
       }}
     >
       {/* ✅ Title */}
       <h1 className="text-center fw-bold mb-3 text-white">Job Openings</h1>
 
-      {/* ✅ Search Section */}
+      {/* ✅ Search + Filters */}
       <div
         className="rounded mt-5 p-4"
         style={{
@@ -85,6 +90,7 @@ function Opening() {
             className="col-12 col-md-4 d-flex align-items-center pb-1"
             style={{
               borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+              transition: "border-color 0.3s ease",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.borderBottom =
@@ -108,21 +114,25 @@ function Opening() {
             />
           </div>
 
-          {/* 📁 Department Filter */}
+          {/* 📁 Department Dropdown */}
           <div className="col-12 col-md-4">
             <Select
               options={departmentOptions}
               styles={customSelectStyles}
               placeholder="All Departments"
+              menuPortalTarget={typeof window !== "undefined" ? document.body : null}
+              menuPosition="fixed"
             />
           </div>
 
-          {/* 📍 Location Filter */}
+          {/* 📍 Location Dropdown */}
           <div className="col-12 col-md-4">
             <Select
               options={locationOptions}
               styles={customSelectStyles}
               placeholder="All Job Locations"
+              menuPortalTarget={typeof window !== "undefined" ? document.body : null}
+              menuPosition="fixed"
             />
           </div>
         </div>
