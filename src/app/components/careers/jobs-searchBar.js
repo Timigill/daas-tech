@@ -48,16 +48,18 @@ const customSelectStyles = {
 };
 
 // 🔻 Dropdown options
-const departmentOptions = [
+const jobTypeOptions = [
   { value: "Remote", label: "Remote" },
-  { value: "Full", label: "Full-Time" },
-  { value: "Half", label: "Part-Time" },
+  { value: "Hybrid", label: "Hybrid" },
+  { value: "Full-Time", label: "Full-Time" },
+  { value: "Half-Time", label: "Part-Time" },
 ];
 
-const locationOptions = [
-  { value: "Practice", label: "InternShip" },
-  { value: "Inter", label: "Intermediate-Level" },
-  { value: "Senior", label: "Senior-Level" },
+const jobLevelOptions = [
+  { value: "Fresher", label: "Fresher" },
+  { value: "InternShip", label: "InternShip" },
+  { value: "Intermediate-Level", label: "Intermediate-Level" },
+  { value: "Senior-Level", label: "Senior-Level" },
 ];
 
 function Opening() {
@@ -112,10 +114,10 @@ function Opening() {
             />
           </div>
 
-          {/* 📁 Department Dropdown */}
+          {/* 📁 JOb-type Dropdown */}
           <div className="col-12 col-md-4">
             <Select
-              options={departmentOptions}
+              options={jobTypeOptions}
               styles={customSelectStyles}
               placeholder="Job Type"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
@@ -123,10 +125,10 @@ function Opening() {
             />
           </div>
 
-          {/* 📍 Location Dropdown */}
+          {/* 📍 Job-Level Dropdown */}
           <div className="col-12 col-md-4">
             <Select
-              options={locationOptions}
+              options={jobLevelOptions}
               styles={customSelectStyles}
               placeholder="Job Level"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
