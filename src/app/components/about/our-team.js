@@ -92,7 +92,7 @@ function Team() {
               style={{
                 border: "1px solid #222",
               }}>
-              <Image src="/timi12.jpg" alt="" width={256} height={300} style={{ width: "256px", height: "300px" }} />
+              <Image src="/timi12.pnjg" alt="" width={256} height={300} style={{ width: "256px", height: "300px" }} />
               <div className="d-flex mt-2 justify-content-between">
                 <h5
                   className="mb-0 text-white"

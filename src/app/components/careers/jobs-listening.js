@@ -1,5 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -48,6 +50,7 @@ export default function Jobs() {
 
   return (
     <div className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
+      <ToastContainer />
       {/* Loading/Error States */}
       {loading && <div className="text-white-50 my-5">Loading jobs...</div>}
       {error && <div className="text-danger my-5">{error}</div>}
@@ -111,15 +114,18 @@ export default function Jobs() {
                     body: data,
                   });
                   if (res.ok) {
+                    toast.success('Application submitted successfully!');
                     setSubmitSuccess(true);
                     setShowApplicationForm(false);
                     setSelectedJob(null);
                     setFormData({ name: '', email: '', phone: '', experience: '', resume: null });
                   } else {
                     const err = await res.json();
+                    toast.error(err.error || 'Failed to submit application');
                     setSubmitError(err.error || 'Failed to submit application');
                   }
                 } catch (err) {
+                  toast.error('Failed to submit application');
                   setSubmitError('Failed to submit application');
                 }
                 setSubmitting(false);
@@ -190,7 +196,6 @@ export default function Jobs() {
               </div>
 
               {submitError && <div className="text-danger mb-2">{submitError}</div>}
-              {submitSuccess && <div className="text-success mb-2">Application submitted successfully!</div>}
 
               <button type="submit" className="btn btn-light rounded-pill px-4" disabled={submitting}>
                 {submitting ? 'Submitting...' : 'Submit'}
