@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/react": "^2.24.1",
+    "@tiptap/starter-kit": "^2.24.0",
     "@vercel/speed-insights": "^1.2.0",
     "aos": "^2.3.4",
     "bcryptjs": "^3.0.2",
