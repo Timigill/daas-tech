@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useState, } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -172,15 +172,9 @@ export default function Jobs() {
         }
     };
 
-    const jobsSectionRef = useRef(null);
-
-    <div ref={jobsSectionRef} id="jobs-listening">
-        {/* Your Jobs UI */}
-    </div>
-
 
     return (
-        <div id="jobs-listening" className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
+        <div className="container-fluid px-3 px-md-5 my-5" style={{ overflowX: 'hidden' }}>
             {/* ✅ Job Details Modal */}
             {selectedJob && !showApplicationForm && (
                 <div style={overlayStyle}>
@@ -412,7 +406,7 @@ const overlayStyle = {
 };
 
 const modalStyle = {
-    background: 'linear-gradient(135deg, #1b1525, #6a1b9a)',
+    background: 'linear-gradient(to top left, #1f1a2e, #000)', // More solid, elegant dark
     padding: '2rem',
     borderRadius: '12px',
     color: '#fff',
@@ -421,8 +415,9 @@ const modalStyle = {
     position: 'relative',
     overflowY: 'auto',
     maxHeight: '90vh',
-};
-
+    boxShadow: '0 0 20px rgba(0, 0, 0, 0.6)', // Optional: depth
+  };
+  
 const closeBtnStyle = {
     position: 'absolute',
     top: '10px',
@@ -437,3 +432,4 @@ const inputStyle = {
     borderColor: '#6a1b9a',
     color: '#fff',
 };
+
