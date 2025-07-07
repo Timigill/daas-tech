@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import dynamic from "next/dynamic";
 
@@ -63,8 +63,12 @@ const jobLevelOptions = [
 ];
 
 function Opening() {
+  const jobsSectionRef = useRef(null);
+
   return (
     <div
+      ref={jobsSectionRef}
+      id="jobs-searchBar"
       className="container-fluid px-3 px-md-5 py-5"
       style={{
         overflowX: "hidden",
@@ -114,7 +118,7 @@ function Opening() {
             />
           </div>
 
-          {/* 📁 JOb-type Dropdown */}
+          {/* 📁 Job-type Dropdown */}
           <div className="col-12 col-md-4">
             <Select
               options={jobTypeOptions}

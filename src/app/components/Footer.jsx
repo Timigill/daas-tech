@@ -69,24 +69,11 @@ function Footer() {
               <div className=" col-md-4  resp mb-3">
                 <h6 className="fw-bold mt-3">Links</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "#bebaba" }}>
-                  <li>Services</li>
-                  <li>Process</li>
-                  <li>Case studies</li>
-                  <li>Benefits</li>
-                  <li>Pricing</li>
-                  <li>
-                      <a
-                        href="/admin/login"
-                        style={{
-                          textDecoration: "none",
-                          color: "#bebaba",
-                          fontSize: "0.9rem",
-                          opacity: 0.6,
-                        }}
-                      >
-                        Admin Panel
-                      </a>
-                  </li>
+                  <li><Link href="/services">Services</Link></li>
+                  <li><Link href="/book-call">Book</Link></li>
+                  <li><Link href="/careers/jobs-searchBar">Jobs</Link></li>
+                  <li><Link href="/about/our-team">Team</Link></li>
+                  <li><Link href="/contact">Category</Link></li>
                 </ul>
               </div>
               <div className=" col-sm-3  resp col-md-4 mb-3">

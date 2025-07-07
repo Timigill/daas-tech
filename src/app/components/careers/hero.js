@@ -14,12 +14,13 @@ const fadeInUp = {
 };
 
 const handleScrollToJobs = () => {
-  const target = document.getElementById("jobs-listening");
-  if (target) {
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  setTimeout(() => {
+    const target = document.getElementById("jobs-searchBar");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, 100); // 🔁 Delay gives layout time to settle
 };
-
 
 
 function Hero() {
