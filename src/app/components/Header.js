@@ -2,25 +2,39 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "react-feather";
+import { Menu, X, Sun, Moon } from "react-feather";
 import Image from "next/image";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-   { name: "Careers", path: "/careers" },
+  { name: "Careers", path: "/careers" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
   const pathname = usePathname();
   const menuRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(storedTheme);
+    document.documentElement.classList.toggle("dark", storedTheme === "dark");
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -59,7 +73,7 @@ export default function Header() {
               <Menu size={24} />
             </button>
 
-            <div className="collapse navbar-collapse ms-5 justify-content-end d-none d-lg-flex">
+            <div className="collapse navbar-collapse ms-5 justify-content-end d-none d-lg-flex align-items-center">
               <ul className="navbar-nav align-items-center ms-5 me-3">
                 {navLinks.map((link) => (
                   <li className="nav-item" key={link.name}>
@@ -78,6 +92,13 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
+              <button
+                onClick={toggleTheme}
+                className="btn btn-link text-white me-3"
+                aria-label="Toggle Theme"
+              >
+                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
               <Link
                 href="/book-call"
                 className="btn btn-primary px-3 py-2 ms-2"
@@ -164,6 +185,14 @@ export default function Header() {
               >
                 Book a call
               </Link>
+            </li>
+            <li className="nav-item mt-3">
+              <button
+                onClick={toggleTheme}
+                className="btn btn-outline-light rounded-pill w-100"
+              >
+                {theme === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode"}
+              </button>
             </li>
           </ul>
         </div>
