@@ -237,7 +237,7 @@ export default function Contact() {
                 containerStyle={{
                   width: "100%"
                 }}
-                inputClass="bg-dark text-white"
+                inputclassName="bg-dark text-white"
                 placeholder="+1(969) 819-8061"
                 enableSearch={false}
                 // Hide country names in dropdown

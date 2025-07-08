@@ -1,9 +1,17 @@
 'use client';
 import React, { useEffect, useState } from "react";
+import ContactModal from "../components/QuotelistModel";
 
 export default function QuotesList() {
+  // const [selectedQuote, setSelectedQuote] = useState(null);
+  
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(true);
+const [showModal, setShowModal] = useState(false);  
+const [selectedQuote, setSelectedQuote] = useState(null);
+
+
+
 
   useEffect(() => {
     fetch("/api/quote")
@@ -131,11 +139,21 @@ export default function QuotesList() {
                 }}>
                   {new Date(quote.createdAt).toLocaleDateString()}
                 </td>
-                <td style={{ 
-                  padding: "16px 12px",
-                  fontSize: "0.9rem",
-                  color: "#fff"
-                }}>{quote.contactName || "-"}</td>
+               
+<td>
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault(); // Prevents page jump
+      setSelectedQuote(quote);
+      setShowModal(true);
+    }}
+    style={{ textDecoration: "underline", color: "#8b5cf6", cursor: "pointer" }}
+  >
+    {quote.contactName || "-"}
+  </a>
+</td>
+
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
@@ -196,6 +214,12 @@ export default function QuotesList() {
             ))}
           </tbody>
         </table>
+        <ContactModal 
+  show={showModal} 
+  onHide={() => setShowModal(false)} 
+  quote={selectedQuote} 
+/>
+
       </div>
       
       {quotes.length === 0 && (
