@@ -9,9 +9,14 @@
    --cicleGrad:radial-gradient(circle at center, #d6c8fa 60%, #d6c8fa 100%);
    --codediv:#6c5a87 ;
    --codeinnerdiv:#d6c8fa;
+   --grad1:#d6c8fa;
+   --grad2:rgba(136, 89, 236, 0.1);
+   --ctah2:var(--accent)
 }
 
 .dark {
+  --grad1:rgba(164, 122, 255, 0.2);
+  --grad2:#000;
   --cicleGrad:radial-gradient(circle at center, #151515 60%, #101010 100%);
   --codediv:#1f1f1f;
   --codeinnerdiv:#1e1e1e;
@@ -22,6 +27,7 @@
   --card-border:none;
   --card-bg: #111114;
   --border-color: #23232a;
+  --ctah2:#ffffff;
 }
 
 html,

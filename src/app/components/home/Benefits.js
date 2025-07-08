@@ -49,8 +49,8 @@ const Benefits = () => {
     <section
       style={{
         padding: "60px 20px",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
       }}
     >
@@ -94,7 +94,7 @@ const Benefits = () => {
           viewport={{ once: true }}
           style={{
             fontSize: 18,
-            color: "#aaa",
+            color: "var(--muted-text)",
             maxWidth: 600,
             margin: "0 auto",
           }}
@@ -128,7 +128,7 @@ const Benefits = () => {
 
 // Styles
 const cardStyle = {
-  background: "linear-gradient(135deg, rgba(164, 122, 255, 0.2) 0%, #000 50%, rgba(164, 122, 255, 0.2) 100%)", // angle: from bottom-left to top-right
+  background: "linear-gradient(135deg,var(--grad1) 0%, var(--grad2) 50%, var(--grad1)100%)", // angle: from bottom-left to top-right
   borderRadius: 12,
   padding: 24,
   flex: "1 1 260px",
@@ -142,13 +142,13 @@ const cardStyle = {
 const cardTitle = {
   fontSize: 18,
   fontWeight: 600,
-  color: "#fff",
+  color: "var(--foreground)",
   marginBottom: 10,
 };
 
 const cardText = {
   fontSize: 15,
-  color: "#bbb",
+  color: "var(--muted-text)",
   lineHeight: 1.5,
 };
 

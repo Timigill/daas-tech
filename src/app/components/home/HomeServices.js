@@ -20,8 +20,8 @@ export default function HomeServices() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         style={{
-          background: "var(--accent-light)",
-          color: "var(--accent)",
+          background: "rgba(139,92,246,0.15)",
+          color: "#8b5cf6",
           fontWeight: 600,
           fontSize: 15,
           letterSpacing: 1,
@@ -35,7 +35,7 @@ export default function HomeServices() {
         Web Solutions That Take Your Business Online
       </motion.h1>
       <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} style={{ color: "var(--muted-text)", maxWidth: 600 }}>
-        We design, develop, and launch websites that help...
+        We design, develop, and launch websites that help you reach more customers and grow your business with ease.
       </motion.p>
       {/* card */}
       <motion.div

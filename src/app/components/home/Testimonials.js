@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import styles from './Testimonials.module.scss';
 import Image from 'next/image';
 
+
 const testimonials = [
   {
     name: 'James Carter',
@@ -41,8 +42,8 @@ const Testimonials = () => {
               className="d-flex flex-column align-items-center text-center"
               style={{
                 padding: "55px 1rem",
-                background: "#000",
-                color: "#fff",
+                background: "var(--background)",
+                color: "var(--foreground)",
                 fontFamily: "Inter, sans-serif",
                 overflowX: "hidden",
                 maxWidth: "100vw",
@@ -91,7 +92,7 @@ const Testimonials = () => {
                 viewport={{ once: true }}
                 style={{
                   fontSize: 15,
-                  color: "#bdbdbd",
+                  color: "var(--muted-text)",
                   maxWidth: 600,
                   margin: "0 auto 40px auto",
                 }}

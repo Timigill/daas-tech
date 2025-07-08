@@ -1,6 +1,6 @@
 .faqWrapper {
-  background-color: #000;
-  color: #fff;
+  background-color:var(--background);
+  color: var(--foreground);
   padding: 4rem 2rem;
   padding-top: 0!important;
   font-family: 'Inter', sans-serif;
@@ -31,7 +31,7 @@
 
 .subtitle {
   font-size: 15px;
-  color: #bdbdbd;
+  color: var(--muted-text);
   max-width: 600px;
   margin: 0 auto 40px auto;
 }
@@ -46,8 +46,8 @@
 }
 
 .faqCard {
-  background: linear-gradient(to top, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 1));
-  border: 1px solid #333;
+  background: linear-gradient(to top, var(--grad1), var(--grad2));
+  border: 1px solid var(border-color);
   border-radius: 0.75rem;
   padding: 1.5rem 1.2rem;
   cursor: pointer;
@@ -68,7 +68,7 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0;
-    color: #fff;
+    color: var(--foreground);
   }
 
   svg {
@@ -80,6 +80,6 @@
 .answer {
   font-size: 0.95rem;
   margin-top: 1rem;
-  color: #cccccc;
+  color: var(--muted-text);
   line-height: 1.6;
 }

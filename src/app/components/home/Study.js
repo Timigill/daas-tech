@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import "@/app/globals.css";``
 
 const caseStudies = [
 	{
@@ -158,8 +159,8 @@ const Study = () => {
 		<section
 			className="d-flex flex-column align-items-center text-center"
 			style={{
-				background: "#000",
-				color: "#fff",
+				background: "var(--background)",
+				color: "var(--foreground)",
 				fontFamily: "Inter, sans-serif",
 				padding: "60px 20px",
 				minHeight: "100vh",
@@ -201,7 +202,7 @@ const Study = () => {
 				viewport={{ once: true }}
 				style={{
 					fontSize: 17,
-					color: "#bdbdbd",
+					color: "var(--muted-text)",
 					maxWidth: 600,
 					margin: "0 auto 40px auto",
 				}}
@@ -239,9 +240,9 @@ const Study = () => {
 							scrollSnapAlign: "start",
 							borderRadius: 20,
 							overflow: "hidden",
-							boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+							boxShadow: "var(--border-color) 0px 0px 10px",
 							minHeight: 420,
-							backgroundColor: "#111",
+							backgroundColor: "var(--card-bg)",
 							display: "flex",
 							flexDirection: "row",
 						}}
@@ -265,7 +266,7 @@ const Study = () => {
 							justifyContent: "center",
 						}}>
 							<h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>{study.title}</h3>
-							<p style={{ color: "#ccc", marginBottom: "15px", fontSize: "0.9rem" }}>
+							<p style={{ color: "var(--muted-text)", marginBottom: "15px", fontSize: "0.9rem" }}>
 								{study.description}
 							</p>
 							<ul style={{ paddingLeft: 0, fontSize: "0.9rem" }}>
