@@ -34,6 +34,18 @@ html, body {
   padding: 0;
   margin: 0;
 }
+.ProseMirror {
+  min-height: 250px;
+  padding: 12px;
+  background-color: #181622;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+.ProseMirror h1, .ProseMirror h2 {
+  color: #8b5cf6;
+}
 
 /* Anchor tags */
 a {
