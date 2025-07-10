@@ -173,8 +173,8 @@ const Study = () => {
 				viewport={{ once: true }}
 				className="badge mb-3"
 				style={{
-					background: "rgba(139,92,246,0.15)",
-					color: "#8b5cf6",
+					background: "var(--accent)",
+					color: "#fff",
 					fontWeight: 600,
 					fontSize: 15,
 					letterSpacing: 1,
@@ -290,7 +290,7 @@ const Study = () => {
 							width: 10,
 							height: 10,
 							borderRadius: "50%",
-							backgroundColor: idx === currentIndex ? "#8b5cf6" : "#444",
+							backgroundColor: idx === currentIndex ? "#8b5cf6" : "var(--muted-text)",
 							transition: "background-color 0.3s ease",
 						}}
 					/>

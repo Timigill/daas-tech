@@ -62,8 +62,8 @@ const Benefits = () => {
                 variants={fadeInUp}
                 viewport={{ once: true }}
                 style={{
-                  background: "rgba(139,92,246,0.15)",
-                  color: "#8b5cf6",
+                  background: "var(--accent)",
+                  color: "#fff",
                   fontWeight: 600,
                   fontSize: 15,
                   letterSpacing: 1,

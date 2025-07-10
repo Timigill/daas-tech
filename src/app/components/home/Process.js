@@ -121,8 +121,8 @@ app.listen(PORT, () => {
           variants={fadeInUp}
           viewport={{ once: true }}
           style={{
-            background: "rgba(139,92,246,0.15)",
-            color: "#8b5cf6",
+            background: "var(--accent)",
+            color: "#fff",
             fontWeight: 600,
             fontSize: 15,
             letterSpacing: 1,
@@ -391,7 +391,7 @@ app.listen(PORT, () => {
                 <div style={{ display: "flex", height: "calc(100% - 30px)" }}>
                   <div
                     style={{
-                      background: "var(--codediv)",
+                      background: "#2a2a2a",
                       width: "40px",
                       display: "flex",
                       flexDirection: "column",

@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import ParticlesBg from "../ParticlesBg";
 import "@/app/globals.css";
 
-const scaleIn = { /* same variant */ };
+const scaleIn = {
+  hidden: { scale: 0 },
+  visible: (delay = 0) => ({
+    scale: 1,
+    transition: { type: "spring", stiffness: 400, damping: 25, delay }
+  })
+};
 
 export default function Hero() {
   return (
@@ -16,10 +22,44 @@ export default function Hero() {
         color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         padding: "0 1rem",
-      }}>
-      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        overflow: "hidden",
+      }}
+    >
+      {/* Particle background */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
         <ParticlesBg />
       </div>
+
+      {/* Rotating glow background */}
+     <div
+  className="rotating-glow light-only"
+  style={{
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "400px",
+    height: "400px",
+    backgroundImage: "url('/purpleblur.png')",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    animation: "rotateGlow 16s linear infinite",
+    opacity: 0.6,
+    zIndex: 1,
+    filter: "invert(22%) sepia(80%) saturate(7471%) hue-rotate(256deg) brightness(94%) contrast(106%)"
+ 
+  }}
+/>
+
+      {/* Hero text */}
       <header style={{ position: "relative", zIndex: 2 }}>
         <motion.span
           variants={scaleIn}
@@ -29,12 +69,13 @@ export default function Hero() {
           custom={0.1}
           className="badge mb-3"
           style={{
-            background: "rgba(139,92,246,0.15)",
-            color: "#8b5cf6",
+            background: "var(--accent)",
+            color: "#fff",
             fontWeight: 600,
             fontSize: 16,
             letterSpacing: 1,
-          }}>
+          }}
+        >
           New
         </motion.span>
         <motion.h1
@@ -46,7 +87,10 @@ export default function Hero() {
             fontSize: "2.7rem",
             lineHeight: 1.1,
             color: "var(--foreground)",
-          }}>
+            width: "100%",
+            padding: "0 1rem",
+          }}
+        >
           Intelligent Solutions for Modern Businesses.
         </motion.h1>
         <motion.p
@@ -56,8 +100,11 @@ export default function Hero() {
           style={{
             fontSize: 15,
             maxWidth: 550,
+            margin: "0 auto",
+            padding: "0 1rem",
             color: "var(--muted-text)",
-          }}>
+          }}
+        >
           At DaaS Tech, we blend tech, design, and strategy. Where Problems Meet Possibilities.
         </motion.p>
         <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">
@@ -71,7 +118,8 @@ export default function Hero() {
               background: "var(--accent)",
               color: "#fff",
               fontWeight: 600,
-            }}>
+            }}
+          >
             Get a Quote
           </motion.a>
           <motion.a
@@ -87,7 +135,8 @@ export default function Hero() {
               background: "transparent",
               border: "1px solid var(--border-color)",
               color: "var(--foreground)",
-            }}>
+            }}
+          >
             View Services
           </motion.a>
         </div>
