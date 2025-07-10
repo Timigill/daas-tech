@@ -2,7 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
+import Image from "@tiptap/extension-image";
+import CodeBlock from "@tiptap/extension-code-block";
+import TextAlign from "@tiptap/extension-text-align";
+import EditorToolbar from "@/app/components/EditorToolbar";
 const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -12,6 +19,23 @@ const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
     content: "",
     category: "",
   });
+
+  const [loading, setLoading] = useState(true);
+
+  const editor = useEditor({
+  extensions: [
+    StarterKit,
+    Underline,
+    Link.configure({ openOnClick: false }),
+    Image,
+    CodeBlock,
+    TextAlign.configure({ types: ["heading", "paragraph"] }),
+  ],
+  content: formData.content,
+  onUpdate: ({ editor }) => {
+    setFormData((prev) => ({ ...prev, content: editor.getHTML() }));
+  },
+});
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -26,12 +50,17 @@ const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
           content: data.content || "",
           category: data.category || "",
         });
+        // ✅ Set content in TipTap editor
+        editor?.commands.setContent(data.content || "");
+        setLoading(false);
       } catch (error) {
         toast.error("Failed to load blog data");
+        setLoading(false);
       }
     };
-    if (blogId) fetchBlog();
-  }, [blogId]);
+
+    if (blogId && editor) fetchBlog();
+  }, [blogId, editor]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -76,6 +105,8 @@ const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
     fontWeight: "500",
   };
 
+  if (loading) return <div className="text-white">Loading...</div>;
+
   return (
     <form
       onSubmit={handleUpdate}
@@ -109,10 +140,14 @@ const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
         <input type="text" name="category" value={formData.category} onChange={handleChange} className="form-control" style={inputStyle} />
       </div>
 
+      {/* ✅ TipTap Rich Text Editor */}
       <div className="mb-4">
-        <label className="form-label" style={labelStyle}>Content</label>
-        <textarea name="content" value={formData.content} onChange={handleChange} rows={4} className="form-control" style={inputStyle} required></textarea>
-      </div>
+  <label className="form-label" style={labelStyle}>Content</label>
+  <div style={{ background: "#181622", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
+    <EditorToolbar editor={editor} />
+    <EditorContent editor={editor} />
+  </div>
+</div>
 
       <div className="d-flex justify-content-between">
         <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#8b5cf6", border: "none" }}>

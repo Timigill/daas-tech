@@ -4,7 +4,12 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useRef } from 'react';
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
+import Image from "@tiptap/extension-image";
+import CodeBlock from "@tiptap/extension-code-block";
+import TextAlign from "@tiptap/extension-text-align";
+import EditorToolbar from "@/app/components/EditorToolbar";
 
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dcawsddxm/upload';
 const CLOUDINARY_PRESET = 'DaaS Tech';
@@ -28,13 +33,20 @@ const AdminAddBlogForm = ({ onBlogAdded }) => {
   const [errors, setErrors] = useState({});
 
   // Tiptap editor
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: formData.content,
-    onUpdate: ({ editor }) => {
-      setFormData((prev) => ({ ...prev, content: editor.getHTML() }));
-    },
-  });
+ const editor = useEditor({
+  extensions: [
+    StarterKit,
+    Underline,
+    Link.configure({ openOnClick: false }),
+    Image,
+    CodeBlock,
+    TextAlign.configure({ types: ["heading", "paragraph"] }),
+  ],
+  content: formData.content,
+  onUpdate: ({ editor }) => {
+    setFormData((prev) => ({ ...prev, content: editor.getHTML() }));
+  },
+});
 
   // Handle input changes
   const handleChange = (e) => {
@@ -286,12 +298,13 @@ const AdminAddBlogForm = ({ onBlogAdded }) => {
       </div>
 
       <div className="mb-4">
-        <label className="form-label" style={labelStyle}>Content</label>
-        <div style={{ background: '#181622', borderRadius: 8, border: '1px solid #8b5cf6' }}>
-          <EditorContent editor={editor} />
-        </div>
-        {errors.content && <div className="text-danger small">{errors.content}</div>}
-      </div>
+  <label className="form-label" style={labelStyle}>Content</label>
+  <div style={{ background: "#181622", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
+    <EditorToolbar editor={editor} />
+    <EditorContent editor={editor} />
+  </div>
+  {errors.content && <div className="text-danger small">{errors.content}</div>}
+</div>
 
       <div className="d-flex gap-2">
         <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#8b5cf6", border: "none" }}>

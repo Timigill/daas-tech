@@ -76,7 +76,7 @@ function Footer() {
                   <li>Pricing</li>
                   <li>
                       <a
-                        href="/admin/login"
+                        href="/admin"
                         style={{
                           textDecoration: "none",
                           color: "#bebaba",
