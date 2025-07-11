@@ -142,7 +142,7 @@ export default function HomeServices() {
           >
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span style={{
-                background: "var(--border-color)",
+                background: "var(--bg-card)",
                 color: "var(--foreground)",
                 fontWeight: 600,
                 fontSize: 13,

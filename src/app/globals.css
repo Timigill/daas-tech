@@ -3,15 +3,15 @@
   --foreground: #000000;
   --muted-text: #6c5a87;
   --accent: #8b5cf6;
-  --card-bg: #ad97f1;
+  --card-bg:  #edeaf3;
   --card-border:  #d6c8fa;
   --border-color: #c2adf8;
    --cicleGrad:radial-gradient(circle at center, #d6c8fa 60%, #d6c8fa 100%);
    --codediv:#000000 ;
    --codeinnerdiv:#ffff;
-   --grad1:#d6c8fa;
-   --grad2:rgba(128, 78, 236, 0.753);
-   --ctah2:#ffffff;
+   --grad1:  rgba(255, 255, 255, 0.9) ;
+   --grad2:rgba(164, 122, 255, 0.4);
+   --ctah2: rgb(140, 89, 250);
    --boxShadow:rgba(205, 96, 238, 0.18);
   --taskScrollWrapper:#ffff;
   --homeservicesgrad1:rgba(117, 68, 233, 0);
@@ -23,6 +23,7 @@
   --homeservicesgrad2: #111114;
   --grad1:rgba(164, 122, 255, 0.2);
   --grad2:#000;
+  --ctah2: rgb(140, 89, 250);
   --cicleGrad:radial-gradient(circle at center, #151515 60%, #101010 100%);
   --codediv:#1f1f1f;
   --codeinnerdiv:#1e1e1e;

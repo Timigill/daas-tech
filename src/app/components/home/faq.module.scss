@@ -46,8 +46,8 @@
 }
 
 .faqCard {
-  background: linear-gradient(135deg,var(--grad1) 0%, var(--grad2) 50%, var(--grad1)100%);
-  border: 1px solid var(border-color);
+  background: linear-gradient(to top left, var(--grad1) 0%, var(--grad2) 100%);
+  border: 1px solid var(--border-color);
   border-radius: 0.75rem;
   padding: 1.5rem 1.2rem;
   cursor: pointer;

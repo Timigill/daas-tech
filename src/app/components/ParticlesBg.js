@@ -10,16 +10,15 @@ export default function ParticlesBg() {
 
   useEffect(() => {
     const updateColor = () => {
-      const color = getComputedStyle(document.documentElement)
-        .getPropertyValue("var(--muted-text)")
+      // Always use the muted text color from CSS variable
+      const muted = getComputedStyle(document.documentElement)
+        .getPropertyValue("--muted-text")
         .trim();
-      if (color) setParticleColor(color);
+      setParticleColor(muted || "rgba(120,120,140,0.4)"); // fallback muted
     };
 
-    // Call once on mount
     updateColor();
 
-    // Observe theme changes (class changes on <html>)
     const observer = new MutationObserver(updateColor);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -33,10 +32,10 @@ export default function ParticlesBg() {
     fullScreen: false,
     background: { color: "transparent" },
     particles: {
-      number: { value: 160, density: { enable: true, area: 800 } },
+      number: { value: 260, density: { enable: true, area: 800 } },
       color: { value: particleColor },
-      opacity: { value: 0.5 },
-      size: { value: 1.5, random: true },
+      opacity: { value: 0.7 },
+      size: { value: 1.7, random: true },
       move: {
         enable: true,
         speed: 0.4,

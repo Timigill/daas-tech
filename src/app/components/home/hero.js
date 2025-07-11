@@ -37,27 +37,22 @@ export default function Hero() {
         <ParticlesBg />
       </div>
 
-      {/* Rotating glow background */}
-     <div
-  className="rotating-glow light-only"
-  style={{
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "400px",
-    height: "400px",
-    backgroundImage: "url('/purpleblur.png')",
-    backgroundSize: "contain",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    animation: "rotateGlow 16s linear infinite",
-    opacity: 0.6,
-    zIndex: 1,
-    filter: "invert(22%) sepia(80%) saturate(7471%) hue-rotate(256deg) brightness(94%) contrast(106%)"
- 
-  }}
-/>
+      {/* Radial gradient background (light mode only) */}
+      <div
+        className="hero-radial-bg light-only"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "700px",
+          height: "700px",
+          zIndex: 1,
+          pointerEvents: "none",
+          borderRadius: "50%",
+          background: `radial-gradient(circle at 50%  50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,    
+        }}
+      />
 
       {/* Hero text */}
       <header style={{ position: "relative", zIndex: 2 }}>
@@ -91,7 +86,7 @@ export default function Hero() {
             padding: "0 1rem",
           }}
         >
-          Intelligent Solutions for Modern Businesses.
+          Intelligent Solutions <br/> for Modern Businesses.
         </motion.h1>
         <motion.p
           variants={scaleIn}
