@@ -16,6 +16,13 @@
   --taskScrollWrapper:#ffff;
   --homeservicesgrad1:rgba(117, 68, 233, 0);
   --homeservicesgrad2: #eeeef0;
+  --input-bg:#ad97f1;
+  --footer-text:#ffff;
+   --header-bg: rgba(177, 149, 240, 0.753);
+  --header-text: #fff;
+  --mobile-menu-bg: #f9f9f9;
+  --overlay-bg: rgba(255,255,255,0.95);
+  --border-color: #e5e5e5;
 }
 
 .dark {
@@ -36,6 +43,12 @@
   --ctah2:#ffffff;
   --boxShadow:rgba(0,0,0,0.18);
   --taskScrollWrapper:#18181b;
+  --input-bg:#111114;
+  --header-bg: #000;
+  --header-text: #fff;
+  --mobile-menu-bg: #18122b;
+  --overlay-bg: rgba(10, 6, 18, 0.95);
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 html,
@@ -153,7 +166,7 @@ input:focus {
 }
 
 .footer-gradient {
-  background-image: radial-gradient(circle at 50% -80%, rgba(164, 122, 255, 0.4), rgba(0, 0, 0, 0.9) 70%);
+  background-image: radial-gradient(circle at 50% -80%, var(--grad1), var(--grad2) 70%);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center bottom;
