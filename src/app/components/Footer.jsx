@@ -1,12 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../globals.css";
 import Link from "next/link";
 
 function Footer() {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    // Detect theme on mount
+    const storedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(storedTheme);
+
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="footer-section" style={{ padding: "12px 30px", background: "var(--card-bg)", color: "var(--foreground)" }}>
+    <footer className="footer-section "  style={{ padding: "12px 30px", background: "var(--background)", color: "var(--foreground)" }}>
       <hr className="mt-4 mb-0 w-100" style={{ borderColor: "var(--border-color)" }} />
 
       <div className="container-fluid footer-gradient pt-4" style={{ overflowX: "hidden" }}>
@@ -15,7 +30,7 @@ function Footer() {
           <div className="col-12 col-md-6 mb-4">
             <div className="mb-3">
               <img
-                src="/logo2.png"
+                src={theme === "dark" ? "/logo2.png" : "/llogo.png"}
                 alt="DaaS Logo"
                 style={{ width: "170px", height: "auto", opacity: 1 }}
               />
@@ -79,19 +94,7 @@ function Footer() {
                   <li>Case studies</li>
                   <li>Benefits</li>
                   <li>Pricing</li>
-                  <li>
-                    <a
-                      href="/admin/login"
-                      style={{
-                        textDecoration: "none",
-                        color: "var(--footer-text)",
-                        fontSize: "0.9rem",
-                        opacity: 0.6,
-                      }}
-                    >
-                      Admin Panel
-                    </a>
-                  </li>
+                  
                 </ul>
               </div>
 

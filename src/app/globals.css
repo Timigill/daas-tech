@@ -17,9 +17,9 @@
   --homeservicesgrad1:rgba(117, 68, 233, 0);
   --homeservicesgrad2: #eeeef0;
   --input-bg:#ad97f1;
-  --footer-text:#ffff;
-   --header-bg: rgba(177, 149, 240, 0.753);
-  --header-text: #fff;
+  --footer-text:#000000;
+   --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
+  --header-text: #000000;
   --mobile-menu-bg: #f9f9f9;
   --overlay-bg: rgba(255,255,255,0.95);
   --border-color: #e5e5e5;
@@ -40,6 +40,7 @@
   --accent: #8b5cf6;
   --card-border:none;
   --card-bg: #111114;
+  --footer-text:#ffffff;
   --border-color: #23232a;
   --ctah2:#ffffff;
   --boxShadow:rgba(0,0,0,0.18);
@@ -167,11 +168,15 @@ input:focus {
 }
 
 .footer-gradient {
-  background-image: radial-gradient(circle at 50% -80%, var(--grad1), var(--grad2) 70%);
+  background-image: radial-gradient(circle at 50% -80%, var(--grad2), var(--grad1) 70%);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center bottom;
   z-index: -1;
+}
+
+.dark .footer-gradient {
+  background-image: radial-gradient(circle at 50% -80%, var(--grad1), var(--grad2) 70%);
 }
 
 .trustpilot-widget {
@@ -503,4 +508,8 @@ a {
     border-radius: 12px !important;
     font-size: 0.95rem !important;
   }
+}
+
+.navbar-nav .nav-link {
+  color: var(--header-text) !important;
 }

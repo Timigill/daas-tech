@@ -62,7 +62,13 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg w-100" style={{ background: "var(--header-bg)" }}>
           <div className="nav container-lg container1">
             <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
-              <Image src="/logo2.png" alt="Logo" width={120} height={50} style={{ height: 50, opacity: "1" }} />
+              <Image
+                src={theme === "dark" ? "/logo2.png" : "/llogo.png"}
+                alt="Logo"
+                width={120}
+                height={50}
+                style={{ height: 50, opacity: "1" }}
+              />
             </Link>
 
             <button
