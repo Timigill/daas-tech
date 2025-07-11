@@ -64,25 +64,39 @@ export default function BookACall() {
   const timeSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
 
   useEffect(() => {
-    if (!selectedDate) {
+  if (!selectedDate) {
+    setAvailableSlots([]);
+    setBookedSlotValues([]);
+    return;
+  }
+
+  // Convert date to YYYY-MM-DD in UTC+5 manually
+  const localDate = new Date(selectedDate);
+  const pkOffset = 5 * 60; // minutes
+  const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
+  const formattedDate = pkDate.toISOString().slice(0, 10);
+
+  fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
+    .then(async (res) => {
+      const text = await res.text();
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error("Invalid or empty JSON response:", text);
+        return { slots: [], booked: [] }; // safe fallback
+      }
+    })
+    .then(data => {
+      setAvailableSlots(data.slots || []);
+      setBookedSlotValues(data.booked || []);
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
       setAvailableSlots([]);
       setBookedSlotValues([]);
-      return;
-    }
+    });
+}, [selectedDate, callType]);
 
-    // Convert date to YYYY-MM-DD in UTC+5 manually
-    const localDate = new Date(selectedDate);
-    const pkOffset = 5 * 60; // minutes
-    const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
-    const formattedDate = pkDate.toISOString().slice(0, 10);
-
-    fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
-      .then(res => res.json())
-      .then(data => {
-        setAvailableSlots(data.slots || []);
-        setBookedSlotValues(data.booked || []);
-      });
-  }, [selectedDate, callType]);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });

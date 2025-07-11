@@ -1,4 +1,5 @@
 import { dbConnect } from "@/app/db";
+import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
 // Booking model
@@ -13,7 +14,7 @@ const BookingSchema = new mongoose.Schema({
 BookingSchema.index({ date: 1, time: 1, callType: 1 }, { unique: true });
 const Booking = mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 
-// Helper to generate slots
+// Time slot generator
 function generateTimeSlots(start = 9, end = 18, duration = 30) {
   const slots = [];
   for (let hour = start; hour < end; hour++) {
@@ -37,59 +38,43 @@ function generateTimeSlots(start = 9, end = 18, duration = 30) {
 }
 
 export async function GET(req) {
-  await dbConnect();
-  const { searchParams } = new URL(req.url);
-  const date = searchParams.get("date");
-  const duration = parseInt(searchParams.get("duration"), 10) || 30;
+  try {
+    await dbConnect();
+    const { searchParams } = new URL(req.url);
+    const date = searchParams.get("date");
+    const duration = parseInt(searchParams.get("duration"), 10) || 30;
 
-  console.log("API called for date:", date);
-
-  const bookings = await Booking.find({ date, callType: String(duration) });
-  const allSlots = generateTimeSlots(9, 18, duration);
-
-  const now = new Date();
-  const isToday = date === now.toISOString().split("T")[0];
-
-  const availableSlots = allSlots.filter(slot => {
-    // Check if slot is booked
-    const isBooked = bookings.some(b => b.time === slot.value);
-    if (isBooked) return false;
-
-    // Filter past slots if today
-    if (isToday) {
-      const [slotHour, slotMinute] = slot.value.split(":").map(Number);
-      const slotTime = new Date();
-      slotTime.setHours(slotHour, slotMinute, 0, 0);
-      if (slotTime <= now) return false;
+    if (!date) {
+      return NextResponse.json({ slots: [], booked: [], error: "Missing date" }, { status: 400 });
     }
 
-    return true;
-  });
+    const bookings = await Booking.find({ date, callType: String(duration) });
+    const allSlots = generateTimeSlots(9, 18, duration);
 
-  // Fix: reflect which slots are booked (or filtered due to time)
-  const bookedSlotValues = allSlots
-    .filter(slot => !availableSlots.some(av => av.value === slot.value))
-    .map(slot => slot.value);
+    const now = new Date();
+    const isToday = date === now.toISOString().split("T")[0];
 
-  return Response.json({ slots: availableSlots, booked: bookedSlotValues });
-}
+    const availableSlots = allSlots.filter(slot => {
+      const isBooked = bookings.some(b => b.time === slot.value);
+      if (isBooked) return false;
 
-export async function POST(req) {
-  await dbConnect();
-  const data = await req.json();
+      if (isToday) {
+        const [slotHour, slotMinute] = slot.value.split(":").map(Number);
+        const slotTime = new Date();
+        slotTime.setHours(slotHour, slotMinute, 0, 0);
+        if (slotTime <= now) return false;
+      }
 
-  const exists = await Booking.findOne({
-    date: data.date,
-    time: data.time,
-    callType: data.callType,
-  });
+      return true;
+    });
 
-  if (exists) {
-    return Response.json({ error: "Slot already booked" }, { status: 409 });
+    const bookedSlotValues = allSlots
+      .filter(slot => !availableSlots.some(av => av.value === slot.value))
+      .map(slot => slot.value);
+
+    return NextResponse.json({ slots: availableSlots, booked: bookedSlotValues });
+  } catch (error) {
+    console.error("Error fetching available slots:", error);
+    return NextResponse.json({ slots: [], booked: [], error: "Internal server error" }, { status: 500 });
   }
-
-  const booking = new Booking(data);
-  await booking.save();
-
-  return Response.json({ message: "Booking successful" });
 }
