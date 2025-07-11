@@ -12,6 +12,7 @@ const BookingSchema = new mongoose.Schema({
   callType: String,
 });
 BookingSchema.index({ date: 1, time: 1, callType: 1 }, { unique: true });
+
 const Booking = mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 
 // Time slot generator
@@ -54,15 +55,23 @@ export async function GET(req) {
     const now = new Date();
     const isToday = date === now.toISOString().split("T")[0];
 
+    const currentTime = new Date();
+    currentTime.setSeconds(0);
+    currentTime.setMilliseconds(0);
+
     const availableSlots = allSlots.filter(slot => {
       const isBooked = bookings.some(b => b.time === slot.value);
       if (isBooked) return false;
 
+      // Prevent booking for past time slots today
       if (isToday) {
         const [slotHour, slotMinute] = slot.value.split(":").map(Number);
         const slotTime = new Date();
         slotTime.setHours(slotHour, slotMinute, 0, 0);
-        if (slotTime <= now) return false;
+        slotTime.setSeconds(0);
+        slotTime.setMilliseconds(0);
+
+        if (slotTime <= currentTime) return false;
       }
 
       return true;

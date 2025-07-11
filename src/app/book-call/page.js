@@ -278,35 +278,57 @@ export default function BookACall() {
                 />
               </div>
               <div style={{ marginBottom: 16 }}>
-                <label style={{ fontWeight: 500 }}>Time</label>
-                <select
-                  value={selectedTime}
-                  onChange={e => setSelectedTime(e.target.value)}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "5px",
-                    borderRadius: 8,
-                    border: "1px solid #23232a",
-                    background: "#18181b",
-                    color: "#fff",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                  disabled={!selectedDate}
-                >
-                  <option value="">Select a time slot</option>
-                  {allSlots.map(slot => (
-                    <option
-                      key={slot.value}
-                      value={slot.value}
-                      disabled={bookedSlotValues.includes(slot.value)}
-                      style={bookedSlotValues.includes(slot.value) ? { color: "#888" } : {}}
-                    >
-                      {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked or Unavailable)" : ""}
-                    </option>
-                  ))}
-                </select>
-              </div>
+  <label style={{ fontWeight: 500 }}>Time</label>
+  <select
+    value={selectedTime}
+    onChange={e => setSelectedTime(e.target.value)}
+    required
+    style={{
+      width: "100%",
+      padding: "5px",
+      borderRadius: 8,
+      border: "1px solid #23232a",
+      background: "#18181b",
+      color: "#fff",
+      fontFamily: "Inter, sans-serif",
+    }}
+    disabled={!selectedDate}
+  >
+    <option value="">Select a time slot</option>
+    {allSlots.map(slot => {
+      const isBooked = bookedSlotValues.includes(slot.value);
+
+      // Check if slot is in the past (if selected date is today)
+      const now = new Date();
+      const isToday =
+        selectedDate &&
+        new Date(selectedDate).toDateString() === now.toDateString();
+
+      let isPast = false;
+      if (isToday) {
+        const [hour, minute] = slot.value.split(":").map(Number);
+        const slotTime = new Date();
+        slotTime.setHours(hour, minute, 0, 0);
+        now.setSeconds(0);
+        now.setMilliseconds(0);
+        isPast = slotTime <= now;
+      }
+
+      const disabled = isBooked || isPast;
+
+      return (
+        <option
+          key={slot.value}
+          value={slot.value}
+          disabled={disabled}
+          style={{ color: disabled ? "#888" : "#fff" }}
+        >
+          {slot.label} {disabled ? "(Booked or Unavailable)" : ""}
+        </option>
+      );
+    })}
+  </select>
+</div>
               <div style={{ marginBottom: 16 }}>
                 <label style={{ fontWeight: 500 }}>Email</label>
                 <input
