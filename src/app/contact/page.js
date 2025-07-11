@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-// import '@/app/globals.css'
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -31,6 +31,37 @@ if (typeof window !== "undefined") {
 
 export default function Contact() {
   const [phone, setPhone] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      email: document.getElementById("email").value,
+      phone,
+      message: document.getElementById("message").value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+
+      if (res.ok) {
+        alert("Message sent successfully!");
+      } else {
+        alert("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong.");
+    }
+  };
+
 
   return (
     <motion.div
@@ -167,12 +198,14 @@ export default function Contact() {
             boxShadow: "0 2px 16px 0 #181028",
             // background: "linear-gradient(to top right, rgba(164, 122, 255, 0.08), #000 90%)",
           }}
+          onSubmit={handleSubmit}
+
         >
           <div className="row g-3">
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="firstName" className="form-label fw-semibold " style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="firstName" className="form-label fw-semibold " style={{ fontSize: 14 }}>
                 First Name
-              </label></div> 
+              </label></div>
               <input
                 type="text"
                 id="firstName"
@@ -197,9 +230,9 @@ export default function Contact() {
 
           <div className="row g-3 mt-1">
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="email" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="email" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
                 Email
-              </label></div> 
+              </label></div>
               <input
                 type="email"
                 id="email"
@@ -209,9 +242,9 @@ export default function Contact() {
               />
             </div>
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="phone" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="phone" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
                 Phone
-              </label></div> 
+              </label></div>
               <PhoneInput
                 country={'pk'}
                 value={phone}
@@ -269,7 +302,7 @@ export default function Contact() {
               type="submit"
               className="btn"
               style={{
-              background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.4), rgba(0, 0, 0, 1))",                color: "#fff",
+                background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.4), rgba(0, 0, 0, 1))", color: "#fff",
                 fontWeight: "600",
                 fontSize: "1rem",
                 height: "44px",
@@ -282,13 +315,13 @@ export default function Contact() {
           </div>
         </motion.form>
       </div>
-    <style>
-{`
+      <style>
+        {`
 .react-phone-input-2 .country-list .country .country-name {
   display: none !important;
 }
 `}
-</style>
+      </style>
     </motion.div>
   );
 }
