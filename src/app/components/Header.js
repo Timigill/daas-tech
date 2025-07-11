@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -53,22 +54,23 @@ export default function Header() {
       <header
         className="sticky-top"
         style={{
-          background: "#000",
+          background: "var(--header-bg)",
           zIndex: 100,
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+          borderBottom: "1px solid var(--header-border)",
         }}
       >
-        <nav className="navbar navbar-expand-lg w-100" style={{ background: "#000" }}>
+        <nav className="navbar navbar-expand-lg w-100" style={{ background: "var(--header-bg)" }}>
           <div className="nav container-lg container1">
             <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
-              <Image src="/logo2.png" alt="Logo" width={120} height={50} style={{ height: 50, opacity: "2" }} />
+              <Image src="/logo2.png" alt="Logo" width={120} height={50} style={{ height: 50, opacity: "1" }} />
             </Link>
 
             <button
-              className="navbar-toggler border-0 text-white"
+              className="navbar-toggler border-0"
               type="button"
               aria-label="Toggle navigation"
               onClick={() => setMobileMenuOpen(true)}
+              style={{ color: "var(--header-text)" }}
             >
               <Menu size={24} />
             </button>
@@ -81,7 +83,7 @@ export default function Header() {
                       className={`nav-link px-3${pathname === link.path ? " active" : ""}`}
                       href={link.path}
                       style={{
-                        color: "#fff",
+                        color: "var(--header-text)",
                         fontWeight: 500,
                         fontSize: 15,
                         opacity: pathname === link.path ? 1 : 0.85,
@@ -94,17 +96,19 @@ export default function Header() {
               </ul>
               <button
                 onClick={toggleTheme}
-                className="btn btn-link text-white me-3"
+                className="btn btn-link me-3"
                 aria-label="Toggle Theme"
+                style={{ color: "var(--header-text)" }}
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
               <Link
                 href="/book-call"
-                className="btn btn-primary px-3 py-2 ms-2"
+                className="btn px-3 py-2 ms-2"
                 style={{
-                  background: "#8b5cf6",
+                  background: "var(--accent)",
                   border: "none",
+                  color: "#fff",
                   fontWeight: 600,
                   fontSize: 13,
                 }}
@@ -125,7 +129,7 @@ export default function Header() {
           left: 0,
           width: "100vw",
           height: "100vh",
-          background: "rgba(10,6,18,0.95)",
+          background: "var(--overlay-bg)",
           zIndex: 1050,
           display: mobileMenuOpen ? "block" : "none",
         }}
@@ -140,7 +144,7 @@ export default function Header() {
             top: 0,
             left: 0,
             zIndex: 1100,
-            background: "#18122b",
+            background: "var(--mobile-menu-bg)",
             transform: mobileMenuOpen ? "translateX(0)" : "translateX(-100%)",
             transition: "transform 0.3s",
             padding: "2rem 1.5rem",
@@ -149,9 +153,10 @@ export default function Header() {
           }}
         >
           <button
-            className="btn btn-link ms-auto mb-4 p-0 text-white"
+            className="btn btn-link ms-auto mb-4 p-0"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
+            style={{ color: "var(--header-text)" }}
           >
             <X size={28} />
           </button>
@@ -162,7 +167,7 @@ export default function Header() {
                   className={`nav-link${pathname === link.path ? " active" : ""}`}
                   href={link.path}
                   style={{
-                    color: "#fff",
+                    color: "var(--header-text)",
                     fontWeight: 500,
                     fontSize: 18,
                     opacity: pathname === link.path ? 1 : 0.85,
@@ -176,10 +181,11 @@ export default function Header() {
             <li className="nav-item mt-3">
               <Link
                 href="/book-call"
-                className="btn btn-primary rounded-pill w-100"
+                className="btn rounded-pill w-100"
                 style={{
-                  background: "#8b5cf6",
+                  background: "var(--accent)",
                   border: "none",
+                  color: "#fff",
                   fontWeight: 600,
                 }}
               >
@@ -189,7 +195,7 @@ export default function Header() {
             <li className="nav-item mt-3">
               <button
                 onClick={toggleTheme}
-                className="btn btn-outline-light rounded-pill w-100"
+                className="btn btn-outline-secondary rounded-pill w-100"
               >
                 {theme === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode"}
               </button>
@@ -200,7 +206,7 @@ export default function Header() {
 
       <style jsx global>{`
         .nav-link.active {
-          color: #8b5cf6 !important;
+          color: var(--accent) !important;
           font-weight: 700;
           opacity: 1 !important;
         }
