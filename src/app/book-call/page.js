@@ -64,25 +64,39 @@ export default function BookACall() {
   const timeSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
 
   useEffect(() => {
-    if (!selectedDate) {
+  if (!selectedDate) {
+    setAvailableSlots([]);
+    setBookedSlotValues([]);
+    return;
+  }
+
+  // Convert date to YYYY-MM-DD in UTC+5 manually
+  const localDate = new Date(selectedDate);
+  const pkOffset = 5 * 60; // minutes
+  const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
+  const formattedDate = pkDate.toISOString().slice(0, 10);
+
+  fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
+    .then(async (res) => {
+      const text = await res.text();
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        console.error("Invalid or empty JSON response:", text);
+        return { slots: [], booked: [] }; // safe fallback
+      }
+    })
+    .then(data => {
+      setAvailableSlots(data.slots || []);
+      setBookedSlotValues(data.booked || []);
+    })
+    .catch(err => {
+      console.error("Fetch error:", err);
       setAvailableSlots([]);
       setBookedSlotValues([]);
-      return;
-    }
+    });
+}, [selectedDate, callType]);
 
-    // Convert date to YYYY-MM-DD in UTC+5 manually
-    const localDate = new Date(selectedDate);
-    const pkOffset = 5 * 60; // minutes
-    const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
-    const formattedDate = pkDate.toISOString().slice(0, 10);
-
-    fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
-      .then(res => res.json())
-      .then(data => {
-        setAvailableSlots(data.slots || []);
-        setBookedSlotValues(data.booked || []);
-      });
-  }, [selectedDate, callType]);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -264,35 +278,57 @@ export default function BookACall() {
                 />
               </div>
               <div style={{ marginBottom: 16 }}>
-                <label style={{ fontWeight: 500 }}>Time</label>
-                <select
-                  value={selectedTime}
-                  onChange={e => setSelectedTime(e.target.value)}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "5px",
-                    borderRadius: 8,
-                    border: "1px solid #23232a",
-                    background: "#18181b",
-                    color: "#fff",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                  disabled={!selectedDate}
-                >
-                  <option value="">Select a time slot</option>
-                  {allSlots.map(slot => (
-                    <option
-                      key={slot.value}
-                      value={slot.value}
-                      disabled={bookedSlotValues.includes(slot.value)}
-                      style={bookedSlotValues.includes(slot.value) ? { color: "#888" } : {}}
-                    >
-                      {slot.label} {bookedSlotValues.includes(slot.value) ? "(Booked or Unavailable)" : ""}
-                    </option>
-                  ))}
-                </select>
-              </div>
+  <label style={{ fontWeight: 500 }}>Time</label>
+  <select
+    value={selectedTime}
+    onChange={e => setSelectedTime(e.target.value)}
+    required
+    style={{
+      width: "100%",
+      padding: "5px",
+      borderRadius: 8,
+      border: "1px solid #23232a",
+      background: "#18181b",
+      color: "#fff",
+      fontFamily: "Inter, sans-serif",
+    }}
+    disabled={!selectedDate}
+  >
+    <option value="">Select a time slot</option>
+    {allSlots.map(slot => {
+      const isBooked = bookedSlotValues.includes(slot.value);
+
+      // Check if slot is in the past (if selected date is today)
+      const now = new Date();
+      const isToday =
+        selectedDate &&
+        new Date(selectedDate).toDateString() === now.toDateString();
+
+      let isPast = false;
+      if (isToday) {
+        const [hour, minute] = slot.value.split(":").map(Number);
+        const slotTime = new Date();
+        slotTime.setHours(hour, minute, 0, 0);
+        now.setSeconds(0);
+        now.setMilliseconds(0);
+        isPast = slotTime <= now;
+      }
+
+      const disabled = isBooked || isPast;
+
+      return (
+        <option
+          key={slot.value}
+          value={slot.value}
+          disabled={disabled}
+          style={{ color: disabled ? "#888" : "#fff" }}
+        >
+          {slot.label} {disabled ? "(Booked or Unavailable)" : ""}
+        </option>
+      );
+    })}
+  </select>
+</div>
               <div style={{ marginBottom: 16 }}>
                 <label style={{ fontWeight: 500 }}>Email</label>
                 <input
