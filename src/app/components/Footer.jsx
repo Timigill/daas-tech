@@ -84,10 +84,10 @@ function Footer() {
           </div>
 
           {/* Right Column */}
-          <div className="col-md-6">
+          <div className="col-md-6 ">
             <div className="row">
-              <div className="col-md-4 mb-3">
-                <h6 className="fw-bold mt-3">Links</h6>
+              <div className="col-md-4 col-6 mb-3">
+                <h6 className="fw-bold mt-3 footerh6">Links</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "var(--footer-text)" }}>
                   <li>Services</li>
                   <li>Process</li>
@@ -98,8 +98,8 @@ function Footer() {
                 </ul>
               </div>
 
-              <div className="col-sm-3 col-md-4 mb-3">
-                <h6 className="fw-bold mt-3">Pages</h6>
+              <div className="col-md-4 col-6 mb-3">
+                <h6 className="fw-bold mt-3 footerh6">Pages</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "var(--footer-text)" }}>
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/about">About</Link></li>
@@ -110,8 +110,8 @@ function Footer() {
                 </ul>
               </div>
 
-              <div className="col-md-4 mb-3">
-                <h6 className="fw-bold mt-3">Socials</h6>
+              <div className="col-md-4 col-sm-12 mb-3">
+                <h6 className="fw-bold mt-3 footerh6">Socials</h6>
                 <ul className="list-unstyled footer-li" style={{ color: "var(--footer-text)" }}>
                   <li><a href="https://g.co/kgs/gLLDsjr" target="_blank" rel="noopener noreferrer">Google Reviews</a></li>
                   <li><a href="https://www.linkedin.com/company/daas-tech-innovations/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
