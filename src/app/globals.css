@@ -16,7 +16,7 @@
   --taskScrollWrapper:#ffff;
   --homeservicesgrad1:rgba(117, 68, 233, 0);
   --homeservicesgrad2: #eeeef0;
-  --input-bg:#ad97f1;
+  --input-bg:#d2d0d6;
   --footer-text:#000000;
    --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
   --header-text: #000000;
@@ -136,7 +136,7 @@ input:focus {
 }
 
 ::placeholder {
-  color: #bebaba !important;
+  color: #9b9999 !important;
   opacity: 1 !important;
 }
 
