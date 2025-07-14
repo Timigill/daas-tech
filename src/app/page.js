@@ -10,10 +10,12 @@ import Testimonials from './components/home/Testimonials'
 import FAQs from './components/home/faq'
 import "@/app/globals.css";
 import CTA from './components/home/CallToAction'
+import DaaSTechLoader from './components/DaaSTechLoader/DaaSTechLoader';
 export default function Home() {
   return (
     <>
       <Hero />
+      <DaaSTechLoader/>
       <HomeServices />
       <Services />
       <Process />
