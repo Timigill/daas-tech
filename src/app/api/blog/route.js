@@ -2,6 +2,7 @@ import { dbConnect } from "@/app/db";
 import Blog from "@/app/db/blog";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 export async function GET() {
   await dbConnect();
@@ -11,7 +12,9 @@ export async function GET() {
 
 export async function POST(req) {
   await dbConnect();
-  const token = req.headers.get("authorization")?.split(" ")[1];
+  // Get token from cookie
+  const cookieStore = cookies();
+  const token = cookieStore.get("adminToken")?.value;
   if (!token) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
 
   try {

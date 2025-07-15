@@ -20,6 +20,7 @@ function Trust() {
       whileInView="visible"
       variants={fadeInUp}
       viewport={{ once: true }}
+      style={{overflowX:"hidden" , width:"100vw" }}
     >
       <motion.p
         className="trust-text text-white-50"

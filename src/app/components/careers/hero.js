@@ -13,6 +13,15 @@ const fadeInUp = {
   }),
 };
 
+const handleScrollToJobs = () => {
+  const target = document.getElementById("jobs-listening");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
+
+
 function Hero() {
   return (
     <motion.div
@@ -67,13 +76,15 @@ function Hero() {
           type="button"
           variants={fadeInUp}
           custom={0.6}
+          onClick={handleScrollToJobs}
         >
           <span className="ps-1 go-back-content">
-            Veiw Jobs Opening
+            View Jobs Opening
             <MdOutlineArrowOutward className="go-back-icon default-icon" size={20} />
             <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
           </span>
         </motion.button>
+
       </div>
       <Trust />
     </motion.div>

@@ -9,14 +9,13 @@ export default function HomeServices() {
       className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "48px 0",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
     >
-      <style>
-        {`
+      <style>{`
           @keyframes scrollTasks {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
@@ -38,8 +37,7 @@ export default function HomeServices() {
           .task-scroll-wrapper:hover .task-scroll {
             animation-play-state: paused;
           }
-        `}
-      </style>
+      `}</style>
 
       {/* Badge */}
       <motion.span
@@ -49,8 +47,8 @@ export default function HomeServices() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         style={{
-          background: "rgba(139,92,246,0.15)",
-          color: "#8b5cf6",
+          background: "var(--accent)",
+          color: "#fff",
           fontWeight: 600,
           fontSize: 15,
           letterSpacing: 1,
@@ -85,7 +83,7 @@ export default function HomeServices() {
         viewport={{ once: true }}
         style={{
           fontSize: 15,
-          color: "#bdbdbd",
+          color: "var(--muted-text)",
           maxWidth: 600,
           margin: "0 auto 40px auto",
         }}
@@ -107,14 +105,14 @@ export default function HomeServices() {
           style={{
             marginTop: "20px",
             position: "relative",
-            background: "#111114",
+            background: "var(--card-bg)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
             height: 320,
             marginBottom: 24,
-            border: "1.5px solid #23232a",
-            boxShadow: "0 8px 40px 0 rgba(0,0,0,0.45)",
+            border: "1px solid var(--border-color)",
+            boxShadow: "0 8px 40px 0 var(--boxShadow)",
             overflow: "hidden",
             display: "flex",
             alignItems: "center",
@@ -126,15 +124,15 @@ export default function HomeServices() {
               width: "92%",
               height: "82%",
               borderRadius: 12,
-              background: "rgba(24,24,27,0.85)",
-              border: "1px solid #23232a",
-              boxShadow: "0 2px 12px 0 rgba(0,0,0,0.18)",
+              background: "var(--card-bg)",
+              border: "1px solid var(--border-color)",
+              boxShadow: "0 2px 12px 0 var(--boxShadow)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "stretch",
               padding: "18px 18px 0 18px",
-              color: "#fff",
+              color: "var(--foreground)",
               fontSize: 15,
               fontWeight: 500,
               position: "relative",
@@ -144,8 +142,8 @@ export default function HomeServices() {
           >
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span style={{
-                background: "#23232a",
-                color: "#fff",
+                background: "var(--bg-card)",
+                color: "var(--foreground)",
                 fontWeight: 600,
                 fontSize: 13,
                 borderRadius: 7,
@@ -153,12 +151,12 @@ export default function HomeServices() {
               }}>All Tasks</span>
               <span style={{
                 background: "transparent",
-                color: "#bdbdbd",
+                color: "var(--muted-text)",
                 fontWeight: 500,
                 fontSize: 13,
                 borderRadius: 7,
                 padding: "4px 14px",
-                border: "1px solid #23232a",
+                border: "1px solid var(--border-color)",
               }}>Waiting for approval</span>
             </div>
 
@@ -176,14 +174,14 @@ export default function HomeServices() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    background: "#18181b",
+                    background: "var(--taskScrollWrapper)",
                     borderRadius: 8,
                     padding: "10px 12px",
                     opacity: idx === 3 ? 0.6 : 1
                   }}>
                     <div>
                       <span style={{ fontWeight: 600, fontSize: 14 }}>{task.title}</span>
-                      <div style={{ color: "#bdbdbd", fontSize: 12 }}>{task.time}</div>
+                      <div style={{ color: "var(--text-muted)", fontSize: 12 }}>{task.time}</div>
                     </div>
                     <span style={{
                       display: "inline-block",
@@ -205,7 +203,7 @@ export default function HomeServices() {
               right: 0,
               bottom: 0,
               height: "70%",
-              background: "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
+              background: "linear-gradient(to bottom, var(--homeservicesgrad1) 40%, var(--homeservicesgrad2) 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -233,12 +231,12 @@ export default function HomeServices() {
             className="btn mb-3 px-2 py-1"
             style={{
               background: "transparent",
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Custom Websites
@@ -246,7 +244,7 @@ export default function HomeServices() {
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
             Website Tasks & Workflow Automation
           </h3>
-          <p style={{ color: "#bdbdbd", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
+          <p style={{ color: "var(--muted-text)", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
             We help you create an engaging, responsive, Fast and Secure, SEO Ready website that showcases your services, attracts more visitors, and builds your brand.
           </p>
           <h4 style={{ fontWeight: 600, fontSize: "1.1rem", marginBottom: 12 }}>
@@ -257,12 +255,12 @@ export default function HomeServices() {
             className="btn px-2 py-1"
             style={{
               background: "transparent",
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Get Started
@@ -271,4 +269,4 @@ export default function HomeServices() {
       </div>
     </section>
   );
-}
+} 

@@ -1,13 +1,56 @@
 :root {
   --background: #ffffff;
-  --foreground: #000;
+  --foreground: #000000;
+  --muted-text: #6c5a87;
+  --accent: #8b5cf6;
+  --card-bg:  #edeaf3;
+  --card-border:  #d6c8fa;
+  --border-color: #c2adf8;
+   --cicleGrad:radial-gradient(circle at center, #d6c8fa 60%, #d6c8fa 100%);
+   --codediv:#000000 ;
+   --codeinnerdiv:#ffff;
+   --grad1:  rgba(255, 255, 255, 0.9) ;
+   --grad2:rgba(164, 122, 255, 0.4);
+   --ctah2: rgb(140, 89, 250);
+   --boxShadow:rgba(205, 96, 238, 0.18);
+  --taskScrollWrapper:#ffff;
+  --homeservicesgrad1:rgba(117, 68, 233, 0);
+  --homeservicesgrad2: #eeeef0;
+  --input-bg:#d2d0d6;
+  --footer-text:#000000;
+   --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
+  --header-text: #000000;
+  --mobile-menu-bg: #f9f9f9;
+  --overlay-bg: rgba(255,255,255,0.95);
+  --border-color: #e5e5e5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000;
-    --foreground: #ededed;
-  }
+.dark {
+  --homeservicesgrad1:rgba(17,17,20,0);
+  --homeservicesgrad2: #111114;
+  --grad1:rgba(164, 122, 255, 0.2);
+  --grad2:#000;
+  --ctah2: rgb(140, 89, 250);
+  --cicleGrad:radial-gradient(circle at center, #151515 60%, #101010 100%);
+  --codediv:#1f1f1f;
+  --codeinnerdiv:#1e1e1e;
+  --background: #000000;
+  --foreground: #ededed;
+  --muted-text: #bdbdbd;
+  --accent: #8b5cf6;
+  --card-border:none;
+  --card-bg: #111114;
+  --footer-text:#ffffff;
+  --border-color: #23232a;
+  --ctah2:#ffffff;
+  --boxShadow:rgba(0,0,0,0.18);
+  --taskScrollWrapper:#18181b;
+  --input-bg:#111114;
+  --header-bg: #000;
+  --header-text: #fff;
+  --mobile-menu-bg: #18122b;
+  --overlay-bg: rgba(10, 6, 18, 0.95);
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 html,
@@ -18,8 +61,8 @@ body {
   overflow-x: clip;
   scroll-behavior: smooth;
   font-family: "Inter", sans-serif;
-  background: #000 !important;
-  color: #fff;
+  background: var(--background) !important;
+  color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,7 +73,21 @@ body {
   padding: 0;
   margin: 0;
 }
+@keyframes rotateGlow {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.light-only {
+  display: block;
+}
 
+.dark .light-only {
+  display: none;
+}
 /* Anchor tags */
 a {
   color: inherit;
@@ -50,9 +107,7 @@ a {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: transparent
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='white' fill-opacity='0.15'/%3E%3Ccircle cx='80' cy='30' r='1' fill='white' fill-opacity='0.10'/%3E%3Ccircle cx='50' cy='70' r='1.2' fill='white' fill-opacity='0.13'/%3E%3Ccircle cx='90' cy='90' r='0.8' fill='white' fill-opacity='0.10'/%3E%3Ccircle cx='30' cy='50' r='1' fill='white' fill-opacity='0.10'/%3E%3C/svg%3E")
-    repeat;
+  background: transparent url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='white' fill-opacity='0.15'/%3E%3Ccircle cx='80' cy='30' r='1' fill='white' fill-opacity='0.10'/%3E%3Ccircle cx='50' cy='70' r='1.2' fill='white' fill-opacity='0.13'/%3E%3Ccircle cx='90' cy='90' r='0.8' fill='white' fill-opacity='0.10'/%3E%3Ccircle cx='30' cy='50' r='1' fill='white' fill-opacity='0.10'/%3E%3C/svg%3E") repeat;
   background-size: 200px 200px;
 }
 
@@ -61,13 +116,11 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
-/* Containers */
 .container {
   margin-left: 30px !important;
   margin-right: 30px !important;
   width: 100% !important;
   max-width: 1280px;
-  /* height: 55px; */
 }
 
 .container12 {
@@ -76,7 +129,6 @@ a {
   max-width: 1280px;
 }
 
-/* Forms and inputs */
 input:focus {
   box-shadow: none !important;
   border-color: rgb(90, 88, 90) !important;
@@ -84,26 +136,26 @@ input:focus {
 }
 
 ::placeholder {
-  color: #bebaba !important;
+  color: #9b9999 !important;
   opacity: 1 !important;
 }
 
-/* Text classes */
 .highlight {
   color: #ffffff;
   font-size: 0.7rem;
 }
+
 .flag-dropdown {
   border: 1px solid #444 !important;
 }
+
 .small {
   font-size: 0.8rem;
   color: #d1cccc;
 }
 
-/* Sections */
 .bg-sec {
-  background: #000;
+  background: var(--background);
 }
 
 .fw-bold {
@@ -113,19 +165,22 @@ input:focus {
 .footer-li li {
   font-size: 0.9rem !important;
   padding: 0.2rem 0;
+  width: min-content;
+}
+.footer-li , .footerh6 {
+  width: min-content;
 }
 
-/* Footer background gradient */
 .footer-gradient {
-  background-image: radial-gradient(
-    circle at 50% -80%,
-    rgba(164, 122, 255, 0.4),
-    rgba(0, 0, 0, 0.9) 70%
-  );
+  background-image: radial-gradient(circle at 50% -80%, var(--grad2), var(--grad1) 70%);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center bottom;
   z-index: -1;
+}
+
+.dark .footer-gradient {
+  background-image: radial-gradient(circle at 50% -80%, var(--grad1), var(--grad2) 70%);
 }
 
 .trustpilot-widget {
@@ -134,52 +189,46 @@ input:focus {
   height: auto;
   z-index: 1;
 }
+
 .hide {
   overflow-x: hidden !important;
 }
-/* Hide country names in the dropdown */
+
 .react-tel-input .country-list .country-name {
   display: none !important;
 }
 
-/* Ensure only flag and dial code appear */
 .react-tel-input .country-list .country .dial-code {
   margin-left: 5px;
 }
-/* Scrollbar base (transparent) */
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 8px;
   background: transparent;
 }
 
-/* Scrollbar track (fully transparent) */
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-/* Scrollbar thumb (default: light gradient) */
 ::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(135deg, #2a1f3d, #8044c4); /* lighter version */
+  background-image: linear-gradient(135deg, #2a1f3d, #8044c4);
   border-radius: 10px;
   transition: background 0.3s ease;
 }
 
-/* Scrollbar thumb on hover (darker gradient) */
 ::-webkit-scrollbar-thumb:hover {
-  background-image: linear-gradient(135deg, #1b1525, #6a1b9a); /* darker on hover */
-.hide{overflow-x: hidden !important;}}
-/* globals.css */
+  background-image: linear-gradient(135deg, #1b1525, #6a1b9a);
+}
 
-/* Container Styling */
 .privacy-page {
-  background-color: #121212;
-  color: white;
+  background-color: var(--background);
+  color: var(--foreground);
   min-height: 100vh;
   font-family: "Inter", sans-serif;
 }
 
-/* Banner */
 .banner-container {
   height: 70vh;
   overflow: hidden;
@@ -190,22 +239,19 @@ input:focus {
   object-fit: cover;
 }
 
-/* Title */
 .privacy-title {
   font-weight: 700;
   font-size: 2.2rem;
-  color: #fff;
+  color: var(--foreground);
 }
 
-/* Subtext */
 .privacy-hours {
-  color: #b0b0b0;
+  color: var(--muted-text);
   font-size: 0.95rem;
   max-width: 700px;
   margin: auto;
 }
 
-/* List Area */
 .privacy-content {
   max-width: 800px;
   width: 100%;
@@ -218,39 +264,34 @@ input:focus {
 }
 
 .privacy-description {
-  color: #b0b0b0;
+  color: var(--muted-text);
   font-size: 0.95rem;
   margin-top: 0.5rem;
 }
 
-/* Tablet */
 @media (max-width: 768px) {
   .banner-container {
     height: 40vh;
   }
-
   .privacy-title {
     font-size: 1.6rem;
   }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
   .banner-container {
     height: 30vh;
   }
-
   .privacy-title {
     font-size: 1.3rem;
   }
-
   .privacy-description {
     font-size: 0.85rem;
   }
 }
 
 .go-back-btn {
-  background-color: rgb(139, 92, 246) !important;
+  background-color: var(--accent) !important;
   color: white;
   height: 35px;
   font-size: 0.9rem;
@@ -266,10 +307,9 @@ input:focus {
 }
 
 .go-back-btn:hover {
-  background-color: rgb(139, 92, 246); /* Keep color same */
+  background-color: var(--accent);
 }
 
-/* Content wrapper */
 .go-back-content {
   display: inline-flex;
   align-items: center;
@@ -278,32 +318,27 @@ input:focus {
   transform: translateY(0);
 }
 
-/* Slide content up on hover */
 .go-back-btn:hover .go-back-content {
   transform: translateY(-3px);
 }
 
-/* Icons styling */
 .go-back-icon {
   display: inline-flex;
   align-items: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Default arrow shown normally */
 .default-icon {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* Forward arrow hidden initially */
 .hover-icon {
   opacity: 0;
   transform: translateX(-10px);
   position: absolute;
 }
 
-/* Swap icons smoothly */
 .go-back-btn:hover .default-icon {
   opacity: 0;
   transform: translateX(10px);
@@ -318,13 +353,13 @@ input:focus {
 }
 
 .react-tel-input .country-list {
-  background-color: #000 !important; /* matte black */
-  color: #ccc !important; /* text-white-50 */
-  border: 1px solid #444 !important;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 .react-tel-input .country-list .country {
-  color: #ccc !important; /* text-white-50 for each country */
+  color: var(--foreground) !important;
 }
 
 .react-tel-input .country:hover {
@@ -336,23 +371,10 @@ input:focus {
   overflow: hidden;
   width: 50%;
   height: auto;
-
-  /* Fade edges using mask-image */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 25%,
-    black 75%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 25%,
-    black 75%,
-    transparent
-  );
+  mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
+
 .slider-track {
   width: 100%;
   overflow: hidden;
@@ -360,20 +382,19 @@ input:focus {
 
 .slider-content {
   display: flex;
-  width: max-content; /* Ensure full width for animation */
+  width: max-content;
   animation: slideLeft 30s linear infinite;
   justify-content: center;
   align-items: center;
 }
 
 .slider-image {
-  width: 130px; /* Adjust width as needed */
+  width: 130px;
   height: auto;
   margin-right: 1rem;
   flex-shrink: 0;
 }
 
-/* Move left continuously */
 @keyframes slideLeft {
   0% {
     transform: translateX(0%);
@@ -381,10 +402,6 @@ input:focus {
   100% {
     transform: translateX(-50%);
   }
-}
-
-.hide {
-  overflow-x: hidden !important;
 }
 
 @media (max-width: 991.98px) {
@@ -395,71 +412,80 @@ input:focus {
     width: 33% !important;
   }
 }
+
 a {
   text-decoration: none !important;
   color: inherit !important;
 }
+
 .study-scrollbar-hide {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
 .study-scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Webkit */
+  display: none;
 }
-/* Hide country names in react-phone-input-2 dropdown */
+
 .react-phone-input-2 .country-list .country .country-name {
   display: none !important;
 }
 
 .react-calendar {
   background: linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
-  border: 1.5px solid #23232a!important;
+  border: 1.5px solid var(--border-color) !important;
   border-radius: 16px;
-  color: #fff;
+  color: var(--foreground);
   font-family: Inter, sans-serif;
   box-shadow: 0 2px 16px 0 #181028;
   padding: 8px 0;
   margin-bottom: 12px;
   transition: box-shadow 0.2s;
 }
+
 .react-calendar__tile {
   background: transparent;
-  color: #fff;
+  color: var(--foreground);
   border-radius: 10px;
   font-size: 1rem;
   transition: background 0.15s, color 0.15s;
   border: none;
 }
+
 .react-calendar__tile--active,
 .selected-calendar-tile {
-  background: #8b5cf6 !important;
+  background: var(--accent) !important;
   color: #fff !important;
 }
+
 .react-calendar__tile:disabled {
   color: #978f8f !important;
   background: linear-gradient(to bottom left, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
- border-radius: 10%!important;
+  border-radius: 10% !important;
   cursor: not-allowed;
 }
+
 .react-calendar__navigation button {
-  color: #fff;
-  background: none!important;
+  color: var(--foreground);
+  background: none !important;
   font-size: 1.2rem;
   border-radius: 8px;
   border: none;
   margin: 0 2px;
   transition: background 0.15s;
 }
+
 .react-calendar__navigation button:enabled:hover {
   font-size: 1.3rem;
 }
+
 .react-calendar__month-view__days__day--weekend {
-  color: #bdbdbd;
+  color: var(--muted-text);
 }
+
 .react-calendar__tile--now {
   background: radial-gradient(circle, rgba(164, 122, 255, 0.3), rgba(0, 0, 0, 0.2)) !important;
-
-  color: #ffffff !important;        /* your brand purple, or any accent */
+  color: #ffffff !important;
   font-weight: 600;
   border-radius: 10px;
 }
@@ -486,4 +512,8 @@ a {
     border-radius: 12px !important;
     font-size: 0.95rem !important;
   }
+}
+
+.navbar-nav .nav-link {
+  color: var(--header-text) !important;
 }

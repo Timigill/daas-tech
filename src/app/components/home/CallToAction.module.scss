@@ -3,25 +3,25 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #000;
-  overflow-x: hidden; // 🔧 Prevent horizontal scroll
+  background-color: var(--background);
+  overflow-x: hidden; 
 }
 
 .ctaWrapper {
   background: linear-gradient(
     135deg,
-    rgba(164, 122, 255, 0.2) 0%,
-    #000 50%,
-    rgba(164, 122, 255, 0.2) 100%
+    var(--grad1) 0%,
+    var(--grad2) 50%,
+    var(--grad1) 100%
   );
   padding: 2rem 1rem;
   border-radius: 1rem;
-  color: #fff;
+  color: var(--foreground);
   text-align: center;
   width: 100%;
   max-width: 800px;
   margin: 1rem auto;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 30px var(--grad2);
 }
 
 .ctaWrapper h2 {
@@ -36,12 +36,12 @@
 }
 
 .ctaWrapper h2 span {
-  color: #ffffff;
+  color: var(--ctah2);
 }
 
 .ctaWrapper p {
   font-size: 0.95rem;
-  color: #e0e0e0;
+  color: var(--text-muted);
   margin-bottom: 1.8rem;
 
   @media (min-width: 768px) {
