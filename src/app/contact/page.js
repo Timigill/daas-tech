@@ -86,10 +86,12 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
+      const resData = await res.json();
+
       if (res.ok) {
         toast.success("Message sent successfully!");
       } else {
-        toast.error("Failed to send message.");
+        toast.error(resData.error || "Failed to send message.");
       }
     } catch (error) {
       console.error("Error:", error);
