@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -35,12 +37,46 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    // Remove non-digits for phone validation
+    const phoneDigits = phone.replace(/\D/g, "");
+
+    // Validation
+    if (!firstName) {
+      toast.error("First name is required.");
+      return;
+    }
+    if (!lastName) {
+      toast.error("Last name is required.");
+      return;
+    }
+    if (!email) {
+      toast.error("Email is required.");
+      return;
+    }
+    // Simple email regex
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (!phoneDigits || phoneDigits.length < 7) {
+      toast.error("Please enter a valid phone number.");
+      return;
+    }
+    if (!message) {
+      toast.error("Message is required.");
+      return;
+    }
+
     const data = {
-      firstName: document.getElementById("firstName").value,
-      lastName: document.getElementById("lastName").value,
-      email: document.getElementById("email").value,
+      firstName,
+      lastName,
+      email,
       phone,
-      message: document.getElementById("message").value,
+      message,
     };
 
     try {
@@ -50,15 +86,14 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
-
       if (res.ok) {
-        alert("Message sent successfully!");
+        toast.success("Message sent successfully!");
       } else {
-        alert("Failed to send message.");
+        toast.error("Failed to send message.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong.");
+      toast.error("Something went wrong.");
     }
   };
 
@@ -72,6 +107,23 @@ export default function Contact() {
       viewport={{ once: true }}
       style={{ minHeight: "100vh", background: "#000", color: "#fff" }}
     >
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="dark"
+        toastStyle={{
+          background: "#181622",
+          color: "#fff",
+          borderRadius: 8,
+          textAlign: "left",
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '1rem',
+          boxShadow: '0 2px 16px 0 #181028',
+          border: '1px solid #8b5cf6',
+        }}
+        bodyStyle={{ textAlign: "left" }}
+        progressStyle={{ background: "#8b5cf6" }}
+      />
       {/* Badge */}
       <motion.span
         className="badge px-3 py-2 mb-2"
