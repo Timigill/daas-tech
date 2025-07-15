@@ -16,11 +16,12 @@ const fadeInUp = {
 function Why() {
   return (
     <motion.div
-      className="d-flex flex-column  align-items-center text-center mt-5 py-5 my-5 px-3"
+      className="d-flex flex-column align-items-center text-center mt-5 py-5 my-5 px-3"
       initial="hidden"
       whileInView="visible"
       variants={fadeInUp}
       viewport={{ once: true }}
+      style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
       {/* Header Section */}
       <div>
@@ -33,10 +34,9 @@ function Why() {
           style={{
             padding: "4px 10px",
             fontSize: 12,
-            color: "#fff",
-            border: "1px solid rgb(17 17 17)",
+            color: "var(--foreground)",
+            border: "1px solid var(--foreground)",
             borderRadius: 8,
-            width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
           }}
@@ -45,7 +45,6 @@ function Why() {
         </motion.span>
 
         <motion.h1
-          className=""
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
@@ -55,7 +54,7 @@ function Why() {
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
             lineHeight: 1.1,
-            color: "#ffffff",
+            color: "var(--foreground)",
             maxWidth: 700,
             margin: "0 auto",
           }}
@@ -64,7 +63,7 @@ function Why() {
         </motion.h1>
 
         <motion.p
-          className="mt-3 text-white-50"
+          className="mt-3"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
@@ -73,6 +72,7 @@ function Why() {
           style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "0.9rem",
+            color: "var(--muted-text)",
             maxWidth: 580,
             margin: "0 auto",
           }}
@@ -84,7 +84,8 @@ function Why() {
       {/* Comparison Section */}
       <div className="container my-4">
         <div className="row justify-content-center g-5">
-          {/* Manual Work */}
+
+          {/* Other Solutions Card */}
           <motion.div
             className="col-md-4"
             initial="hidden"
@@ -93,16 +94,21 @@ function Why() {
             custom={1.5}
             viewport={{ once: true }}
           >
-            <div className="p-4 shadow rounded text-white h-100"
+            <div
+              className="p-4 shadow rounded h-100"
               style={{
-                border: " 1px solid #222 " ,
-              }}>
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
+                color: "var(--muted-text)",
+              }}
+            >
               <h5
-                className="mb-4 text-white-50 text-start"
+                className="mb-4 text-start"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 600,
+                  color: "var(--muted-text)"
                 }}
               >
                 Other Digital Solutions
@@ -115,15 +121,15 @@ function Why() {
                 "Inconsistent quality",
                 "No post-delivery support",
                 "One-size-fits-all solutions",
-              
               ].map((text, idx) => (
-                <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white-50">
-                  <RxCross2 size={20} style={{ flexShrink: 0 }} />
+                <div key={idx} className="d-flex align-items-start gap-2 mb-3">
+                  <RxCross2 size={20} style={{ flexShrink: 0, color: "var(--muted-text)" }} />
                   <p
                     className="mb-0 text-start"
                     style={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "1rem",
+                      color: "var(--muted-text)",
                     }}
                   >
                     {text}
@@ -133,6 +139,7 @@ function Why() {
             </div>
           </motion.div>
 
+          {/* DaaS Card */}
           <motion.div
             className="col-md-4"
             initial="hidden"
@@ -142,18 +149,20 @@ function Why() {
             viewport={{ once: true }}
           >
             <div
-              className="p-4 shadow rounded text-white h-100"
+              className="p-4 shadow rounded h-100"
               style={{
-                background: "radial-gradient(circle at top center, #2e0f54 0%, #0b0b0b 40%)",
-                border: " 1px solid #222 " ,
+                background: "var(--cicleGrad)",
+                border: "1px solid var(--card-border)",
+                color: "var(--foreground)",
               }}
             >
               <h5
-                className="mb-4 text-white text-start"
+                className="mb-4 text-start"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 600,
+                  color: "var(--foreground)"
                 }}
               >
                 DaaS Digital Solutions
@@ -166,15 +175,15 @@ function Why() {
                 "Custom-built websites & flyers",
                 "Dedicated client support",
                 "Consistency & attention to detail",
-
               ].map((text, idx) => (
-                <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white">
-                  <FaCheck size={20} style={{ flexShrink: 0 }} />
+                <div key={idx} className="d-flex align-items-start gap-2 mb-3">
+                  <FaCheck size={20} style={{ flexShrink: 0, color: "var(--foreground)" }} />
                   <p
                     className="mb-0"
                     style={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "1rem",
+                      color: "var(--foreground)"
                     }}
                   >
                     {text}
