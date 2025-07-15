@@ -5,7 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-// import '@/app/globals.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -32,6 +34,70 @@ if (typeof window !== "undefined") {
 export default function Contact() {
   const [phone, setPhone] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    // Remove non-digits for phone validation
+    const phoneDigits = phone.replace(/\D/g, "");
+
+    // Validation
+    if (!firstName) {
+      toast.error("First name is required.");
+      return;
+    }
+    if (!lastName) {
+      toast.error("Last name is required.");
+      return;
+    }
+    if (!email) {
+      toast.error("Email is required.");
+      return;
+    }
+    // Simple email regex
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (!phoneDigits || phoneDigits.length < 7) {
+      toast.error("Please enter a valid phone number.");
+      return;
+    }
+    if (!message) {
+      toast.error("Message is required.");
+      return;
+    }
+
+    const data = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      message,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        toast.success("Message sent successfully!");
+      } else {
+        toast.error("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong.");
+    }
+  };
+
+
   return (
     <motion.div
       className="d-flex flex-column align-items-center text-center py-5 px-3"
@@ -41,6 +107,23 @@ export default function Contact() {
       viewport={{ once: true }}
       style={{ minHeight: "100vh", background: "#000", color: "#fff" }}
     >
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="dark"
+        toastStyle={{
+          background: "#181622",
+          color: "#fff",
+          borderRadius: 8,
+          textAlign: "left",
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '1rem',
+          boxShadow: '0 2px 16px 0 #181028',
+          border: '1px solid #8b5cf6',
+        }}
+        bodyStyle={{ textAlign: "left" }}
+        progressStyle={{ background: "#8b5cf6" }}
+      />
       {/* Badge */}
       <motion.span
         className="badge px-3 py-2 mb-2"
@@ -167,12 +250,14 @@ export default function Contact() {
             boxShadow: "0 2px 16px 0 #181028",
             // background: "linear-gradient(to top right, rgba(164, 122, 255, 0.08), #000 90%)",
           }}
+          onSubmit={handleSubmit}
+
         >
           <div className="row g-3">
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="firstName" className="form-label fw-semibold " style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="firstName" className="form-label fw-semibold " style={{ fontSize: 14 }}>
                 First Name
-              </label></div> 
+              </label></div>
               <input
                 type="text"
                 id="firstName"
@@ -197,9 +282,9 @@ export default function Contact() {
 
           <div className="row g-3 mt-1">
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="email" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="email" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
                 Email
-              </label></div> 
+              </label></div>
               <input
                 type="email"
                 id="email"
@@ -209,9 +294,9 @@ export default function Contact() {
               />
             </div>
             <div className="col-md-6">
-             <div className="text-start"><label htmlFor="phone" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
+              <div className="text-start"><label htmlFor="phone" className="form-label fw-semibold text-start" style={{ fontSize: 14 }}>
                 Phone
-              </label></div> 
+              </label></div>
               <PhoneInput
                 country={'pk'}
                 value={phone}
@@ -269,7 +354,7 @@ export default function Contact() {
               type="submit"
               className="btn"
               style={{
-              background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.4), rgba(0, 0, 0, 1))",                color: "#fff",
+                background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.4), rgba(0, 0, 0, 1))", color: "#fff",
                 fontWeight: "600",
                 fontSize: "1rem",
                 height: "44px",
@@ -282,13 +367,13 @@ export default function Contact() {
           </div>
         </motion.form>
       </div>
-    <style>
-{`
+      <style>
+        {`
 .react-phone-input-2 .country-list .country .country-name {
   display: none !important;
 }
 `}
-</style>
+      </style>
     </motion.div>
   );
 }
