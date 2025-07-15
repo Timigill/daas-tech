@@ -1,45 +1,67 @@
-'use client'
-import React from 'react'
-import { LiaLinkedin } from "react-icons/lia";
-import { motion } from "framer-motion";
-import Image from "next/image";
+
+'use client';
+
+import React from 'react';
+import { LiaLinkedin } from 'react-icons/lia';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" }
+    transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' },
   }),
 };
 
+const teamMembers = [
+  {
+    name: 'Taimoor Gill',
+    role: 'Founder & CEO',
+     img: '/About-Us/Riyan.png',
+    },
+
+  {
+    name: 'Sarah Khan',
+    role: 'Head of Web Development',
+    img: '/About-Us/Sophia.png',
+  },
+  {
+    name: 'Abdullah Sajjad',
+    role: 'Marketing Specialist',
+    img: '/About-Us/Riyan.png',
+  },
+];
+
 function Team() {
   return (
-    <div className="d-flex flex-column  align-items-center text-center my-5 py-5 px-3">
+    <div
+      className="d-flex flex-column align-items-center text-center my-5 py-5 px-3"
+      style={{ color: 'var(--foreground)' }}
+    >
+      {/* Top Texts */}
       <div>
-        {/* Tagline */}
         <motion.span
-          className="badge px-3 py-2 mb-2"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           viewport={{ once: true }}
           style={{
-            padding: "4px 10px",
+            padding: '4px 10px',
             fontSize: 12,
-            color: "#fff",
-            border: "1px solid rgb(17 17 17)",
+            color: 'var(--foreground)',
+            border: '1px solid var(--border-color)',
             borderRadius: 8,
-            width: "fit-content",
+            background: 'var(--accent)',
             fontWeight: 500,
+            width: 'fit-content',
             marginBottom: 12,
-            background: "rgba(139,92,246,0.15)",
           }}
         >
           Our Team
         </motion.span>
 
-        {/* Main Heading */}
         <motion.h1
           initial="hidden"
           whileInView="visible"
@@ -47,162 +69,111 @@ function Team() {
           custom={0.5}
           viewport={{ once: true }}
           style={{
-            fontFamily: "Inter, sans-serif",
+            fontFamily: 'Inter, sans-serif',
             fontWeight: 600,
             lineHeight: 1.1,
-            color: "#ffffff",
+            color: 'var(--foreground)',
             maxWidth: 700,
-            margin: "0 auto",
+            margin: '0 auto',
           }}
         >
           Meet the Minds Behind DaaS
         </motion.h1>
 
-        {/* Subheading */}
         <motion.p
-          className="mt-3 text-white-50"
+          className="mt-3"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           custom={1}
           viewport={{ once: true }}
           style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "1rem",
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '1rem',
             maxWidth: 550,
-            margin: "0 auto",
+            margin: '0 auto',
+            color: 'var(--muted-text)',
           }}
         >
           We bring together technology and strategy to create smarter Digital solutions.
         </motion.p>
       </div>
 
+      {/* Team Cards */}
       <div className="container my-4">
         <div className="row justify-content-center g-3">
-          {/* Column 1 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={2}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded  text-white"
-              style={{
-                border: "1px solid #222",
-              }}>
-              <Image src="/timi12.pnjg" alt="" width={256} height={300} style={{ width: "256px", height: "300px" }} />
-              <div className="d-flex mt-2 justify-content-between">
-                <h5
-                  className="mb-0 text-white"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
-                  }}
-                >
-                  Taimoor Gill
-                </h5>
-                <LiaLinkedin size={23} className='text-white-50' />
-              </div>
-              <p
-                className="text-white-50 text-start mt-2"
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={member.name}
+              className="col-12 col-sm-6 col-md-4"
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              custom={2 + index * 0.5}
+              viewport={{ once: true }}
+            >
+              <div
+                className="p-3 shadow rounded"
                 style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
+                  backgroundColor: 'var(--card-bg)',
+                  color: 'var(--foreground)',
+                  border: '1px solid var(--card-border)',
+                  transition: 'transform 0.3s ease',
+                  cursor: 'pointer',
                 }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = 'scale(1.02)')}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = 'scale(1)')}
               >
-                Founder & CEO
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Column 2 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={2.5}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded  text-white"
-              style={{
-                border: "1px solid #222",
-              }}>
-              <Image src="/About-Us/Sophia.png" alt="" width={280} height={280} style={{ width: "280px", height: "280px" }} />
-              <div className="d-flex mt-2 justify-content-between">
-                <h5
-                  className="mb-0 text-white"
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  width={280}
+                  height={280}
                   style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                  }}
+                />
+                <div className="d-flex mt-2 justify-content-between align-items-center">
+                  <h5
+                    className="mb-0"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 15,
+                      color: 'var(--foreground)',
+                    }}
+                  >
+                    {member.name}
+                  </h5>
+                  <a href="#" target="_blank" rel="noopener noreferrer">
+                    <LiaLinkedin
+                      size={23}
+                      className="text-secondary"
+                      style={{ cursor: 'pointer' }}
+                    />
+                  </a>
+                </div>
+                <p
+                  className="mt-2 text-start"
+                  style={{
+                    color: 'var(--muted-text)',
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '0.9rem',
+                    marginBottom: 0,
                   }}
                 >
-                  Sarah Khan
-                </h5>
-                <LiaLinkedin size={23} className='text-white-50' />
+                  {member.role}
+                </p>
               </div>
-              <p
-                className="text-white-50 text-start mt-2"
-                style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
-                }}>
-                Head of Web Development
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Column 3 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={3}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded  text-white"
-              style={{
-                border: "1px solid #222",
-              }}>
-              <Image src="/About-Us/Riyan.png" alt="" width={280} height={280} style={{ width: "280px", height: "280px" }} />
-              <div className="d-flex mt-2 justify-content-between">
-                <h5
-                  className="mb-0 text-white"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
-                  }}
-                >
-                 Abdullah Sajjad
-                </h5>
-                <LiaLinkedin size={23} className='text-white-50' />
-              </div>
-              <p
-                className="text-white-50 text-start mt-2"
-                style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "1rem",
-                  maxWidth: 580,
-                }}>
-                Marketing Specialist
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Team
+export default Team;

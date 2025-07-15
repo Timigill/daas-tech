@@ -1,10 +1,10 @@
 'use client';
-import React from 'react'
+import React from 'react';
 import { AiFillSignal } from "react-icons/ai";
 import { GoClockFill } from "react-icons/go";
 import { FaBolt } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import "@/app/globals.css"
+import "@/app/globals.css";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -23,32 +23,33 @@ function Who() {
       whileInView="visible"
       variants={fadeInUp}
       viewport={{ once: true }}
+      style={{ background: "var(--background)", color: "var(--foreground)" }}
     >
       <motion.span
         className="badge px-3 py-2"
+        style={{
+          padding: "4px 10px",
+          fontSize: 12,
+          color: "var(--foreground)",
+          border: "1px solid var(--foreground)",
+          borderRadius: 8,
+          fontWeight: 500,
+          marginBottom: 12,
+        }}
         initial="hidden"
         whileInView="visible"
         variants={fadeInUp}
         viewport={{ once: true }}
-        style={{
-          padding: "4px 10px",
-          fontSize: 12,
-          color: "#fff",
-          border: "1px solid rgb(17 17 17)",
-          borderRadius: 8,
-          width: "fit-content",
-          fontWeight: 500,
-          marginBottom: 12,
-        }}
       >
         Who We Are
       </motion.span>
+
       <motion.h1
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
           lineHeight: 1.1,
-          color: "#ffffff",
+          color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
         }}
@@ -60,11 +61,13 @@ function Who() {
       >
         Who We Are
       </motion.h1>
+
       <motion.p
-        className="mt-3 text-white-50"
+        className="mt-3"
         style={{
           fontFamily: "Inter, sans-serif",
           fontSize: "0.9rem",
+          color: "var(--muted-text)",
           maxWidth: 620,
           margin: "0 auto",
         }}
@@ -80,121 +83,72 @@ function Who() {
 
       <div className="d-flex justify-content-center my-4">
         <div className="row w-100 justify-content-center g-5">
-          {/* Column 1 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={1.5}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded text-white"
-              style={{ background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}>
-              <div className="d-flex gap-2 mb-2" style={{ height: 'auto' }}>
-                <AiFillSignal size={23} style={{ color: "white" }} />
-                <h5
-                  className="mb-0 text-white"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
-                  }}
-                >
-                  150+ Businesses
-                </h5>
-              </div>
-              <p
-                className="text-white-50 text-start ps-4"
+          {/* Cards */}
+          {[
+            {
+              icon: <AiFillSignal size={23} />,
+              title: "150+ Businesses",
+              desc: "Companies have streamlined their workflows with DaaS Digital solutions.",
+            },
+            {
+              icon: <GoClockFill size={23} />,
+              title: "1M+ Hours",
+              desc: "Reducing time and boosting productivity through Digital Solutions.",
+            },
+            {
+              icon: <FaBolt size={23} />,
+              title: "95% Faster",
+              desc: "Clients see improved efficiency within the first two to three months.",
+            },
+          ].map((card, i) => (
+            <motion.div
+              className="col-md-3"
+              key={i}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              custom={1.5 + i * 0.5}
+              viewport={{ once: true }}
+            >
+              <div
+                className="p-3 shadow rounded"
                 style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 400,
+                  background: "var(--card-bg)",
+                  border: "1px solid var(--card-border)",
+                  color: "var(--foreground)",
                 }}
               >
-                Companies have streamlined their workflows with DaaS Digital solutions.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Column 2 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={2}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded text-white"
-              style={{ background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}>
-              <div className="d-flex gap-2 mb-2">
-                <GoClockFill size={23} style={{ color: "white" }} />
-                <h5
-                  className="mb-0 text-white"
+                <div className="d-flex gap-2 mb-2 align-items-center">
+                  <span style={{ color: "var(--foreground)" }}>{card.icon}</span>
+                  <h5
+                    className="mb-0"
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "15px",
+                      color: "var(--foreground)",
+                    }}
+                  >
+                    {card.title}
+                  </h5>
+                </div>
+                <p
+                  className="text-start ps-3"
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
+                    fontSize: "0.9rem",
+                    maxWidth: 400,
+                    color: "var(--muted-text)",
                   }}
                 >
-                  1M+ Hours
-                </h5>
+                  {card.desc}
+                </p>
               </div>
-              <p
-                className="text-white-50  text-start ps-3"
-                style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 300,
-                }}>
-                Reducing time and boosting productivity through Digital Solutions.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Column 3 */}
-          <motion.div
-            className="col-md-3"
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={2.5}
-            viewport={{ once: true }}
-          >
-            <div className="p-3 shadow rounded text-white"
-              style={{ background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}>
-              <div className="d-flex gap-2 mb-2">
-                <FaBolt size={23} style={{ color: "white", }} />
-                <h5
-                  className="mb-0 text-white"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15",
-                  }}
-                >
-                  95% Faster
-                </h5>
-              </div>
-              <p
-                className="text-white-50 text-start ps-3"
-                style={{
-                  margin: "0 auto",
-                  color: "#ccc",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "0.9rem",
-                  maxWidth: 300,
-                }}>
-                Clients see improved efficiency within the first two to three months.
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-export default Who
+export default Who;
