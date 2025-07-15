@@ -6,6 +6,8 @@ import './globals.css';
 // import '@/app/custom-bootstrap.scss';
 const inter = Inter({ subsets: ['latin'] });
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const metadata = {
   title: 'DaaS Tech',
   description: 'Empowering Your Digital Dreams',
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
       <body className="text-white">
         <HeaderFooterWrapper>
         <SpeedInsights/>
+        <ToastContainer />
         
         {children}
         </HeaderFooterWrapper>

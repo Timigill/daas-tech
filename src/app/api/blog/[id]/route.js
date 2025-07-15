@@ -2,12 +2,14 @@ import { dbConnect } from "@/app/db";
 import Blog from "@/app/db/blog";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 export async function GET(req, { params }) {
   await dbConnect();
 
   try {
-    const blog = await Blog.findById(params.id);
+    const { id } = await params;
+    const blog = await Blog.findById(id);
     if (!blog) {
       return NextResponse.json({ message: "Blog not found" }, { status: 404 });
     }
@@ -20,19 +22,25 @@ export async function GET(req, { params }) {
 export async function DELETE(req, { params }) {
   await dbConnect();
 
+  let token;
   const authHeader = req.headers.get("authorization");
-  if (!authHeader) {
+  if (authHeader) {
+    token = authHeader.split(" ")[1];
+  } else {
+    token = cookies().get("adminToken")?.value;
+  }
+  if (!token) {
     return NextResponse.json({ message: "Unauthorized: No token" }, { status: 401 });
   }
 
-  const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (decoded.role !== "admin") {
       return NextResponse.json({ message: "Forbidden: Not an admin" }, { status: 403 });
     }
 
-    await Blog.findByIdAndDelete(params.id);
+    const { id } = await params;
+    await Blog.findByIdAndDelete(id);
     return NextResponse.json({ message: "Deleted" });
   } catch (err) {
     return NextResponse.json({ message: "Invalid or expired token" }, { status: 401 });
@@ -42,12 +50,17 @@ export async function DELETE(req, { params }) {
 export async function PUT(req, { params }) {
   await dbConnect();
 
+  let token;
   const authHeader = req.headers.get("authorization");
-  if (!authHeader) {
+  if (authHeader) {
+    token = authHeader.split(" ")[1];
+  } else {
+    token = cookies().get("adminToken")?.value;
+  }
+  if (!token) {
     return NextResponse.json({ message: "Unauthorized: No token" }, { status: 401 });
   }
 
-  const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (decoded.role !== "admin") {
@@ -55,7 +68,8 @@ export async function PUT(req, { params }) {
     }
 
     const body = await req.json();
-    const updated = await Blog.findByIdAndUpdate(params.id, body, { new: true });
+    const { id } = await params;
+    const updated = await Blog.findByIdAndUpdate(id, body, { new: true });
     return NextResponse.json(updated);
   } catch (err) {
     return NextResponse.json({ message: "Invalid or expired token" }, { status: 401 });
