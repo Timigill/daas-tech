@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useMotionValue, useTransform, animate } from 'framer-motion';
 import { FaMicrochip, FaCogs, FaTachometerAlt, FaHandPaper, FaRedo } from "react-icons/fa";
 import { FiFile, FiSearch, FiLayers } from 'react-icons/fi';
+import "@/app/globals.css";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -104,8 +105,8 @@ app.listen(PORT, () => {
       className="process-section"
       style={{
         padding: "48px 20px",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflow: "hidden",
         width: "100%",
@@ -120,8 +121,8 @@ app.listen(PORT, () => {
           variants={fadeInUp}
           viewport={{ once: true }}
           style={{
-            background: "rgba(139,92,246,0.15)",
-            color: "#8b5cf6",
+            background: "var(--accent)",
+            color: "#fff",
             fontWeight: 600,
             fontSize: 15,
             letterSpacing: 1,
@@ -157,7 +158,7 @@ app.listen(PORT, () => {
           viewport={{ once: true }}
           style={{
             fontSize: "clamp(16px, 3vw, 20px)",
-            color: "#bdbdbd",
+            color: "var(--muted-text)",
             margin: "0 auto 40px auto",
             maxWidth: 600,
           }}
@@ -171,7 +172,8 @@ app.listen(PORT, () => {
             {/* Step 1 */}
            <motion.div
       style={{
-        background: "#111",
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
                 borderRadius: 12,
                 padding: 24,
                 flex: "1 1 0",
@@ -195,8 +197,8 @@ app.listen(PORT, () => {
           padding: "4px 10px",
           fontSize: 12,
           color: "#fff",
-          background: "#1e1e23",
-          border: "1px solid rgb(17 17 17)",
+          background: "var(--accent)",
+          border: "var(--border-color)",
           borderRadius: 8,
           width: "fit-content",
            marginBottom: 12,
@@ -206,12 +208,12 @@ app.listen(PORT, () => {
       </div>
 
       {/* Heading */}
-      <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 10 }}>
+      <h3 style={{ fontSize: 20, fontWeight: 600, color:"var(--foreground)", marginBottom: 10 }}>
         Smart Analyzing
       </h3>
 
       {/* Description */}
-      <p style={{ fontSize: 14, color: "#c4c4c4", marginBottom: 20 }}>
+      <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 20 }}>
         We assess your needs and identify AI solutions to streamline workflows and improve efficiency.
       </p>
 
@@ -233,9 +235,9 @@ app.listen(PORT, () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            border: "1px solid #2b2b30",
+            border: "var(--border-color)",
             borderRadius: 12,
-            backgroundColor: "#0e0e0e",
+            backgroundColor: "var(--background)",
             padding: 16,
           }}
         >
@@ -244,8 +246,8 @@ app.listen(PORT, () => {
               width: 100,
               height: 100,
               borderRadius: "50%",
-              border: "2px solid #333",
-              background: "radial-gradient(circle at center, #151515 60%, #101010 100%)",
+              border: "2px solid var(--border-color)",
+              background: "var(--cicleGrad)",
               position: "relative",
               overflow: "hidden",
             }}
@@ -269,7 +271,7 @@ app.listen(PORT, () => {
               }}
             />
           </div>
-          <p style={{ fontSize: 12, color: "#999", marginTop: 12, textAlign: "center" }}>
+          <p style={{ fontSize: 12, color: "var(--muted-text)", marginTop: 12, textAlign: "center" }}>
             Analyzing current workflow...
           </p>
         </div>
@@ -282,9 +284,9 @@ app.listen(PORT, () => {
             flexDirection: "column",
             gap: 8,
             padding: 8,
-            border: "1px solid #2b2b30",
+            border: "1px solid var(--border-color)",
             borderRadius: 12,
-            backgroundColor: "#111111",
+            backgroundColor: "var(--background)",
             justifyContent: "flex-start",
           }}
         >
@@ -296,11 +298,11 @@ app.listen(PORT, () => {
                 alignItems: "center",
                 gap: 6,
                 padding: "6px 10px",
-                border: "1px solid #2c2c30",
-                background: "#16161a",
+                border: "1px solid var(--border-color)",
+                background: "var(--background)",
                 borderRadius: 8,
                 fontSize: 12,
-                color: "#e0e0e0",
+                color: "var(--foreground)",
                 whiteSpace: "nowrap",
               }}
             >
@@ -315,8 +317,9 @@ app.listen(PORT, () => {
             {/* Step 2 */}
             <motion.div
               style={{
-                background: "#111",
+                background: "var(--card-bg)",
                 borderRadius: 12,
+                border: "1px solid var(--card-border)",
                 padding: 24,
                 flex: "1 1 0",
                 minWidth: 280,
@@ -338,8 +341,8 @@ app.listen(PORT, () => {
                   padding: "4px 10px",
                   fontSize: 12,
                   color: "#fff",
-                  background: "#1e1e23",
-                  border: "1px solid rgb(17 17 17)",
+                  background: "var(--accent)",
+                  border: "1px solid var(--border-color)",
                   borderRadius: 8,
                   width: "fit-content",
                   marginBottom: 12,
@@ -347,17 +350,17 @@ app.listen(PORT, () => {
               >
                 Step 2
               </div>
-              <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 10 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(foreground)", marginBottom: 10 }}>
                 Web Design | Development
               </h3>
-              <p style={{ fontSize: 14, color: "#c4c4c4", marginBottom: 25 }}>
+              <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 25 }}>
                 Our team builds intelligent web systems tailored to your business processes.
               </p>
 
               <div
                 style={{
                   background: "#222",
-                  border: "1px solid #2b2b30",
+                  border: "1px solid  var(--border-color)",
                   borderRadius: "8px",
                   marginTop: "40px",
                   height: "207px",
@@ -388,7 +391,7 @@ app.listen(PORT, () => {
                 <div style={{ display: "flex", height: "calc(100% - 30px)" }}>
                   <div
                     style={{
-                      background: "#1f1f1f",
+                      background: "#2a2a2a",
                       width: "40px",
                       display: "flex",
                       flexDirection: "column",
@@ -407,7 +410,7 @@ app.listen(PORT, () => {
                     style={{
                       position: "relative",
                       flexGrow: 1,
-                      background: "#1e1e1e",
+                      background: "var(--codeinnerdiv)",
                       overflow: "hidden",
                     }}
                   >
@@ -418,7 +421,7 @@ app.listen(PORT, () => {
                         fontFamily: "monospace",
                         fontSize: "13px",
                         lineHeight: 1.5,
-                        color: "#d4d4d4",
+                        color: "var(--muted-text)",
                         whiteSpace: "pre",
                         position: "absolute",
                         top: 0,
@@ -451,7 +454,8 @@ app.listen(PORT, () => {
             {/* Step 3 */}
             <motion.div
               style={{
-                background: "#111",
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
                 borderRadius: 12,
                 padding: 24,
                 flex: "1 1 0",
@@ -472,8 +476,8 @@ app.listen(PORT, () => {
                   padding: "4px 10px",
                   fontSize: 12,
                   color: "#fff",
-                  background: "#1e1e23",
-                  border: "1px solid rgb(17 17 17)",
+                  background: "var(--accent)",
+                  border: "1px solid var(--border-color)",
                   borderRadius: 8,
                   width: "fit-content",
                   marginBottom: 12,
@@ -481,10 +485,10 @@ app.listen(PORT, () => {
               >
                 Step 3
               </div>
-              <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(--foreground)", marginBottom: 12 }}>
                 Seamless Integration
               </h3>
-              <p style={{ fontSize: 14, color: "#bbb", marginBottom: 16 }}>
+              <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 16 }}>
                 We smoothly integrate solutions into your existing infrastructure with minimal disruption.
               </p>
 
@@ -494,11 +498,11 @@ app.listen(PORT, () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   position: "relative",
-                  backgroundColor: "#181818",
+                  backgroundColor: "var(--card-bg)",
                   borderRadius: 10,
                   padding: 12,
                   gap: 8,
-                  border: "1px solid #222",
+                  border: "1px solid var(--border-color)",
                   marginTop: 16,
                   flexDirection: "column",
                   height: "auto",
@@ -515,12 +519,12 @@ app.listen(PORT, () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        backgroundColor: "#000",
+                        backgroundColor: "var(--codeinnerdiv)",
                       }}
                     >
                       <Image src="/rotation.png" alt="Our solution" height={40} width={40} style={{ objectFit: "cover" }} />
                     </div>
-                    <p style={{ fontSize: 14, color: "#aaa" }}>Our solution</p>
+                    <p style={{ fontSize: 14, color: "var(--muted-text)" }}>Our solution</p>
                   </div>
 
                   <div
@@ -567,12 +571,12 @@ app.listen(PORT, () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        backgroundColor: "#000",
+                        backgroundColor: "var(--codeinnerdiv)",
                       }}
                     >
                       <Image src="/yourstack.png" alt="Your stack" height={40} width={40} style={{ objectFit: "cover" }} />
                     </div>
-                    <p style={{ fontSize: 14, color: "#aaa" }}>Your stack</p>
+                    <p style={{ fontSize: 14, color: "var(--muted-text)" }}>Your stack</p>
                   </div>
                 </div>
               </div>
@@ -581,7 +585,8 @@ app.listen(PORT, () => {
             {/* Step 4 */}
             <motion.div
               style={{
-                background: "#111",
+                background: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
                 borderRadius: 12,
                 padding: 24,
                 flex: "1 1 0",
@@ -602,8 +607,8 @@ app.listen(PORT, () => {
                   padding: "4px 10px",
                   fontSize: 12,
                   color: "#fff",
-                  background: "#1e1e23",
-                  border: "1px solid rgb(17 17 17)",
+                  background: "var(--accent)",
+                  border: "1px solid var(--border-color)",
                   borderRadius: 8,
                   width: "fit-content",
                   marginBottom: 12,
@@ -611,22 +616,22 @@ app.listen(PORT, () => {
               >
                 Step 4
               </div>
-              <h3 style={{ fontSize: 20, fontWeight: 600, color: "#fff", marginBottom: 12 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(--foreground)", marginBottom: 12 }}>
                 Continuous Optimization
               </h3>
-              <p style={{ fontSize: 14, color: "#bbb", marginBottom: 16 }}>
+              <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 16 }}>
                 We refine performance, analyze insights, and enhance automation for long-term growth.
               </p>
 
               <div
                 style={{
-                  backgroundColor: "#181818",
+                  backgroundColor: "var(--card-bg)",
                   borderRadius: 10,
                   padding: 12,
                   display: "flex",
                   flexDirection: "column",
                   gap: 8,
-                  border: "1px solid #222",
+                  border: "1px solid var(--border-color)",
                   marginTop: 16,
                 }}
               >
@@ -642,15 +647,15 @@ app.listen(PORT, () => {
                       justifyContent: "space-between",
                       alignItems: "center",
                       padding: 10,
-                      background: "#1f1f1f",
+                      background: "var(--codeinnerdiv)",
                       borderRadius: 6,
                     }}
                   >
                     <div>
-                      <strong style={{ color: "#fff", fontSize: 14 }}>{item.title}</strong>
-                      <div style={{ fontSize: 12, color: "#aaa" }}>{item.note}</div>
+                      <strong style={{ color: "var(--foreground)", fontSize: 14 }}>{item.title}</strong>
+                      <div style={{ fontSize: 12, color: "var(--muted-text)" }}>{item.note}</div>
                     </div>
-                    <span style={{ color: "#8b5cf6", fontSize: 20 }}>{item.icon}</span>
+                    <span style={{ color: "var(--accent)", fontSize: 20 }}>{item.icon}</span>
                   </div>
                 ))}
               </div>

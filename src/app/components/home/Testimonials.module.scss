@@ -4,8 +4,8 @@ $muted: #cccccc;
 
 .testimonialSection {
   padding: 4rem 1.25rem; // use rem instead of fixed px, reduced for small screens
-  background-color: #000;
-  color: $white;
+  background-color: var(--background);
+  color: var(--foreground);
   text-align: left;
   overflow-x: hidden; // prevent horizontal scroll
 }
@@ -21,10 +21,10 @@ $muted: #cccccc;
 }
 
 .card {
-  background: linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1));
+  background: linear-gradient(to top right, var(--grad1), var(--grad2));
   padding: 2rem;
   border-radius: 1rem;
-  border: 1px solid #333;
+  border: 1px solid var(--border-color);
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease;
 
@@ -34,7 +34,7 @@ $muted: #cccccc;
   }
 
   .stars {
-    color: #fff;
+    color: var(--foreground);
     font-size: 1.1rem;
     margin-bottom: 1rem;
     word-break: break-word;
@@ -72,12 +72,12 @@ $muted: #cccccc;
 
       strong {
         font-weight: 600;
-        color: $white;
+        color: var(--foreground);
       }
 
       span {
         font-size: 0.85rem;
-        color: $muted;
+        color: var(--muted-text);
       }
     }
   }
