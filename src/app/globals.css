@@ -83,7 +83,7 @@ body {
 }
 
 .ProseMirror h1, .ProseMirror h2 {
-  color: #8b5cf6;
+  color: #8b5cf6;}
 @keyframes rotateGlow {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
