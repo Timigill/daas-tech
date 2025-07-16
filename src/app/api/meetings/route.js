@@ -10,6 +10,10 @@ const BookingSchema = new mongoose.Schema({
   date: String,
   time: String,
   callType: String,
+  status: String,
+  reason: String,
+  result: String,
+  rejectionReason: String,
 });
 const Booking = mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 
