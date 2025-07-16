@@ -2,17 +2,16 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-// import purpleIcon from "/public/rotation.png";
 import { Typewriter } from "react-simple-typewriter";
 
-export default function HomeServices() {
+export default function Services() {
   return (
     <section
       className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "48px 0",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
@@ -39,15 +38,15 @@ export default function HomeServices() {
         >
           <a
             href="#"
-            className="btn btn-outline-light mb-3 px-2 py-1"
+            className="btn mb-3 px-2 py-1"
             style={{
               background: "transparent",
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Custom Site
@@ -59,7 +58,7 @@ export default function HomeServices() {
 
           <p
             style={{
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontSize: 16,
               marginBottom: 0,
               textAlign: "left",
@@ -72,15 +71,22 @@ export default function HomeServices() {
 
           <div className="d-flex flex-wrap gap-3 mt-3">
             {["Get a Quote", "Scheduling", "Many More"].map((text, idx) => (
-              <a key={idx} href="quote" className="btn btn-outline-light px-2 py-1" style={{
-                background: "transparent",
-                color: "#bdbdbd",
-                fontWeight: 500,
-                fontSize: 13,
-                borderRadius: 7,
-                padding: "4px 14px",
-                border: "1px solid #23232a",
-              }}>{text}</a>
+              <a
+                key={idx}
+                href="quote"
+                className="btn px-2 py-1"
+                style={{
+                  background: "transparent",
+                  color: "var(--muted-text)",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  borderRadius: 7,
+                  padding: "4px 14px",
+                  border: "1px solid var(--border-color)",
+                }}
+              >
+                {text}
+              </a>
             ))}
           </div>
         </motion.div>
@@ -92,19 +98,20 @@ export default function HomeServices() {
           transition={{ duration: 0.9 }}
           viewport={{ once: true }}
           style={{
-            background: "#111114",
+            background: "var(--card-bg)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 420,
             height: 370,
             marginBottom: 24,
-            border: "1.5px solid #23232a",
-            boxShadow: "0 8px 40px 0 rgba(0,0,0,0.45)",
+            border: "1.5px solid var(--border-color)",
+            boxShadow: "0 8px 40px 0 var(--boxShadow)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             padding: 24,
             textAlign: "center",
+            position: "relative",
           }}
         >
           <div
@@ -112,13 +119,13 @@ export default function HomeServices() {
               width: "100%",
               height: "100%",
               borderRadius: 12,
-              background: "rgba(24,24,27,0.85)",
-              border: "1px solid #23232a",
+              background: "var(--card-bg)",
+              border: "1px solid var(--border-color)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "center",
-              color: "#fff",
+              color: "var(--foreground)",
               position: "relative",
               zIndex: 1,
               padding: "20px 20px 0 20px",
@@ -148,7 +155,7 @@ export default function HomeServices() {
             <h4 style={{ fontSize: 18, fontWeight: 600, marginBottom: 10 }}>
               What can we help you with?
             </h4>
-            <p style={{ fontSize: 14, color: "#bdbdbd", marginBottom: 18 }}>
+            <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 18 }}>
               Whether you want help in customer handling or make changes in your
               existing Website, just give us a command.
             </p>
@@ -157,8 +164,8 @@ export default function HomeServices() {
             <div
               style={{
                 width: "100%",
-                background: "#101014",
-                border: "1px solid #2f2f35",
+                background: "var(--background)",
+                border: "1px solid var(--border-color)",
                 borderRadius: 10,
                 padding: "10px 12px",
                 display: "flex",
@@ -170,7 +177,7 @@ export default function HomeServices() {
                 <span
                   style={{
                     flex: 1,
-                    color: "#bdbdbd",
+                    color: "var(--muted-text)",
                     fontSize: 14,
                     fontFamily: "monospace",
                     whiteSpace: "nowrap",
@@ -195,7 +202,7 @@ export default function HomeServices() {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: "#a855f7",
+                    color: "var(--accent)",
                     fontSize: 20,
                     fontWeight: 600,
                     cursor: "pointer",
@@ -209,17 +216,24 @@ export default function HomeServices() {
             {/* CTA Buttons */}
             <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
               {["Custom Site", "Fast & Secure", "Many More"].map((text, idx) => (
-                <a key={idx} href="" className="btn btn-outline-light px-2 py-1" style={{
-                  background: "transparent",
-                  color: "#bdbdbd",
-                  fontWeight: 500,
-                  fontSize: 13,
-                  borderRadius: 7,
-                  padding: "4px 14px",
-                  border: "1px solid #23232a",
-                  pointerEvents: "none",
-                  cursor: "not-allowed",
-                }}>{text}</a>
+                <a
+                  key={idx}
+                  href="#"
+                  className="btn px-2 py-1"
+                  style={{
+                    background: "transparent",
+                    color: "var(--muted-text)",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    borderRadius: 7,
+                    padding: "4px 14px",
+                    border: "1px solid var(--border-color)",
+                    pointerEvents: "none",
+                    cursor: "not-allowed",
+                  }}
+                >
+                  {text}
+                </a>
               ))}
             </div>
           </div>
@@ -233,7 +247,7 @@ export default function HomeServices() {
               bottom: 0,
               height: "70%",
               background:
-                "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
+                "linear-gradient(to bottom, rgba(17,17,20,0) 40%, var(--card-bg) 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
