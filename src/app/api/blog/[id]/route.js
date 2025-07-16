@@ -22,13 +22,7 @@ export async function GET(req, { params }) {
 export async function DELETE(req, { params }) {
   await dbConnect();
 
-  let token;
-  const authHeader = req.headers.get("authorization");
-  if (authHeader) {
-    token = authHeader.split(" ")[1];
-  } else {
-    token = cookies().get("adminToken")?.value;
-  }
+  const token = cookies().get("adminToken")?.value;
   if (!token) {
     return NextResponse.json({ message: "Unauthorized: No token" }, { status: 401 });
   }
@@ -50,13 +44,7 @@ export async function DELETE(req, { params }) {
 export async function PUT(req, { params }) {
   await dbConnect();
 
-  let token;
-  const authHeader = req.headers.get("authorization");
-  if (authHeader) {
-    token = authHeader.split(" ")[1];
-  } else {
-    token = cookies().get("adminToken")?.value;
-  }
+  const token = cookies().get("adminToken")?.value;
   if (!token) {
     return NextResponse.json({ message: "Unauthorized: No token" }, { status: 401 });
   }
