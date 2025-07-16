@@ -73,6 +73,17 @@ body {
   padding: 0;
   margin: 0;
 }
+.ProseMirror {
+  min-height: 250px;
+  padding: 12px;
+  background-color: #181622;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+.ProseMirror h1, .ProseMirror h2 {
+  color: #8b5cf6;}
 @keyframes rotateGlow {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -514,6 +525,19 @@ a {
   }
 }
 
+/* Ensure ProseMirror images respect inline width/height styles */
+
+.cover-image {
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+}
 .navbar-nav .nav-link {
   color: var(--header-text) !important;
 }
