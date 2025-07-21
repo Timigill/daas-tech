@@ -45,6 +45,7 @@ function Hero() {
             width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
+              color: "#fff",
           }}
         >
           Careers
