@@ -14,7 +14,7 @@ const scaleIn = {
 
 function Page() {
     return (
-        <div className="privacy-page bg-black">
+        <div className="privacy-page">
             {/* Top Banner */}
             <div className="banner-container w-100 h-50vh">
                 <section
@@ -23,10 +23,9 @@ function Page() {
                        minHeight: "50vh",
                        width: "100%",
                        overflow: "hidden",
-                       background: "#000",
                        fontFamily: "Inter, sans-serif",
                        padding: "0 1rem",
-                       backgroundColor: "#000",
+                       backgroundColor: "var(--background)",
                        boxShadow: "0 4px 20px rgba(164, 122, 255, 0.1)",
                      }}
                    >
@@ -35,7 +34,7 @@ function Page() {
                        style={{
                          position: "relative",
                          zIndex: 2,
-                         background: "#000"
+                          backgroundColor: "var(--background)",
                        }}
                      >
                        <motion.span
@@ -46,7 +45,7 @@ function Page() {
                          custom={0.1}
                          className="badge mb-3"
                          style={{
-                           color: "#fff",
+                           color: "var(--foreground)",
                            fontSize: 12,
                          }}
                        >
@@ -64,7 +63,7 @@ function Page() {
                            fontWeight: 600,
                            fontSize: "2.3rem",
                            lineHeight: 1.1,
-                           color: "#fff",
+                           color: "var(--foreground)",
                            maxWidth: "100%",
                            width: "100%",
                            padding: "0 1rem"
@@ -79,12 +78,13 @@ function Page() {
                          whileInView="visible"
                          viewport={{ once: true }}
                          custom={0.4}
-                         className="mb-4 text-white-50"
+                         className="mb-4 "
                          style={{
                            fontSize: 15,
                            maxWidth: 550,
                            margin: "0 auto",
-                           padding: "0 1rem"
+                           padding: "0 1rem",
+                           color:"var(--foreground)"
                          }}
                        >
                          At DaaS Tech, We Protect What Matters   <br className="d-none d-md-block" /> Your Data, Your Trust, Your Peace of Mind.
@@ -108,7 +108,7 @@ function Page() {
                         <p className="privacy-description">
                             At DaaS Tech, we value your privacy and are committed to protecting your personal data. This policy explains what information we collect, why we collect it, how we use it, and your rights regarding that data.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description ">
                             Our commitment is to transparency and clarity, ensuring you always know how your information is handled.
                         </p>
                     </motion.li>
@@ -129,7 +129,7 @@ function Page() {
                             <li>Technical data (IP address, browser type, device information) via cookies and analytics.</li>
                             <li>Usage data from forms, blog subscriptions, quotes, contact forms, etc.</li>
                         </ul>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description ">
                             This information helps us tailor our services and communications to your needs, and improve your experience on our platform.
                         </p>
                     </motion.li>
@@ -147,7 +147,7 @@ function Page() {
                             <li>Send occasional updates, insights, and marketing.</li>
                             <li>Improve our website and services using analytics.</li>
                         </ul>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description ">
                             We use your data only for legitimate business purposes and never for unauthorized marketing or sharing.
                         </p>
                     </motion.li>
@@ -165,7 +165,7 @@ function Page() {
                             <li>Necessary performance of our services (e.g. responding to requests).</li>
                             <li>Legitimate business interests (e.g. improving UX, client support).</li>
                         </ul>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description ">
                             We always ensure there is a valid legal reason for processing your data, and you can withdraw consent at any time.
                         </p>
                     </motion.li>
@@ -185,7 +185,7 @@ function Page() {
                         <p className="privacy-description mb-0">
                             You can disable cookies via your browser, though this may affect site features.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description ">
                             Cookies help us understand how you interact with our site, so we can make improvements and offer a better experience.
                         </p>
                     </motion.li>
@@ -203,7 +203,7 @@ function Page() {
                             <li>When legally required (e.g., compliance or legal requests).</li>
                             <li>In event of business transitions (e.g. acquisition), with notice.</li>
                         </ul>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             Any third parties we work with are carefully vetted and required to protect your data as we do.
                         </p>
                     </motion.li>
@@ -220,7 +220,7 @@ function Page() {
                             <li>We retain your data only as long as necessary for active communications or service delivery.</li>
                             <li>Up to 2 years after last contact unless legally required to keep it longer.</li>
                         </ul>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             We regularly review our retention policies to ensure your data is not kept longer than needed.
                         </p>
                     </motion.li>
@@ -241,7 +241,7 @@ function Page() {
                         <p className="privacy-description mb-0">
                             To exercise any of these, email us at <a href="mailto:privacy@daastech.info">privacy@daastech.info</a>.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             We are committed to honoring your rights and will respond promptly to all requests.
                         </p>
                     </motion.li>
@@ -257,7 +257,7 @@ function Page() {
                         <p className="privacy-description mb-0">
                             We implement technical and organizational safeguards to protect your personal data from unauthorized access, disclosure, or alteration.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             Our security measures are regularly reviewed and updated to keep your data safe.
                         </p>
                     </motion.li>
@@ -273,7 +273,7 @@ function Page() {
                         <p className="privacy-description mb-0">
                             Our services are not aimed at children under 13. We do not knowingly collect data from minors.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             If you believe a child has provided us with personal data, please contact us so we can remove it.
                         </p>
                     </motion.li>
@@ -289,7 +289,7 @@ function Page() {
                         <p className="privacy-description mb-0">
                             We may revise this policy occasionally. The “Last Updated” date at the top reflects when changes take effect. We’ll notify users of major changes via email or website banner.
                         </p>
-                        <p className="privacy-description text-white-50">
+                        <p className="privacy-description">
                             Please review this policy regularly to stay informed about how we protect your information.
                         </p>
                     </motion.li>

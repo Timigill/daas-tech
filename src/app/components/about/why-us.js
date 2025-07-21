@@ -25,60 +25,59 @@ function Why() {
       {/* Header Section */}
       <div>
         <motion.span
-          className="badge px-3 py-2"
-          initial="hidden"
-          whileInView="visible"
           variants={fadeInUp}
-          viewport={{ once: true }}
+          custom={0.6}
+          whileHover={{ scale: 1.1 }}
+          className="btn px-3 py-2"
           style={{
-            padding: "4px 10px",
-            fontSize: 12,
+            background: "var(--accent)",
             color: "#fff",
-            border: "1px solid rgb(17 17 17)",
-            borderRadius: 8,
-            width: "fit-content",
             fontWeight: 500,
-            marginBottom: 12,
+            fontSize: '12px',
+            marginBottom: " 12px",
+            width: 'fit-content'
+
           }}
         >
           Why Us
         </motion.span>
 
         <motion.h1
-          className=""
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 600,
+            fontSize: "calc(1.375rem + 1.5vw)",
+            lineHeight: 1.1,
+            color: "var(--muted-text)",
+            maxWidth: 700,
+            margin: "0 auto",
+          }}
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           custom={0.5}
           viewport={{ once: true }}
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            lineHeight: 1.1,
-            color: "#ffffff",
-            maxWidth: 700,
-            margin: "0 auto",
-          }}
         >
           What Makes Us Stand Out in the Industry
         </motion.h1>
-
         <motion.p
-          className="mt-3 text-white-50"
+          className="mt-3"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "0.9rem",
+            color: "var(--muted-text)",
+            maxWidth: 620,
+            margin: "0 auto",
+          }}
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
           custom={1}
           viewport={{ once: true }}
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "0.9rem",
-            maxWidth: 580,
-            margin: "0 auto",
-          }}
         >
           Discover how our innovative strategies, data-driven approach, and commitment to results set us apart from the competition.
         </motion.p>
+
       </div>
 
       {/* Comparison Section */}
@@ -95,7 +94,7 @@ function Why() {
           >
             <div className="p-4 shadow rounded text-white h-100"
               style={{
-                border: " 1px solid #222 " ,
+                border: " 1px solid #222 ",
               }}>
               <h5
                 className="mb-4 text-white-50 text-start"
@@ -103,6 +102,7 @@ function Why() {
                   fontFamily: "Inter, sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 600,
+                   color: "var(--muted-text)",
                 }}
               >
                 Other Digital Solutions
@@ -115,15 +115,16 @@ function Why() {
                 "Inconsistent quality",
                 "No post-delivery support",
                 "One-size-fits-all solutions",
-              
+
               ].map((text, idx) => (
                 <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white-50">
-                  <RxCross2 size={20} style={{ flexShrink: 0 }} />
+                  <RxCross2 size={20} style={{ flexShrink: 0,  color: "var(--muted-text)", }} />
                   <p
                     className="mb-0 text-start"
                     style={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "1rem",
+                       color: "var(--muted-text)",
                     }}
                   >
                     {text}
@@ -144,16 +145,17 @@ function Why() {
             <div
               className="p-4 shadow rounded text-white h-100"
               style={{
-                background: "radial-gradient(circle at top center, #2e0f54 0%, #0b0b0b 40%)",
-                border: " 1px solid #222 " ,
+                background: "radial-gradient(circle at top center, var(--grad4) 0%, var(--grad3) 40%)",
+                border: " 1px solid #222 ",
               }}
             >
               <h5
-                className="mb-4 text-white text-start"
+                className="mb-4  text-start"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 600,
+                  color: "var(--foreground)",
                 }}
               >
                 DaaS Digital Solutions
@@ -168,13 +170,16 @@ function Why() {
                 "Consistency & attention to detail",
 
               ].map((text, idx) => (
-                <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white">
-                  <FaCheck size={20} style={{ flexShrink: 0 }} />
+                <div key={idx} className="d-flex align-items-start gap-2 mb-3 ">
+
+                  <FaCheck size={20} style={{ flexShrink: 0, color: "var(--foreground)",
+                }}  />
                   <p
                     className="mb-0"
                     style={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "1rem",
+                      color:'var(--foreground)'
                     }}
                   >
                     {text}

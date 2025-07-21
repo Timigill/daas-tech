@@ -22,16 +22,21 @@ function Trust() {
       viewport={{ once: true }}
       style={{overflowX:"hidden" , width:"100vw" }}
     >
-      <motion.p
-        className="trust-text text-white-50"
-        initial="hidden"
-        whileInView="visible"
-        variants={fadeInUp}
-        viewport={{ once: true }}
-        style={{ fontFamily: "Inter, sans-serif", fontSize: "1.1rem" }}
-      >
-        Businesses trust us 
-      </motion.p>
+     <motion.p
+  className="trust-text"
+  initial="hidden"
+  whileInView="visible"
+  variants={fadeInUp}
+  viewport={{ once: true }}
+  style={{
+    fontFamily: "Inter, sans-serif",
+    fontSize: "1.1rem",
+    color: "var(--muted-text)",
+  }}
+>
+  Businesses trust us
+</motion.p>
+
 
       <motion.div
         className="review-slider"
