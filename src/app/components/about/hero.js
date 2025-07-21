@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 "use client";
 import React from 'react';
 import { motion } from "framer-motion";
@@ -28,12 +35,22 @@ function Hero() {
           style={{
             padding: "4px 10px",
             fontSize: 12,
+<<<<<<< Updated upstream
 
              color: "#fff",
+=======
+<<<<<<< Updated upstream
+            color: "#fff",
+            border: "1px solid rgb(17 17 17)",
+=======
+             color: "#fff",
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             borderRadius: 8,
             width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
+<<<<<<< Updated upstream
 
             background: "var(--accent)",
               color: "#fff",
@@ -42,6 +59,13 @@ function Hero() {
             background: "var(--accent)",
               fontWeight: 600,
 
+=======
+<<<<<<< Updated upstream
+=======
+            background: "var(--accent)",
+              fontWeight: 600,
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
           }}
         >
           About Us
