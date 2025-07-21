@@ -1,3 +1,4 @@
+
 "use client";
 import React from 'react';
 import { motion } from "framer-motion";
@@ -29,10 +30,13 @@ function Hero() {
             fontSize: 12,
             color: "#fff",
             border: "1px solid rgb(17 17 17)",
+             color: "#fff",
             borderRadius: 8,
             width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
+            background: "var(--accent)",
+              fontWeight: 600,
           }}
         >
           About Us
