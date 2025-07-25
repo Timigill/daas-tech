@@ -338,7 +338,7 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
         {/* Content Editor (full width) */}
         <div className="mb-4">
           <label className="form-label" style={labelStyle}>Content</label>
-          <div style={{ background: "#181622", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
+          <div style={{ background: "var(--background)", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
             <EditorToolbar editor={editor} />
             <EditorContent editor={editor} />
           </div>
@@ -356,11 +356,11 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
 
         {/* Preview Modal/Section */}
         {preview && (
-          <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.7)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ background: '#181622', borderRadius: 12, padding: 32, maxWidth: 700, width: '100%', color: '#fff', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
+          <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'var(--background)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ background: 'var(--grad4)', borderRadius: 12, padding: 32, maxWidth: 700, width: '100%', color: '#fff', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
               <button onClick={() => setPreview(false)} style={{ position: 'absolute', top: 16, right: 24, background: 'none', border: 'none', color: '#fff', fontSize: 28, cursor: 'pointer' }}>&times;</button>
               <h2>{formData.title}</h2>
-              <div className="mb-2 text-white-50">{formData.date} | {formData.category}</div>
+              <div className="mb-2 " style={{color:"var(--foreground)"}}>{formData.date} | {formData.category}</div>
               {formData.image && <img src={formData.image} alt="Blog" style={{ maxWidth: '100%', borderRadius: 8, marginBottom: 16 }} />}
               <div className="mb-2"><strong>Tags:</strong> {formData.tags}</div>
               <div className="mb-2"><strong>SEO Title:</strong> {formData.seoTitle}</div>

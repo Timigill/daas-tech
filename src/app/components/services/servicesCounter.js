@@ -43,7 +43,7 @@ const AnimatedStats = () => {
       className="d-flex justify-content-center   flex-column align-items-center px-3 pb-5"
       style={{
        
-        color: "#fff",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         marginTop: "40px",
         paddingTop: "30px",
@@ -62,6 +62,7 @@ const AnimatedStats = () => {
           lineHeight: 1.15,
           // marginBottom: 16,
           maxWidth: 700,
+           color: "var(--foreground)",
         }}
       >
         Scaling Innovation — Stat by Stat
@@ -82,12 +83,12 @@ const AnimatedStats = () => {
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             className="text-center px-2 py-3"
             style={{
-              background: "linear-gradient(to top left, rgba(166, 122, 255, 0.2), rgba(0, 0, 0, 0.5))",
+              background: "linear-gradient(to top left, var(--grad3), var(--grad4))",
               borderRadius: 12,
               minWidth: 180,
               width: 180,
-              boxShadow: "0 2px 10px rgba(0,0,0,0.4)",
-              border: "1px solid #23232a",
+              boxShadow: "0 2px 10px var(--boxShadow)",
+              border: "1px solid var(--card-border)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -98,7 +99,7 @@ const AnimatedStats = () => {
               {counts[idx]}
               {stat.suffix}
             </h2>
-            <p style={{ color: "#bdbdbd", fontSize: "0.8rem", margin: 0 }}>
+            <p style={{ fontSize: "0.8rem", margin: 0 }}>
               {stat.label}
             </p>
           </motion.div>

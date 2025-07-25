@@ -11,6 +11,8 @@
    --codeinnerdiv:#ffff;
    --grad1:  rgba(255, 255, 255, 0.9) ;
    --grad2:rgba(164, 122, 255, 0.4);
+   --grad3:  rgba(255, 255, 255, 0.9) ;
+   --grad4:rgba(164, 122, 255, 0.3);
    --ctah2: rgb(140, 89, 250);
    --boxShadow:rgba(205, 96, 238, 0.18);
   --taskScrollWrapper:#ffff;
@@ -18,11 +20,12 @@
   --homeservicesgrad2: #eeeef0;
   --input-bg:#d2d0d6;
   --footer-text:#000000;
-   --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
+   --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.5) 0%, #fff 50%);
   --header-text: #000000;
   --mobile-menu-bg: #f9f9f9;
   --overlay-bg: rgba(255,255,255,0.95);
   --border-color: #e5e5e5;
+  --tiles-bg:  #edeaf3;
 }
 
 .dark {
@@ -30,6 +33,8 @@
   --homeservicesgrad2: #111114;
   --grad1:rgba(164, 122, 255, 0.2);
   --grad2:#000;
+  --grad3:#000;
+  --grad4:rgba(164, 122, 255, 0.1);
   --ctah2: rgb(140, 89, 250);
   --cicleGrad:radial-gradient(circle at center, #151515 60%, #101010 100%);
   --codediv:#1f1f1f;
@@ -51,6 +56,10 @@
   --mobile-menu-bg: #18122b;
   --overlay-bg: rgba(10, 6, 18, 0.95);
   --border-color: rgba(255, 255, 255, 0.1);
+  --grad3:#000;
+  --grad3:#000;
+  --tiles-bg: to top left, rgba(164, 122, 255, 0.1), #000;
+
 }
 
 html,
@@ -157,7 +166,7 @@ input:focus {
 }
 
 .flag-dropdown {
-  border: 1px solid #444 !important;
+  border: 1px solid var(--border-color)!important;
 }
 
 .small {
@@ -374,7 +383,7 @@ input:focus {
 }
 
 .react-tel-input .country:hover {
-  background-color: #111 !important;
+  background-color: var(--grad4) !important;
 }
 
 .review-slider {
@@ -443,21 +452,22 @@ a {
 }
 
 .react-calendar {
-  background: linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
+  background: var(--card-bg) !important;
   border: 1.5px solid var(--border-color) !important;
   border-radius: 16px;
   color: var(--foreground);
   font-family: Inter, sans-serif;
-  box-shadow: 0 2px 16px 0 #181028;
+  box-shadow: 0 2px 16px 0 var(--boxShadow);
   padding: 8px 0;
   margin-bottom: 12px;
   transition: box-shadow 0.2s;
 }
 
 .react-calendar__tile {
-  background: transparent;
+  background: linear-gradient(var(--tiles-bg)) !important;
   color: var(--foreground);
   border-radius: 10px;
+  border: 1px solid var(--border-color) !important;
   font-size: 1rem;
   transition: background 0.15s, color 0.15s;
   border: none;
@@ -465,13 +475,13 @@ a {
 
 .react-calendar__tile--active,
 .selected-calendar-tile {
-  background: var(--accent) !important;
-  color: #fff !important;
+  background: rgba(164, 122, 255, 0.3) !important;
+  color:#ffffff !important;
 }
 
 .react-calendar__tile:disabled {
-  color: #978f8f !important;
-  background: linear-gradient(to bottom left, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 0.2)) !important;
+  color: var(--muted-text) !important;
+  /* background: var(--card-bg) !important; */
   border-radius: 10% !important;
   cursor: not-allowed;
 }
@@ -495,7 +505,7 @@ a {
 }
 
 .react-calendar__tile--now {
-  background: radial-gradient(circle, rgba(164, 122, 255, 0.3), rgba(0, 0, 0, 0.2)) !important;
+  background: rgba(164, 122, 255, 0.3) !important;
   color: #ffffff !important;
   font-weight: 600;
   border-radius: 10px;
@@ -540,4 +550,16 @@ a {
 }
 .navbar-nav .nav-link {
   color: var(--header-text) !important;
+}
+
+.form-check-input:checked[type="checkbox"] {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='var(--foreground)' stroke='%23007bff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3E%3C/svg%3E");
+}
+.ProseMirror {
+    min-height: 250px;
+    padding: 12px;
+    background-color: var(--background);
+    color: var(--foreground);
+    border-radius: 8px;
+    outline: none;
 }
