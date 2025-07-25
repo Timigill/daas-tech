@@ -9,11 +9,11 @@ export default function HomeServices() {
       className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "0px 0",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
-        backgroundColor: "#000",
+        // backgroundColor: "var(--background)",
       }}
     >
       <style>
@@ -45,7 +45,7 @@ export default function HomeServices() {
       {/* Main Content */}
       <div
         className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-5 w-100"
-        style={{ maxWidth: 1100, margin: "0 auto" }}
+        style={{ maxWidth: 1100, margin: "0 auto", }}
       >
         {/* Animated Task Card */}
         <motion.div
@@ -56,14 +56,14 @@ export default function HomeServices() {
           style={{
             marginTop: "20px",
             position: "relative",
-            background: "#111114",
+            background: "var(--background)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
             height: 320,
             marginBottom: 24,
-            border: "1.5px solid #23232a",
-            boxShadow: "0 8px 40px 0 rgba(0,0,0,0.45)",
+            border: "1.5px solid var(--border-color)",
+            boxShadow: "0 10px 40px var(--boxShadow)",
             overflow: "hidden",
             display: "flex",
             alignItems: "center",
@@ -76,9 +76,9 @@ export default function HomeServices() {
               width: "92%",
               height: "82%",
               borderRadius: 12,
-              background: "rgba(24,24,27,0.85)",
-              border: "1px solid #23232a",
-              boxShadow: "0 2px 12px 0 rgba(0,0,0,0.18)",
+              background: "var(--background)",
+              border: "1px solid var(--border-color)",
+              boxShadow: "0 2px 12px 0 var(--boxShadow)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
@@ -95,8 +95,8 @@ export default function HomeServices() {
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span
                 style={{
-                  background: "#23232a",
-                  color: "#fff",
+                  background: "var(--background)",
+                  color: "var(--foreground)",
                   fontWeight: 600,
                   fontSize: 13,
                   borderRadius: 7,
@@ -107,13 +107,13 @@ export default function HomeServices() {
               </span>
               <span
                 style={{
-                  background: "transparent",
-                  color: "#bdbdbd",
+                  background: "var(--background)",
+                  color: "var(--muted-text)",
                   fontWeight: 500,
                   fontSize: 13,
                   borderRadius: 7,
                   padding: "4px 14px",
-                  border: "1px solid #23232a",
+                  border: "1px solid var(--border-color)",
                 }}
               >
                 Waiting for approval
@@ -148,17 +148,19 @@ export default function HomeServices() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      background: "#18181b",
+                      background: "var(--codeinnerdiv)",
                       borderRadius: 8,
                       padding: "10px 12px",
                       opacity: idx === 3 ? 0.6 : 1,
+                      border: "1px solid var(--border-color)",
+                      boxShadow: "0px 2px 12px 0px var(--boxShadow)",
                     }}
                   >
                     <div>
-                      <span style={{ fontWeight: 600, fontSize: 14 }}>
+                      <span style={{ fontWeight: 600, fontSize: 14, color: "var(--muted-text)", }}>
                         {task.title}
                       </span>
-                      <div style={{ color: "#bdbdbd", fontSize: 12 }}>
+                      <div style={{ color: "var(--muted-text)", fontSize: 12 }}>
                         {task.time}
                       </div>
                     </div>
@@ -168,8 +170,8 @@ export default function HomeServices() {
                         width: 22,
                         height: 22,
                         borderRadius: 6,
-                        background: "rgba(139,92,246,0.13)",
-                        color: "#8b5cf6",
+                        background: "var(--background)",
+                        // color: "#8b5cf6",
                         textAlign: "center",
                         lineHeight: "22px",
                         fontSize: 15,
@@ -189,16 +191,16 @@ export default function HomeServices() {
               left: 0,
               right: 0,
               bottom: 0,
-              height: "70%",
-              background:
-                "linear-gradient(to bottom, rgba(17,17,20,0) 40%, #111114 100%)",
+              height: "75%",
+              // background:
+              // "linear-gradient(to bottom, var(--grad1) 40%, var(--grad2) 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
           />
         </motion.div>
 
-        {/* CTA Content */}
+        {/* CTA Content */} v
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -218,13 +220,13 @@ export default function HomeServices() {
             href=""
             className="btn mb-3 px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Custom Websites
@@ -234,7 +236,7 @@ export default function HomeServices() {
           </h3>
           <p
             style={{
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontSize: 16,
               marginBottom: 18,
               textAlign: "left",
@@ -249,15 +251,15 @@ export default function HomeServices() {
           </h4>
           <a
             href="/contact"
-            className="btn px-2 py-1"
+            className=" px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--card-border)",
             }}
           >
             Get Started
@@ -288,13 +290,13 @@ export default function HomeServices() {
             href=""
             className="btn mb-3 px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             E-commerce
@@ -304,7 +306,7 @@ export default function HomeServices() {
           </h3>
           <p
             style={{
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontSize: 16,
               marginBottom: 18,
               textAlign: "left",
@@ -319,15 +321,15 @@ export default function HomeServices() {
           </h4>
           <a
             href="/contact"
-            className="btn px-2 py-1"
+            className=" px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--card-border)",
             }}
           >
             Get Started
@@ -343,14 +345,14 @@ export default function HomeServices() {
           style={{
             marginTop: "20px",
             position: "relative",
-            background: "#121214",
+            background: "var(--background)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
             height: 320,
             marginBottom: 24,
-            border: "1.5px solid #2e2e38",
-            boxShadow: "0 10px 40px rgba(0,0,0,0.5)",
+            border: "1.5px solid var(--border-color)",
+            boxShadow: "0 10px 40px var(--boxShadow)",
             overflow: "hidden",
             display: "flex",
             alignItems: "center",
@@ -363,10 +365,11 @@ export default function HomeServices() {
               width: "92%",
               height: "82%",
               borderRadius: 12,
-              background: "linear-gradient(to bottom right, #1a1a1d, #18181b)",
-              border: "1px solid #23232a",
+              // background: "linear-gradient(to bottom right, #1a1a1d, #18181b)",
+              backgroundColor: "var(--background)",
+              border: "1px solid var(--border-color)",
               padding: "18px 18px 0 18px",
-              color: "#fff",
+              color: "var(--foreground)",
               fontSize: 15,
               fontWeight: 500,
               position: "relative",
@@ -393,13 +396,13 @@ export default function HomeServices() {
               </span>
               <span
                 style={{
-                  background: "transparent",
-                  color: "#bdbdbd",
+                  background: "var(--background)",
+                  color: "var(--foregound)",
                   fontWeight: 500,
                   fontSize: 13,
                   borderRadius: 6,
                   padding: "4px 12px",
-                  border: "1px solid #2e2e38",
+                  border: "1px solid var(--border-color)",
                 }}
               >
                 Orders / Cart
@@ -447,10 +450,11 @@ export default function HomeServices() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      background: "#1e1e22",
+                      background: "var(--codeinnerdiv)",
                       borderRadius: 8,
                       padding: "10px 12px",
                       borderLeft: "3px solid #8b5cf6",
+                      boxShadow: "0 2px 12px 0 var(--boxshadow)",
                       marginBottom: 8,
                       opacity: idx === 3 ? 0.7 : 1,
                     }}
@@ -459,7 +463,7 @@ export default function HomeServices() {
                       <div style={{ fontWeight: 600, fontSize: 14 }}>
                         {task.title}
                       </div>
-                      <div style={{ color: "#bdbdbd", fontSize: 12 }}>
+                      <div style={{ color: "var(--foreground)", fontSize: 12 }}>
                         {task.time}
                       </div>
                     </div>
@@ -490,9 +494,9 @@ export default function HomeServices() {
               left: 0,
               right: 0,
               bottom: 0,
-              height: "60%",
-              background:
-                "linear-gradient(to bottom, rgba(18,18,20,0) 30%, #121214 100%)",
+              height: "25%",
+               background:
+                "linear-gradient(to bottom, var(--grad3) 0%, var(--grad4) 40%);)",
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -513,14 +517,14 @@ export default function HomeServices() {
           style={{
             marginTop: "20px",
             position: "relative",
-            background: "#0f0f11",
+            background: "var(--background)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
             height: "auto",
             marginBottom: 24,
-            border: "1.5px solid #292932",
-            boxShadow: "0 12px 40px rgba(0,0,0,0.55)",
+            border: "1.5px solid var(--border-color)",
+            boxShadow: "0 12px 40px var(--boxShadow)",
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
@@ -531,15 +535,15 @@ export default function HomeServices() {
           {/* Card Header */}
           <div
             style={{
-              background: "#18181c",
+              background: "var(--background)",
               padding: "16px 20px",
-              borderBottom: "1px solid #23232a",
+              borderBottom: "1px solid var(--border-color)",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <div style={{ fontWeight: 600, fontSize: 14, color: "#fff" }}>
+            <div style={{ fontWeight: 600, fontSize: 14, color: "var(--foreground)" }}>
               SMM Campaign Tracker
             </div>
             <div
@@ -603,11 +607,12 @@ export default function HomeServices() {
                 <div
                   key={idx}
                   style={{
-                    background: "#18181c",
+                    background: "var(--background)",
                     borderRadius: 10,
                     padding: "10px 12px",
                     marginBottom: 10,
-                    border: "1px solid #2d2d35",
+                    border: "1px solid var(--border-color)",
+                    boxShadow: "0px 2px 12px 0px var(--boxShadow)",
                   }}
                 >
                   <div
@@ -619,11 +624,14 @@ export default function HomeServices() {
                     }}
                   >
                     <div
-                      style={{ display: "flex", alignItems: "center", gap: 8 }}
+                      style={{
+                        display: "flex", alignItems: "center", gap: 8,
+
+                      }}
                     >
                       <div
                         style={{
-                          background: "#2d2d35",
+                          background: "var(--background)",
                           color: "#8b5cf6",
                           width: 26,
                           height: 26,
@@ -636,7 +644,7 @@ export default function HomeServices() {
                         {task.icon}
                       </div>
                       <div
-                        style={{ fontWeight: 600, fontSize: 14, color: "#fff" }}
+                        style={{ fontWeight: 600, fontSize: 14, color: "var(--forreground)" }}
                       >
                         {task.title}
                       </div>
@@ -644,7 +652,7 @@ export default function HomeServices() {
                     <div
                       style={{
                         fontSize: 11,
-                        color: "#bdbdbd",
+                        color: "var(--muted-text)",
                       }}
                     >
                       {task.status}
@@ -656,7 +664,7 @@ export default function HomeServices() {
                     style={{
                       height: 6,
                       borderRadius: 4,
-                      background: "#2e2e38",
+                      background: "var(--foreground)",
                       overflow: "hidden",
                       marginTop: 6,
                     }}
@@ -684,7 +692,7 @@ export default function HomeServices() {
               right: 0,
               height: "60px",
               background:
-                "linear-gradient(to bottom, rgba(15,15,17,0) 0%, #0f0f11 100%)",
+                "linear-gradient(to bottom, var(--grad3) 0%, var(--grad4) 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -710,13 +718,13 @@ export default function HomeServices() {
             href=""
             className="btn mb-3 px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Social Media Marketing
@@ -726,7 +734,7 @@ export default function HomeServices() {
           </h3>
           <p
             style={{
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontSize: 16,
               marginBottom: 18,
               textAlign: "left",
@@ -742,13 +750,13 @@ export default function HomeServices() {
             href="/contact"
             className="btn px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Get Started
@@ -780,13 +788,13 @@ export default function HomeServices() {
             href=""
             className="btn mb-3 px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Flyer Design
@@ -796,7 +804,7 @@ export default function HomeServices() {
           </h3>
           <p
             style={{
-              color: "#bdbdbd",
+              color: "var(--muted-text)",
               fontSize: 16,
               marginBottom: 18,
               textAlign: "left",
@@ -813,13 +821,13 @@ export default function HomeServices() {
             href="/contact"
             className="btn px-2 py-1"
             style={{
-              background: "transparent",
-              color: "#bdbdbd",
+              background: "var(--background)",
+              color: "var(--foreground)",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
               padding: "4px 14px",
-              border: "1px solid #23232a",
+              border: "1px solid var(--border-color)",
             }}
           >
             Get Started
@@ -834,15 +842,15 @@ export default function HomeServices() {
           style={{
             position: "relative",
             background:
-              "radial-gradient(circle at top left, #1a1a1f 0%, #0e0e11 100%)",
+              "radial-gradient(circle at top left, var(--grad3) 0%, var(--grad3) 100%)",
             borderRadius: 18,
             width: "100%",
             maxWidth: 400,
             height: 360,
             marginTop: "20px",
             marginBottom: 24,
-            border: "1.5px solid #2e2e38",
-            boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
+            border: "1.5px solid var(--border-color)",
+            boxShadow: "0 20px 50px var(--boxShadow)",
             overflow: "hidden",
             padding: 20,
             display: "flex",
@@ -859,13 +867,13 @@ export default function HomeServices() {
               alignItems: "center",
             }}
           >
-            <h4 style={{ color: "#fff", fontSize: 15, fontWeight: 600 }}>
+            <h4 style={{ color: "var(--foreground)", fontSize: 15, fontWeight: 600 }}>
               Design Showcase
             </h4>
             <span
               style={{
-                background: "rgba(139,92,246,0.15)",
-                color: "#8b5cf6",
+                background: "var(--grad2)",
+                color: "var(--accent)",
                 padding: "4px 10px",
                 fontSize: 12,
                 borderRadius: 6,
@@ -892,10 +900,10 @@ export default function HomeServices() {
                 style={{
                   width: 80,
                   height: 100,
-                  background: `linear-gradient(145deg, ${color} 20%, #18181c 100%)`,
+                  background: `linear-gradient(145deg, ${color} 20%,var(--grad2) 100%)`,
                   borderRadius: 12,
                   boxShadow: `0 4px 12px ${color}55`,
-                  border: "2px solid #2d2d35",
+                  border: "2px solid var(--boxShadow)",
                   transform: `rotate(${i === 1 ? 0 : i === 0 ? -4 : 4}deg)`,
                   transition: "transform 0.4s ease",
                 }}
@@ -907,7 +915,7 @@ export default function HomeServices() {
           <div style={{ marginTop: 24 }}>
             <p
               style={{
-                color: "#bdbdbd",
+                color: "var(--foreground)",
                 fontSize: 13,
                 lineHeight: 1.5,
                 marginBottom: 8,
@@ -937,7 +945,7 @@ export default function HomeServices() {
               right: 0,
               height: 80,
               background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.3), transparent)",
+                "linear-gradient(to bottom, var(--grad2), transparent)",
               pointerEvents: "none",
             }}
           />

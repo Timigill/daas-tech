@@ -25,7 +25,7 @@ export default function BlogPage() {
   return (
     <section
       className="d-flex flex-column align-items-center text-center px-3"
-      style={{ padding: "48px 0", background: "#000", color: "#fff", fontFamily: "Inter, sans-serif" }}
+      style={{ padding: "48px 0", background: "var(--backgraound)", color: "var(--foreground)", fontFamily: "Inter, sans-serif" }}
     >
       <motion.span
         className="badge mb-3"
@@ -35,7 +35,7 @@ export default function BlogPage() {
         viewport={{ once: true }}
         style={{
           background: "rgba(139,92,246,0.15)",
-          color: "#8b5cf6",
+          color: "var(--accent)",
           fontWeight: 600,
           fontSize: 15,
           letterSpacing: 1,
@@ -59,7 +59,7 @@ export default function BlogPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        style={{ fontSize: 15, color: "#bdbdbd", maxWidth: 600, margin: "0 auto 40px auto" }}
+        style={{ fontSize: 15, color: "var(--muted-text)", maxWidth: 600, margin: "0 auto 40px auto" }}
       >
         Stay informed with the latest trends, insights, and strategies to drive innovation and business growth.
       </motion.p>
@@ -74,7 +74,7 @@ export default function BlogPage() {
                 background: 'none',
                 margin: 0,
               }}>
-                <Link href={`/blog/${blog._id}`} style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', padding: '18px 0', borderBottom: '1px solid #23232a', gap: 20, width: '100%', textDecoration: 'none', color: 'inherit' }}>
+                <Link href={`/blog/${blog._id}`} style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', padding: '18px 0', borderBottom: '1px solid var(--accent)', gap: 20, width: '100%', textDecoration: 'none', color: 'inherit' }}>
                   {/* Cover image thumbnail */}
                   {blog.image && (
                     <img
@@ -86,17 +86,17 @@ export default function BlogPage() {
                         objectFit: 'cover',
                         borderRadius: 8,
                         marginRight: 18,
-                        background: '#181622',
-                        boxShadow: '0 1px 6px rgba(0,0,0,0.10)',
+                        background:"var(--background)",
+                        boxShadow: '0 1px 6px var(--boxShadow)',
                         flexShrink: 0,
                         marginTop: 2,
                       }}
                     />
                   )}
                   <div style={{ flex: 1, minWidth: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <div style={{ fontWeight: 600, fontSize: 18, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{blog.title}</div>
+                    <div style={{ fontWeight: 600, fontSize: 18, color: 'var(--foreground)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{blog.title}</div>
                     {blog.content && (
-                      <div style={{ fontSize: 15, color: '#bdbdbd', margin: '2px 0 0 0', whiteSpace: 'pre-line', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                      <div style={{ fontSize: 15, color: ' var(--muted-text)', margin: '2px 0 0 0', whiteSpace: 'pre-line', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                         {(() => {
                           // Strip HTML tags from content
                           const text = blog.content.replace(/<[^>]+>/g, '');
@@ -104,7 +104,7 @@ export default function BlogPage() {
                         })()}
                       </div>
                     )}
-                    <div style={{ fontSize: 14, color: '#bdbdbd', marginTop: 2 }}>
+                    <div style={{ fontSize: 14, color: 'var(--muted-text)', marginTop: 2 }}>
                       {blog.date?.slice(0, 10)} | {blog.category}
                     </div>
                   </div>
@@ -112,7 +112,7 @@ export default function BlogPage() {
               </li>
             ))
           ) : (
-            <li><p className="text-muted">No blogs available.</p></li>
+            <li><p style={{color:"var(--muted-text)"}}>No blogs available.</p></li>
           )}
         </ul>
       </div>

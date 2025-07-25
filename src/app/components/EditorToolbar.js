@@ -36,10 +36,10 @@ function Modal({ open, onClose, children }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-      background: 'rgba(0,0,0,0.35)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
+      background: 'var(--background)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
     }}>
-      <div style={{ background: '#181622', padding: 24, borderRadius: 10, minWidth: 320, boxShadow: '0 4px 32px #0008', color: '#fff', position: 'relative' }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: 10, right: 12, background: 'none', border: 'none', color: '#fff', fontSize: 20, cursor: 'pointer' }}>&times;</button>
+      <div style={{ background: 'var(--background)', padding: 24, borderRadius: 10, minWidth: 320, boxShadow: '0 4px 32px var(boxShadow)', color: 'var(--foreground)', position: 'relative' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: 10, right: 12, background: 'none', border: 'none', color: 'var(--foreground)', fontSize: 20, cursor: 'pointer' }}>&times;</button>
         {children}
       </div>
     </div>
@@ -92,7 +92,7 @@ const toolbarStyle = {
   justifyContent: "center", // Center toolbar horizontally
   // background: "#0f172a",
   borderRadius: "12px",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+  boxShadow: "0 4px 24px var(--boxShadow)",
   padding: "6px 10px",
   gap: "14px",
   marginBottom: "32px",
@@ -104,10 +104,10 @@ const groupStyle = {
   alignItems: "center",
   justifyContent: "center", // Center group content
   gap: "2px",
-  background: "#1e293b",
+  background: "var(--background)",
   borderRadius: "8px",
   padding: "2px 6px",
-  boxShadow: "inset 0 1px 2px rgba(0,0,0,0.2)",
+  boxShadow: "inset 0 1px 2px var(--boxShadow)",
 };
 
 const btnStyle = {
@@ -116,7 +116,7 @@ const btnStyle = {
   borderRadius: "6px",
   padding: "5px 7px",
   fontSize: "16px",
-  color: "#cbd5e1",
+  color: "var(--foreground)",
   cursor: "pointer",
   transition: "all 0.2s ease",
   outline: "none",
@@ -283,7 +283,10 @@ export default function EditorToolbar({ editor }) {
             value={linkText}
             onChange={e => setLinkText(e.target.value)}
             placeholder="Text to display"
-            style={{ padding: 8, borderRadius: 6, border: '1px solid #333', background: '#23232a', color: '#fff' }}
+            style={{ padding: 8, borderRadius: 6, 
+              border: '1px solid #333',
+               background: "var(--background)", 
+               color: 'var(--foreground)' }}
             autoComplete="off"
           />
           <label style={{ fontWeight: 500 }}>Link URL</label>
@@ -292,7 +295,7 @@ export default function EditorToolbar({ editor }) {
             value={linkUrl}
             onChange={e => setLinkUrl(e.target.value)}
             placeholder="https://example.com"
-            style={{ padding: 8, borderRadius: 6, border: '1px solid #333', background: '#23232a', color: '#fff' }}
+            style={{ padding: 8, borderRadius: 6, border: '1px solid var(--border-color)', background: 'var(--background)', color: 'var(--foreground)' }}
             required
             autoComplete="off"
           />
@@ -309,7 +312,7 @@ export default function EditorToolbar({ editor }) {
             accept="image/*"
             ref={fileInputRef}
             onChange={handleImageFileChange}
-            style={{ color: '#fff' }}
+            style={{ color: 'var(--foreground)' }}
             required
           />
           <div style={{ display: 'flex', gap: 8 }}>
@@ -321,7 +324,7 @@ export default function EditorToolbar({ editor }) {
                 value={imageWidth}
                 onChange={e => setImageWidth(e.target.value)}
                 placeholder="auto"
-                style={{ width: '100%', padding: 6, borderRadius: 6, border: '1px solid #333', background: '#23232a', color: '#fff', fontSize: 14 }}
+                style={{ width: '100%', padding: 6, borderRadius: 6,  border: '1px solid var(--border-color)', background: 'var(--background)', color: 'var(--foreground)', fontSize: 14 }}
               />
             </div>
             <div style={{ flex: 1 }}>
@@ -332,7 +335,7 @@ export default function EditorToolbar({ editor }) {
                 value={imageHeight}
                 onChange={e => setImageHeight(e.target.value)}
                 placeholder="auto"
-                style={{ width: '100%', padding: 6, borderRadius: 6, border: '1px solid #333', background: '#23232a', color: '#fff', fontSize: 14 }}
+                style={{ width: '100%', padding: 6, borderRadius: 6,  border: '1px solid var(--border-color)', background: 'var(--background)', color: 'var(--foreground)', fontSize: 14 }}
               />
             </div>
           </div>

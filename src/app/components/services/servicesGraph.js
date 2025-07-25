@@ -55,17 +55,17 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div
         style={{
-          background: "linear-gradient(to top left , #1f1f24, #131316)",
+          background: "linear-gradient(to top left , var(--grad1), var(--grad2))",
           borderRadius: 10,
           padding: "12px 16px",
-          boxShadow: "0 4px 14px rgba(139,92,246,0.2)",
+          boxShadow: "0 4px 14px var(--boxShadow))",
           color: "#fff",
           fontSize: 13,
-          border: "1px solid #2e2e38",
+          border: "1px solid  var(--card-border)",
         }}
       >
         <p style={{ margin: 0, fontWeight: 600 }}>{label}</p>
-        <p style={{ margin: 0, color: "#bdbdbd" }}>
+        <p style={{ margin: 0, color: "var(--muted text)" }}>
           {`Value: ${payload[0].value}`}
         </p>
       </div>
@@ -85,18 +85,18 @@ export default function ServiceImpactChart() {
       viewport={{ once: true }}
       style={{
         background:
-          "linear-gradient(to bottom right, rgba(166, 122, 255, 0.2), rgba(0, 0, 0, 1))",
+          "linear-gradient(to bottom right,var(--grad4), var(--grad3))",
         padding: "30px 20px",
-        borderTop: "1px solid #1e1e24",
+        borderTop: "1px solidv ar(--card-border)",
         margin: "60px auto 0",
         maxWidth: 900,
         borderRadius: 14,
-        boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+        boxShadow: "0 8px 20px var(--boxShadow)",
       }}
     >
       <h3
         style={{
-          color: "#fff",
+          color: "var(--foreground)",
           fontSize: "1.4rem",
           marginBottom: 6,
           fontWeight: 600,
@@ -105,7 +105,7 @@ export default function ServiceImpactChart() {
       >
         Our Full Spectrum of Services
       </h3>
-      <p style={{ color: "#bdbdbd", fontSize: 13, marginBottom: 20 }}>
+      <p style={{ color: "var(--foreground)", fontSize: 13, marginBottom: 20 }}>
         Performance overview across key digital transformation areas.
       </p>
 
@@ -117,7 +117,7 @@ export default function ServiceImpactChart() {
         >
           <XAxis
             dataKey="name"
-            tick={{ fill: "#ffffff", fontSize: 12 }}
+            tick={{ fill: "var(--muted-text)", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
             angle={0}
@@ -125,7 +125,7 @@ export default function ServiceImpactChart() {
             height={60}
           />
           <YAxis
-            tick={{ fill: "#ffffff", fontSize: 12 }}
+            tick={{ fill: "var(--muted-text)", fontSize: 12 }}
             axisLine={false}
             tickLine={false}
           />
