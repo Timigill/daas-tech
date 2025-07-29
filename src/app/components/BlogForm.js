@@ -177,13 +177,13 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
   };
 
   const inputStyle = {
-    backgroundColor: "#111",
-    color: "#fff",
-    border: "1px solid #8b5cf6",
+    backgroundColor: "var(--codeinnerdiv)",
+    color: "var(--foreground)",
+    border: "1px solid var(--accent)",
   };
 
   const labelStyle = {
-    color: "#8b5cf6",
+    color: "var(--accent)",
     fontWeight: "500",
     textAlign: "left",
     display: "block",
@@ -200,7 +200,7 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
       left: 0,
       width: '100vw',
       height: '100vh',
-      background: 'rgba(0,0,0,0.7)',
+      background: 'var(--background))',
       zIndex: 9999,
       display: 'flex',
       marginBottom:'20',
@@ -212,15 +212,15 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
         onSubmit={handleSubmit}
         className="p-4 rounded mb-5"
         style={{
-          backgroundColor: "#000",
-          color: "#fff",
-          border: "1px solid #8b5cf6",
+          backgroundColor: "var(--background)",
+          color: "var(--foreground)",
+          border: "1px solid var(--accent)",
           borderRadius: 16,
           minWidth: 320,
           maxWidth: 700,
           width: '100%',
           position: 'relative',
-          boxShadow: '0 8px 40px 0 rgba(0,0,0,0.25)',
+          boxShadow: '0 8px 40px 0 var(--boxShadow)',
           maxHeight: '96vh',
           overflowY: 'auto',
           margin: '0 auto',
@@ -237,7 +237,7 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
               background: 'none', // transparent background
               border: 'none',     // no border
               borderRadius: '50%',
-              color: '#8b5cf6',   // purple icon
+              color: 'var(--accent)',   // purple icon
               fontSize: 28,       // reduced size
               fontWeight: 700,
               cursor: 'pointer',
@@ -247,17 +247,17 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
               transition: 'color 0.2s',
             }}
             onMouseOver={e => {
-              e.currentTarget.style.color = '#6d28d9';
+              e.currentTarget.style.color = 'var(--accent)';
             }}
             onMouseOut={e => {
-              e.currentTarget.style.color = '#8b5cf6';
+              e.currentTarget.style.color = 'var(--accent)';
             }}
             aria-label="Close"
           >
             <BsXCircle />
           </button>
         )}
-        <h4 className="mb-4" style={{ color: "#8b5cf6", fontWeight: 700, letterSpacing: 1 }}>Add New Blog</h4>
+        <h4 className="mb-4" style={{ color: 'var(--accent)', fontWeight: 700, letterSpacing: 1 }}>Add New Blog</h4>
 
         {/* Row: Title + Category */}
         <div style={{ display: 'flex', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
@@ -338,7 +338,7 @@ const AdminAddBlogForm = ({ onBlogAdded, open = true, onClose }) => {
         {/* Content Editor (full width) */}
         <div className="mb-4">
           <label className="form-label" style={labelStyle}>Content</label>
-          <div style={{ background: "#181622", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
+          <div style={{ background: "var(--background)", padding: "12px", borderRadius: 8, border: "1px solid var(--accent)" }}>
             <EditorToolbar editor={editor} />
             <EditorContent editor={editor} />
           </div>

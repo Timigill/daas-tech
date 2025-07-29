@@ -16,7 +16,7 @@ export default function QuotesList() {
     <div style={{ 
       textAlign: "center", 
       padding: "40px", 
-      color: "#8b5cf6",
+      color: "var(--accent)",
       fontFamily: "Inter, sans-serif",
       fontSize: "1rem"
     }}>
@@ -27,7 +27,7 @@ export default function QuotesList() {
   return (
     <div style={{ fontFamily: "Inter, sans-serif" }}>
       <h2 style={{ 
-        color: "#fff", 
+        color: "var(--foreground)", 
         fontWeight: 600, 
         marginBottom: "1.5rem",
         fontSize: "1.8rem"
@@ -36,135 +36,137 @@ export default function QuotesList() {
       </h2>
       
       <div style={{
-        background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-        border: "1px solid #333",
+        background: "linear-gradient(to top right, var(--grad5), var(--grad6))",
+        border: "1px solid var(--border-color)",
         borderRadius: "12px",
         overflow: "hidden",
-        boxShadow: "0 0 15px rgba(164, 122, 255, 0.1)"
+        boxShadow: "0 0 15px var(--boxShadow)"
       }}>
         <table style={{ 
           width: "100%", 
           borderCollapse: "collapse",
-          color: "#fff"
+          color: "var(--foreground)"
         }}>
           <thead>
             <tr style={{ 
-              background: "linear-gradient(to right, rgba(139, 92, 246, 0.1), rgba(0, 0, 0, 0.8))",
-              borderBottom: "1px solid #333"
+              background: "linear-gradient(to right, var(--grad5), var(--grad6))",
+              borderBottom: "1px solid var(--border-color)"
             }}>   
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Date</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Name</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Email</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Phone</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Company</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Project Type</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Budget</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Timeline</th>
               <th style={{ 
                 padding: "16px 12px", 
                 textAlign: "left",
                 fontWeight: 600,
                 fontSize: "0.9rem",
-                color: "#8b5cf6"
+                color: "var(--th-text)"
               }}>Status</th>
             </tr>
           </thead>
           <tbody>
             {quotes.map((quote, idx) => (
               <tr key={quote._id || idx} style={{ 
-                backgroundColor: idx % 2 === 0 ? "rgba(0, 0, 0, 0.3)" : "rgba(139, 92, 246, 0.05)",
-                borderBottom: "1px solid #222",
+                backgroundColor: idx % 2 === 0 ? "var(--grad6)" : "var(--grad5))",
+                borderBottom: "1px solid var(--border-color)",
                 transition: "background-color 0.2s ease"
               }}>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)"
                 }}>
                   {new Date(quote.createdAt).toLocaleDateString()}
                 </td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#fff"
+                  color: "var(--foreground)"
                 }}>{quote.contactName || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)"
                 }}>{quote.email || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)"
                 }}>{quote.phone || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)"
                 }}>{quote.company || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)",
+                  textAlign:'left'
                 }}>{quote.projectType || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)",
+                  
                 }}>{quote.budget || "-"}</td>
                 <td style={{ 
                   padding: "16px 12px",
                   fontSize: "0.9rem",
-                  color: "#ccc"
+                  color: "var(--muted-text)"
                 }}>{quote.timeline || "-"}</td>
                 <td style={{ padding: "16px 12px" }}>
                   <span style={{
@@ -202,10 +204,10 @@ export default function QuotesList() {
         <div style={{ 
           textAlign: "center", 
           padding: "60px 20px", 
-          color: "#666",
+          color: "var(--muted-text)",
           fontFamily: "Inter, sans-serif",
           fontSize: "1rem",
-          background: "linear-gradient(to top right, rgba(164, 122, 255, 0.05), rgba(0, 0, 0, 0.8))",
+          background: "linear-gradient(to top right, var(--grad5) var(--grad6))",
           border: "1px solid #333",
           borderRadius: "12px",
           marginTop: "20px"

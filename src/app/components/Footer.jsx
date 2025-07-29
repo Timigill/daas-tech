@@ -21,7 +21,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="footer-section "  style={{ padding: "12px 30px", background: "var(--background)", color: "var(--foreground)" }}>
+    <footer className="footer-section " style={{ padding: "12px 30px", background: "var(--background)", color: "var(--foreground)" }}>
       <hr className="mt-4 mb-0 w-100" style={{ borderColor: "var(--border-color)" }} />
 
       <div className="container-fluid footer-gradient pt-4" style={{ overflowX: "hidden" }}>
@@ -94,19 +94,19 @@ function Footer() {
                   <li>Case studies</li>
                   <li>Benefits</li>
                   <li>Pricing</li>
-                  
+
                 </ul>
               </div>
 
               <div className="col-md-4 col-6 mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Pages</h6>
-                <ul className="list-unstyled footer-li" style={{ color: "var(--footer-text)" }}>
+                <ul className="list-unstyled footer-li" style={{ color: "var(--footer-text)",width:"fit-content" }}>
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/about">About</Link></li>
                   <li><a href="/blog" style={{ color: "var(--footer-text)", textDecoration: "none" }}>Blog</a></li>
                   <li><Link href="/contact">Contact</Link></li>
                   <li><Link href="/careers">Careers</Link></li>
-                  <li><Link href="/quote">Get a Quote</Link></li>
+                  <li style={{width:"fit-content"}}><Link href="/quote">Get a Quote</Link></li>
                 </ul>
               </div>
 
@@ -125,12 +125,21 @@ function Footer() {
           </div>
         </div>
 
-        <div className="col-12 col-md-12">
-          <ul className="list-unstyled footer-li d-flex justify-content-around m-0" style={{ color: "var(--footer-text)" }}>
-            <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
-            <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-          </ul>
-        </div>
+        <ul
+          className="list-unstyled  m-0"
+          style={{
+            width:"fit-contect",
+            display: "flex",
+            justifyContent: "space-around",
+            textAlign:"left",
+            color: "var(--footer-text)",
+            listStyle: "none",
+            padding: 0,
+          }}
+        >
+          <li><Link href="/terms-and-conditions">Terms and Conditions</Link></li>
+          <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+        </ul>
 
         <hr className="mt-0 mb-3 w-100" style={{ borderColor: "var(--border-color)" }} />
 

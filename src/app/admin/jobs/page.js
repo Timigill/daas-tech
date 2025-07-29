@@ -170,8 +170,8 @@ export default function AdminJobsPage() {
         onRequestClose={() => setShowApplications(false)}
         contentLabel="Job Applications"
         style={{
-          overlay: { zIndex: 10000, background: "rgba(0,0,0,0.7)" },
-          content: { maxWidth: 600, margin: "auto", borderRadius: 12, padding: 24, background: "#181622", color: "#fff" }
+          overlay: { zIndex: 10000, background: "var(--overlay-bg)" },
+          content: { maxWidth: 600, margin: "auto", borderRadius: 12, padding: 24, background: "var(--background)", color: "var(--foreground)" }
         }}
         ariaHideApp={false}
       >
@@ -181,27 +181,27 @@ export default function AdminJobsPage() {
         {!applicationsLoading && !applicationsError && applications.length === 0 && <div>No applications found.</div>}
         <div className="list-group">
           {applications.map((app) => (
-            <div key={app._id} className="list-group-item bg-dark text-white mb-2 rounded">
+            <div key={app._id} style={{ color: "var(--foreground)", background: "var(--background)" }} className="list-group-item  mb-2 rounded">
               <div><strong>Name:</strong> {app.name}</div>
               <div><strong>Email:</strong> {app.email}</div>
               <div><strong>Phone:</strong> {app.phone}</div>
               <div><strong>Experience:</strong> {app.experience}</div>
               {app.resume && (
-                <div><strong>Resume:</strong> <a href={app.resume} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6" }}>Download</a></div>
+                <div><strong>Resume:</strong> <a href={app.resume} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)" }}>Download</a></div>
               )}
-              <div className="small text-white-50">Applied: {new Date(app.createdAt).toLocaleString()}</div>
+              <div className="small" style={{ color: "var(--foreground)" }}>Applied: {new Date(app.createdAt).toLocaleString()}</div>
             </div>
           ))}
         </div>
-        <button className="btn btn-secondary mt-3" onClick={() => setShowApplications(false)}>Close</button>
+        <button className="btn  mt-3" style={{ color: "var(--forebround)", border: "1px solid var(--foreground)" }} onClick={() => setShowApplications(false)}>Close</button>
       </Modal>
 
       <section
         className="d-flex flex-column align-items-center text-center px-3"
         style={{
           padding: "48px 0",
-          background: "#000",
-          color: "#fff",
+          background: "var(--background)",
+          color: "var(--foreground)",
           fontFamily: "Inter, sans-serif",
           overflowX: "hidden",
         }}
@@ -247,7 +247,7 @@ export default function AdminJobsPage() {
           viewport={{ once: true }}
           style={{
             fontSize: 15,
-            color: "#bdbdbd",
+            color: "var(--muted-text)",
             maxWidth: 600,
             margin: "0 auto 40px auto",
           }}
@@ -262,12 +262,12 @@ export default function AdminJobsPage() {
               onSubmit={handleSubmit}
               className="p-4 rounded"
               style={{
-                background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                border: "1px solid #333",
+                background: "linear-gradient(to top right, var(--grad5), var(--grad6))",
+                border: "1px solid var(--border-color)",
                 borderRadius: "12px",
                 maxWidth: 600,
                 margin: "0 auto",
-                color: "#fff",
+                color: "var(--foreground)",
               }}
             >
               <h3 className="mb-3 text-start">
@@ -368,15 +368,19 @@ export default function AdminJobsPage() {
               <div className="d-flex gap-2 mt-4 justify-content-end">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn "
                   onClick={handleCancel}
                   disabled={loading}
+                  style={{
+                    color: "var(--foreground)",
+                    border:"1px solid var(--border-color)"
+                  }}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn "
                   style={{ background: "#8b5cf6", border: "none" }}
                   disabled={loading}
                 >
@@ -390,9 +394,9 @@ export default function AdminJobsPage() {
         {/* Add Job Button */}
         {!showForm && (
           <button
-            className="btn btn-outline-light mb-4"
+            className="btn mb-4"
             onClick={() => setShowForm(true)}
-            style={{ borderColor: "#8b5cf6" }}
+            style={{ borderColor: "var(--foreground)", color: "var(--foreground)" }}
           >
             + Add New Job
           </button>
@@ -407,17 +411,19 @@ export default function AdminJobsPage() {
               jobs.map((job) => (
                 <div className="col-12 col-md-6" key={job._id}>
                   <div
-                    className="p-4 rounded h-100 d-flex flex-column justify-content-between"
+                    className="p-4 rounded h-100 d-flex flex-column"
                     style={{
-                      background: "rgba(0, 0, 0, 0.6)",
-                      border: "1px solid #333",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.7)",
-                      color: "#fff",
+                      // background: "var(--card-bg)",
+                      background: "var(--background)",
+                      border: "1px solid var(--border-color)",
+                      boxShadow: "0 4px 20px var(--border-color)",
+                      color: "var(--foreground)",
+                      textAlign: "left"
                     }}
                   >
                     <div>
                       <h4 className="fw-bold">{job.title}</h4>
-                      <p className="text-white-50 mb-2">
+                      <p className="mb-2" style={{ color: "var(--foreground)" }}>
                         {job.category} • {job.type}
                       </p>
                       <div className="mb-1">

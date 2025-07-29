@@ -10,8 +10,8 @@ export default function AdminQuotesPage() {
       className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "48px 0",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
@@ -24,7 +24,7 @@ export default function AdminQuotesPage() {
         viewport={{ once: true }}
         style={{
           background: "rgba(139,92,246,0.15)",
-          color: "#8b5cf6",
+          color: "var(--accent)",
           fontWeight: 600,
           fontSize: 15,
           letterSpacing: 1,
@@ -57,7 +57,7 @@ export default function AdminQuotesPage() {
         viewport={{ once: true }}
         style={{
           fontSize: 15,
-          color: "#bdbdbd",
+          color: "var(--muted-text)",
           maxWidth: 600,
           margin: "0 auto 40px auto",
         }}
