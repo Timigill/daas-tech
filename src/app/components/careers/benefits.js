@@ -42,7 +42,7 @@ function Benefits() {
           fontWeight: 600,
           fontSize: "2.5rem",
           lineHeight: 1.1,
-          color: "#ffffff",
+         color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
         }}
@@ -52,7 +52,7 @@ function Benefits() {
 
       {/* Subheading */}
       <motion.p
-        className="mt-3 text-white-50"
+        className="mt-3 "
         variants={fadeInUp}
         custom={0.4}
         style={{
@@ -60,6 +60,7 @@ function Benefits() {
           fontSize: "1rem",
           maxWidth: 680,
           margin: "0 auto",
+          color: "var(--muted-text)",
         }}
       >
         DaaS Tech is committed to enhancing the happiness, health, and success of our employees. We proudly offer a comprehensive benefits package designed to support our team members’ well-being, both at work and in their personal lives.
@@ -94,7 +95,7 @@ function Benefits() {
                     fontWeight: 600,
                     fontSize: "1.1rem",
                     lineHeight: 1.3,
-                    color: "#ffffff",
+                     color: "var(--foreground)",
                     maxWidth: 160,
                   }}
                 >
