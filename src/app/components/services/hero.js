@@ -9,8 +9,8 @@ export default function HomeServices() {
       className="d-flex flex-column mb-0  mt-5  align-items-center text-center px-3"
       style={{
         paddingTop: " 58px ",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
@@ -43,19 +43,20 @@ export default function HomeServices() {
 
       {/* Badge */}
       <motion.span
-        className="badge mb-3"
+        className=" mb-3"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
         style={{
-          background: "rgba(139,92,246,0.15)",
-          color: "#8b5cf6",
+          backgroundColor: "var(--accent)",
+          color: "#ffff",
           fontWeight: 600,
           fontSize: 15,
           letterSpacing: 1,
           padding: "8px 18px",
           borderRadius: 20,
+          border:"1px solid var(--card-border)"
         }}
       >
         Our Services
@@ -72,6 +73,7 @@ export default function HomeServices() {
           lineHeight: 1.15,
           marginBottom: 16,
           maxWidth: 700,
+
         }}
       >
         Web Solutions That Take Your Business Online
@@ -85,7 +87,7 @@ export default function HomeServices() {
         viewport={{ once: true }}
         style={{
           fontSize: 15,
-          color: "#bdbdbd",
+          color: "var(--muted-text)",
           maxWidth: 600,
           margin: "0 auto 0px auto",
         }}

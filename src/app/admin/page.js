@@ -35,8 +35,8 @@ export default function AdminDashboard() {
         className="d-flex flex-column align-items-center text-center px-3"
         style={{
           padding: "48px 0",
-          background: "#000",
-          color: "#fff",
+          background: "var(--background)",
+          color: "var(--foreground)",
           fontFamily: "Inter, sans-serif",
           overflowX: "hidden",
         }}
@@ -82,7 +82,7 @@ export default function AdminDashboard() {
           viewport={{ once: true }}
           style={{
             fontSize: 15,
-            color: "#bdbdbd",
+            color: "var(--muted-text)",
             maxWidth: 600,
             margin: "0 auto 40px auto",
           }}
@@ -104,15 +104,15 @@ export default function AdminDashboard() {
                 <div
                   className="p-4 h-100"
                   style={{
-                    background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                    border: "1px solid #333",
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--border-color)",
                     borderRadius: "12px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(164, 122, 255, 0.2)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px var(--boxShadow)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
@@ -120,7 +120,7 @@ export default function AdminDashboard() {
                   }}
                 >
                   <h3 className="mb-3">📌 Quote Requests</h3>
-                  <p className="text-white-50 mb-0">Manage and review all quote requests from potential clients.</p>
+                  <p className=" mb-0">Manage and review all quote requests from potential clients.</p>
                 </div>
               </Link>
             </motion.div>
@@ -136,15 +136,15 @@ export default function AdminDashboard() {
                 <div
                   className="p-4 h-100"
                   style={{
-                    background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                    border: "1px solid #333",
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--border-color)",
                     borderRadius: "12px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(164, 122, 255, 0.2)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px var(--boxShadow)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
@@ -152,7 +152,7 @@ export default function AdminDashboard() {
                   }}
                 >
                   <h3 className="mb-3">📅 Meeting Requests</h3>
-                  <p className="text-white-50 mb-0">View and manage all meeting requests from clients and prospects.</p>
+                  <p className=" mb-0">View and manage all meeting requests from clients and prospects.</p>
                 </div>
               </Link>
             </motion.div>
@@ -168,15 +168,15 @@ export default function AdminDashboard() {
                 <div
                   className="p-4 h-100"
                   style={{
-                    background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                    border: "1px solid #333",
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--border-color)",
                     borderRadius: "12px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(164, 122, 255, 0.2)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px var(--boxShadow)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
@@ -184,7 +184,7 @@ export default function AdminDashboard() {
                   }}
                 >
                   <h3 className="mb-3">📝 Blog Manager</h3>
-                  <p className="text-white-50 mb-0">Create, edit, and manage all your blog posts with full control over your content.</p>
+                  <p className="mb-0">Create, edit, and manage all your blog posts with full control over your content.</p>
                 </div>
               </Link>
             </motion.div>
@@ -200,15 +200,15 @@ export default function AdminDashboard() {
                 <div
                   className="p-4 h-100"
                   style={{
-                    background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                    border: "1px solid #333",
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--border-color)",
                     borderRadius: "12px",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-5px)";
-                    e.currentTarget.style.boxShadow = "0 10px 25px rgba(164, 122, 255, 0.2)";
+                    e.currentTarget.style.boxShadow = "0 10px 25px var(--boxShadow)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
@@ -216,7 +216,7 @@ export default function AdminDashboard() {
                   }}
                 >
                   <h3 className="mb-3">💼 Job Openings</h3>
-                  <p className="text-white-50 mb-0">Add, edit, or remove job openings for your company.</p>
+                  <p className="mb-0">Add, edit, or remove job openings for your company.</p>
                 </div>
               </Link>
             </motion.div>

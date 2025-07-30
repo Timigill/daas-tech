@@ -108,65 +108,70 @@ const AdminEditBlogForm = ({ blogId, onClose, onBlogUpdated }) => {
   };
 
   const inputStyle = {
-    backgroundColor: "#111",
-    color: "#fff",
-    border: "1px solid #8b5cf6",
+    backgroundColor: "var(--background)",
+    color: "var(--foreground)",
+    border: "1px solid var(--border-color)",
   };
 
   const labelStyle = {
-    color: "#8b5cf6",
-    fontWeight: "500",
+    color: "var(--accent)",
+    fontWeight: "700",
+    display:"flex",
+    TextAlign:"start",
   };
 
-  if (loading) return <div className="text-white">Loading...</div>;
+  if (loading) return <div style={{color:"var(--foreground)"}}>Loading...</div>;
 
   return (
     <form
       onSubmit={handleUpdate}
       className="p-4 rounded mb-5"
-      style={{ backgroundColor: "#000", color: "#fff", border: "1px solid #8b5cf6" }}
+      style={{ backgroundColor: "var(--background)", color: "var(--foreground)", border: "1px solid var(--border-color)" }}
     >
-      <h4 className="mb-4" style={{ color: "#8b5cf6" }}>Edit Blog</h4>
+      <h4 className="mb-4" style={{ color: "var(--accent)" }}>Edit Blog</h4>
 
       <div className="mb-3">
-        <label className="form-label" style={labelStyle}>Title</label>
+        <label className="form-label text-start" style={labelStyle}>Title</label>
         <input type="text" name="title" value={formData.title} onChange={handleChange} className="form-control" style={inputStyle} required />
       </div>
 
       <div className="mb-3">
-        <label className="form-label" style={labelStyle}>Meta Description</label>
+        <label className="form-label text-start" style={labelStyle}>Meta Description</label>
         <input type="text" name="metaDescription" value={formData.metaDescription} onChange={handleChange} className="form-control" style={inputStyle} />
       </div>
 
       <div className="mb-3">
-        <label className="form-label" style={labelStyle}>Image URL</label>
+        <label className="form-label text-start" style={labelStyle}>Image URL</label>
         <input type="text" name="image" value={formData.image} onChange={handleChange} className="form-control" style={inputStyle} />
       </div>
 
       <div className="mb-3">
-        <label className="form-label" style={labelStyle}>Date</label>
+        <label className="form-label text-start" style={labelStyle}>Date</label>
         <input type="date" name="date" value={formData.date} onChange={handleChange} className="form-control" style={inputStyle} required />
       </div>
 
       <div className="mb-3">
-        <label className="form-label" style={labelStyle}>Category</label>
+        <label className="form-label text-start" style={labelStyle}>Category</label>
         <input type="text" name="category" value={formData.category} onChange={handleChange} className="form-control" style={inputStyle} />
       </div>
 
       {/* ✅ TipTap Rich Text Editor */}
       <div className="mb-4">
-  <label className="form-label" style={labelStyle}>Content</label>
-  <div style={{ background: "#181622", padding: "12px", borderRadius: 8, border: "1px solid #8b5cf6" }}>
+  <label className="form-label text-start" style={labelStyle}>Content</label>
+  <div style={{ background: "var(--background)", padding: "12px", borderRadius: 8, border: "1px solid var(--border-color)" }}>
     <EditorToolbar editor={editor} />
     <EditorContent editor={editor} />
   </div>
 </div>
 
       <div className="d-flex justify-content-between">
-        <button type="submit" className="btn btn-primary" style={{ backgroundColor: "#8b5cf6", border: "none" }}>
+        <button type="submit" className="btn " style={{ backgroundColor: "var(--accent)", border: "none" }}>
           Update Blog
         </button>
-        <button type="button" onClick={onClose} className="btn btn-outline-light">
+        <button type="button" onClick={onClose} className="btn " style={{color:"var(--foreground)",
+          background:"var(--background)",
+          border:"2px solid var(--border-color)"
+          }}>
           Cancel
         </button>
       </div>

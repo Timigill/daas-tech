@@ -11,10 +11,10 @@ function Modal({ open, onClose, children }) {
   return (
     <div style={{
       position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-      background: 'rgba(0,0,0,0.35)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
+      background: 'var(--background)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
     }}>
-      <div style={{ background: '#181622', padding: 24, borderRadius: 10, minWidth: 320, boxShadow: '0 4px 32px #0008', color: '#fff', position: 'relative' }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: 10, right: 12, background: 'none', border: 'none', color: '#fff', fontSize: 20, cursor: 'pointer' }}>&times;</button>
+      <div style={{ background: '#181622', padding: 24, borderRadius: 10, minWidth: 320, boxShadow: '0 4px 32px var(--boxShadow)', color: 'var(--foreground)', position: 'relative' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: 10, right: 12, background: 'none', border: 'none', color: 'var(--foreground)', fontSize: 20, cursor: 'pointer' }}>&times;</button>
         {children}
       </div>
     </div>
@@ -72,8 +72,8 @@ export default function AdminBlogsPage() {
       className="d-flex flex-column align-items-center text-center px-3"
       style={{
         padding: "48px 0",
-        background: "#000",
-        color: "#fff",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
@@ -119,7 +119,7 @@ export default function AdminBlogsPage() {
         viewport={{ once: true }}
         style={{
           fontSize: 15,
-          color: "#bdbdbd",
+          color: "var(--muted-text)",
           maxWidth: 600,
           margin: "0 auto 40px auto",
         }}
@@ -132,10 +132,14 @@ export default function AdminBlogsPage() {
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h3 className="text-start">📝 Blog Manager</h3>
           <button
-            className="btn btn-outline-light"
+            className="btn"
             onClick={() => {
               setShowAddForm(!showAddForm);
               setEditingId(null); // Hide edit form if open
+            }}
+            style={{color:"var(--foreground)",
+              background:"var(--background)",
+              border:"2px solid var(--border-color)"
             }}
           >
             {showAddForm ? "Close Add Form" : "Add New Blog"}
@@ -161,7 +165,7 @@ export default function AdminBlogsPage() {
                   alignItems: 'flex-start',
                   justifyContent: 'space-between',
                   padding: '18px 0',
-                  borderBottom: '1px solid #23232a',
+                  borderBottom: '1px solid var(--accent)',
                   gap: 20,
                   width: '100%',
                 }}>
@@ -176,17 +180,17 @@ export default function AdminBlogsPage() {
                         objectFit: 'cover',
                         borderRadius: 8,
                         marginRight: 18,
-                        background: '#181622',
-                        boxShadow: '0 1px 6px rgba(0,0,0,0.10)',
+                        background: 'var(--background)',
+                        boxShadow: '0 1px 6px var(--boxShadow)',
                         flexShrink: 0,
                         marginTop: 2,
                       }}
                     />
                   )}
                   <div style={{ flex: 1, minWidth: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <div style={{ fontWeight: 600, fontSize: 18, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{blog.title}</div>
+                    <div style={{ fontWeight: 600, fontSize: 18, color: 'var(--foreground)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{blog.title}</div>
                     {blog.content && (
-                      <div style={{ fontSize: 15, color: '#bdbdbd', margin: '2px 0 0 0', whiteSpace: 'pre-line', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                      <div style={{ fontSize: 15, color: 'var(--muted-text)', margin: '2px 0 0 0', whiteSpace: 'pre-line', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
                         {(() => {
                           // Strip HTML tags from content
                           const text = blog.content.replace(/<[^>]+>/g, '');
@@ -194,13 +198,14 @@ export default function AdminBlogsPage() {
                         })()}
                       </div>
                     )}
-                    <div style={{ fontSize: 14, color: '#bdbdbd', marginTop: 2 }}>
+                    <div style={{ fontSize: 14, color: 'var(--muted-text)', marginTop: 2 }}>
                       {blog.date?.slice(0, 10)} | {blog.category}
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginLeft: 8 }}>
                     <button
                       className="btn btn-sm btn-outline-info"
+                      style={{border:"2px solid var(--border-color)"}}
                       onClick={() => {
                         setShowAddForm(false);
                         setEditingId(blog._id);
@@ -226,8 +231,8 @@ export default function AdminBlogsPage() {
       {/* Delete Confirmation Modal */}
       <Modal open={!!pendingDeleteId} onClose={() => setPendingDeleteId(null)}>
         <div style={{ textAlign: 'center', minWidth: 260 }}>
-          <h5 style={{ color: '#fff', marginBottom: 16 }}>Delete Blog?</h5>
-          <p style={{ color: '#bdbdbd', marginBottom: 24 }}>Are you sure you want to delete this blog? This action cannot be undone.</p>
+          <h5 style={{ color: 'var(--foreground)', marginBottom: 16 }}>Delete Blog?</h5>
+          <p style={{ color: 'var(--muted-text)', marginBottom: 24 }}>Are you sure you want to delete this blog? This action cannot be undone.</p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center' }}>
             <button
               className="btn btn-danger"

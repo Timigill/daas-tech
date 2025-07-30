@@ -64,38 +64,55 @@ export default function BookACall() {
   const timeSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
 
   useEffect(() => {
-  if (!selectedDate) {
-    setAvailableSlots([]);
-    setBookedSlotValues([]);
-    return;
-  }
-
-  // Convert date to YYYY-MM-DD in UTC+5 manually
-  const localDate = new Date(selectedDate);
-  const pkOffset = 5 * 60; // minutes
-  const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
-  const formattedDate = pkDate.toISOString().slice(0, 10);
-
-  fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
-    .then(async (res) => {
-      const text = await res.text();
-      try {
-        return JSON.parse(text);
-      } catch (e) {
-        console.error("Invalid or empty JSON response:", text);
-        return { slots: [], booked: [] }; // safe fallback
-      }
-    })
-    .then(data => {
-      setAvailableSlots(data.slots || []);
-      setBookedSlotValues(data.booked || []);
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
+    if (!selectedDate) {
       setAvailableSlots([]);
       setBookedSlotValues([]);
-    });
-}, [selectedDate, callType]);
+      return;
+    }
+
+    // Convert date to YYYY-MM-DD in UTC+5 manually
+    const localDate = new Date(selectedDate);
+    const pkOffset = 5 * 60; // minutes
+    const pkDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000 + pkOffset * 60000);
+    const formattedDate = pkDate.toISOString().slice(0, 10);
+
+    fetch(`/api/available-slots?date=${formattedDate}&duration=${callType}`)
+      .then(async (res) => {
+        const text = await res.text();
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          console.error("Invalid or empty JSON response:", text);
+          return { slots: [], booked: [] }; // safe fallback
+        }
+      })
+      .then(data => {
+        setAvailableSlots(data.slots || []);
+        setBookedSlotValues(data.booked || []);
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+        setAvailableSlots([]);
+        setBookedSlotValues([]);
+      });
+  }, [selectedDate, callType]);
+
+  // Dark/light mode detection
+  const useThemeFromHtmlClass = () => {
+    const [theme, setTheme] = useState('light');
+    useEffect(() => {
+      const observer = new MutationObserver(() => {
+        const isDark = document.documentElement.classList.contains('dark');
+        setTheme(isDark ? 'dark' : 'light');
+      });
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+      return () => observer.disconnect();
+    }, []);
+    return theme;
+  };
 
 
   const handleChange = e => {
@@ -134,17 +151,17 @@ export default function BookACall() {
       alert("Booking failed. Please try again.");
     }
   };
-
+  const theme = useThemeFromHtmlClass();
   const allSlots = useMemo(() => generateTimeSlots(9, 18, parseInt(callType, 10)), [callType]);
 
   return (
     <div className="book-call-main" style={{
-      background: "linear-gradient(to top right, rgba(164, 122, 255, 0.2), rgba(0, 0, 0, 0.5))",
+      background: "var(--card-bg)",
       color: "#fff",
       borderRadius: 18,
       maxWidth: 900,
       margin: "40px auto",
-      boxShadow: "0 8px 40px 0 rgba(0,0,0,0.25)",
+      boxShadow: "0 8px 40px 0 var(--card-border)",
       display: "flex",
       flexDirection: isMobile ? "column" : "row",
       alignItems: "center",
@@ -168,7 +185,7 @@ export default function BookACall() {
             padding: "30px 32px 0 32px",
             display: "flex",
             flexDirection: "column",
-            borderRight: isMobile ? "none" : "1px solid #23232a",
+            borderRight: isMobile ? "none" : "1px solid var(--card-border)",
             overflow: "hidden",
             minWidth: isMobile ? "100%" : undefined,
             alignItems: isMobile ? "center" : undefined,
@@ -179,20 +196,18 @@ export default function BookACall() {
           {phase === "info" && (
             <>
               <div style={{ fontWeight: 600, fontSize: 18 }}>
-                <Image src="/logo2.png" alt="Logo" width={120} height={30} />
+                <Image src={theme === 'dark' ? '/logo2.png' : '/llogo.png'} alt="logo" width={120} height={30} />
               </div>
-              <div className="mt-5" style={{ fontWeight: 700, fontSize: 30, margin: "12px 0 16px 0" }}>
+              <div className="mt-5" style={{ fontWeight: 700, fontSize: 30, margin: "12px 0 16px 0", color: "var(--foreground)" }}>
                 Schedule a Meeting
               </div>
-              <div style={{ display: "flex", alignItems: "center", marginBottom: 12, color: "#bdbdbd" }}>
+              <div style={{ display: "flex", alignItems: "center", marginBottom: 12, color: "var(--muted-text)" }}>
                 <span style={{ fontSize: 15, marginRight: 8 }}>⏰</span> 30/60 mins
               </div>
-              <div style={{ display: "flex", alignItems: "center", color: "#bdbdbd" }}>
+              <div style={{ display: "flex", alignItems: "center", color: "var(--muted-text)" }}>
                 <span style={{ fontSize: 15, marginRight: 8 }}>💻</span> Web conferencing details provided upon confirmation.
               </div>
-              <Image
-                src="/meet.jpeg"
-                alt="DaaS Tech"
+              {theme === 'dark' && <Image src="/meet.jpeg" alt="Meeting"
                 width={400}
                 height={300}
                 style={{
@@ -205,7 +220,7 @@ export default function BookACall() {
                   zIndex: 1,
                   pointerEvents: "none",
                 }}
-              />
+              />}
             </>
           )}
         </motion.div>
@@ -215,7 +230,7 @@ export default function BookACall() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
           style={{ padding: "48px 32px", display: "flex", flexDirection: "column", justifyContent: "flex-start" }}
         >
-          <div style={{ fontWeight: 600, fontSize: 20, marginBottom: 24 }}>Select a Date & Time</div>
+          <div style={{ fontWeight: 600, fontSize: 20, marginBottom: 24, color: "var(--foreground)" }}>Select a Date & Time</div>
           <Calendar
             onChange={date => {
               setSelectedDate(date);
@@ -231,8 +246,8 @@ export default function BookACall() {
             tileClassName={({ date }) =>
               selectedDate && date.toDateString() === selectedDate.toDateString() ? "selected-calendar-tile" : ""}
           />
-          <div style={{ marginTop: 12, color: "#bdbdbd", fontSize: 14 }}>
-            <span role="img" aria-label="timezone">🌐</span> All time slots are shown in Pakistan Standard Time (UTC+5).
+          <div style={{ marginTop: 12, color: "var(--muted-text)", fontSize: 14 }}>
+            <span role="img" aria-label="timezone"></span> All time slots are shown in Pakistan Standard Time (UTC+5).
           </div>
         </motion.div>
 
@@ -258,7 +273,7 @@ export default function BookACall() {
           {phase === "form" && !submitted && (
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: 16 }}>
-                <label style={{ fontWeight: 500 }}>Name</label>
+                <label style={{ fontWeight: 500,color:"var(--foreground)" }}>Name</label>
                 <input
                   type="text"
                   name="name"
@@ -269,68 +284,68 @@ export default function BookACall() {
                     width: "100%",
                     padding: "5px",
                     borderRadius: 8,
-                    border: "1px solid #23232a",
-                    background: "#18181b",
-                    color: "#fff",
+                    border: "1px solid var(--card-border)",
+                    background: "var(--codeinnerdiv)",
+                    color: "var(--foreground)",
                     marginTop: 4,
                     fontFamily: "Inter, sans-serif",
                   }}
                 />
               </div>
               <div style={{ marginBottom: 16 }}>
-  <label style={{ fontWeight: 500 }}>Time</label>
-  <select
-    value={selectedTime}
-    onChange={e => setSelectedTime(e.target.value)}
-    required
-    style={{
-      width: "100%",
-      padding: "5px",
-      borderRadius: 8,
-      border: "1px solid #23232a",
-      background: "#18181b",
-      color: "#fff",
-      fontFamily: "Inter, sans-serif",
-    }}
-    disabled={!selectedDate}
-  >
-    <option value="">Select a time slot</option>
-    {allSlots.map(slot => {
-      const isBooked = bookedSlotValues.includes(slot.value);
+                <label style={{ fontWeight: 500,color:"var(--foreground)" }}>Time</label>
+                <select
+                  value={selectedTime}
+                  onChange={e => setSelectedTime(e.target.value)}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "5px",
+                    borderRadius: 8,
+                    border: "1px solid var(--card-border)",
+                    background: "var(--codeinnerdiv)",
+                    color: "var(--foreground)",
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                  disabled={!selectedDate}
+                >
+                  <option value="">Select a time slot</option>
+                  {allSlots.map(slot => {
+                    const isBooked = bookedSlotValues.includes(slot.value);
 
-      // Check if slot is in the past (if selected date is today)
-      const now = new Date();
-      const isToday =
-        selectedDate &&
-        new Date(selectedDate).toDateString() === now.toDateString();
+                    // Check if slot is in the past (if selected date is today)
+                    const now = new Date();
+                    const isToday =
+                      selectedDate &&
+                      new Date(selectedDate).toDateString() === now.toDateString();
 
-      let isPast = false;
-      if (isToday) {
-        const [hour, minute] = slot.value.split(":").map(Number);
-        const slotTime = new Date();
-        slotTime.setHours(hour, minute, 0, 0);
-        now.setSeconds(0);
-        now.setMilliseconds(0);
-        isPast = slotTime <= now;
-      }
+                    let isPast = false;
+                    if (isToday) {
+                      const [hour, minute] = slot.value.split(":").map(Number);
+                      const slotTime = new Date();
+                      slotTime.setHours(hour, minute, 0, 0);
+                      now.setSeconds(0);
+                      now.setMilliseconds(0);
+                      isPast = slotTime <= now;
+                    }
 
-      const disabled = isBooked || isPast;
+                    const disabled = isBooked || isPast;
 
-      return (
-        <option
-          key={slot.value}
-          value={slot.value}
-          disabled={disabled}
-          style={{ color: disabled ? "#888" : "#fff" }}
-        >
-          {slot.label} {disabled ? "(Booked or Unavailable)" : ""}
-        </option>
-      );
-    })}
-  </select>
-</div>
+                    return (
+                      <option
+                        key={slot.value}
+                        value={slot.value}
+                        disabled={disabled}
+                        style={{ color: disabled ? "#888" : "var(--foreground)" }}
+                      >
+                        {slot.label} {disabled ? "(Booked or Unavailable)" : ""}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
               <div style={{ marginBottom: 16 }}>
-                <label style={{ fontWeight: 500 }}>Email</label>
+                <label style={{ fontWeight: 500, color:"var(--foreground)" }}>Email</label>
                 <input
                   type="email"
                   name="email"
@@ -341,16 +356,16 @@ export default function BookACall() {
                     width: "100%",
                     padding: "5px",
                     borderRadius: 8,
-                    border: "1px solid #23232a",
-                    background: "#18181b",
-                    color: "#fff",
+                    border: "1px solid var(--card-border)",
+                    background: "var(--codeinnerdiv)",
+                    color: "var(--foreground)",
                     marginTop: 4,
                     fontFamily: "Inter, sans-serif",
                   }}
                 />
               </div>
               <div style={{ marginBottom: 20 }}>
-                <label style={{ fontWeight: 500 }}>Purpose</label>
+                <label style={{ fontWeight: 500,color:"var(--foreground)" }}>Purpose</label>
                 <textarea
                   name="purpose"
                   value={form.purpose}
@@ -360,9 +375,9 @@ export default function BookACall() {
                     width: "100%",
                     padding: "10px",
                     borderRadius: 8,
-                    border: "1px solid #23232a",
-                    background: "#18181b",
-                    color: "#fff",
+                    border: "1px solid var(--card-border)",
+                    background: "var(--codeinnerdiv)",
+                    color: "var(--foreground)",
                     marginTop: 4,
                     fontFamily: "Inter, sans-serif",
                     resize: "vertical",
