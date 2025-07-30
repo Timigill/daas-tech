@@ -10,10 +10,14 @@ const BookingSchema = new mongoose.Schema({
   date: String,
   time: String,
   callType: String,
-  status: String,
-  reason: String,
-  result: String,
-  rejectionReason: String,
+  status: { type: String, enum: ['pending', 'approved', 'declined'], default: 'pending', required: true },
+  declineReason: String, // optional, for notes on decline
+  currentStatus: { type: String, enum: ['pending', 'scheduled', 'conducted', 'missed', 'rescheduled'], default: 'pending' },
+  result: String, // outcome or notes after meeting
+  resultReason: String, // reason for result (e.g., why missed/rescheduled)
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+  decisionAt: Date // when approved/declined
 });
 const Booking = mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 

@@ -84,46 +84,25 @@ export default function MeetingsList() {
     fetchMeetings();
   }, []);
 
-  const handleSubmit = async () => {
-    if (!selectedMeeting) return;
-
-    if (selectedMeeting.statusUpdateMode === 'approve') {
-      if (!selectedMeeting.status) {
-        toast.error('Please select a status');
-        return;
-      }
-      if ((selectedMeeting.status === 'rescheduled' || selectedMeeting.status === 'missed') && !selectedMeeting.reason) {
-        toast.error('Please enter a reason');
-        return;
-      }
-      if (selectedMeeting.status === 'conducted' && !selectedMeeting.result) {
-        toast.error('Please enter the meeting result');
-        return;
-      }
-    }
-    if (selectedMeeting.statusUpdateMode === 'decline') {
-      if (!selectedMeeting.rejectionReason) {
-        toast.error('Please provide a rejection reason');
-        return;
-      }
-    }
-
+  const handleSubmit = async (meetingData) => {
     setUpdating(true);
     try {
-      const res = await fetch(`/api/meetings/${selectedMeeting._id}`, {
+      const res = await fetch(`/api/meetings/${meetingData._id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          status: selectedMeeting.status,
-          reason: selectedMeeting.reason,
-          result: selectedMeeting.result,
-          rejectionReason: selectedMeeting.rejectionReason,
+          status: meetingData.status,
+          declineReason: meetingData.declineReason,
+          currentStatus: meetingData.currentStatus,
+          result: meetingData.result,
+          resultReason: meetingData.resultReason,
+          decisionAt: meetingData.decisionAt,
         }),
       });
       if (res.ok) {
         toast.success('Meeting updated successfully!');
-        setShowModal(false);
-        setSelectedMeeting(null);
+        // setShowModal(false);
+        // setSelectedMeeting(null);
         fetchMeetings();
       } else {
         const err = await res.json();
@@ -135,11 +114,12 @@ export default function MeetingsList() {
     setUpdating(false);
   };
 
-  const selectOptions = [
-    { value: 'pending', label: 'Pending' },
-    { value: 'rescheduled', label: 'Rescheduled' },
+  // Update select options for currentStatus
+  const statusOptions = [
+    { value: 'scheduled', label: 'Scheduled' },
+    { value: 'conducted', label: 'Conducted' },
     { value: 'missed', label: 'Missed' },
-    { value: 'conducted', label: 'Conducted' }
+    { value: 'rescheduled', label: 'Rescheduled' }
   ];
 
   if (loading) return <div style={{ color: '#fff' }}>Loading meetings...</div>;
@@ -162,6 +142,7 @@ export default function MeetingsList() {
               borderBottom: '1px solid #333'
             }}>
               <th style={thStyle}>Status</th>
+              <th style={thStyle}>Current Status</th>
               <th style={thStyle}>Result</th>
               <th style={thStyle}>Date</th>
               <th style={thStyle}>Time</th>
@@ -173,33 +154,19 @@ export default function MeetingsList() {
           </thead>
           <tbody>
             {meetings.map((meeting, idx) => {
-              // Determine status display
-              let statusDisplay = '-';
-              if (meeting.status === 'pending') {
-                statusDisplay = 'Pending';
-              } else if (meeting.status === 'declined') {
-                statusDisplay = `Declined${meeting.rejectionReason ? ': ' + meeting.rejectionReason : ''}`;
-              } else if (meeting.status === 'approved') {
-                statusDisplay = 'Approved';
-              } else if (meeting.status) {
-                statusDisplay = meeting.status.charAt(0).toUpperCase() + meeting.status.slice(1);
+              let statusDisplay = meeting.status ? meeting.status.charAt(0).toUpperCase() + meeting.status.slice(1) : '-';
+              if (meeting.status === 'declined' && meeting.declineReason) {
+                statusDisplay += `: ${meeting.declineReason}`;
               }
-              // Result display logic: only show if approved or conducted/rescheduled/missed
-              let resultDisplay = '-';
-              if (
-                meeting.status === 'conducted' ||
-                meeting.status === 'rescheduled' ||
-                meeting.status === 'missed' ||
-                (meeting.status === 'approved' && meeting.result)
-              ) {
-                resultDisplay = meeting.result || '-';
-              }
+              let currentStatusDisplay = meeting.currentStatus ? meeting.currentStatus.charAt(0).toUpperCase() + meeting.currentStatus.slice(1) : '-';
+              let resultDisplay = meeting.result || '-';
               return (
                 <tr key={meeting._id || idx} style={{
                   backgroundColor: idx % 2 === 0 ? 'rgba(0, 0, 0, 0.3)' : 'rgba(139, 92, 246, 0.05)',
                   borderBottom: '1px solid #222'
                 }}>
                   <td style={tdStyle}>{statusDisplay}</td>
+                  <td style={tdStyle}>{currentStatusDisplay}</td>
                   <td style={tdStyle}>{resultDisplay}</td>
                   <td style={tdStyle}>{meeting.date || '-'}</td>
                   <td style={tdStyle}>{meeting.time || '-'}</td>
@@ -209,7 +176,7 @@ export default function MeetingsList() {
                   <td style={tdStyle}>
                     <button
                       onClick={() => {
-                        setSelectedMeeting({ ...meeting, statusUpdateMode: null, status: undefined });
+                        setSelectedMeeting({ ...meeting, statusUpdateMode: null });
                         setShowModal(true);
                       }}
                       style={buttonStyle}
@@ -255,72 +222,106 @@ export default function MeetingsList() {
               color: '#fff',
               cursor: 'pointer'
             }}>&times;</button>
-
             <h2 style={{ textAlign: 'center', color: '#8b5cf6', marginBottom: '24px' }}>
               Meeting Details
             </h2>
-
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <p><strong style={{ color: '#8b5cf6' }}>Date:</strong> {selectedMeeting.date}</p>
               <p><strong style={{ color: '#8b5cf6' }}>Time:</strong> {selectedMeeting.time}</p>
             </div>
-
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <p><strong style={{ color: '#8b5cf6' }}>Name:</strong> {selectedMeeting.name}</p>
               <p><strong style={{ color: '#8b5cf6' }}>Call Type:</strong> {selectedMeeting.callType}</p>
             </div>
-
             <p style={{ marginBottom: '12px', display: "flex", textAlign: "flex-start" }}>
               <strong style={{ color: '#8b5cf6' }}>Email:</strong> {selectedMeeting.email}
             </p>
-
             <div style={{ border: '2px solid #8b5cf6', borderRadius: '8px', marginBottom: '12px', padding: '6px' }}>
               <p><strong style={{ color: '#8b5cf6', display: "flex", textAlign: "flex-start" }}>Purpose:</strong></p>
               <p style={{ display: "flex", textAlign: "flex-start" }}>{selectedMeeting.purpose}</p>
             </div>
-
-            {/* Status and Result summary */}
-            <div style={{ marginBottom: '12px', display: 'flex', gap: '24px' }}>
-              <div><strong style={{ color: '#8b5cf6' }}>Status:</strong> {(() => {
-                if (selectedMeeting.status === 'pending') return 'Pending';
-                if (selectedMeeting.status === 'declined') return `Declined${selectedMeeting.rejectionReason ? ': ' + selectedMeeting.rejectionReason : ''}`;
-                if (selectedMeeting.status === 'approved') return 'Approved';
-                if (selectedMeeting.status) return selectedMeeting.status.charAt(0).toUpperCase() + selectedMeeting.status.slice(1);
-                return '-';
-              })()}</div>
-              <div><strong style={{ color: '#8b5cf6' }}>Result:</strong> {selectedMeeting.result || '-'}</div>
-            </div>
-
-            {/* Pending: show approve/decline */}
+            {/* Approval/Decline controls if status is pending */}
             {selectedMeeting.status === 'pending' && (
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <button
-                  onClick={() => setSelectedMeeting(prev => ({ ...prev, statusUpdateMode: 'approve', status: undefined, result: undefined, reason: undefined }))}
-                  style={buttonStyle}
-                >
-                  Approve
-                </button>
-                <button
-                  onClick={() => setSelectedMeeting(prev => ({ ...prev, statusUpdateMode: 'decline', rejectionReason: '' }))}
-                  style={buttonStyle}
-                >
-                  Decline
-                </button>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
+                  <button
+                    onClick={() => setSelectedMeeting(prev => ({ ...prev, statusUpdateMode: 'approve' }))}
+                    style={buttonStyle}
+                  >
+                    Approve
+                  </button>
+                  <button
+                    onClick={() => setSelectedMeeting(prev => ({ ...prev, statusUpdateMode: 'decline', declineReason: '' }))}
+                    style={buttonStyle}
+                  >
+                    Decline
+                  </button>
+                </div>
+                {/* Decline reason input if declining */}
+                {selectedMeeting.statusUpdateMode === 'decline' && (
+                  <>
+                    <textarea
+                      placeholder='Reason for decline'
+                      value={selectedMeeting.declineReason || ''}
+                      onChange={e => setSelectedMeeting(prev => ({ ...prev, declineReason: e.target.value }))}
+                      rows={3}
+                      style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
+                    />
+                    <button onClick={async () => {
+                      setUpdating(true);
+                      await handleSubmit({
+                        ...selectedMeeting,
+                        status: 'declined',
+                        decisionAt: new Date(),
+                      });
+                      setUpdating(false);
+                    }} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
+                      {updating ? 'Updating...' : 'Submit Decline'}
+                    </button>
+                  </>
+                )}
+                {/* Approve action */}
+                {selectedMeeting.statusUpdateMode === 'approve' && (
+                  <button onClick={async () => {
+                    setUpdating(true);
+                    await handleSubmit({
+                      ...selectedMeeting,
+                      status: 'approved',
+                      decisionAt: new Date(),
+                    });
+                    setUpdating(false);
+                  }} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
+                    {updating ? 'Updating...' : 'Submit Approval'}
+                  </button>
+                )}
               </div>
             )}
-
-            {/* Approve mode: select status, then result/reason if needed */}
-            {selectedMeeting.statusUpdateMode === 'approve' && (
+            {/* After decision: allow updating currentStatus/result/resultReason */}
+            {selectedMeeting.status !== 'pending' && selectedMeeting.status !== 'declined' && (
               <div style={{ marginTop: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
                   <strong style={{ color: '#8b5cf6', whiteSpace: 'nowrap' }}>
-                    Select Status:
+                    Current Status:
                   </strong>
                   <div style={{ minWidth: 'fit-content' }}>
                     <Select
-                      options={selectOptions}
-                      value={selectOptions.find(opt => opt.value === selectedMeeting.status)}
-                      onChange={selected => setSelectedMeeting(prev => ({ ...prev, status: selected.value, result: '', reason: '' }))}
+                      options={(() => {
+                        // Only show valid next statuses, not the current one
+                        const curr = selectedMeeting.currentStatus;
+                        if (curr === 'scheduled') {
+                          return statusOptions.filter(opt => opt.value !== 'scheduled');
+                        } else if (curr === 'conducted') {
+                          return [];
+                        } else if (curr === 'missed' || curr === 'rescheduled') {
+                          // Optionally allow going to conducted from missed/rescheduled
+                          return statusOptions.filter(opt => opt.value === 'conducted');
+                        } else {
+                          return statusOptions;
+                        }
+                      })()}
+                      value={statusOptions.find(opt => opt.value === selectedMeeting.currentStatus) || null}
+                      onChange={selected => setSelectedMeeting(prev => ({ ...prev, currentStatus: selected.value }))}
+                      isDisabled={selectedMeeting.currentStatus === 'conducted'}
                       styles={{
                         ...customSelectStyles,
                         control: (base) => ({
@@ -337,105 +338,37 @@ export default function MeetingsList() {
                     />
                   </div>
                 </div>
-                {/* Reason for rescheduled/missed */}
-                {(selectedMeeting.status === 'rescheduled' || selectedMeeting.status === 'missed') && (
+                {/* Show Result only if conducted, Reason only if missed or rescheduled */}
+                {selectedMeeting.currentStatus === 'conducted' && (
                   <textarea
-                    placeholder={`Reason for ${selectedMeeting.status}`}
-                    value={selectedMeeting.reason || ''}
-                    onChange={e => setSelectedMeeting(prev => ({ ...prev, reason: e.target.value }))}
-                    rows={3}
-                    style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
-                  />
-                )}
-                {/* Result for conducted only */}
-                {selectedMeeting.status === 'conducted' && (
-                  <textarea
-                    placeholder='Enter meeting result'
+                    placeholder='Result (notes, outcome, etc.)'
                     value={selectedMeeting.result || ''}
                     onChange={e => setSelectedMeeting(prev => ({ ...prev, result: e.target.value }))}
-                    rows={3}
+                    rows={2}
                     style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
                   />
                 )}
-                <button onClick={handleSubmit} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
-                  {updating ? 'Updating...' : 'Submit'}
-                </button>
-              </div>
-            )}
-
-            {/* Decline mode: show rejection reason */}
-            {selectedMeeting.statusUpdateMode === 'decline' && (
-              <div style={{ marginTop: '16px' }}>
-                <textarea
-                  placeholder='Reason for rejection'
-                  value={selectedMeeting.rejectionReason || ''}
-                  onChange={e => setSelectedMeeting(prev => ({ ...prev, rejectionReason: e.target.value }))}
-                  rows={3}
-                  style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
-                />
-                <button onClick={handleSubmit} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
-                  {updating ? 'Updating...' : 'Submit Rejection'}
-                </button>
-              </div>
-            )}
-
-            {/* Already approved/conducted/missed/rescheduled: always show result dropdown and fields for non-pending, non-declined */}
-            {!selectedMeeting.statusUpdateMode && !['pending', 'declined'].includes(selectedMeeting.status) && (
-              <div style={{ marginTop: '16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                  <strong style={{ color: '#8b5cf6', whiteSpace: 'nowrap' }}>
-                    Result:
-                  </strong>
-                  <div style={{ minWidth: 'fit-content' }}>
-                    <Select
-                      options={selectOptions.filter(opt => opt.value !== 'pending')}
-                      value={selectOptions.find(opt => opt.value === selectedMeeting.status)}
-                      onChange={selected => setSelectedMeeting(prev => ({ ...prev, status: selected.value, result: '', reason: '' }))}
-                      styles={{
-                        ...customSelectStyles,
-                        control: (base) => ({
-                          ...base,
-                          backgroundColor: '#111',
-                          borderColor: '#8b5cf6',
-                          borderRadius: '6px',
-                          color: '#fff',
-                          padding: '4px',
-                          width: 'auto',
-                          minWidth: '150px'
-                        })
-                      }}
-                    />
-                  </div>
-                </div>
-                {/* Reason for rescheduled/missed */}
-                {(selectedMeeting.status === 'rescheduled' || selectedMeeting.status === 'missed') && (
+                {(selectedMeeting.currentStatus === 'missed' || selectedMeeting.currentStatus === 'rescheduled') && (
                   <textarea
-                    placeholder={`Reason for ${selectedMeeting.status}`}
-                    value={selectedMeeting.reason || ''}
-                    onChange={e => setSelectedMeeting(prev => ({ ...prev, reason: e.target.value }))}
-                    rows={3}
+                    placeholder='Reason (e.g., why missed/rescheduled)'
+                    value={selectedMeeting.resultReason || ''}
+                    onChange={e => setSelectedMeeting(prev => ({ ...prev, resultReason: e.target.value }))}
+                    rows={2}
                     style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
                   />
                 )}
-                {/* Result for conducted only */}
-                {selectedMeeting.status === 'conducted' && (
-                  <textarea
-                    placeholder='Enter meeting result'
-                    value={selectedMeeting.result || ''}
-                    onChange={e => setSelectedMeeting(prev => ({ ...prev, result: e.target.value }))}
-                    rows={3}
-                    style={{ width: '100%', padding: '8px', borderRadius: '6px', background: '#111', color: '#fff', border: '1px solid #8b5cf6', marginBottom: '12px' }}
-                  />
-                )}
-                <button onClick={handleSubmit} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
-                  {updating ? 'Updating...' : 'Update Result'}
+                <button onClick={async () => {
+                  setUpdating(true);
+                  await handleSubmit(selectedMeeting);
+                  setUpdating(false);
+                }} style={{ ...buttonStyle, display: 'block', margin: 'auto' }} disabled={updating}>
+                  {updating ? 'Updating...' : 'Update Meeting'}
                 </button>
               </div>
             )}
           </div>
         </div>
       )}
-
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
