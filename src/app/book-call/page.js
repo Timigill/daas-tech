@@ -247,7 +247,7 @@ export default function BookACall() {
               selectedDate && date.toDateString() === selectedDate.toDateString() ? "selected-calendar-tile" : ""}
           />
           <div style={{ marginTop: 12, color: "var(--muted-text)", fontSize: 14 }}>
-            <span role="img" aria-label="timezone">🌐</span> All time slots are shown in Pakistan Standard Time (UTC+5).
+            <span role="img" aria-label="timezone"></span> All time slots are shown in Pakistan Standard Time (UTC+5).
           </div>
         </motion.div>
 
