@@ -42,13 +42,13 @@ function Why() {
           Why Us
         </motion.span>
 
-        <motion.h1
+        <motion.h2
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-            fontSize: "calc(1.375rem + 1.5vw)",
+            // fontSize: "2.5rem",
             lineHeight: 1.1,
-            color: "var(--muted-text)",
+            color: "var(--foreground)",
             maxWidth: 700,
             margin: "0 auto",
           }}
@@ -59,7 +59,7 @@ function Why() {
           viewport={{ once: true }}
         >
           What Makes Us Stand Out in the Industry
-        </motion.h1>
+        </motion.h2>
         <motion.p
           className="mt-3"
           style={{
@@ -97,12 +97,12 @@ function Why() {
                 border: " 1px solid #222 ",
               }}>
               <h5
-                className="mb-4 text-white-50 text-start"
+                className="mb-4 text-start"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   fontSize: "1.5rem",
                   fontWeight: 600,
-                   color: "var(--muted-text)",
+                   color: "var(--foreground)",
                 }}
               >
                 Other Digital Solutions

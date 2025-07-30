@@ -52,7 +52,7 @@ function Team() {
         Our Team
       </motion.span>
 
-      <motion.h1
+      <motion.h2
         initial="hidden"
         whileInView="visible"
         variants={fadeInUp}
@@ -62,13 +62,14 @@ function Team() {
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
           lineHeight: 1.1,
-          color: "var(--muted-text)",
+          color: "var(--foreground)",
           maxWidth: 700,
-          margin: "0 auto"
+          margin: "0 auto",
+          // fontSize:"2.5rem"
         }}
       >
         Meet the Minds Behind DaaS
-      </motion.h1>
+      </motion.h2>
 
       <motion.p
         className="mt-3"

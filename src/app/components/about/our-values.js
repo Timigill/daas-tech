@@ -79,14 +79,14 @@ function Values() {
         Our Values
       </motion.span>
 
-      <motion.h1
+      <motion.h2
         className="mt-3"
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          fontSize: "1.7rem",
+          // fontSize: "2.5rem",
           lineHeight: 1.1,
-          color: "var(--muted-text)",
+          color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
         }}
@@ -95,7 +95,7 @@ function Values() {
         viewport={{ once: true }}
       >
         The Values Behind DaaS Tech
-      </motion.h1>
+      </motion.h2>
 
       <motion.p
         className="mt-3"

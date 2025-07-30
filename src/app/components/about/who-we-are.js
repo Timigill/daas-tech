@@ -79,13 +79,13 @@ function Who() {
       </motion.span>
 
       {/* Heading */}
-      <motion.h1
+      <motion.h2
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          fontSize: "1.7rem",
+          // fontSize: "2.5rem",
           lineHeight: 1.1,
-          color: "var(--muted-text)",
+          color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
         }}
@@ -96,7 +96,7 @@ function Who() {
         viewport={{ once: true }}
       >
         Who We Are
-      </motion.h1>
+      </motion.h2>
 
       {/* Subheading */}
       <motion.p
