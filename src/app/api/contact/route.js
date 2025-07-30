@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-import Contact from "../../db/contact"; 
+import Contact from "../../db/Contact"; 
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
