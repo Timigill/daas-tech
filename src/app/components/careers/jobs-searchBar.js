@@ -3,6 +3,7 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import dynamic from "next/dynamic";
+import { color } from "framer-motion";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
@@ -10,7 +11,7 @@ const Select = dynamic(() => import("react-select"), { ssr: false });
 const customSelectStyles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: "#111",
+    backgroundColor: "var(-card-bg)",
     border: "none",
     borderRadius: 0,
     borderBottom: state.isFocused
@@ -24,20 +25,20 @@ const customSelectStyles = {
   }),
   singleValue: (base) => ({
     ...base,
-    color: "#fff",
+    color: "var(--muted-text)",
   }),
   menu: (base) => ({
     ...base,
-    backgroundColor: "#000",
+    backgroundColor:"var(--card-bg)",
     border: "1px solid #222",
     zIndex: 9999,
   }),
   option: (base, state) => ({
     ...base,
     background: state.isFocused
-      ? "linear-gradient(135deg, #1b1525, #6a1b9a)"
+      ? "linear-gradient(135deg, var(--grad1), var(--grad2))"
       : "transparent",
-    color: "#fff",
+    color: "var(--muted-text)",
     fontFamily: "Inter, sans-serif",
     cursor: "pointer",
   }),
@@ -73,13 +74,15 @@ function Opening() {
       }}
     >
       {/* ✅ Title */}
-      <h1 className="text-center fw-bold mb-3 text-white">Job Openings</h1>
+      <h1 className="text-center fw-bold mb-3"
+      style={{color:"var(--foreground)"}}
+      >Job Openings</h1>
 
       {/* ✅ Search + Filters */}
       <div
         className="rounded mt-5 p-4"
         style={{
-          backgroundColor: "#111",
+          backgroundColor: "var(-card-bg)",
           boxShadow: "0px 4px 12px rgba(0,0,0,0.6)",
           border: "1px solid #222",
         }}
@@ -104,12 +107,14 @@ function Opening() {
             <FaSearch className="me-2 text-white-50" />
             <input
               type="text"
-              className="form-control border-0 bg-transparent text-white px-0"
+              className="form-control border-0 bg-transparent  px-0"
               placeholder="Job title or keyword"
               style={{
                 boxShadow: "none",
                 fontFamily: "Inter, sans-serif",
                 paddingBottom: "6px",
+                backgroundColor: "var(-card-bg)",
+                color:"var(-muted-text)",
               }}
             />
           </div>
@@ -122,6 +127,7 @@ function Opening() {
               placeholder="Job Type"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
               menuPosition="fixed"
+              
             />
           </div>
 
@@ -133,6 +139,7 @@ function Opening() {
               placeholder="Job Level"
               menuPortalTarget={typeof window !== "undefined" ? document.body : null}
               menuPosition="fixed"
+             
             />
           </div>
         </div>
