@@ -6,14 +6,14 @@ import Link from "next/link";
 
 const BlogCard = ({ _id, category, title, image, description, isAdmin, onEdit, onDelete }) => {
   const cardStyle = {
-    backgroundColor: "#111",
+    backgroundColor: "var(--background)",
     padding: "18px",
     borderRadius: "16px",
     height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    boxShadow: "0 0 12px rgba(139, 92, 246, 0.05)",
+    boxShadow: "0 0 12px var(--boxShadow)",
   };
 
   const imageStyle = {
@@ -25,14 +25,14 @@ const BlogCard = ({ _id, category, title, image, description, isAdmin, onEdit, o
   };
 
   const categoryStyle = {
-    color: "#8b5cf6",
+    color: "var(--accent)",
     fontSize: "12px",
     textTransform: "uppercase",
     fontWeight: 600,
   };
 
   const titleStyle = {
-    color: "#fff",
+    color: "var(--foreground)",
     fontSize: "16px",
     fontWeight: 600,
     lineHeight: 1.4,
@@ -79,13 +79,13 @@ const BlogCard = ({ _id, category, title, image, description, isAdmin, onEdit, o
         {isAdmin && (
           <div style={buttonGroupStyle}>
             <button
-              style={{ ...buttonStyle, background: "#8b5cf6", color: "#fff" }}
+              style={{ ...buttonStyle, background: "#8b5cf6", color: "var(--foreground)" }}
               onClick={onEdit}
             >
               Edit
             </button>
             <button
-              style={{ ...buttonStyle, background: "#ff4d4f", color: "#fff" }}
+              style={{ ...buttonStyle, background: "#ff4d4f", color: "var(--foreground)" }}
               onClick={onDelete}
             >
               Delete

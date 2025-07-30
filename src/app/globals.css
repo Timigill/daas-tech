@@ -3,54 +3,68 @@
   --foreground: #000000;
   --muted-text: #6c5a87;
   --accent: #8b5cf6;
-  --card-bg:  #edeaf3;
-  --card-border:  #d6c8fa;
+  --card-bg: #edeaf3;
+  --card-border: #d6c8fa;
   --border-color: #c2adf8;
-   --cicleGrad:radial-gradient(circle at center, #d6c8fa 60%, #d6c8fa 100%);
-   --codediv:#000000 ;
-   --codeinnerdiv:#ffff;
-   --grad1:  rgba(255, 255, 255, 0.9) ;
-   --grad2:rgba(164, 122, 255, 0.4);
-   --ctah2: rgb(140, 89, 250);
-   --boxShadow:rgba(205, 96, 238, 0.18);
-  --taskScrollWrapper:#ffff;
-  --homeservicesgrad1:rgba(117, 68, 233, 0);
+  --cicleGrad: radial-gradient(circle at center, #d6c8fa 60%, #d6c8fa 100%);
+  --codediv: #000000;
+  --codeinnerdiv: #ffff;
+  --th-text:black;
+  --grad1: rgba(255, 255, 255, 0.9);
+  --grad2: rgba(164, 122, 255, 0.4);
+  --grad3: rgba(255, 255, 255, 0.9);
+  --grad4: rgba(164, 122, 255, 0.2);
+  --grad5: transparent;
+  --grad6: transparent;
+  --ctah2: rgb(140, 89, 250);
+  --boxShadow: rgba(205, 96, 238, 0.18);
+  --taskScrollWrapper: #ffff;
+  --homeservicesgrad1: rgba(117, 68, 233, 0);
   --homeservicesgrad2: #eeeef0;
-  --input-bg:#d2d0d6;
-  --footer-text:#000000;
-   --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
+  --input-bg: transparent;
+  --footer-text: #000000;
+  --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.5) 0%, #fff 50%);
   --header-text: #000000;
   --mobile-menu-bg: #f9f9f9;
-  --overlay-bg: rgba(255,255,255,0.95);
+  --overlay-bg: rgba(255, 255, 255, 0.95);
   --border-color: #e5e5e5;
+  --tiles-bg: #edeaf3;
 }
 
 .dark {
-  --homeservicesgrad1:rgba(17,17,20,0);
+  --homeservicesgrad1: rgba(17, 17, 20, 0);
   --homeservicesgrad2: #111114;
-  --grad1:rgba(164, 122, 255, 0.2);
-  --grad2:#000;
+  --grad1: rgba(164, 122, 255, 0.2);
+  --grad2: #000;
+  --grad3: #000;
+  --grad4: rgba(164, 122, 255, 0.1);
+  --grad5: rgba(164, 122, 255, 0.1);
+  --grad6: rgba(0, 0, 0, 0.3);
   --ctah2: rgb(140, 89, 250);
-  --cicleGrad:radial-gradient(circle at center, #151515 60%, #101010 100%);
-  --codediv:#1f1f1f;
-  --codeinnerdiv:#1e1e1e;
+  --cicleGrad: radial-gradient(circle at center, #151515 60%, #101010 100%);
+  --codediv: #1f1f1f;
+  --codeinnerdiv: #1e1e1e;
   --background: #000000;
   --foreground: #ededed;
   --muted-text: #bdbdbd;
   --accent: #8b5cf6;
-  --card-border:none;
+  --card-border: none;
   --card-bg: #111114;
-  --footer-text:#ffffff;
+  --footer-text: #ffffff;
   --border-color: #23232a;
-  --ctah2:#ffffff;
-  --boxShadow:rgba(0,0,0,0.18);
-  --taskScrollWrapper:#18181b;
-  --input-bg:#111114;
+  --ctah2: #ffffff;
+  --boxShadow: rgba(0, 0, 0, 0.18);
+  --taskScrollWrapper: #18181b;
+  --input-bg: #111114;
   --header-bg: #000;
   --header-text: #fff;
   --mobile-menu-bg: #18122b;
   --overlay-bg: rgba(10, 6, 18, 0.95);
   --border-color: rgba(255, 255, 255, 0.1);
+  --grad3: #000;
+  --grad3: #000;
+  --tiles-bg: to top left, rgba(164, 122, 255, 0.1), #000;
+  --th-text: var(--accent);
 }
 
 html,
@@ -73,6 +87,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .ProseMirror {
   min-height: 250px;
   padding: 12px;
@@ -82,16 +97,21 @@ body {
   outline: none;
 }
 
-.ProseMirror h1, .ProseMirror h2 {
-  color: #8b5cf6;}
+.ProseMirror h1,
+.ProseMirror h2 {
+  color: #8b5cf6;
+}
+
 @keyframes rotateGlow {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
 .light-only {
   display: block;
 }
@@ -99,6 +119,7 @@ body {
 .dark .light-only {
   display: none;
 }
+
 /* Anchor tags */
 a {
   color: inherit;
@@ -147,7 +168,7 @@ input:focus {
 }
 
 ::placeholder {
-  color: #9b9999 !important;
+  color: var(--muted-text) !important;
   opacity: 1 !important;
 }
 
@@ -157,7 +178,7 @@ input:focus {
 }
 
 .flag-dropdown {
-  border: 1px solid #444 !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 .small {
@@ -176,10 +197,12 @@ input:focus {
 .footer-li li {
   font-size: 0.9rem !important;
   padding: 0.2rem 0;
-  width: min-content;
+  width: fit-content;
 }
-.footer-li , .footerh6 {
-  width: min-content;
+
+.footer-li,
+.footerh6 {
+  width: fit-content;
 }
 
 .footer-gradient {
@@ -284,6 +307,7 @@ input:focus {
   .banner-container {
     height: 40vh;
   }
+
   .privacy-title {
     font-size: 1.6rem;
   }
@@ -293,9 +317,11 @@ input:focus {
   .banner-container {
     height: 30vh;
   }
+
   .privacy-title {
     font-size: 1.3rem;
   }
+
   .privacy-description {
     font-size: 0.85rem;
   }
@@ -410,6 +436,7 @@ input:focus {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -419,6 +446,7 @@ input:focus {
   .getintouch {
     display: none !important;
   }
+
   .resp {
     width: 33% !important;
   }
@@ -465,8 +493,8 @@ a {
 
 .react-calendar__tile--active,
 .selected-calendar-tile {
-  background: var(--accent) !important;
-  color: #fff !important;
+  background: rgba(164, 122, 255, 0.3) !important;
+  color: #ffffff !important;
 }
 
 .react-calendar__tile:disabled {
@@ -511,14 +539,16 @@ a {
     box-shadow: none !important;
     padding: 0 !important;
   }
-  .book-call-main > div,
-  .book-call-main > .framer-motion-div {
+
+  .book-call-main>div,
+  .book-call-main>.framer-motion-div {
     width: 100% !important;
     min-width: 0 !important;
     padding: 20px 8px !important;
     border-radius: 0 !important;
     box-shadow: none !important;
   }
+
   .react-calendar {
     border-radius: 12px !important;
     font-size: 0.95rem !important;
@@ -536,8 +566,29 @@ a {
   border-radius: 14px;
   display: block;
   margin: 0 auto 20px auto;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.10);
 }
+
 .navbar-nav .nav-link {
   color: var(--header-text) !important;
+}
+
+.form-check-input:checked[type="checkbox"] {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='var(--foreground)' stroke='%23007bff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3E%3C/svg%3E");
+}
+
+.ProseMirror {
+  min-height: 250px;
+  padding: 12px;
+  background-color: var(--background);
+  color: var(--foreground);
+  border-radius: 8px;
+  outline: none;
+}
+.form-control {
+background-color: var(--input-bg) !important;
+}
+input:-webkit-autofill{
+background-color: var(--input-bg) !important;
+
 }
