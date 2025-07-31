@@ -68,7 +68,7 @@ export default function HomeServices() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginRight: "120px",
+            marginRight: "0px",
           }}
         >
           <div
@@ -209,11 +209,12 @@ export default function HomeServices() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
             width: "100%",
             maxWidth: 500,
             padding: "1rem",
+            textAlign: "center",
           }}
         >
           <a
@@ -279,11 +280,12 @@ export default function HomeServices() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
             width: "100%",
             maxWidth: 500,
             padding: "1rem",
+            textAlign: "center",
           }}
         >
           <a
@@ -357,7 +359,7 @@ export default function HomeServices() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginLeft: "120px",
+        
           }}
         >
           <div
@@ -495,7 +497,7 @@ export default function HomeServices() {
               right: 0,
               bottom: 0,
               height: "25%",
-               background:
+              background:
                 "linear-gradient(to bottom, var(--grad3) 0%, var(--grad4) 40%);)",
               zIndex: 2,
               pointerEvents: "none",
@@ -529,7 +531,7 @@ export default function HomeServices() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            marginRight: "120px",
+            marginRight: "0px",
           }}
         >
           {/* Card Header */}
@@ -707,11 +709,12 @@ export default function HomeServices() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
             width: "100%",
             maxWidth: 500,
             padding: "1rem",
+            textAlign: "center",
           }}
         >
           <a
@@ -777,11 +780,12 @@ export default function HomeServices() {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
             width: "100%",
             maxWidth: 500,
             padding: "1rem",
+            textAlign: "center",
           }}
         >
           <a
@@ -856,7 +860,7 @@ export default function HomeServices() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            marginLeft: "120px",
+        
           }}
         >
           {/* Header Section */}

@@ -64,6 +64,7 @@ export default function HomeServices() {
 
       {/* Heading */}
       <motion.h1
+      className="hero-heading"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -81,6 +82,7 @@ export default function HomeServices() {
 
       {/* Subtext */}
       <motion.p
+       className="her0-subheading"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

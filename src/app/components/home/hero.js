@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -15,13 +16,12 @@ const scaleIn = {
 export default function Hero() {
   return (
     <section
-      className="hero-section d-flex flex-column justify-content-center align-items-center text-center position-relative"
+      className="hero-section d-flex flex-column justify-content-center align-items-center text-center position-relative px-3 py-5"
       style={{
         minHeight: "100vh",
         background: "var(--background)",
         color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
-        padding: "0 1rem",
         overflow: "hidden",
       }}
     >
@@ -37,7 +37,7 @@ export default function Hero() {
         <ParticlesBg />
       </div>
 
-      {/* Radial gradient background (light mode only) */}
+      {/* Radial gradient background */}
       <div
         className="hero-radial-bg light-only"
         style={{
@@ -45,17 +45,19 @@ export default function Hero() {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: "700px",
-          height: "700px",
+          width: "80vw",
+          height: "80vw",
+          maxWidth: "700px",
+          maxHeight: "700px",
           zIndex: 1,
           pointerEvents: "none",
           borderRadius: "50%",
-          background: `radial-gradient(circle at 50%  50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,    
+          background: `radial-gradient(circle at 50% 50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,
         }}
       />
 
-      {/* Hero text */}
-      <header style={{ position: "relative", zIndex: 2 }}>
+      {/* Hero Content */}
+      <header style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: "800px" }}>
         <motion.span
           variants={scaleIn}
           initial="hidden"
@@ -67,56 +69,65 @@ export default function Hero() {
             background: "var(--accent)",
             color: "#fff",
             fontWeight: 600,
-            fontSize: 16,
+            fontSize: "clamp(0.85rem, 1vw, 1rem)",
             letterSpacing: 1,
+            padding: "0.4em 0.8em",
+            borderRadius: "0.5em",
           }}
         >
           New
         </motion.span>
+
         <motion.h1
           variants={scaleIn}
           custom={0.2}
-          className="fw-bold hero-title mb-2"
+          className="fw-bold mb-3  hero-heading"
           style={{
+            fontSize: "clamp(2rem, 6vw, 3rem)",
+            lineHeight: 1.2,
             fontWeight: 600,
-            fontSize: "2.7rem",
-            lineHeight: 1.1,
             color: "var(--foreground)",
-            width: "100%",
-            padding: "0 1rem",
+            marginBottom: "1rem",
           }}
         >
-          Intelligent Solutions <br/> for Modern Businesses.
+          Intelligent Solutions <br /> for Modern Businesses.
         </motion.h1>
+
         <motion.p
           variants={scaleIn}
           custom={0.4}
-          className="mb-4"
+          className="mb-4  hero-subheading"
           style={{
-            fontSize: 15,
-            maxWidth: 550,
-            margin: "0 auto",
-            padding: "0 1rem",
+            fontSize: "clamp(0.9rem, 2vw, 1rem)",
             color: "var(--muted-text)",
+            margin: "0 auto",
+            maxWidth: "600px",
+            padding: "0 1rem",
           }}
         >
           At DaaS Tech, we blend tech, design, and strategy. Where Problems Meet Possibilities.
         </motion.p>
-        <div className="d-flex flex-wrap justify-content-center gap-3 mt-3">
+
+        <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-3">
           <motion.a
             variants={scaleIn}
             custom={0.6}
             whileHover={{ scale: 1.1 }}
             href="/quote"
-            className="btn px-3 py-2"
+            className="btn"
             style={{
               background: "var(--accent)",
               color: "#fff",
               fontWeight: 600,
+              padding: "0.6rem 1.2rem",
+              borderRadius: "0.5rem",
+              textDecoration: "none",
+              fontSize: "clamp(0.9rem, 1vw, 1rem)",
             }}
           >
             Get a Quote
           </motion.a>
+
           <motion.a
             variants={scaleIn}
             custom={0.6}
@@ -125,11 +136,16 @@ export default function Hero() {
               backgroundColor: "rgba(0,0,0,0.05)",
             }}
             href="/services"
-            className="btn px-3 py-2"
+            className="btn"
             style={{
               background: "transparent",
               border: "1px solid var(--border-color)",
               color: "var(--foreground)",
+              padding: "0.6rem 1.2rem",
+              borderRadius: "0.5rem",
+              fontSize: "clamp(0.9rem, 1vw, 1rem)",
+              fontWeight: 600,
+              textDecoration: "none",
             }}
           >
             View Services

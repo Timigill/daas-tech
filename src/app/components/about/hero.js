@@ -42,44 +42,42 @@ function Hero() {
         </motion.span>
 
         {/* Main Heading */}
-        <motion.h1
-          className="mt-1"
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          custom={0.5}
-          viewport={{ once: true }}
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "2.5rem",
-            lineHeight: 1.1,
-            color: "var(--foreground)",
-            maxWidth: 700,
-            margin: "0 auto",
-          }}
-        >
-          Helping Businesses Grow
-        </motion.h1>
+ <motion.h1
+  className="mt-1 hero-heading"
+  initial="hidden"
+  whileInView="visible"
+  variants={fadeInUp}
+  custom={0.5}
+  viewport={{ once: true }}
+  style={{
+    fontFamily: "Inter, sans-serif",
+    fontWeight: 600,
+    lineHeight: 1.1,
+    color: "var(--foreground)",
+    maxWidth: 700,
+    margin: "0 auto",
+  }}
+>
+  Helping Businesses Grow
+</motion.h1>
 
-        {/* Subheading */}
-        <motion.p
-          className="mt-3"
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeInUp}
-          custom={1}
-          viewport={{ once: true }}
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "1rem",
-            color: "var(--muted-text)",
-            maxWidth: 680,
-            margin: "0 auto",
-          }}
-        >
-          DaaS Tech Innovations helps businesses streamline operations and grow faster with Digital Solutions.
-        </motion.p>
+<motion.p
+  className="mt-3 hero-subheading"
+  initial="hidden"
+  whileInView="visible"
+  variants={fadeInUp}
+  custom={1}
+  viewport={{ once: true }}
+  style={{
+    fontFamily: "Inter, sans-serif",
+    color: "var(--muted-text)",
+    maxWidth: 680,
+    margin: "0 auto",
+  }}
+>
+  DaaS Tech Innovations helps businesses streamline operations and grow faster with Digital Solutions.
+</motion.p>
+
       </div>
 
       <Trust />
