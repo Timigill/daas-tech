@@ -108,75 +108,64 @@ function Values() {
         Our values shape everything we do at DaaS. From innovation to integrity,
         we’re committed to building Digital solutions that empower businesses and drive real impact.
       </motion.p>
-
-      {/* Cards Grid with Responsive Glow and Layout */}
+      
+     {/* Cards Carousel / Grid */}
+<div className="values-card-container">
+  {valuesData.map((item, index) => (
+    <motion.div
+      key={index}
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeInUp}
+      custom={index + 1.5}
+      viewport={{ once: true }}
+      className="values-card-wrapper"
+    >
       <div
-        className="d-flex flex-wrap justify-content-center gap-3"
+        className="p-4 shadow rounded h-100"
         style={{
-          maxWidth: "1000px",
-          margin: "0 auto",
+          border: "1px solid var(--border-color)",
+          background: item.gradient,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
         }}
       >
-        {valuesData.map((item, index) => (
-          <motion.div
-            key={index}
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            custom={index + 1.5}
-            viewport={{ once: true }}
+        <div
+          className="d-flex gap-2 mb-2 align-items-center"
+          style={{ color: "var(--foreground)" }}
+        >
+          {item.icon}
+          <h5
+            className="mb-0 text-start"
             style={{
-              flex: "0 0 calc(50% - 1rem)",
-              maxWidth: "calc(50% - 1rem)",
-              minWidth: "150px",
-              height: "150px",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "15px",
+              color: "var(--foreground)",
             }}
           >
-            <div
-              className="p-4 shadow rounded h-100"
-              style={{
-                border: "1px solid var(--border-color)",
-                background: item.gradient,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-              }}
-            >
-              <div
-                className="d-flex gap-2 mb-2 align-items-center"
-                style={{ color: "var(--foreground)" }}
-              >
-                {item.icon}
-                <h5
-                  className="mb-0 text-start"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                    fontSize: "15px",
-                    color: "var(--foreground)",
-                  }}
-                >
-                  {item.title}
-                </h5>
-              </div>
-              <p
-                className="text-start"
-                style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "0.85rem",
-                  color: "var(--muted-text)",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                }}
-              >
-                {item.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+            {item.title}
+          </h5>
+        </div>
+        <p
+          className="text-start"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "0.85rem",
+            color: "var(--muted-text)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {item.description}
+        </p>
       </div>
+    </motion.div>
+  ))}
+</div>
 
     </motion.div>
   );

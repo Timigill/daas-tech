@@ -180,125 +180,182 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 
 const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i = 1) => ({
-        opacity: 1,
-        y: 0,
-        transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' }
-    }),
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.6, ease: 'easeOut' }
+  }),
 };
 
-// 🟣 Data Array for Cards
 const valuesData = [
-    {
-        title: 'Integrity is everything',
-        description:
-            'The scientific rigor of our products is paralleled by the ethical and transparent nature of our people and actions. Through honesty, we earn and maintain trust.',
-        image: '/Careers/integrity.png',
-        alt: 'Icon representing integrity',
-        bg: "linear-gradient(to bottom right,  var(--grad3), var(--grad4))",
-    },
-    {
-        title: 'Be bold and innovate',
-        description:
-            'Living in such exciting times fuels our courage and creativity. We\'re not content with just celebrating change; we\'re actively driving the transformation of our industry.',
-        image: '/Careers/bulb.png',
-        alt: 'Icon representing innovation',
-        bg: "linear-gradient(to bottom left,  var(--grad3), var(--grad4))",
-    },
-    {
-        title: 'Achieve as a team',
-        description:
-            'We prioritize people and their immense potential, valuing everyone\'s opinions as we work towards shared goals. By engaging deeply with each other, we aim to create even better products.',
-        image: '/Careers/hand.png',
-        alt: 'Icon representing teamwork',
-        bg: "linear-gradient(to top right,  var(--grad3), var(--grad4))",
-    },
-    {
-        title: 'Belief in balance',
-        description:
-            'Encouraging wellness and promoting a positive work-life balance leads to healthier, happier individuals, which in turn creates healthier, happier workplaces.',
-        image: '/Careers/default.png',
-        alt: 'Icon representing balance',
-        bg: "linear-gradient(to top left, var(--grad3), var(--grad4))",
-    },
+  {
+    title: 'Integrity is everything',
+    description:
+      'The scientific rigor of our products is paralleled by the ethical and transparent nature of our people and actions. Through honesty, we earn and maintain trust.',
+    image: '/Careers/integrity.png',
+    alt: 'Icon representing integrity',
+    bg: "linear-gradient(to bottom right,  var(--grad3), var(--grad4))",
+  },
+  {
+    title: 'Be bold and innovate',
+    description:
+      'Living in such exciting times fuels our courage and creativity. We\'re not content with just celebrating change; we\'re actively driving the transformation of our industry.',
+    image: '/Careers/bulb.png',
+    alt: 'Icon representing innovation',
+    bg: "linear-gradient(to bottom left,  var(--grad3), var(--grad4))",
+  },
+  {
+    title: 'Achieve as a team',
+    description:
+      'We prioritize people and their immense potential, valuing everyone\'s opinions as we work towards shared goals. By engaging deeply with each other, we aim to create even better products.',
+    image: '/Careers/hand.png',
+    alt: 'Icon representing teamwork',
+    bg: "linear-gradient(to top right,  var(--grad3), var(--grad4))",
+  },
+  {
+    title: 'Belief in balance',
+    description:
+      'Encouraging wellness and promoting a positive work-life balance leads to healthier, happier individuals, which in turn creates healthier, happier workplaces.',
+    image: '/Careers/default.png',
+    alt: 'Icon representing balance',
+    bg: "linear-gradient(to top left, var(--grad3), var(--grad4))",
+  },
 ];
 
 function Values() {
-    return (
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  return (
+    <motion.div
+      className="d-flex flex-column align-items-center text-center py-5 px-3"
+      style={{ minHeight: '100vh' }}
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeInUp}
+      viewport={{ once: true }}
+    >
+      <motion.h1
+        className="mt-2"
+        style={{
+          fontFamily: 'Inter, sans-serif',
+          fontWeight: 600,
+          fontSize: '2.2rem',
+          lineHeight: 1.2,
+          color: "var(--foreground)",
+          maxWidth: '800px',
+          margin: '0 auto',
+        }}
+        variants={fadeInUp}
+        custom={0.1}
+      >
+        We live by our values
+      </motion.h1>
+
+      {/* If Mobile → Carousel */}
+      {isMobile ? (
         <motion.div
-            className="d-flex flex-column align-items-center text-center py-5 px-3"
-            style={{ minHeight: '100vh' }}
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={{ once: true }}
+          className="d-flex gap-3 mt-5 px-2"
+          style={{
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+          }}
         >
-            <motion.h1
-                className="mt-2"
-                style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: 600,
-                    fontSize: '2.2rem',
-                    lineHeight: 1.2,
-                     color: "var(--foreground)",
-                    maxWidth: '800px',
-                    margin: '0 auto',
-                }}
-                variants={fadeInUp}
-                custom={0.1}
+          {valuesData.map((item, index) => (
+            <motion.div
+              key={index}
+              className="flex-shrink-0"
+              style={{
+                width: '80%',
+                scrollSnapAlign: 'center',
+              }}
+              variants={fadeInUp}
+              custom={index + 0.2}
             >
-                We live by our values
-            </motion.h1>
-
-            <div className="container mt-5" style={{ zIndex: 1 }}>
-                <div className="row g-4 justify-content-center">
-                    {valuesData.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            className="col-12 col-md-6 col-lg-6"
-                            variants={fadeInUp}
-                            custom={index + 0.2}
-                        >
-                            <div
-                                className="p-4 shadow rounded h-100"
-                                style={{
-                                    border: '1px solid #222',
-                                    background: item.bg,
-                                    color: "var(--foreground)",
-                                }}
-                            >
-                                <Image src={item.image} alt={item.alt} width={80} height={80} />
-                                <h5
-                                    className="mt-3 mb-2"
-                                    style={{
-                                        color: "var(--foreground)", // ✅ fixed
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: '20px',
-                                    }}
-                                >
-                                    {item.title}
-                                </h5>
-                                <p
-                                    style={{
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: '1rem',
-                                        maxWidth: 500,
-                                        color: "var(--muted-text)",
-                                    }}
-                                >
-                                    {item.description}
-                                </p>
-                            </div>
-
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
+              <div
+                className="p-4 shadow rounded h-100"
+                style={{
+                  border: '1px solid #222',
+                  background: item.bg,
+                  color: "var(--foreground)",
+                }}
+              >
+                <Image src={item.image} alt={item.alt} width={80} height={80} />
+                <h5
+                  className="mt-3 mb-2"
+                  style={{
+                    color: "var(--foreground)",
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '20px',
+                  }}
+                >
+                  {item.title}
+                </h5>
+                <p
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '1rem',
+                    color: "var(--muted-text)",
+                  }}
+                >
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
-    );
+      ) : (
+        // Desktop → Grid layout
+        <div className="container mt-5" style={{ zIndex: 1 }}>
+          <div className="row g-4 justify-content-center">
+            {valuesData.map((item, index) => (
+              <motion.div
+                key={index}
+                className="col-12 col-md-6 col-lg-6"
+                variants={fadeInUp}
+                custom={index + 0.2}
+              >
+                <div
+                  className="p-4 shadow rounded h-100"
+                  style={{
+                    border: '1px solid #222',
+                    background: item.bg,
+                    color: "var(--foreground)",
+                  }}
+                >
+                  <Image src={item.image} alt={item.alt} width={80} height={80} />
+                  <h5
+                    className="mt-3 mb-2"
+                    style={{
+                      color: "var(--foreground)",
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '20px',
+                    }}
+                  >
+                    {item.title}
+                  </h5>
+                  <p
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: '1rem',
+                      maxWidth: 500,
+                      color: "var(--muted-text)",
+                    }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
 }
 
 export default Values;

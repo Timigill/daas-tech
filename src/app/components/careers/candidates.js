@@ -26,11 +26,11 @@ function Candidates() {
             viewport={{ once: true }}
         >
             <motion.h1
-                className="mt-2"
+                className="mt-2 hero-heading"
                 style={{
                     fontFamily: "Inter, sans-serif",
                     fontWeight: 600,
-                    fontSize: "2.2rem",
+                    // fontSize: "2.2rem",
                     lineHeight: 1.2,
                     color: "var(--foreground)",
                     maxWidth: "850px",
