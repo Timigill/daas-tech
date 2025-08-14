@@ -421,12 +421,18 @@ input:focus {
 }
 
 .slider-image {
-  width: 130px;
+  width: 130px; /* default for desktop */
   height: auto;
   margin-right: 1rem;
   flex-shrink: 0;
 }
 
+@media (max-width: 600px) {
+  .slider-image {
+    width: 100px; /* smaller for mobile */
+    margin-right: 0.5rem;
+  }
+}
 @keyframes slideLeft {
   0% {
     transform: translateX(0%);
@@ -602,3 +608,160 @@ a {
   border-bottom: 1px solid #6a1b9a;
   outline: none;
 }
+
+/* ========== Hero Component Styles ========== */
+h1.hero-heading {
+  font-size: 2.5rem;
+}
+
+p.hero-subheading {
+  font-size: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  h1.hero-heading {
+    font-size: 2rem;
+  }
+
+  p.hero-subheading {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  h1.hero-heading {
+    font-size: 1.6rem;
+  }
+
+  p.hero-subheading {
+    font-size: 0.875rem;
+  }
+}
+
+/* ========================
+   WHO Section Styles
+   ======================== */
+
+/* Headings & Paragraph */
+.who-heading {
+  font-size: 2.2rem;
+}
+
+.who-subheading {
+  font-size: 1rem;
+}
+
+/* WHO Card Container */
+.who-card-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  overflow-y: hidden;
+  /* overflow-x: auto; */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 1rem;
+}
+
+/* Single Card */
+.who-card-wrapper {
+  flex: 0 0 85%;
+  max-width: 300px;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+  .who-heading {
+    font-size: 1.6rem;
+  }
+
+  .who-subheading {
+    font-size: 0.9rem;
+  }
+  .who-card-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .who-card-wrapper {
+    flex: 0 0 30%;
+    max-width: 300px;
+  }
+}
+
+.who-card {
+  background: linear-gradient(to top left, var(--grad1), var(--grad2));
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 160px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ========= Responsive Fixes ========= */
+
+/* Desktop (default grid) */
+.values-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.values-card-wrapper {
+  flex: 0 0 calc(50% - 1rem);
+  max-width: calc(50% - 1rem);
+  min-width: 150px;
+  height: 150px;
+}
+
+/* Mobile: Carousel Mode */
+@media (max-width: 768px) {
+  .values-card-container {
+    display: flex;
+    flex-wrap: wrap; 
+    overflow-x: auto; /* enable horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    gap: 1rem;
+    padding-bottom: 10px;
+
+    /* Enable snap carousel */
+    scroll-snap-type: x mandatory;
+  }
+
+  .values-card-container::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+
+  .values-card-wrapper {
+    flex: 0 0 240px; /* fixed width for each card */
+    max-width: 240px;
+    scroll-snap-align: start; /* snap to card start */
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .values-card {
+    flex: 0 0 calc(50% - 1rem) !important;
+    max-width: calc(50% - 1rem) !important;
+    height: 150px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media (min-width: 992px) {
+  .cta-block {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}
+

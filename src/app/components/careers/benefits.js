@@ -34,13 +34,12 @@ function Benefits() {
     >
       {/* Heading */}
       <motion.h1
-        className="mt-1"
+        className="mt-1 hero-heading"
         variants={fadeInUp}
         custom={0.2}
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          fontSize: "2.5rem",
           lineHeight: 1.1,
          color: "var(--foreground)",
           maxWidth: 700,
@@ -52,7 +51,7 @@ function Benefits() {
 
       {/* Subheading */}
       <motion.p
-        className="mt-3 "
+        className="mt-3 hero-subheading"
         variants={fadeInUp}
         custom={0.4}
         style={{

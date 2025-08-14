@@ -95,7 +95,7 @@ function Team() {
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
-              className="col-md-3"
+              className={`col-sm-6 col-md-3 ${index === teamMembers.length - 1 ? 'd-none d-md-block' : ''}`}
               initial="hidden"
               whileInView="visible"
               variants={fadeInUp}

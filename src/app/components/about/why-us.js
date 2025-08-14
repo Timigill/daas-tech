@@ -92,9 +92,9 @@ function Why() {
             custom={1.5}
             viewport={{ once: true }}
           >
-            <div className="p-4 shadow rounded text-white h-100"
+            <div className="p-4 shadow rounded  h-100"
               style={{
-                border: " 1px solid #222 ",
+                border: " 1px solid var(--border-color) ",
               }}>
               <h5
                 className="mb-4 text-start"
@@ -117,7 +117,7 @@ function Why() {
                 "One-size-fits-all solutions",
 
               ].map((text, idx) => (
-                <div key={idx} className="d-flex align-items-start gap-2 mb-3 text-white-50">
+                <div key={idx} className="d-flex align-items-start gap-2 mb-3 ">
                   <RxCross2 size={20} style={{ flexShrink: 0,  color: "var(--muted-text)", }} />
                   <p
                     className="mb-0 text-start"
@@ -143,10 +143,10 @@ function Why() {
             viewport={{ once: true }}
           >
             <div
-              className="p-4 shadow rounded text-white h-100"
+              className="p-4 shadow rounded  h-100"
               style={{
                 background: "radial-gradient(circle at top center, var(--grad4) 0%, var(--grad3) 40%)",
-                border: " 1px solid #222 ",
+                border: " 1px solid var(--border-color) ",
               }}
             >
               <h5
@@ -179,7 +179,9 @@ function Why() {
                     style={{
                       fontFamily: "Inter, sans-serif",
                       fontSize: "1rem",
-                      color:'var(--foreground)'
+                      color:'var(--foreground)',
+                      textAlign:"start",
+
                     }}
                   >
                     {text}

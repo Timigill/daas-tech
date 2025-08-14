@@ -9,7 +9,6 @@ import {
 import { FaUserGroup } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-// Animation variant
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -19,7 +18,6 @@ const fadeInUp = {
   }),
 };
 
-// Values data
 const valuesData = [
   {
     icon: <PiLightbulbFill size={23} />,
@@ -33,24 +31,23 @@ const valuesData = [
     title: "Committed to Integrity & Trust",
     description:
       "Trust and transparency are at the core of everything we do for our clients.",
-     gradient: "linear-gradient(to bottom left,  var(--grad3), var(--grad4))",
+    gradient: "linear-gradient(to bottom left,  var(--grad3), var(--grad4))",
   },
   {
     icon: <PiRocketLaunchFill size={23} />,
     title: "Empowering Business Growth",
     description:
       "We help businesses scale faster with efficiency, reducing time and unlocking new opportunities.",
-     gradient: "linear-gradient(to top right,  var(--grad3), var(--grad4))",
+    gradient: "linear-gradient(to top right,  var(--grad3), var(--grad4))",
   },
   {
     icon: <FaUserGroup size={23} />,
     title: "Putting Customers First",
     description:
       "Your success is our priority — we build solutions that truly make an impact.",
-     gradient: "linear-gradient(to top left, var(--grad3), var(--grad4))",
-    }
+    gradient: "linear-gradient(to top left, var(--grad3), var(--grad4))",
+  },
 ];
-
 
 function Values() {
   return (
@@ -61,7 +58,6 @@ function Values() {
       variants={fadeInUp}
       viewport={{ once: true }}
     >
-      {/* Heading */}
       <motion.span
         variants={fadeInUp}
         custom={0.6}
@@ -84,7 +80,6 @@ function Values() {
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
-          // fontSize: "2.5rem",
           lineHeight: 1.1,
           color: "var(--foreground)",
           maxWidth: 700,
@@ -113,79 +108,65 @@ function Values() {
         Our values shape everything we do at DaaS. From innovation to integrity,
         we’re committed to building Digital solutions that empower businesses and drive real impact.
       </motion.p>
-
-      {/* Cards Section with Background Glow */}
-      <div className="d-flex justify-content-center py-5 position-relative w-100">
-        {/* Radial Glow Background */}
+      
+     {/* Cards Carousel / Grid */}
+<div className="values-card-container">
+  {valuesData.map((item, index) => (
+    <motion.div
+      key={index}
+      initial="hidden"
+      whileInView="visible"
+      variants={fadeInUp}
+      custom={index + 1.5}
+      viewport={{ once: true }}
+      className="values-card-wrapper"
+    >
+      <div
+        className="p-4 shadow rounded h-100"
+        style={{
+          border: "1px solid var(--border-color)",
+          background: item.gradient,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+        }}
+      >
         <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 500,
-            height: 500,
-            background: "linear-gradient(to bottom right,var(--grad1), var(--grad2))",
-            borderRadius: "50%",
-            filter: "blur(60px)",
-            zIndex: 0,
-            pointerEvents: "none",
-          }}
-        ></div>
-
-        {/* Card Grid */}
-        <div className="container" style={{ zIndex: 1 }}>
-          <div className="row g-4 justify-content-center">
-            {valuesData.map((item, index) => (
-              <motion.div
-                key={index}
-                className="col-12 col-md-6 col-lg-5"
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeInUp}
-                custom={index + 1.5}
-                viewport={{ once: true }}
-              >
-                <div
-                  className="p-4 shadow rounded  h-100"
-                  style={{
-                    border: "1px solid #222",
-                       background: item.gradient,
-                    // background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
-                  }}
-                >
-                  <div className="d-flex gap-2 mb-2 align-items-center"
-                  style={{ color: "var(--foreground)",}}
-                  >
-                    {item.icon}
-                    <h5
-                      className="mb-0 text-start"
-                      style={{
-                        fontFamily: "Inter, sans-serif",
-                        fontSize: "15px",
-                          color: "var(--foreground)",
-                      }}
-                    >
-                      {item.title}
-                    </h5>
-                  </div>
-                  <p
-                    className="text-start"
-                    style={{
-                      fontFamily: "Inter, sans-serif",
-                      fontSize: "1rem",
-                      maxWidth: 460,
-                    color: "var(--muted-text)",
-                    }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          className="d-flex gap-2 mb-2 align-items-center"
+          style={{ color: "var(--foreground)" }}
+        >
+          {item.icon}
+          <h5
+            className="mb-0 text-start"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "15px",
+              color: "var(--foreground)",
+            }}
+          >
+            {item.title}
+          </h5>
         </div>
+        <p
+          className="text-start"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "0.85rem",
+            color: "var(--muted-text)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {item.description}
+        </p>
       </div>
+    </motion.div>
+  ))}
+</div>
+
     </motion.div>
   );
 }
