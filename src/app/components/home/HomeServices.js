@@ -1,7 +1,8 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, time } from "framer-motion";
 import "@/app/globals.css";
+import { Store } from "lucide-react";
 
 export default function HomeServices() {
   return (
@@ -65,14 +66,15 @@ export default function HomeServices() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
+        className="hero-heading"
         style={{
-          fontWeight: 700,
+          fontWeight: 600,
           lineHeight: 1.15,
           marginBottom: 16,
           maxWidth: 700,
         }}
       >
-        Web Solutions That Take Your Business Online
+        Websites That <br/>Take Your Business Online
       </motion.h1>
 
       {/* Subtext */}
@@ -142,33 +144,24 @@ export default function HomeServices() {
           >
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               <span style={{
-                background: "var(--bg-card)",
-                color: "var(--foreground)",
-                fontWeight: 600,
-                fontSize: 13,
-                borderRadius: 7,
-                padding: "4px 14px",
-              }}>All Tasks</span>
-              <span style={{
                 background: "transparent",
-                color: "var(--muted-text)",
+                color: "var(--foreground)",
                 fontWeight: 500,
                 fontSize: 13,
                 borderRadius: 7,
                 padding: "4px 14px",
                 border: "1px solid var(--border-color)",
-              }}>Waiting for approval</span>
+              }}>Tailored Websites for any Industry</span>
             </div>
 
             <div className="task-scroll-wrapper">
               <div className="task-scroll">
                 {[
-                  { title: "Payroll management", time: "Due on 2nd July", icon: "⏰" },
-                  { title: "Employee Tracking", time: "2 days ago", icon: "✔️" },
-                  { title: "Social media post", time: "Cancelled by user", icon: "❌" },
-                  { title: "Lead list", time: "70% prepared", icon: "📋" },
-                  { title: "Campaign Draft", time: "Due tomorrow", icon: "📌" },
-                  { title: "Onboarding Docs", time: "Completed", icon: "📁" },
+                  { title: "E-Commerece", time: "Online Store", icon: "🏪" },
+                  { title: "Blog Sites", time: "News Site", icon: "💻" },
+                  { title: "Online Booking System", time: "Clinic Website", icon: "👨‍⚕️" },
+                  { title: "AI Tools", time: "ChatGPT ", icon: "📋" },
+                  { title: "Hotel Management", time: "Room Booking", icon: "🚪" },
                 ].map((task, idx) => (
                   <div key={idx} style={{
                     display: "flex",
@@ -181,7 +174,7 @@ export default function HomeServices() {
                   }}>
                     <div>
                       <span style={{ fontWeight: 600, fontSize: 14 }}>{task.title}</span>
-                      <div style={{ color: "var(--text-muted)", fontSize: 12 }}>{task.time}</div>
+                      <div style={{ color: "var(--text-muted)", textAlign:"left", fontSize: 12 }}>{task.time}</div>
                     </div>
                     <span style={{
                       display: "inline-block",
@@ -242,10 +235,12 @@ export default function HomeServices() {
             Custom Websites
           </a>
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
-            Website Tasks & Workflow Automation
+            Tailored Websites for any Industry
           </h3>
           <p style={{ color: "var(--muted-text)", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
-            We help you create an engaging, responsive, Fast and Secure, SEO Ready website that showcases your services, attracts more visitors, and builds your brand.
+           We design and develop websites that fit every business from startups to enterprises. Our websites are engaging, 
+           responsive, fast, and SEO-ready, built to showcase your services, attract more visitors, and strengthen your brand.
+        
           </p>
           <h4 style={{ fontWeight: 600, fontSize: "1.1rem", marginBottom: 12 }}>
             Let’s build your online presence today.

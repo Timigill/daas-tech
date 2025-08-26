@@ -20,7 +20,7 @@
   --homeservicesgrad2: #eeeef0;
   --input-bg: #d2d0d6;
   --footer-text: #000000;
-  --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%);
+  /* --header-bg: linear-gradient(to bottom, rgba(164, 122, 255, 0.8) 0%, #fff 100%); */
   --header-text: #000000;
   --mobile-menu-bg: #f9f9f9;
   --overlay-bg: rgba(255, 255, 255, 0.95);

@@ -64,31 +64,35 @@ export default function Services() {
               textAlign: "left",
             }}
           >
-            From managing calendars to drafting emails and summarizing meetings,
-            our AI assistants work around the clock to keep your business
-            running smarter and faster.
+            From showcasing services to selling products and building portfolios,
+             we create websites that are fast, responsive, secure, 
+            and SEO-ready  helping your business stand out and grow online.
           </p>
 
-          <div className="d-flex flex-wrap gap-3 mt-3">
-            {["Get a Quote", "Scheduling", "Many More"].map((text, idx) => (
-              <a
-                key={idx}
-                href="quote"
-                className="btn px-2 py-1"
-                style={{
-                  background: "transparent",
-                  color: "var(--muted-text)",
-                  fontWeight: 500,
-                  fontSize: 13,
-                  borderRadius: 7,
-                  padding: "4px 14px",
-                  border: "1px solid var(--border-color)",
-                }}
-              >
-                {text}
-              </a>
-            ))}
-          </div>
+         <div className="d-flex flex-wrap gap-3 mt-3">
+  {[
+    { text: "Get a Quote", href: "/quote" },
+    { text: "Scheduling", href: "/book-call" },
+    { text: "Many More", href: "/services" },
+  ].map((item, idx) => (
+    <a
+      key={idx}
+      href={item.href}
+      className="btn px-2 py-1"
+      style={{
+        background: "transparent",
+        color: "var(--muted-text)",
+        fontWeight: 500,
+        fontSize: 13,
+        borderRadius: 7,
+        padding: "4px 14px",
+        border: "1px solid var(--border-color)",
+      }}
+    >
+      {item.text}
+    </a>
+  ))}
+</div>
         </motion.div>
 
         {/* Right Column */}

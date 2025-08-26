@@ -18,7 +18,7 @@ export default function Hero() {
     <section
       className="hero-section d-flex flex-column justify-content-center align-items-center text-center position-relative px-3 py-5"
       style={{
-        minHeight: "100vh",
+        minHeight: "80vh",
         background: "var(--background)",
         color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
@@ -46,13 +46,13 @@ export default function Hero() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           width: "80vw",
-          height: "80vw",
+          height: "50vh",
           maxWidth: "700px",
-          maxHeight: "700px",
+          // maxHeight: "700px",
           zIndex: 1,
           pointerEvents: "none",
           borderRadius: "50%",
-          background: `radial-gradient(circle at 50% 50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,
+          // background: `radial-gradient(circle at 50% 50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,
         }}
       />
 
@@ -81,16 +81,16 @@ export default function Hero() {
         <motion.h1
           variants={scaleIn}
           custom={0.2}
-          className="fw-bold mb-3  hero-heading"
+          className="mb-3  hero-heading"
           style={{
-            fontSize: "clamp(2rem, 6vw, 3rem)",
+            // fontSize: "clamp(2rem, 3rem)",
             lineHeight: 1.2,
-            fontWeight: 600,
+            fontWeight: "600 !important",
             color: "var(--foreground)",
             marginBottom: "1rem",
           }}
         >
-          Intelligent Solutions <br /> for Modern Businesses.
+          From Concept to Launch <br/>We Build Websites That Matter
         </motion.h1>
 
         <motion.p
@@ -105,7 +105,8 @@ export default function Hero() {
             padding: "0 1rem",
           }}
         >
-          At DaaS Tech, we blend tech, design, and strategy. Where Problems Meet Possibilities.
+           From design to development and launch, 
+           we build websites that are fast, impactful and scalable
         </motion.p>
 
         <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-3">
@@ -117,7 +118,7 @@ export default function Hero() {
             className="btn"
             style={{
               background: "var(--accent)",
-              color: "#fff",
+              color: "#fff !important",
               fontWeight: 600,
               padding: "0.6rem 1.2rem",
               borderRadius: "0.5rem",
