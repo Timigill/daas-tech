@@ -4,7 +4,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion";
 import { useMotionValue, useTransform, animate } from 'framer-motion';
-import { FaMicrochip, FaCogs, FaTachometerAlt, FaHandPaper, FaRedo } from "react-icons/fa";
+import { 
+  FaBullseye,     // Business Goals
+  FaChartLine,    // Market Research
+  FaServer,       // Technical Analysis
+  FaProjectDiagram, // UX Planning
+  FaTasks,
+  FaBuilding         // Project Planning
+} from "react-icons/fa";
+
 import { FiFile, FiSearch, FiLayers } from 'react-icons/fi';
 import "@/app/globals.css";
 
@@ -19,11 +27,12 @@ const fadeInUp = {
 
 const Process = () => {
   const checklist = [
-    { label: "System check", icon: <FaMicrochip size={14} /> },
-    { label: "Process check", icon: <FaCogs size={14} /> },
-    { label: "Speed check", icon: <FaTachometerAlt size={14} /> },
-    { label: "Manual work", icon: <FaHandPaper size={14} /> },
-    { label: "Repetitive task", icon: <FaRedo size={14} /> },
+    { label: "Understand Business Goals", icon: <FaBullseye size={14} /> },
+  { label: "Market Research", icon: <FaChartLine size={14} /> },
+  { label: "Technical Analysis", icon: <FaServer size={14} /> },
+  { label: "UX Planning", icon: <FaProjectDiagram size={14} /> },
+  { label: "Project Planning", icon: <FaTasks size={14} /> },
+
   ];
 
   const code = `
@@ -214,7 +223,9 @@ app.listen(PORT, () => {
 
       {/* Description */}
       <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 20 }}>
-        We assess your needs and identify AI solutions to streamline workflows and improve efficiency.
+       We carefully assess your current workflows, identify bottlenecks, 
+       and highlight areas where automation and AI can save time and cut costs.
+
       </p>
 
       {/* Main Content Row */}
@@ -351,10 +362,10 @@ app.listen(PORT, () => {
                 Step 2
               </div>
               <h3 style={{ fontSize: 20, fontWeight: 600, color: "var(foreground)", marginBottom: 10 }}>
-                Web Design | Development
+                Web Design & Development
               </h3>
               <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 25 }}>
-                Our team builds intelligent web systems tailored to your business processes.
+                Our team builds intelligent, scalable web solutions tailored to your Business needs
               </p>
 
               <div
@@ -489,7 +500,8 @@ app.listen(PORT, () => {
                 Seamless Integration
               </h3>
               <p style={{ fontSize: 14, color: "var(--muted-text)", marginBottom: 16 }}>
-                We smoothly integrate solutions into your existing infrastructure with minimal disruption.
+                We ensure smooth integration of new solutions into your existing infrastructure with minimal disruption.
+                 Whether it’s CRM, ERP, or custom APIs, everything works together seamlessly.
               </p>
 
               <div
@@ -503,12 +515,12 @@ app.listen(PORT, () => {
                   padding: 12,
                   gap: 8,
                   border: "1px solid var(--border-color)",
-                  marginTop: 16,
+                  marginTop: 50,
                   flexDirection: "column",
                   height: "auto",
                 }}
               >
-                <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center"}}>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                     <div
                       style={{
@@ -522,7 +534,7 @@ app.listen(PORT, () => {
                         backgroundColor: "var(--codeinnerdiv)",
                       }}
                     >
-                      <Image src="/rotation.png" alt="Our solution" height={40} width={40} style={{ objectFit: "cover" }} />
+                      <Image src="/neural-head.svg" alt="Our solution" height={60} width={60} style={{ objectFit: "cover" }} />
                     </div>
                     <p style={{ fontSize: 14, color: "var(--muted-text)" }}>Our solution</p>
                   </div>
@@ -572,9 +584,14 @@ app.listen(PORT, () => {
                         alignItems: "center",
                         justifyContent: "center",
                         backgroundColor: "var(--codeinnerdiv)",
+
                       }}
                     >
-                      <Image src="/yourstack.png" alt="Your stack" height={40} width={40} style={{ objectFit: "cover" }} />
+                      <FaBuilding style={{
+                        color:"var(--accent)",
+                        fontSize:"35"
+                      }}   />
+                      {/* <Image src="/yourstack.png" alt="Your stack" height={40} width={40} style={{ objectFit: "cover" }} /> */}
                     </div>
                     <p style={{ fontSize: 14, color: "var(--muted-text)" }}>Your stack</p>
                   </div>
@@ -636,9 +653,9 @@ app.listen(PORT, () => {
                 }}
               >
                 {[
-                  { title: "Customer Satisfaction", note: "Efficiency will increase by 20%", icon: "⟳" },
-                  { title: "Workflow system", note: "Update available..", icon: "⬆" },
-                  { title: "Sales system", note: "Up to date", icon: "✔" }
+                  { title: "Efficiency Improved", note: "Efficiency will increase by 20%", icon: "⟳" },
+                  { title: "Regular Workflow Updates", note: "3 Updates ", icon: "⬆" },
+                  { title: "Customer Satisfaction", note: "Priority", icon: "✔" }
                 ].map((item, index) => (
                   <div
                     key={index}

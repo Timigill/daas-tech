@@ -49,7 +49,7 @@ export default function Services() {
               border: "1px solid var(--border-color)",
             }}
           >
-            Custom Site
+            Custom Websites
           </a>
 
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
