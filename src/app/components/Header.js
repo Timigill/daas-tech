@@ -62,25 +62,25 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg w-100" style={{ background: "var(--header-bg)" }}>
           <div className="nav container-lg container1">
             <Link className="navbar-brand d-flex align-items-center gap-5" href="/">
-              {/* <Image 
+              <Image 
               loading="lazy"
                 src={theme === "dark" ? "/logo2.png" : "/llogo.png"}
                 alt="Logo"
                 width={120}
                 height={50}
                 style={{ height: 50, opacity: "1" }}
-              /> */}
+              />
 
-           <picture>
-      <source srcSet="/llogo.png" media="(prefers-color-scheme: dark)" />
-      <img
-        src="/logo2.png"
+         {/* <picture>
+      <source srcSet="/logo2.png" media="(prefers-color-scheme: dark)" />
+      <Image
+        src="/llogo.png"
         alt="DaaS Tech Logo"
         width={150}
         height={50}
         style={{ objectFit: "contain" }}
       />
-    </picture>
+    </picture> */}
             </Link>
 
             <button

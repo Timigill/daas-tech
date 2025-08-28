@@ -1,43 +1,56 @@
 'use client';
 import React from "react";
-import { motion, time } from "framer-motion";
+import { motion } from "framer-motion";
 import "@/app/globals.css";
-import { Store } from "lucide-react";
 
 export default function HomeServices() {
+  const tasks = [
+    { title: "E-Commerce", time: "Online Store", icon: "🏪" },
+    { title: "Blog Sites", time: "News Site", icon: "💻" },
+    { title: "Online Booking System", time: "Clinic Website", icon: "👨‍⚕️" },
+    { title: "AI Tools", time: "ChatGPT", icon: "📋" },
+    { title: "Hotel Management", time: "Room Booking", icon: "🚪" },
+  ];
+
   return (
     <section
-      className="d-flex flex-column align-items-center text-center px-3"
+      className="d-flex flex-column align-items-center text-center px-3 pb-0"
       style={{
-        padding: "48px 0",
         background: "var(--background)",
         color: "var(--foreground)",
         fontFamily: "Inter, sans-serif",
         overflowX: "hidden",
       }}
     >
+      {/* Local styles */}
       <style>{`
-          @keyframes scrollTasks {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); }
-          }
+        @keyframes scrollTasks {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
 
-          .task-scroll-wrapper {
-            height: 190px;
-            overflow: hidden;
-            position: relative;
-          }
+        .task-scroll-wrapper {
+          height: 190px;
+          overflow: hidden;
+          position: relative;
+        }
 
-          .task-scroll {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            animation: scrollTasks 10s linear infinite;
-          }
+        .task-scroll {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          animation: scrollTasks 10s linear infinite;
+        }
 
-          .task-scroll-wrapper:hover .task-scroll {
-            animation-play-state: paused;
+        .task-scroll-wrapper:hover .task-scroll {
+          animation-play-state: paused;
+        }
+
+        @media (max-width: 768px) {
+          .hide-sm {
+            display: none !important;
           }
+        }
       `}</style>
 
       {/* Badge */}
@@ -74,7 +87,7 @@ export default function HomeServices() {
           maxWidth: 700,
         }}
       >
-        Websites That <br/>Take Your Business Online
+        Websites That <br /> Take Your Business Online
       </motion.h1>
 
       {/* Subtext */}
@@ -90,7 +103,8 @@ export default function HomeServices() {
           margin: "0 auto 40px auto",
         }}
       >
-        We design, develop, and launch websites that help you reach more customers and grow your business with ease.
+        We design, develop, and launch websites that help you reach more customers
+        and grow your business with ease.
       </motion.p>
 
       {/* Main Content */}
@@ -100,6 +114,7 @@ export default function HomeServices() {
       >
         {/* Animated Task Card */}
         <motion.div
+          className="hide-sm"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
@@ -143,46 +158,65 @@ export default function HomeServices() {
             }}
           >
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
-              <span style={{
-                background: "transparent",
-                color: "var(--foreground)",
-                fontWeight: 500,
-                fontSize: 13,
-                borderRadius: 7,
-                padding: "4px 14px",
-                border: "1px solid var(--border-color)",
-              }}>Tailored Websites for any Industry</span>
+              <span
+                style={{
+                  background: "transparent",
+                  color: "var(--foreground)",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  borderRadius: 7,
+                  padding: "4px 14px",
+                  border: "1px solid var(--border-color)",
+                }}
+              >
+                Tailored Websites for any Industry
+              </span>
             </div>
 
             <div className="task-scroll-wrapper">
               <div className="task-scroll">
-                {[
-                  { title: "E-Commerece", time: "Online Store", icon: "🏪" },
-                  { title: "Blog Sites", time: "News Site", icon: "💻" },
-                  { title: "Online Booking System", time: "Clinic Website", icon: "👨‍⚕️" },
-                  { title: "AI Tools", time: "ChatGPT ", icon: "📋" },
-                  { title: "Hotel Management", time: "Room Booking", icon: "🚪" },
-                ].map((task, idx) => (
-                  <div key={idx} style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    background: "var(--taskScrollWrapper)",
-                    borderRadius: 8,
-                    padding: "10px 12px",
-                    opacity: idx === 3 ? 0.6 : 1
-                  }}>
+                {tasks.map((task, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      background: "var(--taskScrollWrapper)",
+                      borderRadius: 8,
+                      padding: "10px 12px",
+                      opacity: idx === 3 ? 0.6 : 1,
+                    }}
+                  >
                     <div>
-                      <span style={{ fontWeight: 600, fontSize: 14 }}>{task.title}</span>
-                      <div style={{ color: "var(--text-muted)", textAlign:"left", fontSize: 12 }}>{task.time}</div>
+                      <span style={{ fontWeight: 600, fontSize: 14 }}>
+                        {task.title}
+                      </span>
+                      <div
+                        style={{
+                          color: "var(--text-muted)",
+                          textAlign: "left",
+                          fontSize: 12,
+                        }}
+                      >
+                        {task.time}
+                      </div>
                     </div>
-                    <span style={{
-                      display: "inline-block",
-                      width: 22, height: 22, borderRadius: 6,
-                      background: "rgba(139,92,246,0.13)",
-                      color: "#8b5cf6", textAlign: "center",
-                      lineHeight: "22px", fontSize: 15,
-                    }}>{task.icon}</span>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        width: 22,
+                        height: 22,
+                        borderRadius: 6,
+                        background: "rgba(139,92,246,0.13)",
+                        color: "#8b5cf6",
+                        textAlign: "center",
+                        lineHeight: "22px",
+                        fontSize: 15,
+                      }}
+                    >
+                      {task.icon}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -196,7 +230,8 @@ export default function HomeServices() {
               right: 0,
               bottom: 0,
               height: "70%",
-              background: "linear-gradient(to bottom, var(--homeservicesgrad1) 40%, var(--homeservicesgrad2) 100%)",
+              background:
+                "linear-gradient(to bottom, var(--homeservicesgrad1) 40%, var(--homeservicesgrad2) 100%)",
               zIndex: 2,
               pointerEvents: "none",
             }}
@@ -209,6 +244,7 @@ export default function HomeServices() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
+          className="cta-wrapper"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -220,9 +256,10 @@ export default function HomeServices() {
           }}
         >
           <a
-            href=""
+            href="#"
             className="btn mb-3 px-2 py-1"
             style={{
+              alignItems:"left",
               background: "transparent",
               color: "var(--muted-text)",
               fontWeight: 500,
@@ -237,17 +274,25 @@ export default function HomeServices() {
           <h3 style={{ fontWeight: 600, fontSize: "1.5rem", marginBottom: 10 }}>
             Tailored Websites for any Industry
           </h3>
-          <p style={{ color: "var(--muted-text)", fontSize: 16, marginBottom: 18, textAlign: "left" }}>
-           We design and develop websites that fit every business from startups to enterprises. Our websites are engaging, 
-           responsive, fast, and SEO-ready, built to showcase your services, attract more visitors, and strengthen your brand.
-        
+          <p
+            style={{
+              color: "var(--muted-text)",
+              fontSize: 14,
+              marginBottom: 18,
+              textAlign: "left",
+            }}
+          >
+            We design and develop websites that fit every business from startups
+            to enterprises. Our websites are engaging, responsive, fast, and
+            SEO-ready, built to showcase your services, attract more visitors,
+            and strengthen your brand.
           </p>
           <h4 style={{ fontWeight: 600, fontSize: "1.1rem", marginBottom: 12 }}>
             Let’s build your online presence today.
           </h4>
           <a
             href="/contact"
-            className="btn px-2 py-1"
+            className="btn get-started-btn px-2 py-1"
             style={{
               background: "transparent",
               color: "var(--muted-text)",
@@ -261,7 +306,8 @@ export default function HomeServices() {
             Get Started
           </a>
         </motion.div>
+
       </div>
     </section>
   );
-} 
+}

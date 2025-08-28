@@ -4,16 +4,14 @@
   align-items: center;
   padding: 1rem;
   background-color: var(--background);
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 .ctaWrapper {
-  background: linear-gradient(
-    135deg,
-    var(--grad1) 0%,
-    var(--grad2) 50%,
-    var(--grad1) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--grad1) 0%,
+      var(--grad2) 50%,
+      var(--grad1) 100%);
   padding: 2rem 1rem;
   border-radius: 1rem;
   color: var(--foreground);
@@ -26,17 +24,20 @@
 
 .ctaWrapper h2 {
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.3;
   margin-bottom: 1rem;
+  display: "flex";
+  justify-content: center;
+  text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
 }
 
 .ctaWrapper h2 span {
-  color: var(--ctah2);
+  color: var(--accent);
 }
 
 .ctaWrapper p {

@@ -8,10 +8,10 @@ export default function CallToAction() {
     <section className={styles.ctaSection} style={{ overflowX: 'hidden' }}>
     <div className={styles.ctaWrapper}>
       <h2>
-        Let Digital Solutions do the Work so<br />
+        Let Digital Solutions do the Work so
         you can <span>Scale Faster</span>
       </h2>
-      <p>Get A Quote Today and Start Your Journey</p>
+      <p>Get A Quote Today and Start Your Journey</p>  
           <Link href="/quote">
             <button>
               Get A Quote <ArrowRight size={16} />

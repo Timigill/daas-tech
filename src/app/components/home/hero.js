@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -9,8 +8,8 @@ const scaleIn = {
   hidden: { scale: 0 },
   visible: (delay = 0) => ({
     scale: 1,
-    transition: { type: "spring", stiffness: 400, damping: 25, delay }
-  })
+    transition: { type: "spring", stiffness: 400, damping: 25, delay },
+  }),
 };
 
 export default function Hero() {
@@ -48,16 +47,21 @@ export default function Hero() {
           width: "80vw",
           height: "50vh",
           maxWidth: "700px",
-          // maxHeight: "700px",
           zIndex: 1,
           pointerEvents: "none",
           borderRadius: "50%",
-          // background: `radial-gradient(circle at 50% 50%, rgba(164, 122, 255, 0.7), rgba(255, 255, 255, 0.9) 70%)`,
         }}
       />
 
       {/* Hero Content */}
-      <header style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: "800px" }}>
+      <header
+        style={{
+          position: "relative",
+          zIndex: 2,
+          width: "100%",
+          maxWidth: "800px",
+        }}
+      >
         <motion.span
           variants={scaleIn}
           initial="hidden"
@@ -81,22 +85,21 @@ export default function Hero() {
         <motion.h1
           variants={scaleIn}
           custom={0.2}
-          className="mb-3  hero-heading"
+          className="mb-3 hero-heading"
           style={{
-            // fontSize: "clamp(2rem, 3rem)",
             lineHeight: 1.2,
-            fontWeight: "600 !important",
+            fontWeight: 600,
             color: "var(--foreground)",
             marginBottom: "1rem",
           }}
         >
-          From Concept to Launch <br/>We Build Websites That Matter
+          From Concept to Launch <br /> We Build Websites That Matter
         </motion.h1>
 
         <motion.p
           variants={scaleIn}
           custom={0.4}
-          className="mb-4  hero-subheading"
+          className="mb-4 hero-subheading"
           style={{
             fontSize: "clamp(0.9rem, 2vw, 1rem)",
             color: "var(--muted-text)",
@@ -105,11 +108,12 @@ export default function Hero() {
             padding: "0 1rem",
           }}
         >
-           From design to development and launch, 
-           we build websites that are fast, impactful and scalable
+          From design to development and launch, we build websites that are
+          fast, impactful and scalable
         </motion.p>
 
-        <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-3">
+        {/* Buttons → always in a row */}
+        <div className="d-flex flex-row justify-content-center align-items-center gap-3 mt-3 flex-wrap">
           <motion.a
             variants={scaleIn}
             custom={0.6}
@@ -153,6 +157,15 @@ export default function Hero() {
           </motion.a>
         </div>
       </header>
+
+      {/* Responsive height fix */}
+      <style jsx>{`
+        @media (max-width: 576px) {
+          .hero-section {
+            min-height: 60vh !important; 
+          }
+        }
+      `}</style>
     </section>
   );
 }

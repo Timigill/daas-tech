@@ -44,7 +44,6 @@
   gap: 1rem;
   text-align: left;
 }
-
 .faqCard {
   background: linear-gradient(to top left, var(--grad1) 0%, var(--grad2) 100%);
   border: 1px solid var(--border-color);
@@ -58,6 +57,15 @@
     box-shadow: 0 0 15px rgba(164, 122, 255, 0.25);
   }
 }
+
+/* On smaller screens */
+@media (max-width: 600px) {
+  .faqCard {
+    padding: 0.5rem 0.5rem; /* reduce padding */
+    font-size: 10px;
+  }
+}
+
 
 .questionRow {
   display: flex;

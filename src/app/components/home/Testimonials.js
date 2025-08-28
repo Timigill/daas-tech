@@ -1,140 +1,169 @@
-'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
-import styles from './Testimonials.module.scss';
-import Image from 'next/image';
+'use client'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
+export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [cardsToShow, setCardsToShow] = useState(2)
+  const [cardWidth, setCardWidth] = useState(400)
 
-const testimonials = [
-  {
-    name: 'James Carter',
-    role: 'CEO at TechFlow Solutions',
-    image: '/TestimonialPics/David.png',
-    stars: 5,
-    text: 'Digital Solutions transformed our operations by eliminating repetitive tasks and improving efficiency. Scaling our workflow has never been easier!'
-  },
-  {
-    name: 'Sophia Martinez',
-    role: 'Operations Manager at NexaCorp',
-    image: '/TestimonialPics/Sophia.png',
-    stars: 5,
-    text: 'With Smart Solutions, we cut manual work and improved accuracy. Our team now focuses on high-impact tasks while Digital Solutions handles the rest!'
-  },
-  {
-    name: 'David Reynolds',
-    role: 'Head of Sales at GrowthPeak',
-    image: '/TestimonialPics/James.png',
-    stars: 4,
-    text: 'Digital Solutions-driven insights doubled our sales efficiency. We now engage leads at the right time with smarter, data-backed decisions!'
-  },
-  {
-    name: 'Emily Wong',
-    role: 'Customer Success Lead at SupportHive',
-    image: '/TestimonialPics/Emily.png',
-    stars: 5,
-    text: 'Customer support is now seamless. Our response time improved drastically, and satisfaction levels are at an all-time high, thanks to DaaS Tech Innovations!'
+  useEffect(() => {
+   const handleResize = () => {
+  if (window.innerWidth < 640) { // sm
+    setCardsToShow(1)
+    setCardWidth(window.innerWidth * 0.85)
+  } else if (window.innerWidth < 1024) { // md/lg
+    setCardsToShow(2)
+    setCardWidth(320)
+  } else {
+    setCardsToShow(2)
+    setCardWidth(400)
   }
-];
+}
 
-const Testimonials = () => {
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const testimonials = [
+    {
+      text: "DaaS Learn has given me a powerful edge in continuous growth. The structured MERN stack course and practical projects provide a level of clarity traditional learning can't match. A phenomenal platform for mastering real-world skills. Highly recommended!",
+      author: "Adeel Khan",
+      role: "Software Engineer",
+      image: "/pro1.jpg"
+    },
+    {
+      text: "With DaaS Learn, my learning process is faster, more reliable, and engaging. The step-by-step guidance and hands-on practice are invaluable. This is a platform every aspiring developer should consider!",
+      author: "Maria Sheikh",
+      role: "Computer Science Graduate",
+      image: "/pro2.jpg"
+    },
+    {
+      text: "DaaS Learn has enhanced my career journey significantly. It's intuitive, supportive, and provides 5-star guidance every step of the way. This platform has become a critical part of how I keep improving my skills!",
+      author: "Hassan Raza",
+      role: "Frontend Developer",
+      image: "/pro3.jpg"
+    },
+    {
+      text: "DaaS Learn transformed the way I approach learning! The practical projects and guided learning paths give me confidence to apply my skills in real-world scenarios. A 5-star solution for anyone building a career in tech.",
+      author: "Sana Ali",
+      role: "Junior Web Developer",
+      image: "/pro4.jpg"
+    },
+    {
+      text: "DaaS Learn's comprehensive curriculum and hands-on approach helped me transition from a beginner to a confident developer. The real-world projects and mentorship are game-changers for anyone serious about tech!",
+      author: "Ahmed Hassan",
+      role: "Full Stack Developer",
+      image: "/pro1.jpg"
+    },
+    {
+      text: "The structured learning path and practical exercises at DaaS Learn made complex concepts easy to understand. I've gained the skills and confidence needed to excel in the competitive tech industry!",
+      author: "Fatima Zahra",
+      role: "UI/UX Designer",
+      image: "/pro2.jpg"
+    }
+  ]
+
+  // Infinite scroll wrap
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? testimonials.length - cardsToShow : prev - 1
+    )
+  }
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev >= testimonials.length - cardsToShow ? 0 : prev + 1
+    )
+  }
+
   return (
-    <section
-              className="d-flex flex-column align-items-center text-center"
-              style={{
-                padding: "55px 1rem",
-                background: "var(--background)",
-                color: "var(--foreground)",
-                fontFamily: "Inter, sans-serif",
-                overflowX: "hidden",
-                maxWidth: "100vw",
-                width: "100%",
-              }}
-            >
-              <motion.span
-                className="badge mb-3"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                style={{
-                  background: "var(--accent)",
-                  color: "#fff",
-                  fontWeight: 600,
-                  fontSize: 15,
-                  letterSpacing: 1,
-                  padding: "8px 18px",
-                  borderRadius: 20,
-                }}
-              >
-                Testimonials
-              </motion.span>
-        
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
-                style={{
-                  fontWeight: 700,
-                  // fontSize: "2.5rem",
-                  lineHeight: 1.15,
-                  marginBottom: 16,
-                  maxWidth: 500,
-                }}
-              >
-                Why Businesses Love Our Digital Solutions
-              </motion.h2>
-        
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                style={{
-                  fontSize: 15,
-                  color: "var(--muted-text)",
-                  maxWidth: 600,
-                  margin: "0 auto 40px auto",
-                }}
-              >
-               Real businesses, real results with digital solutions.
-              </motion.p>
-    <section className={styles.testimonialSection}>
-      <div className={styles.grid}>
-        {testimonials.map((item, index) => (
-          <motion.div
-            key={index}
-            className={styles.card}
+    <section className="py-5">
+      <div className="px-3">
+        <div className="m-auto testimonial-container" 
+        style={{
+background:"var(--background)"
+
+        }}
+        >
+
+          {/* Heading */}
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
+            className="testimonial-heading text-center mb-4"
+            style={{
+              color:"var(--foreground)"
+            }}
           >
-            <div className={styles.stars}>
-              {'★'.repeat(item.stars)}
-              {'☆'.repeat(5 - item.stars)}
-            </div>
-            <p className={styles.text}>“{item.text}”</p>
-            <div className={styles.profile}>
-             <Image
-                 src={item.image}
-                 alt={item.name}
-                 width={45}
-                 height={45}
-                 className={styles.avatar}
-             />
+            Why Businesses Love Our Digital Solutions
+          </motion.h2>
 
-              <div>
-                <strong>{item.name}</strong>
-                <span>{item.role}</span>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+          {/* Navigation buttons */}
+          <div className="d-flex justify-content-center gap-2 mb-4">
+            <button onClick={handlePrev} className="testimonial-nav-btn rounded-circle d-flex align-items-center justify-content-center shadow"
+              style={{ width: 35, height: 35,
+                 border: "2px solid var(--border-color)", 
+              background: "var(--background)" }}>
+              <FaChevronLeft size={14} color="var(--accent)" />
+            </button>
+            <button onClick={handleNext} className="testimonial-nav-btn rounded-circle d-flex align-items-center justify-content-center shadow"
+              style={{ width: 35, height: 35, border: "2px solid var(--border-color)", background: "var(--background)" }}>
+              <FaChevronRight size={14} color="var(--accent)" />
+            </button>
+          </div>
+
+          {/* Slider */}
+          <div className="testimonial-wrapper overflow-hidden">
+            <motion.div
+              className="d-flex gap-3 testimonial-track"
+              animate={{ x: `-${currentIndex * cardWidth}px` }}
+              transition={{ type: 'tween', ease: 'linear', duration: 0.5 }}
+              style={{ width: `${testimonials.length * cardWidth}px`,
+            background:"var(--background)",
+            }}
+            >
+              {testimonials.map((t, index) => (
+                <div key={index} className="testimonial-card p-3 rounded-4 shadow-sm"
+                  style={{ minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }}>
+                  
+                  {/* Stars */}
+                  <div className="mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="testimonial-star me-1" size={14} />
+                    ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="mb-3 testimonial-text">{t.text}</p>
+
+                  {/* Author */}
+                  <div className="d-flex align-items-center gap-2">
+                    <div className="testimonial-avatar rounded-circle overflow-hidden">
+                      <Image
+                        src={t.image}
+                        alt={t.author}
+                        width={40}
+                        height={40}
+                        className="testimonial-avatar-img"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="fw-bold mb-1 testimonial-author">{t.author}</h3>
+                      <p className="testimonial-role mb-0">{t.role}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
-    </section>
-  );
-};
-
-export default Testimonials;
+  )
+}
