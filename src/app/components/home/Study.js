@@ -9,22 +9,23 @@ const caseStudies = [
     id: 1,
     image: "/case1.png",
     title:
-      "Digital Systems Accelerate Sales- Smart Workflow Helped Close 3× More Deals, Faster",
+      "Smart Web Platforms Drove 3× More Client Conversions",
     description:
-      "RetailRev faced issues with overstock and missed sales. We helped them implement a dynamic inventory management system with real-time tracking and automated reordering — minimizing waste and maximizing sales.",
+      "A growing service business was stuck with outdated manual processes and a slow, non-scalable website. This caused delays in client onboarding and missed opportunities. We designed a modern web platform with automated workflows and CRM integration. The system connected client data, optimized processes, and enabled seamless communication.",
     points: [
-      "3x More Deals",
-      "40% Faster Responses",
-      "95% Lead Accuracy",
-      "CRM Fully Synced",
+      "3× More Conversions",
+      "40% Faster Client Onboarding",
+      "95% Data Accuracy",
+      "CRM Fully Integrated",
+
     ],
   },
   {
     id: 2,
     image: "/case2.png",
-    title: "RetailRev Optimized Inventory with Smart Digital Solutions",
+    title: "E-Commerce Brand Boosted Sales with Custom Web Development",
     description:
-      "RetailRev reduced overstock and missed sales opportunities using AI-based inventory predictions and dynamic reordering strategies.",
+      "An online retailer was struggling with high cart abandonment and limited scalability on their old e-commerce store. We built a responsive, AI-powered e-commerce system with an optimized checkout process, real-time inventory management, and advanced analytics dashboards.",
     points: [
       "25% Inventory Reduction",
       "30% Increase in Sales",
@@ -34,10 +35,13 @@ const caseStudies = [
   {
     id: 3,
     image: "/case3.png",
-    title: "ChatGenie Reduced Support Load by 60% With Smart Chat Solutions",
+    title: "AI Chat & Support System Reduced Workload by 60%",
     description:
-      "ChatGenie partnered with DaaS Tech Innovations to build an efficient support system. We developed a custom chatbot solution that delivered instant responses and resolved routine queries — easing the burden on human support teams.",
-    points: ["60% Lower Support Costs", "24/7 Instant Help", "Higher Customer Satisfaction"],
+      "A service provider was overwhelmed with repetitive customer queries, which slowed down their support team. We developed a custom AI chatbot and integrated it with their website, providing instant answers and automating routine support tasks.",
+    points: [
+      "60% Lower Support Costs",
+      "24/7 Instant Support Availability",
+      "Higher Customer Retention & Satisfaction",],
   },
 ];
 
@@ -184,7 +188,7 @@ const Study = () => {
               <h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>
                 {study.title}
               </h3>
-              <p
+              <p className="study-text"
                 style={{
                   color: "var(--muted-text)",
                   marginBottom: "15px",
@@ -196,7 +200,7 @@ const Study = () => {
               <ul style={{ paddingLeft: 0, fontSize: "0.9rem" }}>
                 {study.points.map((point, idx) => (
                   <li
-                    key={idx}
+                    key={idx}k
                     style={{
                       marginBottom: "6px",
                       listStyleType: "none",

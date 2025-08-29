@@ -260,9 +260,9 @@ function Footer() {
           </div>
         </div>
 
-        <div className="col-12 col-md-12">
+        <div className="col-12 col-md-12  w-100 ">
           <ul
-            className="list-unstyled footer-li d-flex justify-content-around m-0"
+            className="list-unstyled footer-li d-flex  m-0  justify-content-around w-100"
             style={{ color: "var(--footer-text)" }}
           >
             <li>

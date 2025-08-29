@@ -192,12 +192,12 @@ input:focus {
 .footer-li li {
   font-size: 0.9rem !important;
   /* padding: 0.2rem 0; */
-  width: min-content;
+  width: fit-content;
 }
 
 .footer-li,
 .footerh6 {
-  width: min-content;
+  width: fit-content;
 }
 
 .footer-gradient {
@@ -812,10 +812,7 @@ p.hero-subheading {
   width: 100%;
   max-width: 350px;
   min-height: 170px;
-  background: linear-gradient(135deg,
-      var(--grad3) 0%,
-      var(--grad4) 50%,
-      var(--grad3) 100%);
+  background: var(--card-bg);
 
   border: 2px solid var(--border-color);
 
@@ -1110,12 +1107,7 @@ margin-left: 0 !important;
   border-radius: 12px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    var(--grad1) 0%,
-    var(--grad2) 50%,
-    var(--grad1) 100%
-  );
+  background: var(--card-bg);
   transition: all 0.3s ease;
 }
 
@@ -1161,3 +1153,34 @@ margin-left: 0 !important;
     font-size: 12px; /* smaller text */
   }
 }
+.carousel-inner {
+  display: flex;
+  flex-wrap: nowrap;       /* allows multiple rows */
+  gap: 20px;             /* spacing between cards */
+  justify-content: center;
+}
+
+.carousel-item {
+  flex: 1 1 calc(50% - 20px); /* two cards per row */
+  max-width: calc(50% - 20px);
+}
+
+/* On smaller screens (mobile <768px) */
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 1 1 100%; /* full width */
+    max-width: 100%;
+  }
+}
+/* your global CSS file */
+@media (max-width: 768px) {
+  .study-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;   /* limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
