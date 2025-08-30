@@ -66,8 +66,8 @@ export default function Header() {
               loading="lazy"
                 src={theme === "dark" ? "/logo2.png" : "/llogo.png"}
                 alt="Logo"
-                width={120}
-                height={50}
+                width={150}
+                height={40}
                 style={{ height: 50, opacity: "1" }}
               />
 
