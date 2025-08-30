@@ -144,9 +144,12 @@ function Footer() {
           </div>
 
           {/* Right Column */}
-          <div className="col-md-6 ">
-            <div className="row">
-              <div className="col-md-4 col-6 mb-3">
+
+
+
+          <div className="col-6 footer-links">
+            <div className="row ">
+              <div className="col-4 mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Links</h6>
                 <ul
                   className="list-unstyled footer-li"
@@ -160,7 +163,7 @@ function Footer() {
                 </ul>
               </div>
 
-              <div className="col-md-4 col-6 mb-3">
+              <div className="col-4  mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Pages</h6>
                 <ul
                   className="list-unstyled footer-li"
@@ -195,7 +198,7 @@ function Footer() {
                 </ul>
               </div>
 
-              <div className="col-md-4 col-sm-12 mb-3">
+              <div className="col-4  mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Socials</h6>
                 <ul
                   className="list-unstyled footer-li"
@@ -260,7 +263,10 @@ function Footer() {
             </div>
           </div>
         </div>
-
+ <hr
+          className="mt-0 mb-3 w-100"
+          style={{ border: "1px solid var(--border-color)" }}
+        />
         <div className="col-12 col-md-12  w-100 ">
           <ul
             className="list-unstyled footer-li d-flex  m-0  justify-content-around w-100"
@@ -277,7 +283,7 @@ function Footer() {
 
         <hr
           className="mt-0 mb-3 w-100"
-          style={{ borderColor: "var(--border-color)" }}
+          style={{ border: "1px solid var(--border-color)" }}
         />
 
         <div

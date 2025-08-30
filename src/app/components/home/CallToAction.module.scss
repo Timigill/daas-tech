@@ -8,10 +8,7 @@
 }
 
 .ctaWrapper {
-  background: linear-gradient(135deg,
-      var(--grad1) 0%,
-      var(--grad2) 50%,
-      var(--grad1) 100%);
+  background: var(--card-bg);
   padding: 2rem 1rem;
   border-radius: 1rem;
   color: var(--foreground);

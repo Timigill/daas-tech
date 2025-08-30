@@ -45,7 +45,7 @@
   text-align: left;
 }
 .faqCard {
-  background: linear-gradient(to top left, var(--grad1) 0%, var(--grad2) 100%);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
   padding: 1.5rem 1.2rem;

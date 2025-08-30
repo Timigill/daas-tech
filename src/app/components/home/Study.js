@@ -133,8 +133,7 @@ const Study = () => {
           display: "flex",
           overflowX: "auto",
           scrollSnapType: "x mandatory",
-          width: "80%",
-          maxWidth: "80%",
+          width: "100%",
           scrollBehavior: "smooth",
           gap: "20px",
           padding: "0 20px",
@@ -149,6 +148,7 @@ const Study = () => {
         {caseStudies.map((study) => (
          <div
   key={study.id}
+  className="case-card"
   style={{
     flex: "0 0 auto",
     width: "76vw",
