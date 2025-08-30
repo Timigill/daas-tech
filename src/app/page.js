@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from "./components/home/hero";
 import HomeServices from './components/home/HomeServices';
 import Services from './components/home/services'
-import Process from './components/home/Process'
+import Processes from './components/home/Process'
 import CaseStudy from './components/home/Study'
 import Benefits from './components/home/Benefits'
 import Pricing from './components/home/Pricing'
@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <HomeServices />
       <Services />
-      <Process />
+      <Processes />
       <CaseStudy />
       <Benefits />
       {/* <Pricing /> */}

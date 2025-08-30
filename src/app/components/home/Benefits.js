@@ -14,39 +14,39 @@ const fadeInUp = {
 const benefits = [
   {
     icon: "⚡",
-    title: "Increased Productivity",
+    title: "Stronger Online Presence",
     description:
-      "Gain actionable insights with digital analytics to improve decision-making and strategy.",
+      "A website makes your business visible 24/7, allowing potential customers to find and connect with you anytime.",
   },
   {
     icon: "🎯",
-    title: "Better Customer Experience",
+    title: "Better Customer Engagement",
     description:
-      "Personalized digital interactions improve response times, customer engagement, and overall satisfaction.",
+      "Interactive features, clear navigation, and engaging content improve user experience and customer satisfaction.",
   },
   {
     icon: "🕒",
     title: "24/7 Availability",
     description:
-      "Digital systems operate around the clock, ensuring seamless support and execution without downtime.",
+      "Your website works around the clock, providing product/service information and generating leads even outside business hours.",
   },
   {
     icon: "📉",
-    title: "Cost Reduction",
+    title: "Cost-Effective Marketing",
     description:
-      "Digital automation minimizes manual work, cuts operational costs, and optimizes resource allocation for better profitability.",
+      "Compared to traditional advertising, websites serve as a powerful and affordable marketing tool with global reach.",
   },
   {
     icon: "📊",
-    title: "Data-Driven Insights",
+    title: "Data & Insights",
     description:
-      "Leverage digital tools to analyze vast data sets, identify trends, and make smarter, faster, and more accurate business decisions.",
+      "Track visitor behavior, sales, and performance metrics to understand your audience and make smarter business decisions.",
   },
   {
     icon: "📈",
     title: "Scalability & Growth",
     description:
-      "Digital solutions adapt to your business needs, allowing you to scale efficiently without increasing workload or costs.",
+      "A well-structured website grows with your business, supporting e-commerce, new services, and digital integrations seamlessly",
   },
 ];
 

@@ -10,18 +10,18 @@ export default function Testimonials() {
   const [cardWidth, setCardWidth] = useState(400)
 
   useEffect(() => {
-   const handleResize = () => {
-  if (window.innerWidth < 640) { // sm
-    setCardsToShow(1)
-    setCardWidth(window.innerWidth * 0.85)
-  } else if (window.innerWidth < 1024) { // md/lg
-    setCardsToShow(2)
-    setCardWidth(320)
-  } else {
-    setCardsToShow(2)
-    setCardWidth(400)
-  }
-}
+    const handleResize = () => {
+      if (window.innerWidth < 640) { // sm
+        setCardsToShow(1)
+        setCardWidth(window.innerWidth * 0.85)
+      } else if (window.innerWidth < 1024) { // md/lg
+        setCardsToShow(2)
+        setCardWidth(320)
+      } else {
+        setCardsToShow(2)
+        setCardWidth(400)
+      }
+    }
 
     handleResize()
     window.addEventListener('resize', handleResize)
@@ -30,41 +30,29 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      text: "DaaS Learn has given me a powerful edge in continuous growth. The structured MERN stack course and practical projects provide a level of clarity traditional learning can't match. A phenomenal platform for mastering real-world skills. Highly recommended!",
-      author: "Adeel Khan",
-      role: "Software Engineer",
-      image: "/pro1.jpg"
+      text: "DaaS Tech built us a modern website that completely transformed our online presence. We’re now attracting more clients and scaling faster than ever!",
+      author: "Yildiz Wong",
+      role: "CEO at TechFlow Solutions",
+      image: "/auther1.jpg"
     },
     {
-      text: "With DaaS Learn, my learning process is faster, more reliable, and engaging. The step-by-step guidance and hands-on practice are invaluable. This is a platform every aspiring developer should consider!",
-      author: "Maria Sheikh",
-      role: "Computer Science Graduate",
-      image: "/pro2.jpg"
+      text: "Thanks to DaaS Tech’s custom web solutions, our sales doubled. The site is fast, responsive, and built with smart analytics that help us engage leads better.",
+      author: "David Reynolds",
+      role: "Head of Sales at GrowthPeak",
+      image: "/auther3.jpg"
     },
     {
-      text: "DaaS Learn has enhanced my career journey significantly. It's intuitive, supportive, and provides 5-star guidance every step of the way. This platform has become a critical part of how I keep improving my skills!",
-      author: "Hassan Raza",
-      role: "Frontend Developer",
-      image: "/pro3.jpg"
+      text: "Our new website from DaaS Tech streamlined our operations and improved efficiency. Tasks that took hours are now automated — freeing our team to focus on growth.",
+      author: "Sophia Martinez",
+      role: "Operations Manager at NexaCorp",
+      image: "/auther2.jpg"
     },
     {
-      text: "DaaS Learn transformed the way I approach learning! The practical projects and guided learning paths give me confidence to apply my skills in real-world scenarios. A 5-star solution for anyone building a career in tech.",
-      author: "Sana Ali",
-      role: "Junior Web Developer",
-      image: "/pro4.jpg"
+      text: "Customer engagement has never been smoother. DaaS Tech redesigned our support portal, cutting response times and boosting customer satisfaction to new heights.",
+      author: "Emily Wong",
+      role: "Customer Success Lead at SupportHive",
+      image: "/auther4.svg"
     },
-    {
-      text: "DaaS Learn's comprehensive curriculum and hands-on approach helped me transition from a beginner to a confident developer. The real-world projects and mentorship are game-changers for anyone serious about tech!",
-      author: "Ahmed Hassan",
-      role: "Full Stack Developer",
-      image: "/pro1.jpg"
-    },
-    {
-      text: "The structured learning path and practical exercises at DaaS Learn made complex concepts easy to understand. I've gained the skills and confidence needed to excel in the competitive tech industry!",
-      author: "Fatima Zahra",
-      role: "UI/UX Designer",
-      image: "/pro2.jpg"
-    }
   ]
 
   // Infinite scroll wrap
@@ -83,11 +71,11 @@ export default function Testimonials() {
   return (
     <section className="py-5">
       <div className="px-3">
-        <div className="m-auto testimonial-container" 
-        style={{
-background:"var(--background)"
+        <div className="m-auto testimonial-container"
+          style={{
+            background: "var(--background)"
 
-        }}
+          }}
         >
 
           {/* Heading */}
@@ -98,18 +86,20 @@ background:"var(--background)"
             viewport={{ once: true }}
             className="testimonial-heading text-center mb-4"
             style={{
-              color:"var(--foreground)"
+              color: "var(--foreground)"
             }}
           >
             Why Businesses Love Our Digital Solutions
           </motion.h2>
 
           {/* Navigation buttons */}
-          <div className="d-flex justify-content-center gap-2 mb-4">
+          <div className="d-flex justify-content-between gap-2 mb-4">
             <button onClick={handlePrev} className="testimonial-nav-btn rounded-circle d-flex align-items-center justify-content-center shadow"
-              style={{ width: 35, height: 35,
-                 border: "2px solid var(--border-color)", 
-              background: "var(--background)" }}>
+              style={{
+                width: 35, height: 35,
+                border: "2px solid var(--border-color)",
+                background: "var(--background)"
+              }}>
               <FaChevronLeft size={14} color="var(--accent)" />
             </button>
             <button onClick={handleNext} className="testimonial-nav-btn rounded-circle d-flex align-items-center justify-content-center shadow"
@@ -124,14 +114,15 @@ background:"var(--background)"
               className="d-flex gap-3 testimonial-track"
               animate={{ x: `-${currentIndex * cardWidth}px` }}
               transition={{ type: 'tween', ease: 'linear', duration: 0.5 }}
-              style={{ width: `${testimonials.length * cardWidth}px`,
-            background:"var(--background)",
-            }}
+              style={{
+                width: `${testimonials.length * cardWidth}px`,
+                background: "var(--background)",
+              }}
             >
               {testimonials.map((t, index) => (
                 <div key={index} className="testimonial-card p-3 rounded-4 shadow-sm"
                   style={{ minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }}>
-                  
+
                   {/* Stars */}
                   <div className="mb-2">
                     {[...Array(5)].map((_, i) => (
