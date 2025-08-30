@@ -188,7 +188,8 @@ const Study = () => {
               <h3 style={{ fontSize: "1.3rem", marginBottom: "10px" }}>
                 {study.title}
               </h3>
-              <p className="study-text"
+              <p
+              className="study-text"
                 style={{
                   color: "var(--muted-text)",
                   marginBottom: "15px",
@@ -200,7 +201,7 @@ const Study = () => {
               <ul style={{ paddingLeft: 0, fontSize: "0.9rem" }}>
                 {study.points.map((point, idx) => (
                   <li
-                    key={idx}k
+                    key={idx}
                     style={{
                       marginBottom: "6px",
                       listStyleType: "none",
