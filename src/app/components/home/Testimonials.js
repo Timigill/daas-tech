@@ -30,13 +30,13 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      text: "DaaS Tech built us a modern website that completely transformed our online presence. We’re now attracting more clients and scaling faster than ever!",
+      text: "DaaS Tech built us a modern website that completely transformed our online presence. We're now attracting more clients and scaling faster than ever!",
       author: "Yildiz Wong",
       role: "CEO at TechFlow Solutions",
       image: "/auther1.jpg"
     },
     {
-      text: "Thanks to DaaS Tech’s custom web solutions, our sales doubled. The site is fast, responsive, and built with smart analytics that help us engage leads better.",
+      text: "Thanks to DaaS Tech's custom web solutions, our sales doubled. The site is fast, responsive, and built with smart analytics that help us engage leads better.",
       author: "David Reynolds",
       role: "Head of Sales at GrowthPeak",
       image: "/auther3.jpg"
@@ -55,17 +55,28 @@ export default function Testimonials() {
     },
   ]
 
-  // Infinite scroll wrap
+  // Create duplicated array for infinite loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials]
+
+  // Infinite scroll wrap with proper looping
   const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? testimonials.length - cardsToShow : prev - 1
-    )
+    setCurrentIndex((prev) => {
+      if (prev <= 0) {
+        // Jump to the end of the middle set
+        return testimonials.length * 2 - cardsToShow
+      }
+      return prev - 1
+    })
   }
 
   const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev >= testimonials.length - cardsToShow ? 0 : prev + 1
-    )
+    setCurrentIndex((prev) => {
+      if (prev >= testimonials.length * 2 - cardsToShow) {
+        // Jump to the beginning of the middle set
+        return 0
+      }
+      return prev + 1
+    })
   }
 
   return (
@@ -113,13 +124,17 @@ export default function Testimonials() {
             <motion.div
               className="d-flex gap-3 testimonial-track"
               animate={{ x: `-${currentIndex * cardWidth}px` }}
-              transition={{ type: 'tween', ease: 'linear', duration: 0.5 }}
+              transition={{ 
+                type: 'tween', 
+                // duration: 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
               style={{
-                width: `${testimonials.length * cardWidth}px`,
+                width: `${duplicatedTestimonials.length * cardWidth}px`,
                 background: "var(--background)",
               }}
             >
-              {testimonials.map((t, index) => (
+              {duplicatedTestimonials.map((t, index) => (
                 <div key={index} className="testimonial-card p-3 rounded-4 shadow-sm"
                   style={{ minWidth: `${cardWidth}px`, maxWidth: `${cardWidth}px` }}>
 
