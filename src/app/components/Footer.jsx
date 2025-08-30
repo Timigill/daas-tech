@@ -63,10 +63,11 @@ function Footer() {
 
   return (
     <footer
-      className="footer-section"
+      className="footer-section footer-gradient"
       style={{
         padding: "12px 30px",
-        background: "var(--background)",
+        // background: "var(--background)",
+      
         color: "var(--foreground)",
       }}
     >
@@ -76,7 +77,7 @@ function Footer() {
       />
 
       <div
-        className="container-fluid footer-gradient pt-4"
+        className="container-fluid  pt-4"
         style={{ overflowX: "hidden" }}
       >
         <div className="row">
