@@ -1,3 +1,6 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
@@ -25,13 +28,13 @@
   --mobile-menu-bg: #f9f9f9;
   --overlay-bg: rgba(255, 255, 255, 0.95);
   --border-color: #e5e5e5;
-  --tiles-bg:  #edeaf3;
+  --tiles-bg: #edeaf3;
 }
 
 .dark {
   --homeservicesgrad1: rgba(17, 17, 20, 0);
   --homeservicesgrad2: #111114;
-  --grad1:rgba(164, 122, 255, 0.2);
+  --grad1: rgba(164, 122, 255, 0.2);
   --grad2: #000;
   --grad3: #000;
   --grad4: rgba(164, 122, 255, 0.2);
@@ -56,8 +59,8 @@
   --mobile-menu-bg: #18122b;
   --overlay-bg: rgba(10, 6, 18, 0.95);
   --border-color: rgba(255, 255, 255, 0.1);
-  --grad3:#000;
-  --grad3:#000;
+  --grad3: #000;
+  --grad3: #000;
   --tiles-bg: to top left, rgba(164, 122, 255, 0.1), #000;
 
 }
@@ -158,7 +161,7 @@ a {
 
 input:focus {
   box-shadow: none !important;
-  border-color:#af90f7 !important;
+  border-color: #af90f7 !important;
   outline: none !important;
 }
 
@@ -173,7 +176,7 @@ input:focus {
 }
 
 .flag-dropdown {
-  border: 1px solid var(--card-border)!important;
+  border: 1px solid var(--card-border) !important;
 }
 
 .small {
@@ -395,7 +398,7 @@ input:focus {
 }
 
 .react-tel-input .country:hover {
-  background-color:"linear-gradient(to bottom right, var(--grad1),  var(--grad2))",  !important;
+  background-color: "linear-gradient(to bottom right, var(--grad1),  var(--grad2))", !important;
 }
 
 .review-slider {
@@ -490,7 +493,7 @@ a {
 .react-calendar__tile--active,
 .selected-calendar-tile {
   background: rgba(164, 122, 255, 0.3) !important;
-  color:#ffffff !important;
+  color: #ffffff !important;
 }
 
 .react-calendar__tile:disabled {
@@ -572,16 +575,18 @@ a {
 .form-check-input:checked[type="checkbox"] {
   --bs-form-check-bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='var(--foreground)' stroke='%23007bff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3E%3C/svg%3E");
 }
+
 .ProseMirror {
-    min-height: 250px;
-    padding: 12px;
-    background-color: var(--background);
-    color: var(--foreground);
-    border-radius: 8px;
-    outline: none;
+  min-height: 250px;
+  padding: 12px;
+  background-color: var(--background);
+  color: var(--foreground);
+  border-radius: 8px;
+  outline: none;
 }
+
 /* styles.css or globals.css */
-.custom-select { 
+.custom-select {
   background-color: var(--card-bg);
   color: var(--muted-text);
   border: none;
@@ -593,12 +598,59 @@ a {
   box-shadow: none;
   transition: border-color 0.3s ease;
   appearance: none;
-  padding: 6px 24px 6px 8px;;
+  padding: 6px 24px 6px 8px;
+  ;
   background-position: right 8px center;
   background-size: 16px;
 }
 
-.custom-select:focus { 
+.custom-select:focus {
   border-bottom: 1px solid #6a1b9a;
   outline: none;
+}
+
+/* =============== General Container about-component=============== */
+.slick-container {
+  width: 70%;
+  margin: 3rem auto 4rem;
+}
+
+@media (max-width: 999px) {
+  .slick-container {
+    width: 90%;
+  }
+}
+
+.slick-slider .slick-list,
+.slick-slider .slick-track {
+  display: flex !important;
+  gap: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .custom-dots {
+    display: none;
+  }
+
+  .mobile-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .mobile-controls button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: "var(--background)";
+    color: "var(--accent)";
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: "1px solid var(--border-color)";
+  }
+
 }
