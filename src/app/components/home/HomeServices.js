@@ -294,8 +294,8 @@ export default function HomeServices() {
             href="/contact"
             className="btn get-started-btn px-2 py-1"
             style={{
-              background: "transparent",
-              color: "var(--muted-text)",
+              background: "var(--accent)",
+              color: "#fff !important",
               fontWeight: 500,
               fontSize: 13,
               borderRadius: 7,
