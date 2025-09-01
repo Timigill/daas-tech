@@ -153,7 +153,10 @@ app.listen(PORT, () => {
             letterSpacing: 1,
             padding: "8px 18px",
             borderRadius: 20,
-             margin: "0 auto",
+            width: "fit-content",
+            display:"flex",
+            textAlign:"center",
+            margin: "auto !important",
           }}
         >
           Our Process
@@ -170,7 +173,11 @@ app.listen(PORT, () => {
             fontSize: "clamp(1.5rem, 5vw, 2rem)",
             lineHeight: 1.15,
             marginBottom: 16,
-             margin: "0 auto",
+            margin: "auto",
+            width: "fit-content",
+            display: "flex",
+            textAlign: "center",
+            margin: "auto !important",
           }}
         >
           Our Simple, Smart, and Scalable Process
@@ -201,7 +208,7 @@ app.listen(PORT, () => {
      
         <div
           className="overflow-hidden mt-6 position-relative"
-          style={{ width: "100%", margin: "0" }}
+          style={{ width: "100%", margin: "0 auto" }}
         >
           <div style={{ width: "100%", overflow: "hidden", }}>
             <motion.div
@@ -211,16 +218,15 @@ app.listen(PORT, () => {
               style={{
                 width: `${isMobile ? checklist.length  * 100 : Math.ceil(checklist.length / 2) * 100}%`,
                 display: "flex",
-                flex: "0 0 100%", display: 'flex', flexWrap:"nowrap", gap: '1rem',margin:"2px",
+                flex: "0 0 100%", display: 'flex', flexWrap:"nowrap", gap: '1.7rem',margin:"2px",
               }}
             >
 
 
 
                   <motion.div
-                  className="step-card"
+                  className="step-card "
                     whileHover={{
-                      // scale: 1.03,
                       boxShadow: "0 8px 32px rgba(139,92,246,0.25)",
                     }}
                     initial={{ opacity: 0, y: 40 }}
