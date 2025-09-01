@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google';
 import HeaderFooterWrapper from './components/HeaderFooterWrapper'; // new client component
 import './globals.css';
 import Script from 'next/script';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 // import '@/app/custom-bootstrap.scss';
 const inter = Inter({ subsets: ['latin'] });
