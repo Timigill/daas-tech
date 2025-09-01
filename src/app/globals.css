@@ -146,7 +146,7 @@ a {
 .container {
   margin-left: 30px !important;
   margin-right: 30px !important;
-  width: 100% !important;
+  width: 100vw !important;
   max-width: 1280px;
 }
 
@@ -888,11 +888,11 @@ p.hero-subheading {
 
   transition: transform 0.3s ease, border 0.3s ease;
 }
-
+/* 
 .testimonial-card:hover {
   transform: translateY(-4px);
   border: 1px solid var(--accent);
-}
+} */
 
 /* Stars */
 .testimonial-star {
@@ -1263,9 +1263,9 @@ width: 70vw;
 
 /* step-card */
 .step-card {
-  flex: 0 0 25%;
+  flex: 0 0 24%;
   width: 24%;
-  max-width: 24%;
+  max-width: 25%;
   box-sizing: border-box;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
