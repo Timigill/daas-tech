@@ -205,11 +205,11 @@ app.listen(PORT, () => {
         >
           <div style={{ width: "100%", overflow: "hidden", }}>
             <motion.div
-              className="d-flex main-card"
-              animate={{ x: `-${activeIndex * (isMobile ? 50 : 25)}%` }} // shift per slide
+              className="d-flex container"
+              animate={{ x: `-${activeIndex * (isMobile ? 100 : 50)}%` }} // shift per slide
               transition={{ duration: 0.6, ease: "easeInOut" }}
               style={{
-                width: `${isMobile ? Math.ceil(checklist.length / 4) * 100 : Math.ceil(checklist.length / 4) * 100}%`,
+                width: `${isMobile ? checklist.length  * 100 : Math.ceil(checklist.length / 2) * 100}%`,
                 display: "flex",
                 flex: "0 0 100%", display: 'flex', flexWrap:"nowrap", gap: '1rem',margin:"2px",
               }}

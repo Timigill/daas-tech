@@ -1264,8 +1264,8 @@ width: 70vw;
 /* step-card */
 .step-card {
   flex: 0 0 25%;
-  width: 24%;
-  max-width: 24%;
+  width: 49%;
+  max-width: 49%;
   box-sizing: border-box;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
