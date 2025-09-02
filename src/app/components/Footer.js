@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import "../globals.css";
 import Link from "next/link";
+import Image from "next/image";
 
 function Footer() {
   const [theme, setTheme] = useState("dark");
@@ -29,37 +30,45 @@ function Footer() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubscribe = async () => {
-    setError("");
-    setSuccess("");
+const handleSubscribe = async (e) => {
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
-    if (!email) {
-      setError("Email is required.");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Invalid email address.");
-      return;
-    }
+  // Trim only leading spaces
+  const cleanedEmail = email.trimStart();
+  setEmail(cleanedEmail);
 
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+  if (!cleanedEmail) {
+    setError("Email is required.");
+    return;
+  }
 
-      if (res.ok) {
-        setSuccess("Thanks for subscribing!");
-        setEmail("");
-      } else {
-        setError("Something went wrong. Try again later.");
-      }
-    } catch (err) {
-      setError("Server error. Please try again.");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(cleanedEmail)) {
+    setError("Invalid email address.");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: cleanedEmail }),
+    });
+
+    if (res.ok) {
+      setSuccess("Thanks for subscribing!");
+      setEmail(""); // reset input
+    } else {
+      setError("Something went wrong. Try again later.");
     }
-  };
+  } catch (err) {
+    setError("Server error. Please try again.");
+  }
+};
+
+
 
   return (
     <footer
@@ -67,7 +76,7 @@ function Footer() {
       style={{
         padding: "12px 30px",
         // background: "var(--background)",
-      
+
         color: "var(--foreground)",
       }}
     >
@@ -107,7 +116,7 @@ function Footer() {
             <div style={{ maxWidth: "350px" }}>
               <p className="fw-bold px-2 mb-2">Join our newsletter</p>
               <div className="position-relative mb-2 ps-2">
-                <input
+                {/* <input
                   type="email"
                   className="form-control"
                   placeholder="name@email.com"
@@ -122,7 +131,33 @@ function Footer() {
                     outline: "none",
                     boxShadow: "none",
                   }}
+                /> */}
+
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="name@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value.trimStart())}
+                  // trims spaces from start while typing
+                  aria-label="Email address"
+                  required
+                  autoComplete="email"
+                  style={{
+                    background: "var(--input-bg)",
+                    color: "var(--footer-text)",
+                    padding: "6px 90px 6px 12px",
+                    height: "50px",
+                    border: "1px solid var(--border-color)",
+                    outline: "none",
+                    boxShadow: "none",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                  }}
                 />
+
+
+
                 <button
                   className="btn position-absolute top-0 end-0 mt-1 me-1"
                   style={{
@@ -147,7 +182,7 @@ function Footer() {
 
 
 
-          <div className="col-6 footer-links">
+          <div className="col-6 col-md-12 footer-links">
             <div className="row ">
               <div className="col-4 mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Links</h6>
@@ -176,7 +211,7 @@ function Footer() {
                     <Link href="/about">About</Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="/blog"
                       style={{
                         color: "var(--footer-text)",
@@ -184,7 +219,7 @@ function Footer() {
                       }}
                     >
                       Blog
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <Link href="/contact">Contact</Link>
@@ -263,7 +298,7 @@ function Footer() {
             </div>
           </div>
         </div>
- <hr
+        <hr
           className="mt-0 mb-3 w-100"
           style={{ border: "1px solid var(--border-color)" }}
         />

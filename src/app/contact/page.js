@@ -144,7 +144,7 @@ export default function Contact() {
 
       {/* Heading */}
       <motion.h1
-        className="fw-bold display-3 mb-3"
+        className="fw-bold display-3 mb-3 hero-heading"
         variants={fadeInUp}
         custom={0.5}
         viewport={{ once: true }}
@@ -155,7 +155,6 @@ export default function Contact() {
           color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
-          fontSize: "2.5rem",
         }}
       >
         Get in Touch with Us
@@ -163,14 +162,13 @@ export default function Contact() {
 
       {/* Sub Text */}
       <motion.p
-        className="mb-4"
+        className="mb-4 hero-subheading"
         variants={fadeInUp}
         custom={1}
         viewport={{ once: true }}
         style={{
           color: "var(--muted-text)",
           fontFamily: "Inter, sans-serif",
-          fontSize: "0.9rem",
           maxWidth: 600,
           margin: "0 auto",
         }}
@@ -192,8 +190,8 @@ export default function Contact() {
             <div
               className="p-4 shadow rounded  h-100"
               style={{
-                border: "1px solid  var(--card-border)",
-                background: "linear-gradient(to top right, var(--grad4), var(--grad3))",
+                border: "1px solid  var(--border-color)",
+                background: "var(--background)",
               }}
             >
               <div className="d-flex align-items-center mb-1" style={{ color: "var(--foreground)" }}>
@@ -220,8 +218,9 @@ export default function Contact() {
             <div
               className="p-4 shadow rounded  h-100"
               style={{
-                border: "1px solid var(--card-border)",
-                background: "linear-gradient(to top right, var(--grad4), var(--grad3))",
+                border: "1px solid var(--border-color)",
+                background: "var(--background)",
+
               }}
             >
               <div className="d-flex align-items-center mb-1" style={{ color: "var(--foreground)" }}>
@@ -248,7 +247,7 @@ export default function Contact() {
           custom={2.5}
           viewport={{ once: true }}
           style={{
-            border: "1px solid var(--card-border)",
+            border: "1px solid var(--border-color)",
             boxShadow: "0 2px 16px 0 rgba(139,92,246,0.25)",
             backgroundColor: 'var(--background)',
             // background: "linear-gradient(to top right, rgba(164, 122, 255, 0.08), #000 90%)",
@@ -269,7 +268,7 @@ export default function Contact() {
                 style={{
                   height: "38px",
                   fontSize: "0.9rem",
-                  border: "1px solid var(--card-border)",
+                  border: "1px solid var(--border-color)",
                   background: "var( --codeinnerdiv)"
                 }}
               />
@@ -286,7 +285,7 @@ export default function Contact() {
                 placeholder="Smith"
                 style={{
                   height: "38px", fontSize: "0.9rem",
-                  border: "1px solid var(--card-border)",
+                  border: "1px solid var(--border-color)",
                   background: "var( --codeinnerdiv)"
                 }}
               />
@@ -305,7 +304,7 @@ export default function Contact() {
                 placeholder="Jane@mail.com"
                 style={{
                   height: "38px", fontSize: "0.9rem",
-                  border: "1px solid var(--card-border)",
+                  border: "1px solid var(--border-color)",
                   background: "var( --codeinnerdiv)"
                 }}
               />
@@ -322,14 +321,14 @@ export default function Contact() {
                   textAlign: "left",
                   width: "100%",
                   height: "38px",
-                  border: "1px solid var(--card-border)",
+                  border: "1px solid var(--border-color)",
                   background: "var( --codeinnerdiv)",
                   borderRadius: 8,
                   fontSize: "0.9rem",
                   color:"var(--foreground)",
                 }}
                 buttonStyle={{
-                  border: "1px solid var(--card-border)",
+                  border: "1px solid var(--border-color)",
                   background: "var(--codeinnerdiv)",
                 }}
                 dropdownStyle={{
@@ -346,7 +345,7 @@ export default function Contact() {
                 renderCountry={(country) => (
                   <div style={{
                     display: "flex", alignItems: "center", gap: 8,
-                    border: "1px solid var(--card-border)",
+                    border: "1px solid var(--border-color)",
                     background: "var( --codeinnerdiv)"
                   }}>
                     <div className={`flag ${country.iso2}`}></div>
@@ -368,7 +367,7 @@ export default function Contact() {
               placeholder="Hi, I am Jane. I want help with…"
               style={{
                 fontSize: "0.9rem", minHeight: "80px",
-                border: "1px solid var(--card-border)", 
+                border: "1px solid var(--border-color)", 
                 background: "var( --codeinnerdiv)",
                 boxShadow: "none"
               }}
@@ -380,7 +379,7 @@ export default function Contact() {
               type="submit"
               className="btn"
               style={{
-                background: "linear-gradient(to bottom right, var(--grad1),  var(--grad2))", color: "var(--muted-text)",
+                background: "var(--accent)", color: "white",
                 fontWeight: "600",
                 fontSize: "1rem",
                 height: "44px",

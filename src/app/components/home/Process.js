@@ -362,7 +362,6 @@ app.listen(PORT, () => {
                   <motion.div
                   className="step-card"
                     whileHover={{
-                      scale: 1.03,
                       boxShadow: "0 8px 32px var(--box-shadow)",
                     }}
                     initial={{ opacity: 0, y: 40 }}
@@ -485,7 +484,7 @@ app.listen(PORT, () => {
 
                   <motion.div
                   className="step-card"
-                    whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(139,92,246,0.25)" }}
+                    whileHover={{ boxShadow: "0 8px 32px rgba(139,92,246,0.25)" }}
                     initial="hidden"
                     whileInView="visible"
                     variants={fadeInUp}
@@ -609,8 +608,8 @@ app.listen(PORT, () => {
 
               
                   <motion.div
-                  className="step-card"
-                    whileHover={{ scale: 1.03, boxShadow: "0 8px 32px rgba(139,92,246,0.25)" }}
+                    className="step-card"
+                    whileHover={{boxShadow: "0 8px 32px rgba(139,92,246,0.25)" }}
                     initial="hidden"
                     whileInView="visible"
                     variants={fadeInUp}

@@ -1375,3 +1375,33 @@ width: 70vw;
   }
 
 }
+@media (max-width: 480px) {
+  select {
+    background: var(--background) !important;
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
+
+  option {
+    font-size: 0.9rem;
+  }
+}
+option:hover{
+  background: var(--card-bg) !important;
+}
+@media (max-width: 375px) {
+  select {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  option {
+    font-size: 0.8rem;
+  }
+}
+
+select.time-select option:checked {
+  background: var(--card-bg) !important;
+  color: var(--foreground);
+}
+
