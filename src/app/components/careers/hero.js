@@ -13,6 +13,15 @@ const fadeInUp = {
   }),
 };
 
+const handleScrollToJobs = () => {
+  const target = document.getElementById("jobs-listening");
+  if (target) {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
+
+
+
 function Hero() {
   return (
     <motion.div
@@ -31,16 +40,17 @@ function Hero() {
           style={{
             padding: "4px 10px",
             fontSize: 12,
-            color: "#fff",
-            border: "1px solid rgb(17 17 17)",
+            backgroundColor: "var(--accent)", 
             borderRadius: 8,
             width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
+              color: "#fff",
           }}
         >
           Careers
         </motion.span>
+
 
         {/* Main Heading */}
         <motion.h1
@@ -52,7 +62,7 @@ function Hero() {
             fontWeight: 600,
             fontSize: "2.5rem",
             lineHeight: 1.1,
-            color: "#ffffff",
+            color: "var(--foreground)",
             maxWidth: 720,
             margin: "0 auto",
           }}
@@ -67,13 +77,15 @@ function Hero() {
           type="button"
           variants={fadeInUp}
           custom={0.6}
+          onClick={handleScrollToJobs}
         >
           <span className="ps-1 go-back-content">
-            Veiw Jobs Opening
+            View Jobs Opening
             <MdOutlineArrowOutward className="go-back-icon default-icon" size={20} />
             <MdOutlineArrowForward className="go-back-icon hover-icon" size={20} />
           </span>
         </motion.button>
+
       </div>
       <Trust />
     </motion.div>

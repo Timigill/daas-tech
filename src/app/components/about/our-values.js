@@ -1,77 +1,111 @@
+
 "use client";
-import React from 'react';
-import { PiLightbulbFill, PiRocketLaunchFill, PiHandshakeFill } from "react-icons/pi";
+import React from "react";
+import {
+  PiLightbulbFill,
+  PiRocketLaunchFill,
+  PiHandshakeFill,
+} from "react-icons/pi";
 import { FaUserGroup } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
+// Animation variant
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" }
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
   }),
 };
+
+// Values data
+const valuesData = [
+  {
+    icon: <PiLightbulbFill size={23} />,
+    title: "Driving Innovation Forward",
+    description:
+      "We embrace cutting-edge solutions to create smarter, more efficient digital solutions.",
+    gradient: "linear-gradient(to bottom right,  var(--grad3), var(--grad4))",
+  },
+  {
+    icon: <PiHandshakeFill size={23} />,
+    title: "Committed to Integrity & Trust",
+    description:
+      "Trust and transparency are at the core of everything we do for our clients.",
+     gradient: "linear-gradient(to bottom left,  var(--grad3), var(--grad4))",
+  },
+  {
+    icon: <PiRocketLaunchFill size={23} />,
+    title: "Empowering Business Growth",
+    description:
+      "We help businesses scale faster with efficiency, reducing time and unlocking new opportunities.",
+     gradient: "linear-gradient(to top right,  var(--grad3), var(--grad4))",
+  },
+  {
+    icon: <FaUserGroup size={23} />,
+    title: "Putting Customers First",
+    description:
+      "Your success is our priority — we build solutions that truly make an impact.",
+     gradient: "linear-gradient(to top left, var(--grad3), var(--grad4))",
+    }
+];
+
 
 function Values() {
   return (
     <motion.div
-      className="d-flex flex-column  align-items-center text-center my-5 py-5 px-3"
+      className="d-flex flex-column align-items-center text-center my-5 py-5 px-3"
       initial="hidden"
       whileInView="visible"
       variants={fadeInUp}
       viewport={{ once: true }}
-      style={{ height: "auto" }}
     >
-      {/* Header */}
+      {/* Heading */}
       <motion.span
-        className="badge px-3 py-2"
-        initial="hidden"
-        whileInView="visible"
         variants={fadeInUp}
-        viewport={{ once: true }}
+        custom={0.6}
+        whileHover={{ scale: 1.1 }}
+        className="btn px-3 py-2"
         style={{
-          padding: "4px 10px",
-          fontSize: 12,
+          background: "var(--accent)",
           color: "#fff",
-          border: "1px solid rgb(17 17 17)",
-          borderRadius: 8,
-          width: "fit-content",
           fontWeight: 500,
-          marginBottom: 12,
+          fontSize: "12px",
+          marginBottom: "12px",
+          width: "fit-content",
         }}
       >
         Our Values
       </motion.span>
 
-      <motion.h1
-        className="mt-"
+      <motion.h2
+        className="mt-3"
         style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 600,
+          // fontSize: "2.5rem",
           lineHeight: 1.1,
-          color: "#ffffff",
+          color: "var(--foreground)",
           maxWidth: 700,
           margin: "0 auto",
         }}
-        initial="hidden"
-        whileInView="visible"
         variants={fadeInUp}
         custom={0.5}
         viewport={{ once: true }}
       >
-        The Values Behind DaaS Tech 
-      </motion.h1>
+        The Values Behind DaaS Tech
+      </motion.h2>
 
       <motion.p
-        className="mt-3 text-white-50"
+        className="mt-3"
         style={{
           fontFamily: "Inter, sans-serif",
           fontSize: "0.9rem",
+          color: "var(--muted-text)",
           maxWidth: 620,
+          margin: "0 auto",
         }}
-        initial="hidden"
-        whileInView="visible"
         variants={fadeInUp}
         custom={1}
         viewport={{ once: true }}
@@ -80,144 +114,75 @@ function Values() {
         we’re committed to building Digital solutions that empower businesses and drive real impact.
       </motion.p>
 
-      <div className="d-flex justify-content-center py-5 position-relative">
-        {/* Radial Gradient Circle Background */}
+      {/* Cards Section with Background Glow */}
+      <div className="d-flex justify-content-center py-5 position-relative w-100">
+        {/* Radial Glow Background */}
         <div
           style={{
             position: "absolute",
-            top: "150%",
+            top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-          
-            background: "radial-gradient(circle, #241142 0%, #0b0b0b 80%)",
+            width: 500,
+            height: 500,
+            background: "linear-gradient(to bottom right,var(--grad1), var(--grad2))",
             borderRadius: "50%",
-            zIndex: 0,
             filter: "blur(60px)",
+            zIndex: 0,
+            pointerEvents: "none",
           }}
         ></div>
 
-        {/* Cards Row */}
-        <div className="container " style={{ zIndex: 1 }}>
+        {/* Card Grid */}
+        <div className="container" style={{ zIndex: 1 }}>
           <div className="row g-4 justify-content-center">
-            {/* Card 1 */}
-            <motion.div
-              className="col-12 col-md-6 col-lg-5"
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeInUp}
-              custom={1.5}
-              viewport={{ once: true }}
-            >
-              <div className="p-4 shadow rounded text-white"
-                style={{ border: "1px solid #222", background: "linear-gradient(to top left, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}
+            {valuesData.map((item, index) => (
+              <motion.div
+                key={index}
+                className="col-12 col-md-6 col-lg-5"
+                initial="hidden"
+                whileInView="visible"
+                variants={fadeInUp}
+                custom={index + 1.5}
+                viewport={{ once: true }}
               >
-                <div className="d-flex gap-2 mb-2">
-                  <PiLightbulbFill size={23} />
-                  <h5
-                    className="mb-0"
-                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
-                  >
-                    Driving Innovation Forward
-                  </h5>
-                </div>
-                <p
-                  className="text-white-50 text-start"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
+                <div
+                  className="p-4 shadow rounded  h-100"
+                  style={{
+                    border: "1px solid #222",
+                       background: item.gradient,
+                    // background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))",
+                  }}
                 >
-                  We embrace cutting-edge solutions to create smarter, more efficient digital solutions.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 2 */}
-            <motion.div
-              className="col-12 col-md-6 col-lg-5"
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeInUp}
-              custom={2}
-              viewport={{ once: true }}
-            >
-              <div className="p-4 shadow rounded text-white h-100"
-                style={{ border: "1px solid #222", background: "linear-gradient(to top right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}
-              >
-                <div className="d-flex gap-2 mb-2">
-                  <PiHandshakeFill size={23} />
-                  <h5
-                    className="mb-0 text-start"
-                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                  <div className="d-flex gap-2 mb-2 align-items-center"
+                  style={{ color: "var(--foreground)",}}
                   >
-                    Committed to Integrity & Trust
-                  </h5>
-                </div>
-                <p
-                  className="text-white-50 text-start"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-                >
-                  Trust and transparency are at the core of everything we do for our clients.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3 */}
-            <motion.div
-              className="col-12 col-md-6 col-lg-5"
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeInUp}
-              custom={2.5}
-              viewport={{ once: true }}
-            >
-              <div className="p-4 shadow rounded text-white h-100"
-                style={{ border: "1px solid #222", background: "linear-gradient(to bottom left, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}
-              >
-                <div className="d-flex gap-2 mb-2">
-                  <PiRocketLaunchFill size={23} />
-                  <h5
-                    className="mb-0"
-                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
+                    {item.icon}
+                    <h5
+                      className="mb-0 text-start"
+                      style={{
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: "15px",
+                          color: "var(--foreground)",
+                      }}
+                    >
+                      {item.title}
+                    </h5>
+                  </div>
+                  <p
+                    className="text-start"
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "1rem",
+                      maxWidth: 460,
+                    color: "var(--muted-text)",
+                    }}
                   >
-                    Empowering Business Growth
-                  </h5>
+                    {item.description}
+                  </p>
                 </div>
-                <p
-                  className="text-white-50 text-start"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-                >
-                  We help businesses scale faster with  efficiency, reducing time and unlocking new opportunities.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 4 */}
-            <motion.div
-              className="col-12 col-md-6 col-lg-5"
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeInUp}
-              custom={3}
-              viewport={{ once: true }}
-            >
-              <div className="p-4 shadow rounded text-white h-100"
-                style={{ border: "1px solid #222", background: "linear-gradient(to bottom right, rgba(164, 122, 255, 0.1), rgba(0, 0, 0, 1))" }}
-              >
-                <div className="d-flex gap-2 mb-2">
-                  <FaUserGroup size={23} />
-                  <h5
-                    className="mb-0"
-                    style={{ fontFamily: "Inter, sans-serif", fontSize: "15px" }}
-                  >
-                    Putting Customers First
-                  </h5>
-                </div>
-                <p
-                  className="text-white-50 text-start"
-                  style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", maxWidth: 460 }}
-                >
-                  Your success is our priority — we build solutions that truly make an impact.
-                </p>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

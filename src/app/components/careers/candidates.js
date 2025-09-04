@@ -17,7 +17,7 @@ function Candidates() {
         <motion.div
             className="d-flex flex-column align-items-center text-center py-5 px-3"
             style={{
-                background: "radial-gradient(circle, rgba(164, 122, 255, 0.1), rgba(0,0,0,1))",
+                background: "radial-gradient(circle, var(--grad4) 20%, var(--grad3) 80%)",
                 width: "100%",
             }}
             initial="hidden"
@@ -32,7 +32,7 @@ function Candidates() {
                     fontWeight: 600,
                     fontSize: "2.2rem",
                     lineHeight: 1.2,
-                    color: "#ffffff",
+                    color: "var(--foreground)",
                     maxWidth: "850px",
                     margin: "0 auto",
                 }}

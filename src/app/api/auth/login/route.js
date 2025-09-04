@@ -53,7 +53,8 @@ export async function POST(req) {
     );
 
     // Set cookie using Next.js cookies API
-    cookies().set("adminToken", token, {
+    const cookieStore = await cookies();
+    cookieStore.set("adminToken", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",

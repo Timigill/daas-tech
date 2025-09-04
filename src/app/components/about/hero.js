@@ -9,7 +9,7 @@ const fadeInUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay:0, duration: 0.4, ease: "easeOut" }
+    transition: { delay: 0, duration: 0.4, ease: "easeOut" }
   },
 };
 
@@ -27,12 +27,15 @@ function Hero() {
           style={{
             padding: "4px 10px",
             fontSize: 12,
+
+
             color: "#fff",
-            border: "1px solid rgb(17 17 17)",
             borderRadius: 8,
             width: "fit-content",
             fontWeight: 500,
             marginBottom: 12,
+            background: "var(--accent)",
+            fontWeight: 600,
           }}
         >
           About Us
@@ -51,7 +54,7 @@ function Hero() {
             fontWeight: 600,
             fontSize: "2.5rem",
             lineHeight: 1.1,
-            color: "#ffffff",
+            color: "var(--foreground)",
             maxWidth: 700,
             margin: "0 auto",
           }}
@@ -61,7 +64,7 @@ function Hero() {
 
         {/* Subheading */}
         <motion.p
-          className="mt-3 text-white-50"
+          className="mt-3"
           initial="hidden"
           whileInView="visible"
           variants={fadeInUp}
@@ -70,6 +73,7 @@ function Hero() {
           style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "1rem",
+            color: "var(--muted-text)",
             maxWidth: 680,
             margin: "0 auto",
           }}
@@ -77,7 +81,8 @@ function Hero() {
           DaaS Tech Innovations helps businesses streamline operations and grow faster with Digital Solutions.
         </motion.p>
       </div>
-      <Trust/>
+
+      <Trust />
     </div>
   );
 }

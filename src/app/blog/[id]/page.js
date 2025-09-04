@@ -10,6 +10,7 @@ async function getBlog(id) {
 }
 
 export default async function BlogDetailPage({ params }) {
-  const blog = await getBlog(params.id);
+  const resolvedParams = await params;
+  const blog = await getBlog(resolvedParams.id);
   return <BlogDetailClient blog={blog} />;
 }
