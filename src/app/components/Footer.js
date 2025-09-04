@@ -182,13 +182,13 @@ const handleSubscribe = async (e) => {
 
 
 
-          <div className="col-6 col-md-12 footer-links">
+          <div className="col-6  footer-links">
             <div className="row ">
               <div className="col-4 mb-3">
                 <h6 className="fw-bold mt-3 footerh6">Links</h6>
                 <ul
                   className="list-unstyled footer-li"
-                  style={{ color: "var(--footer-text)" }}
+                  style={{ color: "var(--footer-text)", width:"min-content" }}
                 >
                   <li>Services</li>
                   <li>Process</li>

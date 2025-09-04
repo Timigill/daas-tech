@@ -212,13 +212,13 @@ app.listen(PORT, () => {
         >
           <div style={{ width: "100%", overflow: "hidden", }}>
             <motion.div
-              className="d-flex container"
+              className="d-flex container12"
               animate={{ x: `-${activeIndex * (isMobile ? 100 : 50)}%` }} // shift per slide
               transition={{ duration: 0.6, ease: "easeInOut" }}
               style={{
                 width: `${isMobile ? checklist.length  * 100 : Math.ceil(checklist.length / 2) * 100}%`,
                 display: "flex",
-                flex: "0 0 100%", display: 'flex', flexWrap:"nowrap", gap: '1.7rem',margin:"2px",
+                flex: "0 0 100%", display: 'flex', flexWrap:"nowrap", margin:"0 auto", gap:"0.4rem"
               }}
             >
 
@@ -276,7 +276,7 @@ app.listen(PORT, () => {
                       <div className="row g-3">
                         {/* Left - Animated Circle */}
                         <div
-                          className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center p-3 hidden md:block"
+                          className=" col-6 col-md-6 d-flex flex-column align-items-center justify-content-center p-3"
                           style={{
                             border: "1px solid var(--border-color)",
                             borderRadius: 12,
@@ -327,7 +327,7 @@ app.listen(PORT, () => {
 
                         {/* Right - Checklist */}
                         <div
-                          className="col-12 col-md-6 d-flex flex-column justify-content-start gap-2 p-3"
+                          className="col-6 col-md-6 d-flex flex-column justify-content-start gap-2 p-3"
                           style={{
                             border: "1px solid var(--border-color)",
                             borderRadius: 12,
